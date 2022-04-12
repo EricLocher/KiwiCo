@@ -2,26 +2,33 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
-[Serializable]
-public class Enemy : MonoBehaviour
+[Serializable, RequireComponent(typeof(NavMeshAgent))]
+public class Enemy : FOV
 {
-    [Range(0, 10)]
-    public float aggroRadius;
-    [Range(0,10)]
-    public float fovRadius;
-    [Range(0, 360)]
-    public float fovAngle;
+    [SerializeField] Transform target;
+    EnemyStates state = EnemyStates.Idle;
+    NavMeshAgent navMeshAgent;
 
-
-    public Vector3 DirFromAngle(float angleInDegrees)
+    void Start()
     {
-        angleInDegrees += transform.eulerAngles.y;
-
-        return new Vector3(Mathf.Sin(angleInDegrees * Mathf.Deg2Rad), 0, Mathf.Cos(angleInDegrees * Mathf.Deg2Rad));
+        navMeshAgent = GetComponent<NavMeshAgent>();    
     }
 
-
-
-
+    void Update()
+    {
+        if (TargetInView(target)) {
+            navMeshAgent.SetDestination(target.position);
+        }
+    }
 }
+
+enum EnemyStates
+{
+    Idle,
+    Chasing,
+    Attacking
+}
+
+
