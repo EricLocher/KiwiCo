@@ -28,5 +28,4 @@ public class EnemyEditor : Editor
     {
         enemy = (Enemy)target;
     }
-
 }
