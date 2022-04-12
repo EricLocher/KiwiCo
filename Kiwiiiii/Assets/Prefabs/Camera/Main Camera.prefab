@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &2093199697307144141
+--- !u!1 &6074044226163219683
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,11 +8,11 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2093199697307144136}
-  - component: {fileID: 2093199697307144143}
-  - component: {fileID: 2093199697307144142}
-  - component: {fileID: 2093199697307144138}
-  - component: {fileID: 2093199697307144137}
+  - component: {fileID: 6074044226163219686}
+  - component: {fileID: 6074044226163219681}
+  - component: {fileID: 6074044226163219680}
+  - component: {fileID: 6074044226163219684}
+  - component: {fileID: 6074044226163219687}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -20,37 +20,37 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2093199697307144136
+--- !u!4 &6074044226163219686
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2093199697307144141}
-  m_LocalRotation: {x: 0.18910751, y: -1e-45, z: 0, w: 0.9819564}
+  m_GameObject: {fileID: 6074044226163219683}
+  m_LocalRotation: {x: 0.18639432, y: 1e-45, z: 0, w: 0.98247504}
   m_LocalPosition: {x: -0.4, y: 1.5799999, z: -2.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!20 &2093199697307144143
+--- !u!20 &6074044226163219681
 Camera:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2093199697307144141}
+  m_GameObject: {fileID: 6074044226163219683}
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
-  m_projectionMatrixMode: 1
+  m_projectionMatrixMode: 2
   m_GateFitMode: 2
   m_FOVAxisMode: 0
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
-  m_FocalLength: 20.78461
+  m_FocalLength: 12
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -77,21 +77,21 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &2093199697307144142
+--- !u!81 &6074044226163219680
 AudioListener:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2093199697307144141}
+  m_GameObject: {fileID: 6074044226163219683}
   m_Enabled: 1
---- !u!114 &2093199697307144138
+--- !u!114 &6074044226163219684
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2093199697307144141}
+  m_GameObject: {fileID: 6074044226163219683}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 72ece51f2901e7445ab60da3685d6b5f, type: 3}
@@ -119,13 +119,13 @@ MonoBehaviour:
   m_CameraActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &2093199697307144137
+--- !u!114 &6074044226163219687
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2093199697307144141}
+  m_GameObject: {fileID: 6074044226163219683}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 23c1ce4fb46143f46bc5cb5224c934f6, type: 3}
