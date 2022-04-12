@@ -21,7 +21,6 @@ public class PlayerController : MonoBehaviour
     {
         controls = new PlayerControls();
         rb = GetComponent<Rigidbody>();
-        jump = new Vector3(0.0f, 2.0f, 0.0f);
     }
 
     private void FixedUpdate()
@@ -35,7 +34,7 @@ public class PlayerController : MonoBehaviour
     public void Move()
     {
         var movementInput = controls.Player.Movement.ReadValue<Vector2>();
-        Debug.Log(movementInput);
+
         var movement = new Vector3
         {
             x = movementInput.x,
