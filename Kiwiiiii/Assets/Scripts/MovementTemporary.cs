@@ -3,28 +3,42 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class Movement : MonoBehaviour
+public class MovementTemporary : MonoBehaviour
 {
-    public float speed;
-    private Rigidbody rb;
-    Vector2 velocity = Vector2.zero;
+    public Vector3 PlayerMoveInput;
 
-    void Start()
+    private PlayerInput Controls;
+
+    Rigidbody rb;
+
+    public float speed;
+
+    private void Start()
     {
+        Controls = new PlayerInput();
+        Controls.Enable();
+
+        Controls.CharacterControls.Move.performed += ctx =>
+        {
+            PlayerMoveInput = new Vector3(ctx.ReadValue<Vector2>().x, PlayerMoveInput.y, ctx.ReadValue<Vector2>().y);
+        };
+
+        Controls.CharacterControls.Move.canceled += ctx =>
+        {
+            PlayerMoveInput = new Vector3(ctx.ReadValue<Vector2>().x, PlayerMoveInput.y, ctx.ReadValue<Vector2>().y);
+        };
+
         rb = GetComponent<Rigidbody>();
     }
 
-    void FixedUpdate()
+    void Update()
     {
-
-        Vector3 movement = new Vector3(velocity.x, 0.0f, velocity.y);
-
-        rb.AddForce(movement * speed);
+        Move();
     }
 
-    public void Move(InputAction.CallbackContext value)
+    public void Move()
     {
-        velocity = value.ReadValue<Vector2>();
+        rb.AddForce(PlayerMoveInput * Time.deltaTime * speed);
     }
 
 
