@@ -4,13 +4,16 @@ using UnityEngine;
 
 public class NPCDialogue : MonoBehaviour
 {
-    [SerializeField] private string dialogue1, dialogue2, dialogue3, dialogue4;
+    [SerializeField] private string[] dialogue;
 
     private bool interactable, finished;
+    private DialogueWriter dialogueWriter;
+    public GameObject DialogueUI;
 
     void Start()
     {
         interactable = finished = false;
+        dialogueWriter = DialogueUI.GetComponent<DialogueWriter>();
     }
 
     // Update is called once per frame
@@ -29,10 +32,10 @@ public class NPCDialogue : MonoBehaviour
             PrintText();
     }
 
-    void PrintText()
+    public void PrintText()
     {
         finished = true;
 
-        Debug.Log(dialogue1);
+        dialogueWriter.Print(dialogue);
     }
 }
