@@ -23,7 +23,8 @@ public class FOV : MonoBehaviour
         float dist = Vector3.Distance(transform.position, target.position);
         if (dist > fovRadius) { return false; }
 
-        Vector3 dir = (target.position - (transform.position + Vector3.up * 2)).normalized;
+        Vector3 dir = (target.position - transform.position).normalized;
+
         if (Vector3.Angle(transform.forward, dir) < fovAngle / 2 || dist < aggroRadius) {
             if (!Physics.Raycast(transform.position + Vector3.up * 2, dir, dist, obstacleMask)) {
                 //Return true if the target lies within the fov cone or the aggor/inner radius.
