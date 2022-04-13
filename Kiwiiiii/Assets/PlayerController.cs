@@ -75,7 +75,6 @@ public class PlayerController : MonoBehaviour
 
         if (Physics.Raycast(transform.position, Vector3.down, out hit, radius + 1f, layerMask))
         {
-            Debug.Log("You hit the ground");
             isGrounded = true;
         }
 
