@@ -21,7 +21,8 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
-        animator = GetComponent<Animator>();
+        animator = GetComponentInChildren<Animator>();
+      
         radius = GetComponent<SphereCollider>().radius;
         controls = new PlayerControls();
         rb = GetComponent<Rigidbody>();
