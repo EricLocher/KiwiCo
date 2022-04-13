@@ -6,8 +6,9 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] float moveSpeed = 10;
-    [SerializeField] float jumpForce = 2;
+    [SerializeField] float moveSpeed = 5;
+    [SerializeField] float dashSpeed = 100;
+    [SerializeField] float jumpForce = 5;
 
     public LayerMask layerMask;
     
@@ -26,12 +27,11 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Move(); 
+        Move();
     }
 
     private void Update()
     {
-        Debug.Log(isGrounded);
         if (controls.Player.Jump.triggered)
         {
             Jump();
@@ -54,9 +54,9 @@ public class PlayerController : MonoBehaviour
         rb.AddForce(dir * moveSpeed, ForceMode.Force);
     }
 
-    private void Dash()
+    public void Dash()
     {
-        print("You dash lol");
+        rb.AddForce(rb.velocity.normalized * dashSpeed, ForceMode.Impulse);
     }
 
     private void GroundCheck()
@@ -94,6 +94,7 @@ public class PlayerController : MonoBehaviour
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);  
         }    
     }
+
     #endregion
 
     private void OnCollisionEnter(Collision collision)
