@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 751968969}
   m_Layer: 5
   m_Name: DialogueSystem
-  m_TagString: Untagged
+  m_TagString: Dialogue
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -174,6 +174,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueText: {fileID: 2098758346}
+  charAmount: 0
+  referenceCharAmount: 0
+  dialogueFinished: 0
 --- !u!1001 &758174183
 PrefabInstance:
   m_ObjectHideFlags: 0

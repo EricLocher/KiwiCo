@@ -16,10 +16,11 @@ public class NPCDialogue : MonoBehaviour
         dialogueWriter = DialogueUI.GetComponent<DialogueWriter>();
     }
 
-    // Update is called once per frame
+    //rewrite sloppy code
     void Update()
     {
-        if(Vector3.Distance(gameObject.transform.position, GameObject.FindGameObjectWithTag("Player").transform.position) < 5f && !finished)
+        float distance = Vector3.Distance(gameObject.transform.position, GameObject.FindGameObjectWithTag("Player").transform.position);
+        if (distance < 5f && !finished)
         {
             interactable = true;
         }
@@ -30,6 +31,18 @@ public class NPCDialogue : MonoBehaviour
 
         if (interactable)
             PrintText();
+
+        if (finished && !dialogueWriter.dialogueFinished && distance >= 5f)
+            finished = dialogueWriter.dialogueFinished;
+
+        if(distance >= 5f)
+        {
+            GameObject.FindGameObjectWithTag("Dialogue").transform.GetChild(0).gameObject.SetActive(false);
+            GameObject.FindGameObjectWithTag("Dialogue").transform.GetChild(1).gameObject.SetActive(false);
+            dialogueWriter.dialogueFinished = finished = false;
+            dialogueWriter.charAmount = dialogueWriter.referenceCharAmount = 0;
+        }
+
     }
 
     public void PrintText()

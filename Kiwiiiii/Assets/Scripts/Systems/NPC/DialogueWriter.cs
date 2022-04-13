@@ -6,11 +6,14 @@ using TMPro;
 public class DialogueWriter : MonoBehaviour
 {
     public TextMeshProUGUI dialogueText;
+    public float charAmount, referenceCharAmount;
+    public bool dialogueFinished;
 
     void Start()
     {
         gameObject.transform.GetChild(0).gameObject.SetActive(false);
         dialogueText.gameObject.SetActive(false);
+        dialogueFinished = true;
     }
 
     public void Print(string[] dialogue)
@@ -20,8 +23,16 @@ public class DialogueWriter : MonoBehaviour
         StartCoroutine(PlayText(dialogue));
     }
 
+    //rewrite sloppy code
     IEnumerator PlayText(string[] arr)
     {
+        for (int i = 0; i < arr.Length; i++)
+        {
+            foreach (char x in arr[i])
+            {
+                referenceCharAmount++;
+            }
+        }
         foreach (string s in arr)
         {
             dialogueText.text = "";
@@ -29,6 +40,15 @@ public class DialogueWriter : MonoBehaviour
             {
                 dialogueText.text += c;
                 yield return new WaitForSeconds(0.125f);
+                charAmount++;
+
+                if (referenceCharAmount == charAmount)
+                {
+                    charAmount = referenceCharAmount = 0;
+                    gameObject.transform.GetChild(0).gameObject.SetActive(false);
+                    dialogueText.gameObject.SetActive(false);
+                    dialogueFinished = false;
+                }
             }
             yield return new WaitForSeconds(6f);
         }
