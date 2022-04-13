@@ -2,24 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Interactions;
 
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] float moveSpeed = 5;
-    [SerializeField] float dashSpeed = 100;
-    [SerializeField] float jumpForce = 5;
+    [SerializeField] float moveSpeed;
+    [SerializeField] float dashSpeed;
+    [SerializeField] float jumpForce;
 
     public LayerMask layerMask;
     
     private Rigidbody rb;
+    private Animator animator;
     private PlayerControls controls;
     private bool isGrounded;
-
     private float radius;
 
     private void Awake()
     {
+        animator = GetComponent<Animator>();
         radius = GetComponent<SphereCollider>().radius;
         controls = new PlayerControls();
         rb = GetComponent<Rigidbody>();
@@ -59,6 +61,26 @@ public class PlayerController : MonoBehaviour
         rb.AddForce(rb.velocity.normalized * dashSpeed, ForceMode.Impulse);
     }
 
+    public void Jump()
+    {
+        //in progress
+        if(isGrounded)
+        { 
+            isGrounded = false;
+            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);  
+        }    
+    }
+
+    public void Spin(InputAction.CallbackContext context)
+    {
+        if(context.performed)
+        {
+            animator.Play("Spin");
+            //transform.Rotate(0f, 180f, 0f, Space.Self);
+        }
+        
+    }
+
     private void GroundCheck()
     {
         if (isGrounded)
@@ -83,15 +105,6 @@ public class PlayerController : MonoBehaviour
         //    Debug.Log("You hit the ground");
         //    isGrounded = true;
         //}
-    }
-    public void Jump()
-    {
-        //in progress
-        if(isGrounded)
-        { 
-            isGrounded = false;
-            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);  
-        }    
     }
 
     #endregion
