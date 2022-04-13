@@ -8,7 +8,8 @@ public abstract class DebugCommand : ScriptableObject
 
     public string CommandWord => commandWord;
 
-    public abstract bool Process(string[] args);
+    public abstract string Process(string[] args);
+    public abstract string CommandInfo();
 }
 
 

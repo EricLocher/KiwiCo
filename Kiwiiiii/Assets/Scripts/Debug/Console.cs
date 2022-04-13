@@ -9,15 +9,17 @@ public class Console
     private readonly string prefix;
     private readonly IEnumerable<DebugCommand> commands;
 
+    string ErrorMessage => "Something went wrong, use /help for infomation on each avaiable command.";
+
     public Console(string prefix, IEnumerable<DebugCommand> commands)
     {
         this.prefix = prefix;
         this.commands = commands;
     }
 
-    public void ProcessCommand(string commandInput)
+    public string ProcessCommand(string commandInput)
     {
-        if(!commandInput.StartsWith(prefix)) { return; }
+        if(!commandInput.StartsWith(prefix)) { return ErrorMessage; }
 
         commandInput = commandInput.Remove(0, prefix.Length);
 
@@ -32,10 +34,12 @@ public class Console
                 continue;
             }
 
-            if (command.Process(args)) {
-                return;
-            }
+            return command.Process(args);
         }
+
+        return ErrorMessage;
     }
+
+    
 
 }

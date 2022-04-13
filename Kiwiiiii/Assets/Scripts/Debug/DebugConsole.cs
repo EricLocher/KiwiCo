@@ -11,7 +11,6 @@ public class DebugConsole : MonoBehaviour
     public static DebugConsole Instance { get { return _instance; } }
 
     [Header("Console Commands")]
-    [SerializeField] string prefix = "";
     [SerializeField] DebugCommand[] commands = new DebugCommand[0];
 
     [Header("UI/Input")]
@@ -20,6 +19,7 @@ public class DebugConsole : MonoBehaviour
     [SerializeField] TMP_Text textField;
     [SerializeField] InputAction openConsole;
 
+    string prefix = "/";
     bool showConsole;
     Console Console;
 
@@ -39,9 +39,9 @@ public class DebugConsole : MonoBehaviour
         Console = new Console(prefix, commands);
     }
 
-    public void ProcessCommand(string inputValue)
+    public string ProcessCommand(string inputValue)
     {
-        Console.ProcessCommand(inputValue);
+       return Console.ProcessCommand(inputValue);
     }
 
     void OnToggleConsole()
@@ -57,14 +57,20 @@ public class DebugConsole : MonoBehaviour
         inputField.ActivateInputField();
         if(text == "") { return; }
 
-        print(text);
         inputField.text = "";
-        textField.text += "\n" + text;
+        textField.text += $"\n{text}";
 
-        ProcessCommand(text);
+        string retVal = ProcessCommand(text);
+        if (retVal != "")
+        textField.text += $"\n<color=#2c8cdb>{retVal}</color>";
+
     }
 
-
+    void OnDestroy()
+    {
+        openConsole.Disable();
+        openConsole.performed -= ctx => OnToggleConsole();
+    }
 }
 
 
