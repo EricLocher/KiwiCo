@@ -14,19 +14,28 @@ public class PlayerController : MonoBehaviour
     private Rigidbody rb;
     private PlayerControls controls;
     private bool isGrounded;
-    private Vector3 jump;
-    private Vector3 playerFaceDirection;
+
+    private float radius;
 
     private void Awake()
     {
+        radius = GetComponent<SphereCollider>().radius;
         controls = new PlayerControls();
         rb = GetComponent<Rigidbody>();
     }
 
     private void FixedUpdate()
     {
-        Move();
-        GroundCheck();
+        Move(); 
+    }
+
+    private void Update()
+    {
+        Debug.Log(isGrounded);
+        if (controls.Player.Jump.triggered)
+        {
+            Jump();
+        }
     }
 
     #region Inputs
@@ -52,24 +61,48 @@ public class PlayerController : MonoBehaviour
 
     private void GroundCheck()
     {
-        RaycastHit hit;
-        
-        if(isGrounded)
+        if (isGrounded)
         { return; }
-        if (Physics.Raycast(transform.position, Vector3.down, out hit, 1f, layerMask))
+
+        InputSystem.Update();
+        //if (Physics.CheckSphere(transform.position, radius + 0.1f))
+        //{
+        //    isGrounded = true;
+        //    print("grounded");
+        //}
+
+        RaycastHit hit;
+
+        if (Physics.Raycast(transform.position, Vector3.down, out hit, radius + 1f, layerMask))
         {
             Debug.Log("You hit the ground");
             isGrounded = true;
         }
-        
+
+        //if(Physics.SphereCast(transform.position, radius, Vector3.down, out hit, radius + .1f , layerMask))
+        //{
+        //    Debug.Log("You hit the ground");
+        //    isGrounded = true;
+        //}
     }
     public void Jump()
     {
         //in progress
         if(isGrounded)
-        { rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse); }    
+        { 
+            isGrounded = false;
+            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);  
+        }    
     }
     #endregion
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.layer == LayerMask.NameToLayer("Floor"))
+        {
+            GroundCheck();
+        }
+    }
 
     private void OnEnable() => controls.Player.Enable();
     private void OnDisable() => controls.Player.Disable();
