@@ -10,16 +10,20 @@ public class DialogueManager : MonoBehaviour
 
     public Animator animator;
 
+    public bool IsOpen;
+
     private Queue<string> sentances;
 
     void Start()
     {
         sentances = new Queue<string>();
+        IsOpen = false;
     }
 
     public void StartDialogue(Dialogue dialogue)
     {
-        animator.SetBool("IsOpen", true);
+        IsOpen = true;
+        animator.SetBool("IsOpen", IsOpen);
 
         nameText.text = dialogue.name;
 
@@ -59,6 +63,7 @@ public class DialogueManager : MonoBehaviour
 
     void EndDialogue()
     {
-        animator.SetBool("IsOpen", false);
+        IsOpen = false;
+        animator.SetBool("IsOpen", IsOpen);
     }
 }

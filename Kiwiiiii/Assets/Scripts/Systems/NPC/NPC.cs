@@ -7,14 +7,15 @@ public class NPC : MonoBehaviour, IInteractable
 
     public Dialogue dialogue;
 
+    public DialogueManager dialogueManager;
+
     public void Interact()
     {
-        TriggerDialogue();
-    }
+        if(!dialogueManager.IsOpen)
+            dialogueManager.StartDialogue(dialogue);
 
-    public void TriggerDialogue()
-    {
-        FindObjectOfType<DialogueManager>().StartDialogue(dialogue);
+        if (dialogueManager.IsOpen)
+            dialogueManager.DisplayNextSentance();
     }
 
 }
