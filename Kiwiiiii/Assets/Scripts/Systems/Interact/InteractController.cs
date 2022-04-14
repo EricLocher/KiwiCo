@@ -24,6 +24,10 @@ public class InteractController : MonoBehaviour
 
         if (interactable != null) {
             interactables.Remove(other.gameObject);
+            if(interactable is NPC)
+            {
+                other.GetComponent<NPC>().dialogueManager.EndDialogue();
+            }
         }
 
     }
