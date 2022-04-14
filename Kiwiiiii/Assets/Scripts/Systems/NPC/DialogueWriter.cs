@@ -7,13 +7,14 @@ public class DialogueWriter : MonoBehaviour
 {
     public TextMeshProUGUI dialogueText;
     public float charAmount, referenceCharAmount;
-    public bool dialogueFinished;
+    public bool dialogueFinished, inter;
 
     void Start()
     {
         gameObject.transform.GetChild(0).gameObject.SetActive(false);
         dialogueText.gameObject.SetActive(false);
         dialogueFinished = true;
+        inter = true;
     }
 
     public void Print(string[] dialogue)
@@ -50,6 +51,8 @@ public class DialogueWriter : MonoBehaviour
                     dialogueFinished = false;
                 }
             }
+            if (!inter)
+                break;
             yield return new WaitForSeconds(6f);
         }
     }
