@@ -68,7 +68,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""type"": ""Button"",
                     ""id"": ""8ec35148-baf8-494b-a673-ae557d93a87a"",
                     ""expectedControlType"": ""Button"",
-                    ""processors"": """",
+                    ""processors"": ""AxisDeadzone(min=0.9)"",
                     ""interactions"": """",
                     ""initialStateCheck"": false
                 }
