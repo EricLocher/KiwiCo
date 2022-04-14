@@ -29,6 +29,8 @@ public class InteractController : MonoBehaviour
 
     public void Interact()
     {
+        if(interactables.Count == 0) { return; }
+
         GameObject closestInteractable = interactables[0];
         float dist = Vector3.Distance(transform.position, interactables[0].transform.position);
 
