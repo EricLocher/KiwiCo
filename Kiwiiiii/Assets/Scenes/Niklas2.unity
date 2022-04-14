@@ -215,17 +215,10 @@ MonoBehaviour:
   dialogue:
     name: Jelric Bamadis
     sentances:
-    - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam molestie tellus
-      id laoreet lacinia. Fusce vitae venenatis ipsum, ac consequat sem. Mauris imperdiet
-      ex eget nunc auctor, ac facilisis libero aliquam. Quisque semper metus turpis,
-      a feugiat
-    - 'Curabitur a lacinia mi, eget maximus ipsum. Cras sem dui, volutpat ac convallis
-      eget, eleifend et erat. Mauris faucibus lobortis magna, sit amet scelerisque
-      velit bibendum sed. Sed in volutpat orci. '
-    - Donec at nisi et erat bibendum posuere rutrum vitae ligula. Etiam consectetur
-      vitae nibh vitae luctus. Interdum et malesuada fames ac ante ipsum primis in
-      faucibus. Aenean a erat a nulla posuere efficitur ac ac sapien. Nullam vel
-      pulvinar sapien, quis euismod dui.
+    - 1
+    - '2 '
+    - 3
+  dialogueManager: {fileID: 1701998271}
 --- !u!136 &434189911
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1199,6 +1192,7 @@ MonoBehaviour:
   nameText: {fileID: 1085373423}
   dialogueText: {fileID: 986931070}
   animator: {fileID: 1938744653}
+  IsOpen: 0
 --- !u!4 &1701998272
 Transform:
   m_ObjectHideFlags: 0
