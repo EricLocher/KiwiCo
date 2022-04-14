@@ -65,12 +65,12 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""Interact"",
-                    ""type"": ""Button"",
+                    ""type"": ""Value"",
                     ""id"": ""8ec35148-baf8-494b-a673-ae557d93a87a"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": ""AxisDeadzone(min=0.9)"",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": ""Tap"",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [

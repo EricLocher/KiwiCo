@@ -11,11 +11,12 @@ public class NPC : MonoBehaviour, IInteractable
 
     public void Interact()
     {
-        if(!dialogueManager.IsOpen)
+        if (!dialogueManager.IsOpen) {
             dialogueManager.StartDialogue(dialogue);
-
-        if (dialogueManager.IsOpen)
+        }
+        else {
             dialogueManager.DisplayNextSentance();
+        }
     }
 
 }
