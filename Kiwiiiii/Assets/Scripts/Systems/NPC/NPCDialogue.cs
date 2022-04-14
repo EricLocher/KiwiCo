@@ -23,6 +23,7 @@ public class NPCDialogue : MonoBehaviour
         if (distance < 5f && !finished)
         {
             interactable = true;
+            dialogueWriter.inter = true;
         }
         else
         {
@@ -37,10 +38,11 @@ public class NPCDialogue : MonoBehaviour
 
         if(distance >= 5f)
         {
-            GameObject.FindGameObjectWithTag("Dialogue").transform.GetChild(0).gameObject.SetActive(false);
-            GameObject.FindGameObjectWithTag("Dialogue").transform.GetChild(1).gameObject.SetActive(false);
             dialogueWriter.dialogueFinished = finished = false;
             dialogueWriter.charAmount = dialogueWriter.referenceCharAmount = 0;
+            dialogueWriter.inter = false;
+            GameObject.FindGameObjectWithTag("Dialogue").transform.GetChild(0).gameObject.SetActive(false);
+            GameObject.FindGameObjectWithTag("Dialogue").transform.GetChild(1).gameObject.SetActive(false);
         }
 
     }
