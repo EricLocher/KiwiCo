@@ -4,23 +4,26 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-[Serializable, RequireComponent(typeof(NavMeshAgent))]
-public abstract class Enemy : FOV
+[Serializable, RequireComponent(typeof(NavMeshAgent), typeof(FOV))]
+public abstract class Enemy : MonoBehaviour
 {
-    [Header("Target")]
+
+    [Header("FOV")]
+    public FOV fov;
     [SerializeField] Transform target;
     [Header("Stats")]
     [SerializeField] float health;
     [SerializeField] float moveSpeed;
-    [Range(0, 10)] public float attackDistance;
 
-    EnemyStates state = EnemyStates.Idle;
     NavMeshAgent navMeshAgent;
 
     void Start()
     {
+        if(fov is null)
+            fov = GetComponent<FOV>();
+
         navMeshAgent = GetComponent<NavMeshAgent>();
-        navMeshAgent.stoppingDistance = attackDistance;
+        navMeshAgent.stoppingDistance = fov.innerRadius;
     }
 
     void Update()
@@ -39,20 +42,13 @@ public abstract class Enemy : FOV
 
     protected virtual void Track()
     {
-        if (Vector3.Distance(transform.position, target.position) < attackDistance) {
+        if (Vector3.Distance(transform.position, target.position) < fov.innerRadius) {
             Attack();
         }
-        else if (TargetInView(target)) {
+        else if (fov.TargetInView(target)) {
             navMeshAgent.SetDestination(target.position);
         }
     }
-}
-
-enum EnemyStates
-{
-    Idle,
-    Chasing,
-    Attacking
 }
 
 

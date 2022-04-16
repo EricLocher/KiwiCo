@@ -6,12 +6,19 @@ public class FOV : MonoBehaviour
 {
     [Header("FOV Settings")]
     [Range(0, 10)]
-    public float aggroRadius;
+    public float innerRadius;
+    [Range(0, 10)]
+    public float outerRadius;
+    [Space]
+
     [Range(0, 10)]
     public float fovRadius;
     [Range(0, 360)]
     public float fovAngle;
+    [Space]
+
     public LayerMask obstacleMask;
+
 
     /// <summary>
     /// Check if given target lies is within view of the enemy.
@@ -25,7 +32,7 @@ public class FOV : MonoBehaviour
 
         Vector3 dir = (target.position - transform.position).normalized;
 
-        if (Vector3.Angle(transform.forward, dir) < fovAngle / 2 || dist < aggroRadius) {
+        if (Vector3.Angle(transform.forward, dir) < fovAngle / 2 || dist < outerRadius) {
             if (!Physics.Raycast(transform.position + Vector3.up * 2, dir, dist, obstacleMask)) {
                 //Return true if the target lies within the fov cone or the aggor/inner radius.
                 return true;

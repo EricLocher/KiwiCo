@@ -1759,6 +1759,7 @@ GameObject:
   - component: {fileID: 1989203137}
   - component: {fileID: 1989203136}
   - component: {fileID: 1989203135}
+  - component: {fileID: 1989203140}
   - component: {fileID: 1989203139}
   - component: {fileID: 1989203134}
   m_Layer: 0
@@ -1780,16 +1781,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a809e73b7ef8c941a15f82ac98fbc16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  aggroRadius: 1.98
-  fovRadius: 3.78
-  fovAngle: 82
-  obstacleMask:
-    serializedVersion: 2
-    m_Bits: 0
-  target: {fileID: 33861193}
+  fov: {fileID: 1989203139}
+  target: {fileID: 0}
   health: 0
   moveSpeed: 0
-  attackDistance: 0.98
 --- !u!65 &1989203135
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1866,7 +1861,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!195 &1989203139
+--- !u!114 &1989203139
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1989203133}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa780a38f3a5d794bb906f0fbaf8d211, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  innerRadius: 1.5
+  outerRadius: 1.86
+  fovRadius: 3.54
+  fovAngle: 94
+  obstacleMask:
+    serializedVersion: 2
+    m_Bits: 0
+--- !u!195 &1989203140
 NavMeshAgent:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
