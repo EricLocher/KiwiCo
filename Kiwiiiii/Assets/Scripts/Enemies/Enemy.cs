@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -7,48 +6,39 @@ using UnityEngine.AI;
 [Serializable, RequireComponent(typeof(NavMeshAgent), typeof(FOV))]
 public abstract class Enemy : MonoBehaviour
 {
+    [SerializeField] public Transform target;
 
-    [Header("FOV")]
-    public FOV fov;
-    [SerializeField] Transform target;
-    [Header("Stats")]
-    [SerializeField] float health;
-    [SerializeField] float moveSpeed;
+    [HideInInspector] public NavMeshAgent navMeshAgent;
+    [HideInInspector] public FOV fov;
 
-    NavMeshAgent navMeshAgent;
+    protected EnemyStateMachine stateMachine;
 
+    void Awake()
+    {
+        fov = GetComponent<FOV>();
+        navMeshAgent = GetComponent<NavMeshAgent>();
+    }   
     void Start()
     {
-        if(fov is null)
-            fov = GetComponent<FOV>();
+        stateMachine = new EnemyStateMachine(this);
+        stateMachine.RegisterState(EnemyStates.Idle, new IdleState(this, stateMachine));
+        stateMachine.RegisterState(EnemyStates.Chase, new ChaseState(this, stateMachine));
 
-        navMeshAgent = GetComponent<NavMeshAgent>();
-        navMeshAgent.stoppingDistance = fov.innerRadius;
+        stateMachine.ChangeState(EnemyStates.Idle);
+
+        stateMachine.Update();
     }
 
     void Update()
     {
-        Track();
+        stateMachine.Update();
     }
 
-    protected abstract void Attack();
-    protected void TakeDamage(float amount)
+    public void SetDestination(Transform target)
     {
-        health -= amount;
-        if (health <= 0) {
-            health = 0;
-        }
+        navMeshAgent.SetDestination(target.position);
     }
 
-    protected virtual void Track()
-    {
-        if (Vector3.Distance(transform.position, target.position) < fov.innerRadius) {
-            Attack();
-        }
-        else if (fov.TargetInView(target)) {
-            navMeshAgent.SetDestination(target.position);
-        }
-    }
 }
 
 

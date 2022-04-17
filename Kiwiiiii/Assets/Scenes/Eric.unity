@@ -1778,13 +1778,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1989203133}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a809e73b7ef8c941a15f82ac98fbc16, type: 3}
+  m_Script: {fileID: 11500000, guid: 6aaf046f9477db349ae444d0e84a5c41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fov: {fileID: 1989203139}
   target: {fileID: 0}
-  health: 0
-  moveSpeed: 0
+  navMeshAgent: {fileID: 0}
+  fov: {fileID: 0}
 --- !u!65 &1989203135
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1855,7 +1854,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1989203133}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.43907166, y: 0.6130438, z: -1.01}
+  m_LocalPosition: {x: -0.02, y: 0.6130438, z: -1.01}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1874,9 +1873,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   innerRadius: 1.5
-  outerRadius: 1.86
-  fovRadius: 3.54
-  fovAngle: 94
+  outerRadius: 1.34
+  fovRadius: 0
+  fovAngle: 0
   obstacleMask:
     serializedVersion: 2
     m_Bits: 0
