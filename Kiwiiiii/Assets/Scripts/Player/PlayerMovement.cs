@@ -5,81 +5,49 @@ using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Interactions;
 
 [RequireComponent(typeof(Rigidbody))]
-public class PlayerController : MonoBehaviour
+public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] float moveSpeed;
-    [SerializeField] float dashSpeed;
-    [SerializeField] float jumpForce;
-
+    public SOPlayerStats stats;
     public LayerMask layerMask;
     
     private Rigidbody rb;
     private Animator animator;
-    private PlayerControls controls;
     private bool isGrounded;
     private float radius;
 
     private void Awake()
     {
         animator = GetComponentInChildren<Animator>();
-      
         radius = GetComponent<SphereCollider>().radius;
-        controls = new PlayerControls();
         rb = GetComponent<Rigidbody>();
     }
 
-    private void FixedUpdate()
-    {
-        Move();
-    }
+    #region Movement
 
-    private void Update()
-    {
-        if (controls.Player.Jump.triggered)
-        {
-            Jump();
-        }
-    }
-
-    #region Inputs
-
-    public void Move()
-    {
-        var movementInput = controls.Player.Movement.ReadValue<Vector2>();
-
-        var movement = new Vector3
-        {
-            x = movementInput.x,
-            z = movementInput.y
-        }.normalized;
-
+    public void Move(Vector3 movement)
+    {        
         Vector3 dir = Camera.main.transform.TransformDirection(movement);
-        rb.AddForce(dir * moveSpeed, ForceMode.Force);
+        rb.AddForce(dir * stats.moveSpeed, ForceMode.Force);
     }
 
     public void Dash()
     {
-        rb.AddForce(rb.velocity.normalized * dashSpeed, ForceMode.Impulse);
+        rb.AddForce(rb.velocity.normalized * stats.dashSpeed, ForceMode.Impulse);
     }
 
     public void Jump()
     {
-        //in progress
+        //TODO: Fall multiplier
         if(isGrounded)
         { 
             isGrounded = false;
-            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);  
+            rb.AddForce(Vector3.up * stats.jumpForce, ForceMode.Impulse);  
         }    
     }
 
-    public void Spin(InputAction.CallbackContext context)
+    public void Spin()
     {
-        if(context.performed)
-        {
-            animator.Play("Spin");
-            //transform.Rotate(0f, 180f, 0f, Space.Self);
-        }
-        
+        animator.Play("Spin");
     }
 
     private void GroundCheck()
@@ -107,7 +75,6 @@ public class PlayerController : MonoBehaviour
         //    isGrounded = true;
         //}
     }
-
     #endregion
 
     private void OnCollisionEnter(Collision collision)
@@ -117,7 +84,4 @@ public class PlayerController : MonoBehaviour
             GroundCheck();
         }
     }
-
-    private void OnEnable() => controls.Player.Enable();
-    private void OnDisable() => controls.Player.Disable();
 }

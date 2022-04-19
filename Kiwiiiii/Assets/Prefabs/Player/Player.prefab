@@ -112,7 +112,9 @@ GameObject:
   m_Component:
   - component: {fileID: 3025217583516844951}
   - component: {fileID: 3025217583516844944}
+  - component: {fileID: 388704538}
   - component: {fileID: 3025217583516844950}
+  - component: {fileID: 388704542}
   - component: {fileID: 3025217583516844947}
   - component: {fileID: 3025217583516844946}
   m_Layer: 0
@@ -149,12 +151,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 493a5aedf76ff4b4fa8d007058b4fd90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
-  dashSpeed: 3
-  jumpForce: 5
+  stats: {fileID: 11400000, guid: d94cd7ea8d4267d4a81227f4c1b06c40, type: 2}
   layerMask:
     serializedVersion: 2
     m_Bits: 64
+--- !u!114 &388704538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3025217583516844945}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a68fa0c0d40b38947be1ca6e285fddc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &3025217583516844950
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -182,8 +194,8 @@ MonoBehaviour:
   m_ActionEvents:
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3025217583516844944}
-        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+      - m_Target: {fileID: 388704538}
+        m_TargetAssemblyTypeName: PlayerInput, Assembly-CSharp
         m_MethodName: Dash
         m_Mode: 1
         m_Arguments:
@@ -197,19 +209,7 @@ MonoBehaviour:
     m_ActionId: ef560995-270b-401d-926f-10c9d00f0927
     m_ActionName: Player/Dash[/Keyboard/shift]
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: PlayerInput, Assembly-CSharp
-        m_MethodName: Move
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_ActionId: ba8126be-09dd-4c33-8ed0-dff1895d7abc
     m_ActionName: Player/Movement[/Keyboard/w,/Keyboard/a,/Keyboard/s,/Keyboard/d,/Keyboard/upArrow,/Keyboard/leftArrow,/Keyboard/downArrow,/Keyboard/rightArrow]
   - m_PersistentCalls:
@@ -218,8 +218,8 @@ MonoBehaviour:
     m_ActionName: Player/Jump[/Keyboard/space]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3025217583516844944}
-        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+      - m_Target: {fileID: 388704538}
+        m_TargetAssemblyTypeName: PlayerInput, Assembly-CSharp
         m_MethodName: Spin
         m_Mode: 0
         m_Arguments:
@@ -232,11 +232,27 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 213b17cf-f101-4aa1-9f85-fe24a5302e7d
     m_ActionName: Player/Spin[/Mouse/leftButton,/Keyboard/q]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 8ec35148-baf8-494b-a673-ae557d93a87a
+    m_ActionName: Player/Interact[/Keyboard/e]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Keyboard and Mouse
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &388704542
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3025217583516844945}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d2e31245dc7e7e47904af80c1c18a51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!54 &3025217583516844947
 Rigidbody:
   m_ObjectHideFlags: 0

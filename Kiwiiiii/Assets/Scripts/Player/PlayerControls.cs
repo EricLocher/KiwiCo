@@ -71,15 +71,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": ""Tap"",
                     ""initialStateCheck"": true
-                },
-                {
-                    ""name"": ""Hotbar"",
-                    ""type"": ""Button"",
-                    ""id"": ""1a4e9616-a5b5-4bb5-9a00-530c3cf5e9fd"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -346,61 +337,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""action"": ""Interact"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""fb656001-70e3-4b13-b6a9-84755b652c43"",
-                    ""path"": ""<Keyboard>/1"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Hotbar"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""22c35e02-08e6-47ae-95f3-e58eb5ed2755"",
-                    ""path"": ""<Keyboard>/2"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Hotbar"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""d292631f-893e-4ba8-b4c9-b8f4e11b8332"",
-                    ""path"": ""<Keyboard>/3"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Hotbar"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""81f1ca7d-4fb3-47de-90fd-36cad5859613"",
-                    ""path"": ""<Keyboard>/4"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Hotbar"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""0cbaff6b-cbb0-4873-8756-d68de52b35ed"",
-                    ""path"": ""<Keyboard>/5"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Hotbar"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -448,7 +384,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_Player_Dash = m_Player.FindAction("Dash", throwIfNotFound: true);
         m_Player_Spin = m_Player.FindAction("Spin", throwIfNotFound: true);
         m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
-        m_Player_Hotbar = m_Player.FindAction("Hotbar", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
     }
@@ -515,7 +450,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Dash;
     private readonly InputAction m_Player_Spin;
     private readonly InputAction m_Player_Interact;
-    private readonly InputAction m_Player_Hotbar;
     public struct PlayerActions
     {
         private @PlayerControls m_Wrapper;
@@ -525,7 +459,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public InputAction @Dash => m_Wrapper.m_Player_Dash;
         public InputAction @Spin => m_Wrapper.m_Player_Spin;
         public InputAction @Interact => m_Wrapper.m_Player_Interact;
-        public InputAction @Hotbar => m_Wrapper.m_Player_Hotbar;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -550,9 +483,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Interact.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
                 @Interact.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
                 @Interact.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
-                @Hotbar.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnHotbar;
-                @Hotbar.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnHotbar;
-                @Hotbar.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnHotbar;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -572,9 +502,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Interact.started += instance.OnInteract;
                 @Interact.performed += instance.OnInteract;
                 @Interact.canceled += instance.OnInteract;
-                @Hotbar.started += instance.OnHotbar;
-                @Hotbar.performed += instance.OnHotbar;
-                @Hotbar.canceled += instance.OnHotbar;
             }
         }
     }
@@ -629,7 +556,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         void OnDash(InputAction.CallbackContext context);
         void OnSpin(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
-        void OnHotbar(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {
