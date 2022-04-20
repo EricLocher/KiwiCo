@@ -14,17 +14,15 @@ public class CutsceneController : MonoBehaviour
     void Start()
     {
         sentances = new Queue<string>();
-<<<<<<< HEAD
         isOpen = false;
     }
 
     void Update()
     {
         dialogueBox.SetBool("IsOpen", isOpen);
-=======
+
 
         StartCoroutine("StartText");
->>>>>>> 98458621a287f88804a3628460c0878cf136e17b
     }
 
     IEnumerator StartText()

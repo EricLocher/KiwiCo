@@ -34,7 +34,7 @@ public class CutsceneTrigger : MonoBehaviour
         animBars.SetBool("Blackbars", true);
         animCam.SetBool("Cinematic", true);
 
-        StartCoroutine(cutsceneController.StartText());
+        //StartCoroutine(cutsceneController.StartText());
 
         StartCoroutine(EndCinematic());
     }

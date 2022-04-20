@@ -4,10 +4,7 @@ using UnityEngine;
 
 
 [CreateAssetMenu(fileName = "TestSkill", menuName = "Utilities/Skills/TestSkill")]
-public class TestSkill : Skill
+public class TestSkill
 {
-    public override void LevelUp()
-    {
-        throw new System.NotImplementedException();
-    }
+  
 }
