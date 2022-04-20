@@ -122,7 +122,7 @@ NavMeshSettings:
     preserveTilesOutsideBounds: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 0}
+  m_NavMeshData: {fileID: 23800000, guid: a79948bd595af5143825372b818032e7, type: 2}
 --- !u!1 &336821023
 GameObject:
   m_ObjectHideFlags: 0
@@ -157,10 +157,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6aaf046f9477db349ae444d0e84a5c41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
+  target: {fileID: 1633676827}
   navMeshAgent: {fileID: 0}
   fov: {fileID: 0}
-  enemyStats: {fileID: 11400000, guid: eaf7699a85db33a4a86e73c560f751de, type: 2}
+  stats: {fileID: 11400000, guid: eaf7699a85db33a4a86e73c560f751de, type: 2}
 --- !u!114 &336821025
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -375,6 +375,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &695559792 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3025217583516844945, guid: d89e56f703c6eb746969511f65d65753, type: 3}
+  m_PrefabInstance: {fileID: 1067467877}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &695559793
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 695559792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4016c71128d172846a641ad0562b2d50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &701252858
@@ -688,17 +705,29 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 3025217583516844945, guid: d89e56f703c6eb746969511f65d65753, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 3025217583516844950, guid: d89e56f703c6eb746969511f65d65753, type: 3}
       propertyPath: m_ActionEvents.Array.size
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3025217583516844950, guid: d89e56f703c6eb746969511f65d65753, type: 3}
       propertyPath: m_ActionEvents.Array.data[4].m_ActionId
       value: 8ec35148-baf8-494b-a673-ae557d93a87a
       objectReference: {fileID: 0}
     - target: {fileID: 3025217583516844950, guid: d89e56f703c6eb746969511f65d65753, type: 3}
+      propertyPath: m_ActionEvents.Array.data[5].m_ActionId
+      value: 1a4e9616-a5b5-4bb5-9a00-530c3cf5e9fd
+      objectReference: {fileID: 0}
+    - target: {fileID: 3025217583516844950, guid: d89e56f703c6eb746969511f65d65753, type: 3}
       propertyPath: m_ActionEvents.Array.data[4].m_ActionName
       value: Player/Interact[/Keyboard/e]
+      objectReference: {fileID: 0}
+    - target: {fileID: 3025217583516844950, guid: d89e56f703c6eb746969511f65d65753, type: 3}
+      propertyPath: m_ActionEvents.Array.data[5].m_ActionName
+      value: Player/Hotbar[/Keyboard/1,/Keyboard/2,/Keyboard/3,/Keyboard/4,/Keyboard/5]
       objectReference: {fileID: 0}
     - target: {fileID: 3025217583516844950, guid: d89e56f703c6eb746969511f65d65753, type: 3}
       propertyPath: m_DeviceLostEvent.m_PersistentCalls.m_Calls.Array.size
@@ -1510,7 +1539,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4283969671100682952, guid: 13d7712c903f5664fb9f4e414b894f67, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.1780628
+      value: 0.17806278
       objectReference: {fileID: 0}
     - target: {fileID: 4283969671100682952, guid: 13d7712c903f5664fb9f4e414b894f67, type: 3}
       propertyPath: m_LocalRotation.y
@@ -1518,7 +1547,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4283969671100682952, guid: 13d7712c903f5664fb9f4e414b894f67, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.055101886
+      value: -0.055101894
       objectReference: {fileID: 0}
     - target: {fileID: 4283969671100682952, guid: 13d7712c903f5664fb9f4e414b894f67, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1542,6 +1571,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 13d7712c903f5664fb9f4e414b894f67, type: 3}
+--- !u!1 &1919317685 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2682688029979777242, guid: d89e56f703c6eb746969511f65d65753, type: 3}
+  m_PrefabInstance: {fileID: 1067467877}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1919317687
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1919317685}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18f7631008f27574a8296a95afc01c4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1993936081
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1575,7 +1621,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6074044226163219686, guid: e90c2ee08e41e8a4d9699d161fda6df1, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.1780628
+      value: 0.17806278
       objectReference: {fileID: 0}
     - target: {fileID: 6074044226163219686, guid: e90c2ee08e41e8a4d9699d161fda6df1, type: 3}
       propertyPath: m_LocalRotation.y
@@ -1583,7 +1629,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6074044226163219686, guid: e90c2ee08e41e8a4d9699d161fda6df1, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.055101886
+      value: -0.055101894
       objectReference: {fileID: 0}
     - target: {fileID: 6074044226163219686, guid: e90c2ee08e41e8a4d9699d161fda6df1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

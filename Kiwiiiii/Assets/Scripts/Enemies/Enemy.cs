@@ -13,7 +13,7 @@ public abstract class Enemy : MonoBehaviour
 
     protected EnemyStateMachine stateMachine;
 
-    private SOEnemyStats stats;
+    private TestEnemy enemyStats;
 
     public delegate void EnemyDeath();
     public static event EnemyDeath death;
@@ -22,7 +22,7 @@ public abstract class Enemy : MonoBehaviour
     {
         fov = GetComponent<FOV>();
         navMeshAgent = GetComponent<NavMeshAgent>();
-        stats = GetComponent<SOEnemyStats>(); 
+        enemyStats = GetComponent<TestEnemy>(); 
     }   
     void Start()
     {
@@ -39,7 +39,7 @@ public abstract class Enemy : MonoBehaviour
     {
         stateMachine.Update();
 
-        if (stats.health <= 0)
+        if (enemyStats.stats.health <= 0)
         {
             death?.Invoke();
         }
