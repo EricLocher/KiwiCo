@@ -9,16 +9,28 @@ public class CutsceneController : MonoBehaviour
     public TextMeshProUGUI dialogueText;
     public Animator dialogueBox;
     public string sentance;
+    public bool isOpen;
 
     void Start()
     {
         sentances = new Queue<string>();
+<<<<<<< HEAD
+        isOpen = false;
     }
 
-    public IEnumerator StartText()
+    void Update()
+    {
+        dialogueBox.SetBool("IsOpen", isOpen);
+=======
+
+        StartCoroutine("StartText");
+>>>>>>> 98458621a287f88804a3628460c0878cf136e17b
+    }
+
+    IEnumerator StartText()
     {
         yield return new WaitForSeconds(4f);
-        dialogueBox.SetBool("IsOpen", true);
+        isOpen = true;
         StartCoroutine(TypeSentance(sentance));
     }
 
