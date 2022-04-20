@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.InputSystem;
 
 public class CameraController : MonoBehaviour
 {
@@ -28,13 +29,15 @@ public class CameraController : MonoBehaviour
     float desireDistance;
     float correctedDistance;
     float currentDistance;
+    float cameraX;
 
     [Header("Camera Height")]
     [SerializeField, Range(0, 30)]
     float cameraTargetHeight = 1.0f;
 
-    bool click = false;
-    float curDist = 0;
+    [Header("Sensitivity")]
+    [SerializeField, Range(0, 0.2f)]
+    float sensitivity = 0.05f;
 
     void Start()
     {
@@ -46,24 +49,11 @@ public class CameraController : MonoBehaviour
         correctedDistance = distance;
     }
 
-    void LateUpdate()
+    void FixedUpdate()
     {
-        if (Input.GetMouseButton(1))
-        {
-            x += Input.GetAxis("Mouse X") * mouseXSpeedMod;
-            y += Input.GetAxis("Mouse Y") * mouseYSpeedMod;
-        }
-        else if (Input.GetAxis("Vertical") != 0 || Input.GetAxis("Horizontal") != 0)
-        {
-            float targetRotantionAngle = CameraTarget.eulerAngles.y;
-            float cameraRotationAngle = transform.eulerAngles.y;
-            x = Mathf.LerpAngle(cameraRotationAngle, targetRotantionAngle, lerpRate * Time.deltaTime);
-        }
-
         y = ClampAngle(y, -15, 25);
         Quaternion rotation = Quaternion.Euler(y, x, 0);
 
-        desireDistance -= Input.GetAxis("Mouse ScrollWheel") * Time.deltaTime * ZoomRate * Mathf.Abs(desireDistance);
         desireDistance = Mathf.Clamp(desireDistance, MinViewDistance, MaxViewDistance);
         correctedDistance = desireDistance;
 
@@ -88,28 +78,21 @@ public class CameraController : MonoBehaviour
         transform.rotation = rotation;
         transform.position = position;
 
-        float cameraX = transform.rotation.x;
+        cameraX = transform.rotation.x;
+    }
 
-        if (Input.GetMouseButton(1))
-        {
-            CameraTarget.eulerAngles = new Vector3(cameraX, transform.eulerAngles.y, transform.eulerAngles.z);
-        }
-        if (Input.GetMouseButtonDown(2))
-        {
+    public void MouseInput(InputAction.CallbackContext ctx)
+    {
+        Vector2 input = ctx.ReadValue<Vector2>();
 
-            if (click == false)
-            {
-                click = true;
-                curDist = distance;
-                distance = distance - distance - 1;
-            }
-            else
-            {
-                distance = curDist;
-                click = false;
-            }
-        }
+        input *= sensitivity;
 
+        x += input.x * mouseXSpeedMod;
+        y += (input.y * -1) * mouseYSpeedMod;
+
+        //CameraTarget.eulerAngles = new Vector3(cameraX, transform.eulerAngles.y, transform.eulerAngles.z);
+
+        distance = distance - distance - 1;
     }
 
     private static float ClampAngle(float angle, float min, float max)

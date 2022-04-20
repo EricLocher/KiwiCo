@@ -9,12 +9,15 @@ public class PlayerInput : MonoBehaviour
     private PlayerControls controls;
     private PlayerMovement controller;
     private LookWithMouse lookWithMouse;
+    private CameraController cameraController;
 
     private void Awake()
     {
         controller = GetComponent<PlayerMovement>();
         controls = new PlayerControls();
         lookWithMouse = GetComponent<LookWithMouse>();
+        cameraController = Camera.main.GetComponent<CameraController>();
+        controls.Player.Mouse.performed += ctx => cameraController.MouseInput(ctx);
 
         controls.Player.Jump.performed += ctx => controller.Jump(ctx);
         controls.Player.Dash.performed += ctx => controller.Dash();
