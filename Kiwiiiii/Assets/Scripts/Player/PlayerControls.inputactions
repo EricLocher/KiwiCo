@@ -20,7 +20,7 @@
                     "id": "aea91a9c-e2db-4c25-85a3-bb53b0885be1",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "Press",
+                    "interactions": "",
                     "initialStateCheck": false
                 },
                 {
@@ -58,6 +58,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Mouse",
+                    "type": "Value",
+                    "id": "0fa727c5-01c7-4d38-9b73-1d4f6db8468f",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -194,83 +203,6 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "WASD",
-                    "id": "acebde6c-9408-4da3-a951-bcf7087b71b3",
-                    "path": "1DAxis",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Movement",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "71b65da6-ceac-49ea-8bd3-59290df444f0",
-                    "path": "<Gamepad>/leftStick/up",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "Movement",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "Two Modifiers",
-                    "id": "7ffad743-2ba3-4256-aef7-0a93eb54d6d2",
-                    "path": "TwoModifiers",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Movement",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "binding",
-                    "id": "a6e4eb4f-aa12-4ad0-ace3-955e0a74fec7",
-                    "path": "<Gamepad>/leftStick/up",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "Movement",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "binding",
-                    "id": "0cb3352a-cebf-4c35-b5ff-c379cc637cd1",
-                    "path": "<Gamepad>/leftStick/left",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "Movement",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "binding",
-                    "id": "e327da74-d286-4888-9887-c02c70f7769e",
-                    "path": "<Gamepad>/leftStick/down",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "Movement",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "binding",
-                    "id": "139e263d-a789-4079-9707-5e2ed93e0672",
-                    "path": "<Gamepad>/leftStick/right",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "Movement",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
                     "name": "",
                     "id": "23d2f04d-51d1-460b-842f-8a150135c7d2",
                     "path": "<Keyboard>/space",
@@ -285,7 +217,7 @@
                     "name": "",
                     "id": "7631b932-5427-409e-89eb-f9496ab46e0b",
                     "path": "<Gamepad>/rightTrigger",
-                    "interactions": "",
+                    "interactions": "Press",
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "Jump",
@@ -331,7 +263,7 @@
                     "path": "<Keyboard>/1",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Keyboard and Mouse",
                     "action": "Hotbar",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -342,7 +274,7 @@
                     "path": "<Keyboard>/2",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Keyboard and Mouse",
                     "action": "Hotbar",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -353,7 +285,7 @@
                     "path": "<Keyboard>/3",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Keyboard and Mouse",
                     "action": "Hotbar",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -364,7 +296,7 @@
                     "path": "<Keyboard>/4",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Keyboard and Mouse",
                     "action": "Hotbar",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -375,8 +307,19 @@
                     "path": "<Keyboard>/5",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Keyboard and Mouse",
                     "action": "Hotbar",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c7784857-f322-402f-ae24-02fdf8399b5f",
+                    "path": "<Mouse>/delta",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Mouse",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -385,8 +328,30 @@
         {
             "name": "UI",
             "id": "a718d289-fe4b-409a-9629-f63eeffef3c7",
-            "actions": [],
-            "bindings": []
+            "actions": [
+                {
+                    "name": "New action",
+                    "type": "Button",
+                    "id": "6fdd2677-ac6e-42f2-b94c-93e10b39e0ba",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "8ec7b9ab-22d4-402f-9b10-345a4c274268",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "New action",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": [

@@ -1830,10 +1830,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6aaf046f9477db349ae444d0e84a5c41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 33861193}
+  target: {fileID: 0}
   navMeshAgent: {fileID: 0}
   fov: {fileID: 0}
-  health: 0
 --- !u!65 &1989203135
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1922,10 +1921,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa780a38f3a5d794bb906f0fbaf8d211, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  innerRadius: 1.03
-  outerRadius: 1.73
-  fovRadius: 2.68
-  fovAngle: 72
+  innerRadius: 1.5
+  outerRadius: 1.34
+  fovRadius: 0
+  fovAngle: 0
   obstacleMask:
     serializedVersion: 2
     m_Bits: 0

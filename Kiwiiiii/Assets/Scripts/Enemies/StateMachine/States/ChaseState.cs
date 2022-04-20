@@ -15,7 +15,8 @@ public class ChaseState : EnemyState
         if (!agent.fov.TargetInView(agent.target)) { stateMachine.ChangeState(EnemyStates.Idle); }
 
         if (Vector3.Distance(agent.transform.position, agent.target.position) < agent.fov.innerRadius) {
-            stateMachine.ChangeState(EnemyStates.Attack);
+            //Target within attack range, set currentstate to attack state
+            return;
         }
 
         //Otherwise chase target.
