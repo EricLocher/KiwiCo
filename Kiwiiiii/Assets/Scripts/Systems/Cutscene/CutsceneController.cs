@@ -20,12 +20,9 @@ public class CutsceneController : MonoBehaviour
     void Update()
     {
         dialogueBox.SetBool("IsOpen", isOpen);
-
-
-        StartCoroutine("StartText");
     }
 
-    IEnumerator StartText()
+    public IEnumerator StartText()
     {
         yield return new WaitForSeconds(4f);
         isOpen = true;
