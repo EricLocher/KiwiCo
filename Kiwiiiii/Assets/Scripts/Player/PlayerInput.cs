@@ -18,6 +18,7 @@ public class PlayerInput : MonoBehaviour
 
         controls.Player.Jump.performed += ctx => controller.Jump();
         controls.Player.Dash.performed += ctx => controller.Dash();
+        controls.Player.Spin.performed += ctx => controller.Spin();
         controls.Player.Mouse.performed += ctx => lookWithMouse.UpdateCamera(ctx);
     }
 
