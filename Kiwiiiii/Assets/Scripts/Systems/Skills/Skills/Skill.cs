@@ -14,4 +14,6 @@ public abstract class Skill : ScriptableObject
         if(skill is NoSkill) { previousSkill = null; return; }
         previousSkill = skill;
     }
+
+    public override string ToString() => skillName;
 }

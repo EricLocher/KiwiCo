@@ -22,8 +22,7 @@ public class SkillTreeWindow : EditorWindow
     {
         #region Create Window
         var window = GetWindow<SkillTreeWindow>(utility: false, title: "Skill Tree", focus: true);
-        window.minSize = new Vector2(1000f, 500f);
-        window.maxSize = new Vector2(1000f, 500f);
+        window.minSize = new Vector2(250f, 500f);
 
         rootVisualElement.styleSheets.Add(styleSheet);
         #endregion
@@ -37,24 +36,25 @@ public class SkillTreeWindow : EditorWindow
 
         VisualElement root = rootVisualElement;
 
-        LeftField(root);
-        RightField(root);
+        Field(root);
     }
 
-    void LeftField(VisualElement root)
+    void Field(VisualElement root)
     {
-        ScrollView leftField = new ScrollView();
-        leftField.AddToClassList("leftField");
-        root.Add(leftField);
+        ScrollView field = new ScrollView();
+        field.AddToClassList("field");
+        root.Add(field);
 
         foreach (Skill skill in skillTree.skills) {
 
-            VisualElement skillElement = AddElement("skill", leftField);
+            VisualElement skillElement = AddElement("skill", field);
             TextElement text = new TextElement();
-            text.text = skill.name;
+            text.text = $"Skillname: {skill.name}";
+            text.AddToClassList("text");
             skillElement.Add(text);
 
             PopupField<Skill> DropDownMenu = new PopupField<Skill>();
+            
 
             DropDownMenu.RegisterCallback<ChangeEvent<Skill>>(evt => {
                 skill.SetPreviousSkill(DropDownMenu.value);
@@ -71,17 +71,6 @@ public class SkillTreeWindow : EditorWindow
             DropDownMenu.value = skill.previousSkill;
             skillElement.Add(DropDownMenu);
         }
-    }
-
-    void RightField(VisualElement root)
-    {
-        ScrollView rightField = new ScrollView();
-        rightField.AddToClassList("rightField");
-        root.Add(rightField);
-
-
-
-
     }
 
 

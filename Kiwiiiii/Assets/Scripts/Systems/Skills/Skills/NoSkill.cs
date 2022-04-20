@@ -6,6 +6,8 @@ public class NoSkill : Skill
 {
     public override void LevelUp()
     {
-        throw new System.NotImplementedException();
+        Debug.Log("No skill");
     }
+
+    public override string ToString() => "(Empty)";
 }
