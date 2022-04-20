@@ -32,17 +32,35 @@ public class PlayerMovement : MonoBehaviour
 
     public void Dash()
     {
+        
+        if(stats.amountOfDashes <= 0) { return; }
         rb.AddForce(rb.velocity.normalized * stats.dashSpeed, ForceMode.Impulse);
+        stats.amountOfDashes--;
+
+        if (stats.amountOfDashes >= stats.maxDashes)
+        { return; }
+
+        StartCoroutine(DashTimer());
     }
 
-    public void Jump()
+    private IEnumerator DashTimer()
     {
+        yield return new WaitForSeconds(5f);
+        stats.amountOfDashes++;
+    }
+
+    public void Jump(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            if (isGrounded || stats.amountOfJumps > 0)
+            {
+                isGrounded = false;
+                rb.AddForce(Vector3.up * stats.jumpForce, ForceMode.Impulse);
+                stats.amountOfJumps--;
+            }
+        }
         //TODO: Fall multiplier
-        if(isGrounded)
-        { 
-            isGrounded = false;
-            rb.AddForce(Vector3.up * stats.jumpForce, ForceMode.Impulse);  
-        }    
     }
 
     public void Spin()
@@ -67,6 +85,7 @@ public class PlayerMovement : MonoBehaviour
         if (Physics.Raycast(transform.position, Vector3.down, out hit, radius + 1f, layerMask))
         {
             isGrounded = true;
+            stats.amountOfJumps = stats.maxJumps;
         }
 
         //if(Physics.SphereCast(transform.position, radius, Vector3.down, out hit, radius + .1f , layerMask))
