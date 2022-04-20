@@ -75,6 +75,12 @@ public class SkillTreeWindow : EditorWindow
 
     void RightField(VisualElement root)
     {
+        ScrollView rightField = new ScrollView();
+        rightField.AddToClassList("rightField");
+        root.Add(rightField);
+
+
+
 
     }
 
@@ -87,7 +93,6 @@ public class SkillTreeWindow : EditorWindow
 
         return element;
     }
-
 }
 
 
