@@ -12,8 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18b9fc8bfcebea043be28419354bb06b, type: 3}
   m_Name: PlayerStats
   m_EditorClassIdentifier: 
-  health: 1000
+  health: 10
   moveSpeed: 5
-  dashSpeed: 3
-  jumpForce: 5
-  amountOfJumps: 1
+  dashSpeed: 5
+  jumpForce: 8
+  amountOfDashes: 3
+  maxDashes: 3
+  amountOfJumps: 0
+  maxJumps: 2
