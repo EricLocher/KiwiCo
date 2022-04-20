@@ -16,13 +16,10 @@ public class SkillTreeEditor : Editor
         base.OnInspectorGUI();
 
         if(GUILayout.Button("Open Window")) {
-            window = (SkillTreeWindow)EditorWindow.CreateInstance(typeof(SkillTreeWindow));
+            window = (SkillTreeWindow)CreateInstance(typeof(SkillTreeWindow));
             window.Init(skillTree, controller.windowStyleSheet);
             window.CreateWindow();
         }
-
-
-
     }
 
     void OnEnable()

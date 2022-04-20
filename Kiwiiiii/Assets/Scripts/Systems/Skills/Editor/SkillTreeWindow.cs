@@ -1,10 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using UnityEditor;
 using UnityEditor.UIElements;
+using UnityEngine;
 using UnityEngine.UIElements;
-using System;
 
 public class SkillTreeWindow : EditorWindow
 {
@@ -36,16 +33,23 @@ public class SkillTreeWindow : EditorWindow
         rootVisualElement.Clear();
 
         VisualElement root = rootVisualElement;
+        LeftField(root);
+        RightField(root);
+    }
+
+    void LeftField(VisualElement root)
+    {
         ScrollView leftField = new ScrollView();
         leftField.AddToClassList("leftField");
         root.Add(leftField);
 
-        //Hjälp
+        
         foreach (Skill skill in skillTree.skills) {
 
             VisualElement skillElement = AddElement("skill", leftField);
             TextElement text = new TextElement();
-            text.text = skill.name;
+            text.text = skill.skillName;
+            text.AddToClassList("text");
             skillElement.Add(text);
 
             PopupField<Skill> DropDownMenu = new PopupField<Skill>();
@@ -55,10 +59,10 @@ public class SkillTreeWindow : EditorWindow
                 Draw();
             });
 
-            DropDownMenu.choices.Add(new NoSkill());
+            DropDownMenu.choices.Add((Skill)CreateInstance(typeof(NoSkill)));
 
             foreach (Skill _skill in skillTree.skills) {
-                if(skill == _skill) { continue; }
+                if (skill == _skill) { continue; }
                 DropDownMenu.choices.Add(_skill);
             }
 
@@ -67,8 +71,21 @@ public class SkillTreeWindow : EditorWindow
         }
     }
 
+    void RightField(VisualElement root)
+    {
+        ScrollView rightField = new ScrollView();
+        rightField.AddToClassList("rightField");
+        root.Add(rightField);
 
+        foreach (Skill skill in skillTree.skills) {
+            VisualElement _skill = AddElement("skill", rightField);
 
+            Label skillName = new Label(skill.skillName);
+            skillName.AddToClassList("text");
+            _skill.Add(skillName);
+        }
+
+    }
 
     VisualElement AddElement(string className, VisualElement parent)
     {
