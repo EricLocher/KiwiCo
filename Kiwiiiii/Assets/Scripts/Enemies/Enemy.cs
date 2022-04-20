@@ -13,14 +13,11 @@ public abstract class Enemy : MonoBehaviour
 
     protected EnemyStateMachine stateMachine;
 
-<<<<<<< Updated upstream
-=======
     private SOEnemyStats stats;
 
     public delegate void EnemyDeath();
     public static event EnemyDeath death;
 
->>>>>>> Stashed changes
     void Awake()
     {
         fov = GetComponent<FOV>();
@@ -41,14 +38,11 @@ public abstract class Enemy : MonoBehaviour
     void Update()
     {
         stateMachine.Update();
-<<<<<<< Updated upstream
-=======
 
         if (stats.health <= 0)
         {
             death?.Invoke();
         }
->>>>>>> Stashed changes
     }
 
     public void SetDestination(Transform target)
