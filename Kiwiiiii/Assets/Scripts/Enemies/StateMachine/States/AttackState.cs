@@ -5,20 +5,22 @@ public class AttackState : EnemyState
     public AttackState(Enemy agent, EnemyStateMachine stateMachine) : base(agent, stateMachine) { }
     public override EnemyStates GetId() => EnemyStates.Attack;
 
-    public bool attacking;
+    private Animator animator;
+
     public override void EnterState()
     {
+        animator = GameObject.FindGameObjectWithTag("Enemy").GetComponentInChildren<Animator>();
         return;
     }
 
     public override void Update()
     {
-        attacking = true;
+        animator.Play("Spin");
+        return;
     }
 
     public override void ExitState()
     {
-        attacking = false;
         return;
     }
 

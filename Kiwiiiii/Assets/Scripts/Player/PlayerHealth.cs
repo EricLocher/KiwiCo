@@ -4,17 +4,24 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
-    private SOEnemyStats enemyStats;
+    private TestEnemy enemyStats;
+    private PlayerMovement playerStats;
 
-    // Start is called before the first frame update
     void Start()
     {
-        enemyStats = GameObject.FindGameObjectWithTag("Enemy").GetComponent<SOEnemyStats>();
+        enemyStats = GameObject.FindGameObjectWithTag("Enemy").GetComponent<TestEnemy>();
+        playerStats = GetComponent<PlayerMovement>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void TakeDamage()
     {
-        
+        playerStats.stats.health--;
+        Debug.Log(("Enemy did damage, current player health: ") + playerStats.stats.health);
+    }
+
+    public void DoDamage()
+    {
+        enemyStats.stats.health--;
+        Debug.Log(("Player did damage, current enemy health: ") + enemyStats.stats.health);
     }
 }

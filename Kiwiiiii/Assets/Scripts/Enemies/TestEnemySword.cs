@@ -4,18 +4,18 @@ using UnityEngine;
 
 public class TestEnemySword : MonoBehaviour
 {
-    private SOPlayerStats playerStats;
+    private PlayerHealth playerHealth;
 
     private void Start()
     {
-        playerStats = GameObject.FindGameObjectWithTag("Player").GetComponent<SOPlayerStats>();
+        playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
     }
 
     private void OnCollisionEnter(Collision col)
     {
         if (col.gameObject.tag == ("Player"))
         {
-            playerStats.health--;
+            playerHealth.TakeDamage();
         }
     }
 }
