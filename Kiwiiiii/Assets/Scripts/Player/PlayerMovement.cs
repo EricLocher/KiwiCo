@@ -25,9 +25,12 @@ public class PlayerMovement : MonoBehaviour
     #region Movement
 
     public void Move(Vector3 movement)
-    {        
-        Vector3 dir = Camera.main.transform.TransformDirection(movement);
-        rb.AddForce(dir * stats.moveSpeed, ForceMode.Force);
+    {
+        if (GameObject.FindGameObjectWithTag("CinematicCamera").GetComponent<Camera>().enabled == false)
+        {
+            Vector3 dir = Camera.main.transform.TransformDirection(movement);
+            rb.AddForce(dir * stats.moveSpeed, ForceMode.Force);
+        }
     }
 
     public void Dash()
