@@ -36,11 +36,17 @@ public class SkillTreeWindow : EditorWindow
         rootVisualElement.Clear();
 
         VisualElement root = rootVisualElement;
+
+        LeftField(root);
+        RightField(root);
+    }
+
+    void LeftField(VisualElement root)
+    {
         ScrollView leftField = new ScrollView();
         leftField.AddToClassList("leftField");
         root.Add(leftField);
 
-        //Hjälp
         foreach (Skill skill in skillTree.skills) {
 
             VisualElement skillElement = AddElement("skill", leftField);
@@ -55,10 +61,10 @@ public class SkillTreeWindow : EditorWindow
                 Draw();
             });
 
-            DropDownMenu.choices.Add(new NoSkill());
+            DropDownMenu.choices.Add((NoSkill)CreateInstance(typeof(NoSkill)));
 
             foreach (Skill _skill in skillTree.skills) {
-                if(skill == _skill) { continue; }
+                if (skill == _skill) { continue; }
                 DropDownMenu.choices.Add(_skill);
             }
 
@@ -67,7 +73,10 @@ public class SkillTreeWindow : EditorWindow
         }
     }
 
+    void RightField(VisualElement root)
+    {
 
+    }
 
 
     VisualElement AddElement(string className, VisualElement parent)
