@@ -1,10 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using UnityEditor;
 using UnityEditor.UIElements;
+using UnityEngine;
 using UnityEngine.UIElements;
-using System;
 
 public class SkillTreeWindow : EditorWindow
 {
@@ -33,7 +30,6 @@ public class SkillTreeWindow : EditorWindow
     void Draw()
     {
         rootVisualElement.Clear();
-
         VisualElement root = rootVisualElement;
 
         Field(root);
@@ -49,12 +45,12 @@ public class SkillTreeWindow : EditorWindow
 
             VisualElement skillElement = AddElement("skill", field);
             TextElement text = new TextElement();
-            text.text = $"Skillname: {skill.name}";
+            text.text = skill.name;
             text.AddToClassList("text");
             skillElement.Add(text);
 
             PopupField<Skill> DropDownMenu = new PopupField<Skill>();
-            
+
 
             DropDownMenu.RegisterCallback<ChangeEvent<Skill>>(evt => {
                 skill.SetPreviousSkill(DropDownMenu.value);

@@ -1,8 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using UnityEditor;
-using UnityEngine.UIElements;
+using UnityEngine;
 
 [CustomEditor(typeof(SkillController))]
 public class SkillTreeEditor : Editor
@@ -15,14 +12,11 @@ public class SkillTreeEditor : Editor
     {
         base.OnInspectorGUI();
 
-        if(GUILayout.Button("Open Window")) {
-            window = (SkillTreeWindow)EditorWindow.CreateInstance(typeof(SkillTreeWindow));
+        if (GUILayout.Button("Open Window")) {
+            window = (SkillTreeWindow)CreateInstance(typeof(SkillTreeWindow));
             window.Init(skillTree, controller.windowStyleSheet);
             window.CreateWindow();
         }
-
-
-
     }
 
     void OnEnable()
