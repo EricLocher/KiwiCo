@@ -29,7 +29,6 @@ public class CameraController : MonoBehaviour
     float desireDistance;
     float correctedDistance;
     float currentDistance;
-    float cameraX;
 
     [Header("Camera Height")]
     [SerializeField, Range(0, 30)]
@@ -38,6 +37,9 @@ public class CameraController : MonoBehaviour
     [Header("Sensitivity")]
     [SerializeField, Range(0, 0.2f)]
     float sensitivity = 0.05f;
+
+    Vector3 position;
+    Quaternion rotation;
 
     void Start()
     {
@@ -51,9 +53,20 @@ public class CameraController : MonoBehaviour
 
     void FixedUpdate()
     {
-        y = ClampAngle(y, -15, 25);
-        Quaternion rotation = Quaternion.Euler(y, x, 0);
+        CameraCollision();
 
+        y = ClampAngle(y, -15, 25);
+
+        rotation = Quaternion.Euler(y, x, 0);
+
+        position = CameraTarget.position - (rotation * Vector3.forward * currentDistance + new Vector3(0, -cameraTargetHeight, 0));
+
+        transform.rotation = rotation;
+        transform.position = position;
+    }
+
+    void CameraCollision()
+    {
         desireDistance = Mathf.Clamp(desireDistance, MinViewDistance, MaxViewDistance);
         correctedDistance = desireDistance;
 
@@ -72,13 +85,6 @@ public class CameraController : MonoBehaviour
         }
 
         currentDistance = !isCorrected || correctedDistance > currentDistance ? Mathf.Lerp(currentDistance, correctedDistance, Time.deltaTime * ZoomRate) : correctedDistance;
-
-        position = CameraTarget.position - (rotation * Vector3.forward * currentDistance + new Vector3(0, -cameraTargetHeight, 0));
-
-        transform.rotation = rotation;
-        transform.position = position;
-
-        cameraX = transform.rotation.x;
     }
 
     public void MouseInput(InputAction.CallbackContext ctx)
@@ -89,8 +95,6 @@ public class CameraController : MonoBehaviour
 
         x += input.x * mouseXSpeedMod;
         y += (input.y * -1) * mouseYSpeedMod;
-
-        //CameraTarget.eulerAngles = new Vector3(cameraX, transform.eulerAngles.y, transform.eulerAngles.z);
 
         distance = distance - distance - 1;
     }
