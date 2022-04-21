@@ -1,21 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
     private EnemyStats enemyStats;
     private PlayerController playerStats;
+    public Slider healthSlider;
 
     void Start()
     {
         enemyStats = GameObject.FindGameObjectWithTag("Enemy")?.GetComponent<EnemyStats>();
         playerStats = GetComponent<PlayerController>();
+        healthSlider.value = playerStats.playerStats.health;
     }
 
     public void TakeDamage()
     {
-        playerStats.playerStats.health--;
+        healthSlider.value = playerStats.playerStats.health--;
         Debug.Log(("Enemy did damage, current player health: ") + playerStats.playerStats.health);
     }
 
@@ -27,6 +30,6 @@ public class PlayerHealth : MonoBehaviour
 
     public void Heal(float healAmt)
     {
-        playerStats.playerStats.health += healAmt;
+        healthSlider.value = playerStats.playerStats.health += healAmt;
     }
 }
