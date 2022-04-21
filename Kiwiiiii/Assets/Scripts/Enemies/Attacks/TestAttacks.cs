@@ -4,18 +4,32 @@ using UnityEngine;
 
 public class TestAttacks : MonoBehaviour
 {
-    void Attack()
+    private Animator animator;
+
+    private void Start()
     {
-        Debug.Log("Attacking!!!");
+        animator = GetComponentInChildren<Animator>();
+    }
+
+    void EnterAttack()
+    {
+        animator.SetBool("attacking", true);
+    }
+
+    void ExitAttack()
+    {
+        animator.SetBool("attacking", false);
     }
 
     private void OnEnable()
     {
-        AttackState.testAttack += Attack;
+        AttackState.enterAttack += EnterAttack;
+        AttackState.exitAttack += ExitAttack;
     }
 
     private void OnDisable()
     {
-        AttackState.testAttack -= Attack;
+        AttackState.enterAttack -= EnterAttack;
+        AttackState.exitAttack -= ExitAttack;
     }
 }
