@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
-    private TestEnemy enemyStats;
+    private EnemyStats enemyStats;
     private PlayerMovement playerStats;
 
     void Start()
     {
-        enemyStats = GameObject.FindGameObjectWithTag("Enemy").GetComponent<TestEnemy>();
+        enemyStats = GameObject.FindGameObjectWithTag("Enemy").GetComponent<EnemyStats>();
         playerStats = GetComponent<PlayerMovement>();
     }
 

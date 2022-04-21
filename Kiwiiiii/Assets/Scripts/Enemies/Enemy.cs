@@ -13,7 +13,7 @@ public abstract class Enemy : MonoBehaviour
 
     protected EnemyStateMachine stateMachine;
 
-    private TestEnemy enemyStats;
+    private EnemyStats enemyStats;
 
     public delegate void EnemyDeath();
     public static event EnemyDeath death;
@@ -22,7 +22,7 @@ public abstract class Enemy : MonoBehaviour
     {
         fov = GetComponent<FOV>();
         navMeshAgent = GetComponent<NavMeshAgent>();
-        enemyStats = GetComponent<TestEnemy>(); 
+        enemyStats = GetComponent<EnemyStats>(); 
     }   
     void Start()
     {
@@ -49,6 +49,21 @@ public abstract class Enemy : MonoBehaviour
     public void SetDestination(Transform target)
     {
         navMeshAgent.SetDestination(target.position);
+    }
+
+    void Death()
+    {
+        Destroy(gameObject);
+    }
+
+    private void OnEnable()
+    {
+        death += Death;
+    }
+
+    private void OnDisable()
+    {
+        death -= Death;
     }
 
 }
