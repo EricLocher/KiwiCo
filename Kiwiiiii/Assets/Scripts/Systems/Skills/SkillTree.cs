@@ -5,8 +5,4 @@ using System.Collections.Generic;
 public class SkillTree
 {
     public List<Skill> skills;
-    public SkillTree()
-    {
-
-    }
 }

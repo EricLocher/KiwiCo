@@ -19,7 +19,7 @@ public class SkillTreeWindow : EditorWindow
     {
         #region Create Window
         var window = GetWindow<SkillTreeWindow>(utility: false, title: "Skill Tree", focus: true);
-        window.minSize = new Vector2(250f, 500f);
+        window.minSize = new Vector2(300f, 500f);
 
         rootVisualElement.styleSheets.Add(styleSheet);
         #endregion
@@ -49,8 +49,16 @@ public class SkillTreeWindow : EditorWindow
             text.AddToClassList("text");
             skillElement.Add(text);
 
-            PopupField<Skill> DropDownMenu = new PopupField<Skill>();
+            VisualElement flexBox = AddElement("flexBox", skillElement);
 
+
+            TextElement header = new TextElement();
+            header.text = "Set Previous Skill";
+            header.AddToClassList("header");
+            flexBox.Add(header);
+
+
+            PopupField<Skill> DropDownMenu = new PopupField<Skill>();
 
             DropDownMenu.RegisterCallback<ChangeEvent<Skill>>(evt => {
                 skill.SetPreviousSkill(DropDownMenu.value);
@@ -65,7 +73,8 @@ public class SkillTreeWindow : EditorWindow
             }
 
             DropDownMenu.value = skill.previousSkill;
-            skillElement.Add(DropDownMenu);
+            DropDownMenu.AddToClassList("menu");
+            flexBox.Add(DropDownMenu);
         }
     }
 
