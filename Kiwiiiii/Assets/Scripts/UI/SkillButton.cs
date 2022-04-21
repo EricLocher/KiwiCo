@@ -6,4 +6,11 @@ using TMPro;
 public class SkillButton : MonoBehaviour
 {
     public TMP_Text skillName, reqPoints;
+
+    private void Start()
+    {
+        
+    }
+
+
 }

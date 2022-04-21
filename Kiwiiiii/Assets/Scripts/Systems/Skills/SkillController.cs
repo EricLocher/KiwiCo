@@ -6,7 +6,7 @@ public class SkillController : MonoBehaviour
     public StyleSheet windowStyleSheet;
     public SkillTree skillTree;
 
-    void Start()
+    public void Init()
     {
         skillTree.CalculateTree();
     }

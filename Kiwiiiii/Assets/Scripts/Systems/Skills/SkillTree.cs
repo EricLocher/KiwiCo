@@ -12,11 +12,16 @@ public class SkillTree
     public void CalculateTree()
     {
         foreach (Skill skill in skills) {
+            skill.CalculateIndex();
+
             if(skill.previousSkill == null) { continue; }
 
             int _index = skill.index;
             if(depth >= _index) { continue; }
             depth = _index;
         }
+
+        skills.Sort();
+
     }
 }
