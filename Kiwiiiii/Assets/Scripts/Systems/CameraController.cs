@@ -77,7 +77,7 @@ public class CameraController : MonoBehaviour
 
         bool isCorrected = false;
 
-        if (Physics.Linecast(cameraTargetPosition, position, out collisionHit))
+        if (Physics.Linecast(cameraTargetPosition, position, out collisionHit, 2))
         {
             position = collisionHit.point;
             correctedDistance = Vector3.Distance(cameraTargetPosition, position);
