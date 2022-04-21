@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TestEnemySword : MonoBehaviour
+public class EnemySword : MonoBehaviour
 {
     private PlayerHealth playerHealth;
 

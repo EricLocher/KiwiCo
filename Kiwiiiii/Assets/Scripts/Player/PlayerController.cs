@@ -9,8 +9,15 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         //TODO: Make it so stats carry over to new scenes
-        playerStats = ScriptableObject.CreateInstance<SOPlayerStats>();
-         //(SOPlayerStats)CreateInstance(typeof(SOPlayerStats));
+        playerStats = Instantiate(playerStats);
+        //playerStats = new SOPlayerStats();
+        //ScriptableObject.CreateInstance<SOPlayerStats>();
+        //(SOPlayerStats)CreateInstance(typeof(SOPlayerStats));
 
+    }
+
+    private void Update()
+    {
+        //Debug.Log(playerStats.berriesInInventory);
     }
 }
