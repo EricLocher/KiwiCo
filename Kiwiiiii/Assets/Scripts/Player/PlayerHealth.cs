@@ -9,7 +9,7 @@ public class PlayerHealth : MonoBehaviour
 
     void Start()
     {
-        enemyStats = GameObject.FindGameObjectWithTag("Enemy").GetComponent<EnemyStats>();
+        enemyStats = GameObject.FindGameObjectWithTag("Enemy")?.GetComponent<EnemyStats>();
         playerStats = GetComponent<PlayerController>();
     }
 
@@ -23,5 +23,10 @@ public class PlayerHealth : MonoBehaviour
     {
         enemyStats.stats.health--;
         Debug.Log(("Player did damage, current enemy health: ") + enemyStats.stats.health);
+    }
+
+    public void Heal(float healAmt)
+    {
+        playerStats.playerStats.health += healAmt;
     }
 }

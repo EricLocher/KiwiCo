@@ -89,6 +89,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Hotbar 2"",
+                    ""type"": ""Button"",
+                    ""id"": ""d6c43144-7b65-47fc-9bda-3efaf0813ecd"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -300,6 +309,17 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""action"": ""Sheath"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e587c1c6-d682-474b-b4c3-680dc3129b94"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Hotbar 2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -371,6 +391,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
         m_Player_Mouse = m_Player.FindAction("Mouse", throwIfNotFound: true);
         m_Player_Sheath = m_Player.FindAction("Sheath", throwIfNotFound: true);
+        m_Player_Hotbar2 = m_Player.FindAction("Hotbar 2", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Newaction = m_UI.FindAction("New action", throwIfNotFound: true);
@@ -440,6 +461,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Interact;
     private readonly InputAction m_Player_Mouse;
     private readonly InputAction m_Player_Sheath;
+    private readonly InputAction m_Player_Hotbar2;
     public struct PlayerActions
     {
         private @PlayerControls m_Wrapper;
@@ -451,6 +473,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public InputAction @Interact => m_Wrapper.m_Player_Interact;
         public InputAction @Mouse => m_Wrapper.m_Player_Mouse;
         public InputAction @Sheath => m_Wrapper.m_Player_Sheath;
+        public InputAction @Hotbar2 => m_Wrapper.m_Player_Hotbar2;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -481,6 +504,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Sheath.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSheath;
                 @Sheath.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSheath;
                 @Sheath.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSheath;
+                @Hotbar2.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnHotbar2;
+                @Hotbar2.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnHotbar2;
+                @Hotbar2.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnHotbar2;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -506,6 +532,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Sheath.started += instance.OnSheath;
                 @Sheath.performed += instance.OnSheath;
                 @Sheath.canceled += instance.OnSheath;
+                @Hotbar2.started += instance.OnHotbar2;
+                @Hotbar2.performed += instance.OnHotbar2;
+                @Hotbar2.canceled += instance.OnHotbar2;
             }
         }
     }
@@ -570,6 +599,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         void OnInteract(InputAction.CallbackContext context);
         void OnMouse(InputAction.CallbackContext context);
         void OnSheath(InputAction.CallbackContext context);
+        void OnHotbar2(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

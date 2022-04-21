@@ -12,6 +12,7 @@ public class PlayerInput : MonoBehaviour
     private LookWithMouse lookWithMouse;
     private CameraController cameraController;
     private InteractController interactController;
+    [SerializeField] private HotbarBehavior hotbar;
 
     private void Awake()
     {
@@ -21,6 +22,7 @@ public class PlayerInput : MonoBehaviour
         lookWithMouse = GetComponent<LookWithMouse>();
         cameraController = Camera.main.GetComponent<CameraController>();
         interactController = GetComponent<InteractController>();
+
    
         controls.Player.Mouse.performed += ctx => cameraController?.MouseInput(ctx);
         controls.Player.Jump.performed += ctx => movement.Jump(ctx);
@@ -29,6 +31,7 @@ public class PlayerInput : MonoBehaviour
         controls.Player.Mouse.performed += ctx => lookWithMouse.UpdateCamera(ctx);
         controls.Player.Sheath.performed += ctx => weapons.Sheath(ctx);
         controls.Player.Interact.performed += ctx => interactController.Interact(ctx);
+        controls.Player.Hotbar2.performed += ctx => hotbar.UseItem(1);
     }
 
     private void Update()

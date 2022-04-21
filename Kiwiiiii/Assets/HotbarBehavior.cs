@@ -16,7 +16,9 @@ public class HotbarBehavior : MonoBehaviour
     // moschscshchschschschshcshshcshchschshcshchshchschshccshscchschschshcshchsch
 
     private PlayerController stats;
+    [SerializeField] ItemBerry berry;
     public TextMeshProUGUI amount;
+    
 
     private void Start()
     {
@@ -36,5 +38,10 @@ public class HotbarBehavior : MonoBehaviour
     {
        // Debug.Log(stats.berriesInInventory + "yoyoyo man wazzup");
         amount.text = stats.playerStats.berriesInInventory.ToString();
+    }
+
+    public void UseItem(int index)
+    {
+        berry.Use(stats);
     }
 }
