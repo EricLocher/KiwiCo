@@ -22,10 +22,8 @@ public abstract class Enemy : MonoBehaviour
     {
         fov = GetComponent<FOV>();
         navMeshAgent = GetComponent<NavMeshAgent>();
-        enemyStats = GetComponent<EnemyStats>(); 
-    }   
-    void Start()
-    {
+        enemyStats = GetComponent<EnemyStats>();
+
         stateMachine = new EnemyStateMachine(this);
         stateMachine.RegisterState(EnemyStates.Idle, new IdleState(this, stateMachine));
         stateMachine.RegisterState(EnemyStates.Chase, new ChaseState(this, stateMachine));
@@ -34,7 +32,7 @@ public abstract class Enemy : MonoBehaviour
         stateMachine.ChangeState(EnemyStates.Idle);
 
         stateMachine.Update();
-    }
+    }   
 
     void Update()
     {
