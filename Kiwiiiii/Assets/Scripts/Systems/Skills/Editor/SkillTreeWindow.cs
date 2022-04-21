@@ -53,7 +53,7 @@ public class SkillTreeWindow : EditorWindow
 
 
             TextElement header = new TextElement();
-            header.text = "Set Previous Skill";
+            header.text = "Previous Skill:";
             header.AddToClassList("header");
             flexBox.Add(header);
 
