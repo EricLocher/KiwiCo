@@ -29,6 +29,7 @@ public abstract class Enemy : MonoBehaviour
         stateMachine = new EnemyStateMachine(this);
         stateMachine.RegisterState(EnemyStates.Idle, new IdleState(this, stateMachine));
         stateMachine.RegisterState(EnemyStates.Chase, new ChaseState(this, stateMachine));
+        stateMachine.RegisterState(EnemyStates.Attack, new AttackState(this, stateMachine));
 
         stateMachine.ChangeState(EnemyStates.Idle);
 

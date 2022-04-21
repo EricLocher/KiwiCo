@@ -17,7 +17,7 @@ public class PlayerInput : MonoBehaviour
         controls = new PlayerControls();
         lookWithMouse = GetComponent<LookWithMouse>();
         cameraController = Camera.main.GetComponent<CameraController>();
-        controls.Player.Mouse.performed += ctx => cameraController.MouseInput(ctx);
+        controls.Player.Mouse.performed += ctx => cameraController?.MouseInput(ctx);
 
         controls.Player.Jump.performed += ctx => controller.Jump(ctx);
         controls.Player.Dash.performed += ctx => controller.Dash();

@@ -11,7 +11,7 @@ public class TestingDamage : MonoBehaviour
         playerHealth = GetComponentInParent<PlayerHealth>();    
     }
 
-    private void OnCollisionEnter(Collision col)
+    void OnTriggerEnter(Collider col)
     {
         if(col.gameObject.tag == ("Enemy"))
         {
