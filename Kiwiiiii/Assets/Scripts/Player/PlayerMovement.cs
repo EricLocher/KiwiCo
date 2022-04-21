@@ -24,7 +24,6 @@ public class PlayerMovement : MonoBehaviour
     }
 
     #region Movement
-
     public void Move(Vector3 movement)
     {
          Vector3 dir = Camera.main.transform.TransformDirection(movement);
@@ -32,8 +31,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     public void Dash()
-    {
-        
+    {       
         if(stats.amountOfDashes <= 0) { return; }
         rb.AddForce(rb.velocity.normalized * stats.dashSpeed, ForceMode.Impulse);
         stats.amountOfDashes--;
