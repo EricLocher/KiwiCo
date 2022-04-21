@@ -9,7 +9,6 @@ public class LookWithMouse : MonoBehaviour
     {
         Vector2 mouseDelta = ctx.ReadValue<Vector2>();
         mouseDelta /= 5;
-        //mouseDelta *= -1;
         transform.localEulerAngles += (Vector3.right * mouseDelta.y) + (Vector3.up * mouseDelta.x);
     }
 }
