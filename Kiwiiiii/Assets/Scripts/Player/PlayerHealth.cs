@@ -5,18 +5,18 @@ using UnityEngine;
 public class PlayerHealth : MonoBehaviour
 {
     private EnemyStats enemyStats;
-    private PlayerMovement playerStats;
+    private SOPlayerStats playerStats;
 
     void Start()
     {
         enemyStats = GameObject.FindGameObjectWithTag("Enemy").GetComponent<EnemyStats>();
-        playerStats = GetComponent<PlayerMovement>();
+        playerStats = GetComponent<PlayerController>().playerStats;
     }
 
     public void TakeDamage()
     {
-        playerStats.stats.health--;
-        Debug.Log(("Enemy did damage, current player health: ") + playerStats.stats.health);
+        playerStats.health--;
+        Debug.Log(("Enemy did damage, current player health: ") + playerStats.health);
     }
 
     public void DoDamage()
