@@ -6,7 +6,6 @@ using UnityEngine.InputSystem;
 public class WeaponsBehavior : MonoBehaviour
 {
     public GameObject WeaponHolder;
-
     private void Start()
     {
         if(WeaponHolder == null)
@@ -15,7 +14,7 @@ public class WeaponsBehavior : MonoBehaviour
 
     public void Sheath(InputAction.CallbackContext context)
     {
-        if(context.performed)
+        if (context.performed)
         {
             if (WeaponHolder.activeSelf)
             {
@@ -23,6 +22,6 @@ public class WeaponsBehavior : MonoBehaviour
             }
             else
                 WeaponHolder.SetActive(true);
-        }     
+        }
     }
 }

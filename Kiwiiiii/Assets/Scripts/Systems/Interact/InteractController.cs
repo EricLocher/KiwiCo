@@ -48,10 +48,6 @@ public class InteractController : MonoBehaviour
             }
         }
 
-        closestInteractable.GetComponent<IInteractable>().Interact();
-
-
+        closestInteractable.GetComponent<IInteractable>().Interact(GetComponent<PlayerController>());
     }
-
-
 }

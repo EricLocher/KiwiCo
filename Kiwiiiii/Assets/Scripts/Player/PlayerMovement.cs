@@ -7,9 +7,9 @@ using UnityEngine.InputSystem.Interactions;
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerMovement : MonoBehaviour
 {
-    public SOPlayerStats stats;
     public LayerMask layerMask;
-    
+
+    private SOPlayerStats stats;
     private Rigidbody rb;
     private Animator animator;
     private bool isGrounded;
@@ -20,6 +20,7 @@ public class PlayerMovement : MonoBehaviour
         animator = GetComponentInChildren<Animator>();
         radius = GetComponent<SphereCollider>().radius;
         rb = GetComponent<Rigidbody>();
+        stats = GetComponent<PlayerController>().playerStats;
     }
 
     #region Movement

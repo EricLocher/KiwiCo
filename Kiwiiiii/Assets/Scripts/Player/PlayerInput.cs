@@ -11,6 +11,7 @@ public class PlayerInput : MonoBehaviour
     private WeaponsBehavior weapons;
     private LookWithMouse lookWithMouse;
     private CameraController cameraController;
+    private InteractController interactController;
 
     private void Awake()
     {
@@ -19,6 +20,7 @@ public class PlayerInput : MonoBehaviour
         controls = new PlayerControls();
         lookWithMouse = GetComponent<LookWithMouse>();
         cameraController = Camera.main.GetComponent<CameraController>();
+        interactController = GetComponent<InteractController>();
    
         controls.Player.Mouse.performed += ctx => cameraController?.MouseInput(ctx);
         controls.Player.Jump.performed += ctx => movement.Jump(ctx);
@@ -26,6 +28,7 @@ public class PlayerInput : MonoBehaviour
         controls.Player.Spin.performed += ctx => movement.Spin();
         controls.Player.Mouse.performed += ctx => lookWithMouse.UpdateCamera(ctx);
         controls.Player.Sheath.performed += ctx => weapons.Sheath(ctx);
+        controls.Player.Interact.performed += ctx => interactController.Interact(ctx);
     }
 
     private void Update()

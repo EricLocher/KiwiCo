@@ -9,7 +9,7 @@ public class NPC : MonoBehaviour, IInteractable
 
     public DialogueManager dialogueManager;
 
-    public void Interact()
+    public void Interact(PlayerController controller)
     {
         if (!dialogueManager.IsOpen) 
         {

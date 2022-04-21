@@ -16,4 +16,5 @@ public class SOPlayerStats : ScriptableObject
     public int amountOfJumps;
     public int maxJumps;
 
+    public int berriesInInventory;
 }

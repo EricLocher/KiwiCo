@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class TestInteractable : MonoBehaviour, IInteractable
 {
-    public void Interact()
+    public void Interact(PlayerController controller)
     {
-        print("Henlo");
+        throw new System.NotImplementedException();
     }
 }
