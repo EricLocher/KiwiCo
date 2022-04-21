@@ -73,15 +73,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""Hotbar"",
-                    ""type"": ""Button"",
-                    ""id"": ""1a4e9616-a5b5-4bb5-9a00-530c3cf5e9fd"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
                     ""name"": ""Mouse"",
                     ""type"": ""Value"",
                     ""id"": ""0fa727c5-01c7-4d38-9b73-1d4f6db8468f"",
@@ -89,6 +80,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Sheath"",
+                    ""type"": ""Button"",
+                    ""id"": ""39275a52-bb7d-4248-8a0f-ae7986f5d949"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -281,67 +281,23 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""fb656001-70e3-4b13-b6a9-84755b652c43"",
-                    ""path"": ""<Keyboard>/1"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard and Mouse"",
-                    ""action"": ""Hotbar"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""22c35e02-08e6-47ae-95f3-e58eb5ed2755"",
-                    ""path"": ""<Keyboard>/2"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard and Mouse"",
-                    ""action"": ""Hotbar"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""d292631f-893e-4ba8-b4c9-b8f4e11b8332"",
-                    ""path"": ""<Keyboard>/3"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard and Mouse"",
-                    ""action"": ""Hotbar"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""81f1ca7d-4fb3-47de-90fd-36cad5859613"",
-                    ""path"": ""<Keyboard>/4"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard and Mouse"",
-                    ""action"": ""Hotbar"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""0cbaff6b-cbb0-4873-8756-d68de52b35ed"",
-                    ""path"": ""<Keyboard>/5"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard and Mouse"",
-                    ""action"": ""Hotbar"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""c7784857-f322-402f-ae24-02fdf8399b5f"",
                     ""path"": ""<Mouse>/delta"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Mouse"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1ef98142-d0a9-43e3-9cd0-7553f833ba37"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard and Mouse"",
+                    ""action"": ""Sheath"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -413,8 +369,8 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_Player_Dash = m_Player.FindAction("Dash", throwIfNotFound: true);
         m_Player_Spin = m_Player.FindAction("Spin", throwIfNotFound: true);
         m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
-        m_Player_Hotbar = m_Player.FindAction("Hotbar", throwIfNotFound: true);
         m_Player_Mouse = m_Player.FindAction("Mouse", throwIfNotFound: true);
+        m_Player_Sheath = m_Player.FindAction("Sheath", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Newaction = m_UI.FindAction("New action", throwIfNotFound: true);
@@ -482,8 +438,8 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Dash;
     private readonly InputAction m_Player_Spin;
     private readonly InputAction m_Player_Interact;
-    private readonly InputAction m_Player_Hotbar;
     private readonly InputAction m_Player_Mouse;
+    private readonly InputAction m_Player_Sheath;
     public struct PlayerActions
     {
         private @PlayerControls m_Wrapper;
@@ -493,8 +449,8 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public InputAction @Dash => m_Wrapper.m_Player_Dash;
         public InputAction @Spin => m_Wrapper.m_Player_Spin;
         public InputAction @Interact => m_Wrapper.m_Player_Interact;
-        public InputAction @Hotbar => m_Wrapper.m_Player_Hotbar;
         public InputAction @Mouse => m_Wrapper.m_Player_Mouse;
+        public InputAction @Sheath => m_Wrapper.m_Player_Sheath;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -519,12 +475,12 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Interact.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
                 @Interact.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
                 @Interact.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
-                @Hotbar.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnHotbar;
-                @Hotbar.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnHotbar;
-                @Hotbar.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnHotbar;
                 @Mouse.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMouse;
                 @Mouse.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMouse;
                 @Mouse.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMouse;
+                @Sheath.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSheath;
+                @Sheath.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSheath;
+                @Sheath.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSheath;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -544,12 +500,12 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Interact.started += instance.OnInteract;
                 @Interact.performed += instance.OnInteract;
                 @Interact.canceled += instance.OnInteract;
-                @Hotbar.started += instance.OnHotbar;
-                @Hotbar.performed += instance.OnHotbar;
-                @Hotbar.canceled += instance.OnHotbar;
                 @Mouse.started += instance.OnMouse;
                 @Mouse.performed += instance.OnMouse;
                 @Mouse.canceled += instance.OnMouse;
+                @Sheath.started += instance.OnSheath;
+                @Sheath.performed += instance.OnSheath;
+                @Sheath.canceled += instance.OnSheath;
             }
         }
     }
@@ -612,8 +568,8 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         void OnDash(InputAction.CallbackContext context);
         void OnSpin(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
-        void OnHotbar(InputAction.CallbackContext context);
         void OnMouse(InputAction.CallbackContext context);
+        void OnSheath(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

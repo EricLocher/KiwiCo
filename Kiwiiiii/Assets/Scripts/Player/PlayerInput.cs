@@ -7,22 +7,25 @@ using UnityEngine.InputSystem;
 public class PlayerInput : MonoBehaviour
 {
     private PlayerControls controls;
-    private PlayerMovement controller;
+    private PlayerMovement movement;
+    private WeaponsBehavior weapons;
     private LookWithMouse lookWithMouse;
     private CameraController cameraController;
 
     private void Awake()
     {
-        controller = GetComponent<PlayerMovement>();
+        movement = GetComponent<PlayerMovement>();
+        weapons = GetComponent<WeaponsBehavior>();
         controls = new PlayerControls();
         lookWithMouse = GetComponent<LookWithMouse>();
         cameraController = Camera.main.GetComponent<CameraController>();
+   
         controls.Player.Mouse.performed += ctx => cameraController?.MouseInput(ctx);
-
-        controls.Player.Jump.performed += ctx => controller.Jump(ctx);
-        controls.Player.Dash.performed += ctx => controller.Dash();
-        controls.Player.Spin.performed += ctx => controller.Spin();
+        controls.Player.Jump.performed += ctx => movement.Jump(ctx);
+        controls.Player.Dash.performed += ctx => movement.Dash();
+        controls.Player.Spin.performed += ctx => movement.Spin();
         controls.Player.Mouse.performed += ctx => lookWithMouse.UpdateCamera(ctx);
+        controls.Player.Sheath.performed += ctx => weapons.Sheath(ctx);
     }
 
     private void Update()
@@ -42,7 +45,7 @@ public class PlayerInput : MonoBehaviour
     {
         if (context.performed)
         {
-            controller.Spin();
+            movement.Spin();
             //transform.Rotate(0f, 180f, 0f, Space.Self);
         }
 
@@ -58,7 +61,17 @@ public class PlayerInput : MonoBehaviour
             z = movementInput.y
         }.normalized;
 
-        controller.Move(movement);
+        this.movement.Move(movement);
+    }
+
+    public void SheathWeapon()
+    {
+
+    }
+
+    public void Equip()
+    {
+      
     }
 
     private void OnEnable() => controls.Player.Enable();
