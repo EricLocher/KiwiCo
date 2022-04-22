@@ -7,6 +7,7 @@ public class InteractController : MonoBehaviour
 {
 
     List<GameObject> interactables = new List<GameObject>();
+    public GameObject interactNotice;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -14,6 +15,7 @@ public class InteractController : MonoBehaviour
         
         if(interactable != null) {
             interactables.Add(other.gameObject);
+            interactNotice.SetActive(true);
         }
 
     }
@@ -24,7 +26,8 @@ public class InteractController : MonoBehaviour
 
         if (interactable != null) {
             interactables.Remove(other.gameObject);
-            if(interactable is NPC)
+            interactNotice.SetActive(false);
+            if (interactable is NPC)
             {
                 other.GetComponent<NPC>().dialogueManager.EndDialogue();
             }
