@@ -5,6 +5,9 @@ public class DoubleJump : Skill
 {
     public override void LevelUp()
     {
-        throw new System.NotImplementedException();
+        pointsToLevelUp--;
+        if(pointsToLevelUp == 0) {
+            Debug.Log("Leveled up DoubleJump");
+        }
     }
 }

@@ -12,6 +12,7 @@ public abstract class Skill : ScriptableObject, IComparable
     public int pointsToLevelUp;
 
     public abstract void LevelUp();
+
     public void SetPreviousSkill(Skill skill)
     {
         if (skill is NoSkill) { previousSkill = null; return; }
@@ -33,12 +34,12 @@ public abstract class Skill : ScriptableObject, IComparable
 
         index = _index;
     }
-
-    public override string ToString() => skillName;
-
     public int CompareTo(object obj)
     {
         Skill other = obj as Skill;
         return index.CompareTo(other.index);
     }
+
+    public override string ToString() => skillName;
+
 }

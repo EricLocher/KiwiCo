@@ -106,7 +106,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 0.5460449, g: 1, b: 0.4669811, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -139,6 +139,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillName: {fileID: 1864073337418630753}
   reqPoints: {fileID: 1864073335850019666}
+  previous: {fileID: 6513369043527048553}
+  next: {fileID: 7723114051577311037}
+  skill: {fileID: 0}
 --- !u!1 &1864073335850019664
 GameObject:
   m_ObjectHideFlags: 0
@@ -417,7 +420,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6513369043527048553}
   m_Layer: 5
-  m_Name: GameObject
+  m_Name: previous
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -452,7 +455,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7723114051577311037}
   m_Layer: 5
-  m_Name: GameObject (1)
+  m_Name: next
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

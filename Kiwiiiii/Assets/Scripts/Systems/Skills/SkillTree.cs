@@ -14,14 +14,10 @@ public class SkillTree
         foreach (Skill skill in skills) {
             skill.CalculateIndex();
 
-            if(skill.previousSkill == null) { continue; }
-
-            int _index = skill.index;
-            if(depth >= _index) { continue; }
-            depth = _index;
+            if (skill.previousSkill == null || depth >= skill.index) { continue; }
+            depth = skill.index;
         }
 
         skills.Sort();
-
     }
 }

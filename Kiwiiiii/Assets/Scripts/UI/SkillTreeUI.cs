@@ -5,8 +5,8 @@ using UnityEngine;
 public class SkillTreeUI : MonoBehaviour
 {
     [SerializeField] GameObject skillPrefab;
-    [SerializeField] GameObject skillPanel;
     [SerializeField] GameObject skillPanelPrefab;
+    [SerializeField] GameObject skillPanel;
 
     SkillController skillTree;
 
@@ -23,8 +23,6 @@ public class SkillTreeUI : MonoBehaviour
 
         _skillPanels = new List<GameObject>();
 
-        print(skillTree.skillTree.depth);
-
         for (int i = 0; i < skillTree.skillTree.depth + 1; i++) {
             var _temp = Instantiate(skillPanelPrefab, skillPanel.transform);
             _temp.name = $"Skills ({i})";
@@ -32,8 +30,10 @@ public class SkillTreeUI : MonoBehaviour
         }
 
         for (int i = 0; i < skills.Count; i++) {
-            var _temp = Instantiate(skillPrefab, _skillPanels[skills[i].index].transform);
-            _temp.name = skills[i].skillName;
+            SkillButton btn = Instantiate(skillPrefab, _skillPanels[skills[i].index].transform).GetComponent<SkillButton>();
+            btn.skill = skills[i];
+            btn.Init();
+
         }
     }
 
