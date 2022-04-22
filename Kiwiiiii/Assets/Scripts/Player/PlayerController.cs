@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public SOPlayerStats playerStats;
+    public PlayerHealth health;
 
     private void Start()
     {
