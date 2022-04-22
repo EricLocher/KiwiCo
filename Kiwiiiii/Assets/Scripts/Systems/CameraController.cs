@@ -22,8 +22,8 @@ public class CameraController : MonoBehaviour
     [Header("Rates")]
     [SerializeField, Range(0, 30)]
     int ZoomRate = 20;
-    [SerializeField, Range(0, 30)]
-    int lerpRate = 5;
+    [SerializeField, Range(0, 50)]
+    int lerpRate = 40;
 
     float distance = 3f;
     float desireDistance;
@@ -62,7 +62,7 @@ public class CameraController : MonoBehaviour
         position = CameraTarget.position - (rotation * Vector3.forward * currentDistance + new Vector3(0, -cameraTargetHeight, 0));
 
         transform.rotation = rotation;
-        transform.position = position;
+        transform.position = Vector3.Lerp(transform.position, position, lerpRate * Time.fixedDeltaTime);
     }
 
     void CameraCollision()
