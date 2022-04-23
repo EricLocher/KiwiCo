@@ -12,11 +12,6 @@ public class SkillButton : MonoBehaviour
 
     Button btn;
 
-    void Update()
-    {
- 
-    }
-
     public void Init()
     {
         btn = GetComponent<Button>();
@@ -24,6 +19,8 @@ public class SkillButton : MonoBehaviour
         btn.onClick.AddListener(OnClick);
         skillName.text = skill.skillName;
         reqPoints.text = $"{skill.pointsToLevelUp}";
+
+        if(skill.pointsToLevelUp == 0) { btn.interactable = false; }
     }
 
     void OnClick()

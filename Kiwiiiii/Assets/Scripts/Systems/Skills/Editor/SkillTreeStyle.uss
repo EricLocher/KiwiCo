@@ -9,33 +9,16 @@
 	width:100%
 }
 
-.field .flexBox{
-	padding-right: 5px;
-	width: 100%;
-	flex-direction: row;
-	max-height: 30px;
-}
-
-.flexBox .header{
-	font-size: 13px;
-	flex: 90px;
-	margin-left: 3px;
-	-unity-text-align: middle-center;
-}
-
-.flexBox .menu{
-	flex: auto;
-}
-
 .field .skill {
 	background-color: #383838;
 	width: 100%;
-	height: 100px;
+	height: auto;
 	margin-bottom: 5px;
+	padding: 5px 0 10px 0;
 }
 
 .field .skill .text{
 	font-size: 15px;
 	-unity-font-style: bold;
-	margin-left: 5px;
+	margin-left: 10px;
 }

@@ -9,11 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c049a69c0a640514d96940835a19e36b, type: 3}
-  m_Name: DoubleDash
+  m_Script: {fileID: 11500000, guid: 4999b034084f493419b8817914544039, type: 3}
+  m_Name: DoubleJump
   m_EditorClassIdentifier: 
-  index: 0
-  previousSkill: {fileID: 0}
-  skillName: Double Dash
+  index: 1
+  skillName: Double Jump
   skillDescription: 
-  pointsToLevelUp: -1
+  pointsToLevelUp: 1
+  connectsTo:
+  - {fileID: 11400000, guid: f229bbc4503f7214bb4b7f1353915213, type: 2}

@@ -3,11 +3,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "DoubleJump", menuName = "Utilities/Skills/DoubleJump")]
 public class DoubleJump : Skill
 {
-    public override void LevelUp()
+    public override void Action()
     {
-        pointsToLevelUp--;
-        if(pointsToLevelUp == 0) {
-            Debug.Log("Leveled up DoubleJump");
-        }
+        Debug.Log("Leveled up Double Jump");
     }
 }

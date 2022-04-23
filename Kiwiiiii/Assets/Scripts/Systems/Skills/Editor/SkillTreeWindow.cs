@@ -49,32 +49,10 @@ public class SkillTreeWindow : EditorWindow
             text.AddToClassList("text");
             skillElement.Add(text);
 
-            VisualElement flexBox = AddElement("flexBox", skillElement);
-
-
-            TextElement header = new TextElement();
-            header.text = "Previous Skill:";
-            header.AddToClassList("header");
-            flexBox.Add(header);
-
-
-            PopupField<Skill> DropDownMenu = new PopupField<Skill>();
-
-            DropDownMenu.RegisterCallback<ChangeEvent<Skill>>(evt => {
-                skill.SetPreviousSkill(DropDownMenu.value);
-                Draw();
-            });
-
-            DropDownMenu.choices.Add((NoSkill)CreateInstance(typeof(NoSkill)));
-
-            foreach (Skill _skill in skillTree.skills) {
-                if (skill == _skill) { continue; }
-                DropDownMenu.choices.Add(_skill);
-            }
-
-            DropDownMenu.value = skill.previousSkill;
-            DropDownMenu.AddToClassList("menu");
-            flexBox.Add(DropDownMenu);
+            InspectorElement propertyDrawer = new InspectorElement();
+            propertyDrawer.Bind(new SerializedObject(skill));
+            skillElement.Add(propertyDrawer);
+            
         }
     }
 

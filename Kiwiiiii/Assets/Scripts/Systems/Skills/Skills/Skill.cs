@@ -1,45 +1,40 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
-public abstract class Skill : ScriptableObject, IComparable
+
+[Serializable]
+public abstract class Skill : ScriptableObject
 {
-
-    public int index = 0;
-
-    public Skill previousSkill;
+    [HideInInspector] public int index = 0;
 
     public string skillName;
+    [TextArea]
     public string skillDescription;
     public int pointsToLevelUp;
+    public List<Skill> connectsTo;
 
-    public abstract void LevelUp();
 
-    public void SetPreviousSkill(Skill skill)
+    public void LevelUp()
     {
-        if (skill is NoSkill) { previousSkill = null; return; }
-        previousSkill = skill;
+        if(pointsToLevelUp <= 0) { return; }
+        pointsToLevelUp--;
+        Action();
     }
 
-    public void CalculateIndex()
-    {
-        if (previousSkill == null) { index = 0; return; }
-
-        int _index = 1;
-        Skill check = previousSkill;
-
-        while (true) {
-            if (check.previousSkill == null) { break; }
-            previousSkill = check.previousSkill;
-            _index++;
-        }
-
-        index = _index;
-    }
-    public int CompareTo(object obj)
-    {
-        Skill other = obj as Skill;
-        return index.CompareTo(other.index);
-    }
+    public abstract void Action();
 
     public override string ToString() => skillName;
+
+    public int calculateIndex(int currentIndex)
+    {
+        index = currentIndex;
+        foreach (Skill connectedSkill in connectsTo) {
+            int _index = connectedSkill.calculateIndex(index + 1);
+            if(_index >= currentIndex) { currentIndex = _index; }
+        }
+        
+        return currentIndex;
+
+    }
 
 }

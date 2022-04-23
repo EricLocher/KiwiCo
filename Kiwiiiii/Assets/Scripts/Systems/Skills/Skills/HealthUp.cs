@@ -3,11 +3,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "HealthUp", menuName = "Utilities/Skills/HealthUp")]
 public class HealthUp : Skill
 {
-    public override void LevelUp()
+    public override void Action()
     {
-        pointsToLevelUp--;
-        if(pointsToLevelUp == 0) {
-            Debug.Log("Leveled up HealthUp");
-        }
+        Debug.Log("Leveled up Health Up");
     }
 }
