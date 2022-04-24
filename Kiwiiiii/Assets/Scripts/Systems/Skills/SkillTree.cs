@@ -13,9 +13,9 @@ public class SkillTree
     public void CalculateTree()
     {
         foreach (Skill skill in startNodes) {
-            int _index = skill.calculateIndex(0);
+            skill.AssignParent();
+            int _index = skill.calculateChildIndices(0);
             if(_index >= depth) { depth = _index; }
-        }
-        
+        }   
     }
 }

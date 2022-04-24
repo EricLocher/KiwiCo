@@ -56,7 +56,6 @@ public class SkillTreeWindow : EditorWindow
         }
     }
 
-
     VisualElement AddElement(string className, VisualElement parent)
     {
         VisualElement element = new VisualElement();

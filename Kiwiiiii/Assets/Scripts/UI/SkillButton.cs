@@ -10,6 +10,8 @@ public class SkillButton : MonoBehaviour
     public Transform previous, next;
     public Skill skill;
 
+    public Color locked, leveledUp;
+
     Button btn;
 
     public void Init()
@@ -19,8 +21,19 @@ public class SkillButton : MonoBehaviour
         btn.onClick.AddListener(OnClick);
         skillName.text = skill.skillName;
         reqPoints.text = $"{skill.pointsToLevelUp}";
+    }
 
-        if(skill.pointsToLevelUp == 0) { btn.interactable = false; }
+    void Update()
+    {
+        
+    }
+
+    void CheckLocked()
+    {
+
+
+
+
     }
 
     void OnClick()

@@ -105,8 +105,8 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.5460449, g: 1, b: 0.4669811, a: 0.5019608}
+    m_SelectedColor: {r: 1, g: 1, b: 1, a: 1}
+    m_DisabledColor: {r: 1, g: 1, b: 1, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -142,6 +142,8 @@ MonoBehaviour:
   previous: {fileID: 6513369043527048553}
   next: {fileID: 7723114051577311037}
   skill: {fileID: 0}
+  locked: {r: 1, g: 0, b: 0, a: 1}
+  leveledUp: {r: 0.54509807, g: 1, b: 0.46666667, a: 1}
 --- !u!1 &1864073335850019664
 GameObject:
   m_ObjectHideFlags: 0
