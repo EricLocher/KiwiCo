@@ -14,21 +14,21 @@ public class SkillTree
 
     public void CalculateTree()
     {
+        float x = 0f;
+
+        foreach (TreeNode node in nodes) {
+            node.x = 0;
+        }
+
         foreach (TreeNode node in startNodes) {
             int _index = node.calculateNodeIndex(0);
             if(_index >= depth) { depth = _index; }
+            x += node.calculateX(x);
+            x++;
         }
 
         nodes.Sort();
 
-        int index = depth;
-        int x = 0;
-        //Post-order traversal.
-        for (int i = nodes.Count - 1; i >= 0; i--) {
-            if(nodes[i].index != index) { index = nodes[i].index; x = 0; }
-            nodes[i].x = x;
-            x++;
-        }
     }
 
 }

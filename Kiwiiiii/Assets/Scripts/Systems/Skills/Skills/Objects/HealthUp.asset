@@ -12,8 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c6959c2fa540b04093115535a8bf9b5, type: 3}
   m_Name: HealthUp
   m_EditorClassIdentifier: 
-  index: 2
+  children:
+  - {fileID: 11400000, guid: a2489a5421ad82548ad7b6c3b90fd5d0, type: 2}
+  - {fileID: 11400000, guid: e5f092cc0042b38449ca2c37b4acc58e, type: 2}
+  parents: []
+  index: 1
+  x: 0.5
+  pointsToLevelUp: 1
   skillName: Health Up
   skillDescription: 
-  pointsToLevelUp: 1
-  connectsTo: []

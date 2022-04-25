@@ -8,9 +8,9 @@ public class SkillTreeUI : MonoBehaviour
     [SerializeField] GameObject skillPanelPrefab;
     [SerializeField] GameObject skillPanel;
 
-    SkillController skillTree;
+    [SerializeField] Vector2 spacing;
 
-    List<GameObject> _skillPanels;
+    SkillController skillTree;
 
     void Awake()
     {
@@ -21,7 +21,12 @@ public class SkillTreeUI : MonoBehaviour
     {
         SkillTree _tree = skillTree.skillTree;
 
-
+        foreach (Skill skill in _tree.nodes) {
+            var btn = Instantiate(skillPrefab, skillPanel.transform);
+            RectTransform rt = btn.GetComponent(typeof(RectTransform)) as RectTransform;
+            rt.anchoredPosition = new Vector2((300 + spacing.x) * skill.x, (-150 - spacing.y) * skill.index);
+            btn.name = skill.name;
+        }
     }
 
     

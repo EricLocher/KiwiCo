@@ -7,8 +7,9 @@ public class TreeNode : ScriptableObject, IComparable<TreeNode>
     public List<TreeNode> children;
     [HideInInspector] public List<TreeNode> parents;
 
+    public float mod { get { return (children.Count - 1) / 2f; } }
     public int index = 0;
-    public int x = 0;
+    public float x = 0;
 
     #region Calculate Tree
 
@@ -25,6 +26,24 @@ public class TreeNode : ScriptableObject, IComparable<TreeNode>
         return currentIndex;
     }
 
+    public float calculateX(float x)
+    {
+        if(children.Count == 0) { this.x = x; return x; }
+
+        float _x = 0;
+        float lastX = x - (children.Count/2f);
+
+        for (int i = 0; i < children.Count; i++) {
+            lastX = children[i].calculateX(lastX + 1);
+
+            if(i == 0 || i == children.Count-1)
+            _x += lastX;
+        }
+
+        this.x = (_x/2f) + x;
+        return this.x;
+    }
+
     public void AssignParent()
     {
         foreach (TreeNode childNode in children) {
@@ -35,7 +54,6 @@ public class TreeNode : ScriptableObject, IComparable<TreeNode>
 
     public int CompareTo(TreeNode obj)
     {
-        //TreeNode other = obj as TreeNode;
         return index.CompareTo(obj.index);
     }
 

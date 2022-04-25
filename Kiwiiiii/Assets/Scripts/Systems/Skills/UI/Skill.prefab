@@ -38,11 +38,11 @@ RectTransform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 279.629, y: 147.308}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_SizeDelta: {x: 300, y: 150}
+  m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &1864073335703119584
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -137,13 +137,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8aefa1d25f926d438f3aa481e04f1cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillName: {fileID: 1864073337418630753}
-  reqPoints: {fileID: 1864073335850019666}
-  previous: {fileID: 6513369043527048553}
-  next: {fileID: 7723114051577311037}
-  skill: {fileID: 0}
-  locked: {r: 1, g: 0, b: 0, a: 1}
-  leveledUp: {r: 0.54509807, g: 1, b: 0.46666667, a: 1}
 --- !u!1 &1864073335850019664
 GameObject:
   m_ObjectHideFlags: 0

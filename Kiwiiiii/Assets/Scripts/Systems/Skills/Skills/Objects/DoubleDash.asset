@@ -12,10 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c049a69c0a640514d96940835a19e36b, type: 3}
   m_Name: DoubleDash
   m_EditorClassIdentifier: 
+  children:
+  - {fileID: 11400000, guid: f229bbc4503f7214bb4b7f1353915213, type: 2}
+  - {fileID: 11400000, guid: af5e9170115815d4cb15305f59c0c22c, type: 2}
+  parents: []
   index: 0
+  x: 1
+  pointsToLevelUp: 0
   skillName: Double Dash
   skillDescription: 
-  pointsToLevelUp: 0
-  connectsTo:
-  - {fileID: 11400000, guid: af5e9170115815d4cb15305f59c0c22c, type: 2}
-  - {fileID: 11400000, guid: f229bbc4503f7214bb4b7f1353915213, type: 2}
