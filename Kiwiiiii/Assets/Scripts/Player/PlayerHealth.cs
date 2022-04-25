@@ -7,18 +7,18 @@ public class PlayerHealth : MonoBehaviour
 {
     private EnemyStats enemyStats;
     private PlayerController playerStats;
-    public Slider healthSlider;
+    //public Slider healthSlider;
 
     void Start()
     {
         enemyStats = GameObject.FindGameObjectWithTag("Enemy")?.GetComponent<EnemyStats>();
         playerStats = GetComponent<PlayerController>();
-        healthSlider.value = playerStats.playerStats.health;
+        //healthSlider.value = playerStats.playerStats.health;
     }
 
     public void TakeDamage()
     {
-        healthSlider.value = playerStats.playerStats.health--;
+        //healthSlider.value = playerStats.playerStats.health--;
         Debug.Log(("Enemy did damage, current player health: ") + playerStats.playerStats.health);
     }
 
@@ -30,6 +30,6 @@ public class PlayerHealth : MonoBehaviour
 
     public void Heal(float healAmt)
     {
-        healthSlider.value = playerStats.playerStats.health += healAmt;
+        //healthSlider.value = playerStats.playerStats.health += healAmt;
     }
 }
