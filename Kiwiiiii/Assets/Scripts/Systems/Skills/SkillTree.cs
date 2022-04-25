@@ -18,15 +18,17 @@ public class SkillTree
 
         foreach (TreeNode node in nodes) {
             node.x = 0;
+            node.mod = 0;
+            if(node.children.Count != 0)
+            node.mod = (node.children.Count - 1) / 2f;
         }
 
         foreach (TreeNode node in startNodes) {
             int _index = node.calculateNodeIndex(0);
-            if(_index >= depth) { depth = _index; }
+            if (_index >= depth) { depth = _index; }
             x += node.calculateX(x);
             x++;
         }
-
         nodes.Sort();
 
     }
