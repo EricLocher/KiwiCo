@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 1481.7754, g: 1835.8867, b: 2430.4492, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1615,7 +1615,6 @@ GameObject:
   - component: {fileID: 1711013140}
   - component: {fileID: 1711013139}
   - component: {fileID: 1711013138}
-  - component: {fileID: 1711013141}
   - component: {fileID: 1711013142}
   m_Layer: 0
   m_Name: Panel
@@ -1681,32 +1680,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1711013141
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1711013137}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Padding:
-    m_Left: 0
-    m_Right: 0
-    m_Top: 0
-    m_Bottom: 0
-  m_ChildAlignment: 1
-  m_Spacing: 0
-  m_ChildForceExpandWidth: 1
-  m_ChildForceExpandHeight: 0
-  m_ChildControlWidth: 1
-  m_ChildControlHeight: 0
-  m_ChildScaleWidth: 0
-  m_ChildScaleHeight: 1
-  m_ReverseArrangement: 0
 --- !u!114 &1711013142
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2125,10 +2098,11 @@ MonoBehaviour:
   skillTree:
     startNodes:
     - {fileID: 11400000, guid: 59c6627bbc0eae247a7859d3457e1a93, type: 2}
-    skills:
+    nodes:
     - {fileID: 11400000, guid: 59c6627bbc0eae247a7859d3457e1a93, type: 2}
-    - {fileID: 11400000, guid: af5e9170115815d4cb15305f59c0c22c, type: 2}
     - {fileID: 11400000, guid: f229bbc4503f7214bb4b7f1353915213, type: 2}
+    - {fileID: 11400000, guid: af5e9170115815d4cb15305f59c0c22c, type: 2}
+    - {fileID: 11400000, guid: e5f092cc0042b38449ca2c37b4acc58e, type: 2}
     depth: 0
 --- !u!4 &2067715428
 Transform:
