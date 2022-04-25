@@ -21,18 +21,12 @@ public class SkillTreeUI : MonoBehaviour
     {
         SkillTree _tree = skillTree.skillTree;
 
-        _skillPanels = new List<GameObject>();
-
-        for (int i = 0; i <= _tree.depth; i++) {
-            _skillPanels.Add(Instantiate(skillPanelPrefab, skillPanel.transform));
-        }
-
-        foreach (Skill skill in _tree.skills) {
-            SkillButton _skill = Instantiate(skillPrefab, _skillPanels[skill.index].transform).GetComponent<SkillButton>();
-            _skill.skill = skill;
-            _skill.Init();
-        }
 
     }
 
+    
+
+
 }
+
+

@@ -41,7 +41,7 @@ public class SkillTreeWindow : EditorWindow
         field.AddToClassList("field");
         root.Add(field);
 
-        foreach (Skill skill in skillTree.skills) {
+        foreach (Skill skill in skillTree.nodes) {
 
             VisualElement skillElement = AddElement("skill", field);
             TextElement text = new TextElement();
