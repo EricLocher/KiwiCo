@@ -13,22 +13,16 @@ public class CameraController : MonoBehaviour
     int mouseXSpeedMod = 5;
     int mouseYSpeedMod = 5;
 
-    [Header("View Distance")]
+    [Header("FOV")]
     [SerializeField, Range(0, 30)]
-    float MaxViewDistance = 15f;
-    [SerializeField, Range(0, 30)]
-    float MinViewDistance = 1f;
+    float currentDistance = 5f;
 
-    [Header("Rates")]
-    [SerializeField, Range(0, 30)]
-    int ZoomRate = 20;
+    float maxDistance;
+    float desiredDistance;
+
+    [Header("Lerp rate")]
     [SerializeField, Range(0, 50)]
-    int lerpRate = 40;
-
-    float distance = 3f;
-    float desireDistance;
-    float correctedDistance;
-    float currentDistance;
+    float lerpRate = 0.3f;
 
     [Header("Camera Height")]
     [SerializeField, Range(0, 30)]
@@ -38,17 +32,22 @@ public class CameraController : MonoBehaviour
     [SerializeField, Range(0, 0.2f)]
     float sensitivity = 0.05f;
 
+    [Header("Layermask")]
+    [SerializeField]
+    LayerMask layerMask;
+
+    float radius = 0.5f;
+    Vector3 currentDeltaVelocity = Vector3.zero;
+    Vector3 currentRotationDeltaVelocity = Vector3.zero;
     Vector3 position;
-    Quaternion rotation;
+    Vector3 rotation;
 
     void Start()
     {
         Vector3 Angles = transform.eulerAngles;
         x = Angles.x;
         y = Angles.y;
-        currentDistance = distance;
-        desireDistance = distance;
-        correctedDistance = distance;
+        maxDistance = currentDistance;
     }
 
     void FixedUpdate()
@@ -57,34 +56,33 @@ public class CameraController : MonoBehaviour
 
         y = ClampAngle(y, -15, 25);
 
-        rotation = Quaternion.Euler(y, x, 0);
+        rotation = new Vector3(y, x, 0);
 
-        position = CameraTarget.position - (rotation * Vector3.forward * currentDistance + new Vector3(0, -cameraTargetHeight, 0));
+        position = CameraTarget.position - (Quaternion.Euler(rotation) * Vector3.forward * desiredDistance + new Vector3(0, -cameraTargetHeight, 0));
 
-        transform.rotation = rotation;
-        transform.position = Vector3.Lerp(transform.position, position, lerpRate * Time.fixedDeltaTime);
+        transform.eulerAngles = rotation;
+        //transform.eulerAngles = Vector3.SmoothDamp(transform.eulerAngles, rotation, ref currentRotationDeltaVelocity, lerpRate, Mathf.Infinity, Time.fixedDeltaTime);
+        //transform.position = Vector3.Lerp(transform.position, position, lerpRate * Time.fixedDeltaTime);
+        transform.position = Vector3.SmoothDamp(transform.position, position, ref currentDeltaVelocity, lerpRate, Mathf.Infinity, Time.fixedDeltaTime);
     }
 
     void CameraCollision()
     {
-        desireDistance = Mathf.Clamp(desireDistance, MinViewDistance, MaxViewDistance);
-        correctedDistance = desireDistance;
-
-        Vector3 position = CameraTarget.position - (rotation * Vector3.forward * desireDistance);
-
-        RaycastHit collisionHit;
-        Vector3 cameraTargetPosition = new Vector3(CameraTarget.position.x, CameraTarget.position.y + cameraTargetHeight, CameraTarget.position.z);
-
-        bool isCorrected = false;
-
-        if (Physics.Linecast(cameraTargetPosition, position, out collisionHit, 2))
+        //Check if view obstructed
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, radius, layerMask);
+        if (hitColliders.Length != 0)
         {
-            position = collisionHit.point;
-            correctedDistance = Vector3.Distance(cameraTargetPosition, position);
-            isCorrected = true;
+            foreach (var hit in hitColliders)
+            {
+                Vector3 closestPoint = hit.ClosestPointOnBounds(transform.position);
+                desiredDistance = Vector3.Distance(transform.position, closestPoint) + 1;
+                //currentDistance -= desiredDistance + 1f;
+            }
         }
-
-        currentDistance = !isCorrected || correctedDistance > currentDistance ? Mathf.Lerp(currentDistance, correctedDistance, Time.deltaTime * ZoomRate) : correctedDistance;
+        else
+        {
+            desiredDistance = maxDistance;
+        }
     }
 
     public void MouseInput(InputAction.CallbackContext ctx)
@@ -95,8 +93,6 @@ public class CameraController : MonoBehaviour
 
         x += input.x * mouseXSpeedMod;
         y += (input.y * -1) * mouseYSpeedMod;
-
-        distance = distance - distance - 1;
     }
 
     private static float ClampAngle(float angle, float min, float max)

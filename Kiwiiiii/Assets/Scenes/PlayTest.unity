@@ -135,6 +135,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 541035777, guid: d89e56f703c6eb746969511f65d65753, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1426636927, guid: d89e56f703c6eb746969511f65d65753, type: 3}
       propertyPath: interactNotice
       value: 
@@ -143,9 +147,21 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 2315279853998555352, guid: d89e56f703c6eb746969511f65d65753, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2682688029979777242, guid: d89e56f703c6eb746969511f65d65753, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3025217583516844945, guid: d89e56f703c6eb746969511f65d65753, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 3025217583516844945, guid: d89e56f703c6eb746969511f65d65753, type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3025217583516844951, guid: d89e56f703c6eb746969511f65d65753, type: 3}
       propertyPath: m_RootOrder
@@ -195,6 +211,10 @@ PrefabInstance:
       propertyPath: healthSlider
       value: 
       objectReference: {fileID: 1483384935}
+    - target: {fileID: 7829146126197696162, guid: d89e56f703c6eb746969511f65d65753, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d89e56f703c6eb746969511f65d65753, type: 3}
 --- !u!1 &325555948
@@ -2667,12 +2687,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CameraTarget: {fileID: 122212532}
-  MaxViewDistance: 10
-  MinViewDistance: 6
-  ZoomRate: 20
-  lerpRate: 37
+  currentDistance: 5
+  lerpRate: 0.3
   cameraTargetHeight: 1
   sensitivity: 0.02
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 883
 --- !u!114 &2034531970
 MonoBehaviour:
   m_ObjectHideFlags: 0
