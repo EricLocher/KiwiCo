@@ -10,17 +10,27 @@ public class LookWithMouse : MonoBehaviour
     [SerializeField] Rigidbody rb;
     [SerializeField] float smoothTime;
 
+    float timeElapsed = 0;
     bool down = false;
+    bool check = true;
 
+    void Start()
+    {
+        rb.maxAngularVelocity = 100;
+    }
 
-    private void FixedUpdate()
+    void FixedUpdate()
     {
         if (!down) {
             rb.angularVelocity = new Vector3(delta.x, delta.y, delta.z);
         }
-        else {
-            transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, transform.localEulerAngles.y, 0);
-            rb.angularVelocity = new Vector3((transform.localEulerAngles.x - 180) * Time.fixedDeltaTime, 0, 0);
+        else if(timeElapsed < smoothTime) {
+            
+            rb.MoveRotation(Quaternion.Lerp(rb.rotation, Quaternion.Euler(180, 0, 0), timeElapsed / smoothTime));
+            timeElapsed += Time.fixedDeltaTime;
+        }else {
+            rb.MoveRotation(Quaternion.Euler(180, 0, 0));
+            rb.angularVelocity = Vector3.zero;
         }
     }
 
@@ -31,9 +41,23 @@ public class LookWithMouse : MonoBehaviour
 
     public void PointDown()
     {
+        if(!check) { return; }
         down = !down;
-
-   
+        timeElapsed = 0;
     }
 
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Floor")) {
+            check = false;
+            down = false;
+        }
+    }
+
+    void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Floor")) {
+            check = true;
+        }
+    }
 }
