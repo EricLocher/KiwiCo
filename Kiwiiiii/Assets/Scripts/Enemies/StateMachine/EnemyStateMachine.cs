@@ -7,7 +7,7 @@ using UnityEngine;
 public class EnemyStateMachine
 {
     EnemyState currentState = null;
-    
+
     [HideInInspector]
     public Enemy enemy;
 
@@ -21,7 +21,7 @@ public class EnemyStateMachine
     {
         Debug.Log(moveSpots);
         //"?" check if the variable is a null reference, if not we call the specified function.
-        currentState?.Update();
+        currentState?.Update(Time.deltaTime);
     }
 
     public void ChangeState(EnemyStates id)

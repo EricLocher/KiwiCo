@@ -8,15 +8,28 @@ public class IdleState : EnemyState
     public override EnemyStates GetId() => EnemyStates.Idle;
 
     private int randomDestinationSpot;
+    
+    private float waitTime;
+
+    private bool hasWaited;
 
     public override void EnterState()
     {
         agent.SetDestination(agent.transform);
+        waitTime = 2;
+        hasWaited = false;
     }
 
-    public override void Update()
+    public override void Update(float dt)
     {
-        if (!agent.fov.TargetInView(agent.target)) 
+        waitTime -= dt;
+
+        if (waitTime <= 0 && hasWaited == false)
+        {
+            SelectNewDestination();
+        }
+
+        if (!agent.fov.TargetInView(agent.target))
         {
             Patrol();
             return;
@@ -30,12 +43,17 @@ public class IdleState : EnemyState
         return;
     }
 
+    public void ResetState()
+    {
+        stateMachine.ChangeState(EnemyStates.Idle);
+    }
+
     public void SelectNewDestination()
     {
-        Debug.Log(stateMachine);
-        //Select a new random point, avoid the one in use.
+        hasWaited = true;
         int newRandomDestination = Random.Range(0, stateMachine.moveSpots.Length);
 
+        //Select a new random point, avoid the one in use.
         while (randomDestinationSpot == newRandomDestination)
         {
             newRandomDestination = Random.Range(0, stateMachine.moveSpots.Length);
@@ -49,7 +67,10 @@ public class IdleState : EnemyState
     {
         if (!agent.navMeshAgent.hasPath)
         {
-            SelectNewDestination();
+            if (waitTime <= -1)
+            {
+                ResetState();
+            }
         }
     }
 
