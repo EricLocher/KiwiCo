@@ -6,45 +6,34 @@ using UnityEngine.InputSystem;
 
 public class PlayerInput : MonoBehaviour
 {
-    private PlayerControls controls;
-    private PlayerMovement movement;
-    private WeaponsBehavior weapons;
-    private LookWithMouse lookWithMouse;
-    private CameraController cameraController;
-    private InteractController interactController;
-    [SerializeField] private HotbarBehavior hotbar;
+    [SerializeField] PlayerMovement movement;
+    [SerializeField] WeaponsBehavior weapons;
+    [SerializeField] LookWithMouse lookWithMouse;
+    [SerializeField] InteractController interactController;
+    [SerializeField] HotbarBehavior hotbar;
+
+    PlayerControls controls;
+    CameraController cameraController;
 
     private void Awake()
     {
-        movement = GetComponent<PlayerMovement>();
-        weapons = GetComponent<WeaponsBehavior>();
         controls = new PlayerControls();
-        lookWithMouse = GetComponent<LookWithMouse>();
         cameraController = Camera.main.GetComponent<CameraController>();
-        interactController = GetComponent<InteractController>();
-
    
         controls.Player.Mouse.performed += ctx => cameraController?.MouseInput(ctx);
         controls.Player.Jump.performed += ctx => movement.Jump(ctx);
         controls.Player.Dash.performed += ctx => movement.Dash();
-        controls.Player.Spin.performed += ctx => movement.Spin();
-        controls.Player.Mouse.performed += ctx => lookWithMouse.UpdateCamera(ctx);
+        controls.Player.Spin.started += ctx => lookWithMouse.PointDown();
+        controls.Player.Spin.canceled += ctx => lookWithMouse.PointDown();
         controls.Player.Sheath.performed += ctx => weapons.Sheath(ctx);
         controls.Player.Interact.performed += ctx => interactController.Interact(ctx);
         controls.Player.Hotbar2.performed += ctx => hotbar.UseItem(1);
     }
 
-    private void Update()
-    {
-        //if (controls.Player.Jump.triggered)
-        //{
-        //    controller.Jump();
-        //}
-    }
-
     private void FixedUpdate()
     {
         Move();
+        lookWithMouse.UpdateCamera(controls.Player.Mouse.ReadValue<Vector2>());
     }
 
     public void Spin(InputAction.CallbackContext context)
@@ -56,6 +45,7 @@ public class PlayerInput : MonoBehaviour
         }
 
     }
+
 
     public void Move()
     {

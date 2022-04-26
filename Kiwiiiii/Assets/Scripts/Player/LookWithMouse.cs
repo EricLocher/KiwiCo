@@ -5,10 +5,35 @@ using UnityEngine;
 
 public class LookWithMouse : MonoBehaviour
 {
-    public void UpdateCamera(InputAction.CallbackContext ctx)
+    Vector3 delta = Vector3.zero;
+    [SerializeField, Range(0, 10)] float sensitivity;
+    [SerializeField] Rigidbody rb;
+    [SerializeField] float smoothTime;
+
+    bool down = false;
+
+
+    private void FixedUpdate()
     {
-        Vector2 mouseDelta = ctx.ReadValue<Vector2>();
-        mouseDelta /= 5;
-        transform.localEulerAngles += (Vector3.right * mouseDelta.y) + (Vector3.up * mouseDelta.x);
+        if (!down) {
+            rb.angularVelocity = new Vector3(delta.x, delta.y, delta.z);
+        }
+        else {
+            transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, transform.localEulerAngles.y, 0);
+            rb.angularVelocity = new Vector3((transform.localEulerAngles.x - 180) * Time.fixedDeltaTime, 0, 0);
+        }
     }
+
+    public void UpdateCamera(Vector3 input)
+    {
+        delta.y = input.x * sensitivity;
+    }
+
+    public void PointDown()
+    {
+        down = !down;
+
+   
+    }
+
 }
