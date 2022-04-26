@@ -5,106 +5,89 @@ using UnityEngine.InputSystem;
 public class CameraController : MonoBehaviour
 {
     [Header("Target to follow")]
-    public Transform CameraTarget;
+    [SerializeField]
+    GameObject target;
+    [SerializeField]
+    GameObject cameraCenter;
+    [SerializeField]
+    Camera cam;
 
-    float x = 0.0f;
-    float y = 0.0f;
-
-    int mouseXSpeedMod = 5;
-    int mouseYSpeedMod = 5;
-
-    [Header("FOV")]
-    [SerializeField, Range(0, 30)]
-    float currentDistance = 5f;
-
-    float maxDistance;
-    float desiredDistance;
-
-    [Header("Lerp rate")]
-    [SerializeField, Range(0, 50)]
-    float lerpRate = 0.3f;
-
-    [Header("Camera Height")]
-    [SerializeField, Range(0, 30)]
-    float cameraTargetHeight = 1.0f;
-
-    [Header("Sensitivity")]
-    [SerializeField, Range(0, 0.2f)]
-    float sensitivity = 0.05f;
-
-    [Header("Layermask")]
+    [Header("Settings")]
+    [SerializeField, Range(0f, 10f)]
+    float yOffset = 1f;
+    [SerializeField, Range(0.1f, 20f)]
+    float sensitivity = 3f;
+    [SerializeField, Range(0.1f, 20f)]
+    float collisionSensitivity = 4.5f;
+    [SerializeField, Range(0f, 180f)]
+    float maxClampY = 60;
+    [SerializeField, Range(-180f, 0f)]
+    float minClampY = -60f;
+    [SerializeField, Range(-90f, 0f)]
+    float zoomDistance = -10f;
     [SerializeField]
     LayerMask layerMask;
 
-    float radius = 0.5f;
-    Vector3 currentDeltaVelocity = Vector3.zero;
-    Vector3 currentRotationDeltaVelocity = Vector3.zero;
-    Vector3 position;
-    Vector3 rotation;
+    RaycastHit _camHit;
+    Vector3 camDist;
 
     void Start()
     {
-        Vector3 Angles = transform.eulerAngles;
-        x = Angles.x;
-        y = Angles.y;
-        maxDistance = currentDistance;
+        camDist = cam.transform.localPosition;
+        camDist.z = zoomDistance;
+        Cursor.visible = false;
     }
 
-    void FixedUpdate()
+    void Update()
     {
+        cameraCenter.transform.position = new Vector3(target.transform.position.x,
+            target.transform.position.y + yOffset, target.transform.position.z);
+
         CameraCollision();
-
-        y = ClampAngle(y, -15, 25);
-
-        rotation = new Vector3(y, x, 0);
-
-        position = CameraTarget.position - (Quaternion.Euler(rotation) * Vector3.forward * desiredDistance + new Vector3(0, -cameraTargetHeight, 0));
-
-        transform.eulerAngles = rotation;
-        //transform.eulerAngles = Vector3.SmoothDamp(transform.eulerAngles, rotation, ref currentRotationDeltaVelocity, lerpRate, Mathf.Infinity, Time.fixedDeltaTime);
-        //transform.position = Vector3.Lerp(transform.position, position, lerpRate * Time.fixedDeltaTime);
-        transform.position = Vector3.SmoothDamp(transform.position, position, ref currentDeltaVelocity, lerpRate, Mathf.Infinity, Time.fixedDeltaTime);
-    }
-
-    void CameraCollision()
-    {
-        //Check if view obstructed
-        Collider[] hitColliders = Physics.OverlapSphere(transform.position, radius, layerMask);
-        if (hitColliders.Length != 0)
-        {
-            foreach (var hit in hitColliders)
-            {
-                Vector3 closestPoint = hit.ClosestPointOnBounds(transform.position);
-                desiredDistance = Vector3.Distance(transform.position, closestPoint) + 1;
-                //currentDistance -= desiredDistance + 1f;
-            }
-        }
-        else
-        {
-            desiredDistance = maxDistance;
-        }
     }
 
     public void MouseInput(InputAction.CallbackContext ctx)
     {
         Vector2 input = ctx.ReadValue<Vector2>();
 
-        input *= sensitivity;
+        var rotation = Quaternion.Euler(
+            cameraCenter.transform.rotation.eulerAngles.x - input.y * sensitivity / 2,
+            cameraCenter.transform.rotation.eulerAngles.y + input.x * sensitivity,
+            cameraCenter.transform.rotation.eulerAngles.z);
 
-        x += input.x * mouseXSpeedMod;
-        y += (input.y * -1) * mouseYSpeedMod;
+        // fixa
+        //rotation.x = Mathf.Clamp(rotation.x, minClampY, maxClampY);
+
+        cameraCenter.transform.rotation = rotation;
     }
 
-    private static float ClampAngle(float angle, float min, float max)
+    void CameraCollision()
     {
-        if (angle < -360)
+        var transform2 = cam.transform;
+        transform2.localPosition = camDist;
+
+        GameObject obj = new GameObject();
+        obj.transform.SetParent(transform2.parent);
+        var position = cam.transform.localPosition;
+        obj.transform.localPosition = new Vector3(position.x, position.y, position.z - collisionSensitivity);
+
+        if (Physics.Linecast(cameraCenter.transform.position, obj.transform.position, out _camHit))
         {
-            angle += 360;
+
+            var transform1 = cam.transform;
+            transform1.position = _camHit.point;
+            var localPosition = transform1.localPosition;
+            localPosition = new Vector3(localPosition.x, localPosition.y, localPosition.z + collisionSensitivity);
+            transform1.localPosition = localPosition;
         }
-        if (angle > 360)
+
+        Destroy(obj);
+
+        // justera
+        if (cam.transform.localPosition.z > -1f)
         {
-            angle -= 360;
+            cam.transform.localPosition =
+                new Vector3(cam.transform.localPosition.x, cam.transform.localPosition.y, -1f);
         }
-        return Mathf.Clamp(angle, min, max);
     }
 }
