@@ -76,6 +76,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Down",
+                    "type": "Button",
+                    "id": "9f3fd172-bfef-4420-972e-d537373ba133",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -237,7 +246,7 @@
                     "name": "",
                     "id": "df461aa3-4a87-4e20-93f3-3ba992fff508",
                     "path": "<Mouse>/leftButton",
-                    "interactions": "Hold(duration=2)",
+                    "interactions": "",
                     "processors": "",
                     "groups": "Keyboard and Mouse",
                     "action": "Spin",
@@ -296,6 +305,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Hotbar 2",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d8832870-c312-4b5b-8229-8b11e3add462",
+                    "path": "<Keyboard>/g",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard and Mouse",
+                    "action": "Down",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

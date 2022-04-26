@@ -20,7 +20,7 @@ public class PlayerMovement : MonoBehaviour
         animator = GetComponentInChildren<Animator>();
         radius = GetComponent<SphereCollider>().radius;
         rb = GetComponent<Rigidbody>();
-        stats = GetComponent<PlayerController>().playerStats;
+        stats = GetComponentInParent<PlayerController>().playerStats;
     }
 
     #region Movement

@@ -11,59 +11,39 @@ public abstract class Enemy : MonoBehaviour
     [HideInInspector] public NavMeshAgent navMeshAgent;
     [HideInInspector] public FOV fov;
 
-    protected EnemyStateMachine stateMachine;
-
-    private EnemyStats enemyStats;
-
-    public delegate void EnemyDeath();
-    public static event EnemyDeath death;
+    public EnemyStateMachine stateMachine;
 
     void Awake()
     {
         fov = GetComponent<FOV>();
         navMeshAgent = GetComponent<NavMeshAgent>();
-        enemyStats = GetComponent<EnemyStats>();
+        stateMachine.enemy = this;
 
-        stateMachine = new EnemyStateMachine(this);
         stateMachine.RegisterState(EnemyStates.Idle, new IdleState(this, stateMachine));
         stateMachine.RegisterState(EnemyStates.Chase, new ChaseState(this, stateMachine));
         stateMachine.RegisterState(EnemyStates.Attack, new AttackState(this, stateMachine));
+        stateMachine.RegisterState(EnemyStates.Death, new DeathState(this, stateMachine));
 
         stateMachine.ChangeState(EnemyStates.Idle);
 
         stateMachine.Update();
-    }   
+    }
+
+    private void Start()
+    {
+        SetDestination(transform);
+    }
 
     void Update()
     {
         stateMachine.Update();
-
-        if (enemyStats.stats.health <= 0)
-        {
-            death?.Invoke();
-        }
+        //TODO: Implement statechange to death somewhere
     }
 
     public void SetDestination(Transform target)
     {
         navMeshAgent.SetDestination(target.position);
     }
-
-    void Death()
-    {
-        Destroy(gameObject);
-    }
-
-    private void OnEnable()
-    {
-        death += Death;
-    }
-
-    private void OnDisable()
-    {
-        death -= Death;
-    }
-
 }
 
 

@@ -19,7 +19,7 @@ public class AttackState : EnemyState
         enterAttack?.Invoke();
     }
 
-    public override void Update()
+    public override void Update(float dt)
     {
         activeAttack?.Invoke();
 
