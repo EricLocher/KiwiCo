@@ -11,7 +11,7 @@ public abstract class EnemyState
 
     public abstract EnemyStates GetId();
     public abstract void EnterState();
-    public abstract void Update();
+    public abstract void Update(float dt = 0);
     public abstract void ExitState();
 
 }
@@ -21,5 +21,6 @@ public enum EnemyStates
     Init,
     Idle,
     Chase,
-    Attack
+    Attack,
+    Death
 }
