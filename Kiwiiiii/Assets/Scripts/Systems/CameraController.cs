@@ -52,7 +52,7 @@ public class CameraController : MonoBehaviour
         rotation = Quaternion.Euler(y, x, 0);
         cameraCenter.transform.rotation = rotation;
 
-        if(!Application.isEditor)
+        if(Application.isPlaying)
             CameraCollision();
     }
 
