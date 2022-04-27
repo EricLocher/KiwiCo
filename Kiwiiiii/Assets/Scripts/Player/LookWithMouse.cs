@@ -29,12 +29,12 @@ public class LookWithMouse : MonoBehaviour
         else if(timeElapsed < smoothTime) {
             rb.MoveRotation(Quaternion.Lerp(rb.rotation, Quaternion.Euler(180, 0, 0), timeElapsed / smoothTime));
             timeElapsed += Time.fixedDeltaTime;
-            Debug.DrawRay(transform.position, transform.forward * 10, Color.red, 10f);
+            GroundCheck();
         }
         else {
             rb.MoveRotation(Quaternion.Euler(180, 0, 0));
             rb.angularVelocity = Vector3.zero;
-            //GroundCheck();
+            GroundCheck();
         }
     }
 
@@ -52,10 +52,10 @@ public class LookWithMouse : MonoBehaviour
 
     public void GroundCheck()
     {
-        //if(check) { return false; }
-        Debug.Log("bruh");
-        Debug.DrawRay(transform.position, transform.forward * 10, Color.red, 100f);
-        if(Physics.Raycast(transform.position, transform.forward, 1f, layerMask)) {
+        BoxCollider collider = GetComponentInChildren<BoxCollider>();
+
+
+        if(Physics.Raycast(transform.position + collider.center, transform.up, collider.size.y + .1f, layerMask)) {
             movement.isGrounded = true;
             movement.stats.amountOfJumps = movement.stats.maxJumps;
         }
