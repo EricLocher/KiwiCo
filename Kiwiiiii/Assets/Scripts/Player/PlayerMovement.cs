@@ -9,10 +9,10 @@ public class PlayerMovement : MonoBehaviour
 {
     public LayerMask layerMask;
 
-    private SOPlayerStats stats;
+    [HideInInspector] public SOPlayerStats stats;
+    [HideInInspector] public bool isGrounded;
     private Rigidbody rb;
     private Animator animator;
-    private bool isGrounded;
     private float radius;
 
     private void Awake()
@@ -21,6 +21,8 @@ public class PlayerMovement : MonoBehaviour
         radius = GetComponent<SphereCollider>().radius;
         rb = GetComponent<Rigidbody>();
         stats = GetComponentInParent<PlayerController>().playerStats;
+
+        stats.amountOfDashes = stats.maxDashes;
     }
 
     #region Movement

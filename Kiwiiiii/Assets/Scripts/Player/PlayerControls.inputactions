@@ -33,7 +33,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Spin",
+                    "name": "PointDown",
                     "type": "Button",
                     "id": "213b17cf-f101-4aa1-9f85-fe24a5302e7d",
                     "expectedControlType": "Button",
@@ -72,15 +72,6 @@
                     "name": "Hotbar 2",
                     "type": "Button",
                     "id": "d6c43144-7b65-47fc-9bda-3efaf0813ecd",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Down",
-                    "type": "Button",
-                    "id": "9f3fd172-bfef-4420-972e-d537373ba133",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -249,7 +240,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard and Mouse",
-                    "action": "Spin",
+                    "action": "PointDown",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -260,7 +251,7 @@
                     "interactions": "Hold(duration=2)",
                     "processors": "",
                     "groups": "Keyboard and Mouse",
-                    "action": "Spin",
+                    "action": "PointDown",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -305,17 +296,6 @@
                     "processors": "",
                     "groups": "",
                     "action": "Hotbar 2",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "d8832870-c312-4b5b-8229-8b11e3add462",
-                    "path": "<Keyboard>/g",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard and Mouse",
-                    "action": "Down",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

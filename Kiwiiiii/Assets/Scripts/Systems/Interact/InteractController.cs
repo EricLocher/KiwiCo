@@ -6,12 +6,12 @@ using UnityEngine.InputSystem;
 public class InteractController : MonoBehaviour
 {
 
-    List<GameObject> interactables = new List<GameObject>();
+    public List<GameObject> interactables = new List<GameObject>();
     public GameObject interactNotice;
 
     private void OnTriggerEnter(Collider other)
     {
-        other.TryGetComponent<IInteractable>(out IInteractable interactable);
+        other.TryGetComponent(out IInteractable interactable);
         
         if(interactable != null) {
             interactables.Add(other.gameObject);
@@ -22,7 +22,7 @@ public class InteractController : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        other.TryGetComponent<IInteractable>(out IInteractable interactable);
+        other.TryGetComponent(out IInteractable interactable);
 
         if (interactable != null) {
             interactables.Remove(other.gameObject);
@@ -40,7 +40,6 @@ public class InteractController : MonoBehaviour
         if(interactables.Count == 0) { return; }
         if(!value.performed) { return; }
        
-
 
         GameObject closestInteractable = interactables[0];
         float dist = Vector3.Distance(transform.position, interactables[0].transform.position);

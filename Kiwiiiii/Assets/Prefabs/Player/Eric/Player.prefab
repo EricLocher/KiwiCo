@@ -113,8 +113,6 @@ GameObject:
   - component: {fileID: 388704538}
   - component: {fileID: 1426636928}
   - component: {fileID: 4470585119122227099}
-  - component: {fileID: 1426636927}
-  - component: {fileID: 1426636935}
   m_Layer: 2
   m_Name: Player
   m_TagString: Player
@@ -153,7 +151,7 @@ MonoBehaviour:
   movement: {fileID: 5455223205099218082}
   weapons: {fileID: 6615841382941534568}
   lookWithMouse: {fileID: 7895457381819548122}
-  interactController: {fileID: 1426636927}
+  interactController: {fileID: 0}
   hotbar: {fileID: 0}
 --- !u!114 &1426636928
 MonoBehaviour:
@@ -181,32 +179,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4016c71128d172846a641ad0562b2d50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1426636927
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3025217583516844945}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb6c256f26d1e264fa2c83a81a862705, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  interactNotice: {fileID: 0}
---- !u!135 &1426636935
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3025217583516844945}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 1.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4260723233905367183
 GameObject:
   m_ObjectHideFlags: 0
@@ -218,12 +190,12 @@ GameObject:
   - component: {fileID: 3909190813293745987}
   - component: {fileID: 7895457381819548122}
   - component: {fileID: 6615841382941534568}
-  - component: {fileID: 648850510102987735}
-  - component: {fileID: 383109518}
   - component: {fileID: 2936404659942511198}
+  - component: {fileID: 648850510102987735}
+  - component: {fileID: 679035228}
   m_Layer: 2
   m_Name: Weapon
-  m_TagString: Untagged
+  m_TagString: Sword
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -258,6 +230,10 @@ MonoBehaviour:
   sensitivity: 1
   rb: {fileID: 648850510102987735}
   smoothTime: 1
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 64
+  movement: {fileID: 5455223205099218082}
 --- !u!114 &6615841382941534568
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -271,7 +247,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   character: {fileID: 3552751785856790081}
-  WeaponHolder: {fileID: 4260723233905367183}
+  WeaponHolder: {fileID: 3409975541139939140}
+--- !u!114 &2936404659942511198
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4260723233905367183}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18f7631008f27574a8296a95afc01c4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerHealth: {fileID: 4470585119122227099}
 --- !u!54 &648850510102987735
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -288,7 +277,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!153 &383109518
+--- !u!153 &679035228
 ConfigurableJoint:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -384,19 +373,6 @@ ConfigurableJoint:
   m_EnablePreprocessing: 1
   m_MassScale: 10
   m_ConnectedMassScale: 1
---- !u!114 &2936404659942511198
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4260723233905367183}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18f7631008f27574a8296a95afc01c4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerHealth: {fileID: 4470585119122227099}
 --- !u!1 &8993400851200873566
 GameObject:
   m_ObjectHideFlags: 0
@@ -406,9 +382,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3552751785856790081}
+  - component: {fileID: 5455223205099218082}
   - component: {fileID: 5261179116413408735}
   - component: {fileID: 7630924585738198862}
-  - component: {fileID: 5455223205099218082}
+  - component: {fileID: 3105965049227968369}
+  - component: {fileID: 734907203}
   m_Layer: 2
   m_Name: Character
   m_TagString: Untagged
@@ -431,6 +409,23 @@ Transform:
   m_Father: {fileID: 3025217583516844951}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5455223205099218082
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8993400851200873566}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 493a5aedf76ff4b4fa8d007058b4fd90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 96
+  stats: {fileID: 0}
+  isGrounded: 0
 --- !u!54 &5261179116413408735
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -460,7 +455,20 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &5455223205099218082
+--- !u!135 &3105965049227968369
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8993400851200873566}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 2
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &734907203
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -469,12 +477,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 8993400851200873566}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 493a5aedf76ff4b4fa8d007058b4fd90, type: 3}
+  m_Script: {fileID: 11500000, guid: eb6c256f26d1e264fa2c83a81a862705, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 96
+  interactables: []
+  interactNotice: {fileID: 0}
 --- !u!1001 &2563607438350066197
 PrefabInstance:
   m_ObjectHideFlags: 0
