@@ -20,20 +20,22 @@ public class Environment : MonoBehaviour
     [SerializeField]
     Vector3 DirectionalBoostPad = Vector3.left;
 
-    void OnCollisionEnter(Collision collision)
+    void OnTriggerEnter(Collider other)
     {
-        if(collision.gameObject.tag == "Player")
+
+        if(other.gameObject.tag == "Player")
         {
+        Debug.Log("On Collision");
             if(type == Object.JumpPad)
                 direction = transform.TransformDirection(Vector3.up * force);
 
             if(type == Object.BoostPad)
-                direction = transform.InverseTransformDirection(collision.gameObject.GetComponent<Rigidbody>().velocity * force);
+                direction = transform.InverseTransformDirection(other.gameObject.GetComponent<Rigidbody>().velocity * force);
 
             if(type == Object.DirectionalBoostPad)
                 direction = direction = transform.TransformDirection(DirectionalBoostPad * force);
 
-            collision.gameObject.GetComponent<Rigidbody>().AddForce(direction, ForceMode.Force);
+            other.gameObject.GetComponent<Rigidbody>().AddForce(direction, ForceMode.Force);
         }
     }
 }
