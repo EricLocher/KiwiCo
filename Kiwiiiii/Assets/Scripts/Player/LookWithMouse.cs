@@ -10,6 +10,7 @@ public class LookWithMouse : MonoBehaviour
     [SerializeField] Rigidbody rb;
     [SerializeField] float smoothTime;
     [SerializeField] LayerMask layerMask;
+    [SerializeField] PlayerMovement movement;
 
     float timeElapsed = 0;
     bool down = false;
@@ -28,9 +29,12 @@ public class LookWithMouse : MonoBehaviour
         else if(timeElapsed < smoothTime) {
             rb.MoveRotation(Quaternion.Lerp(rb.rotation, Quaternion.Euler(180, 0, 0), timeElapsed / smoothTime));
             timeElapsed += Time.fixedDeltaTime;
-        }else {
+            Debug.DrawRay(transform.position, transform.forward * 10, Color.red, 10f);
+        }
+        else {
             rb.MoveRotation(Quaternion.Euler(180, 0, 0));
             rb.angularVelocity = Vector3.zero;
+            //GroundCheck();
         }
     }
 
@@ -46,12 +50,15 @@ public class LookWithMouse : MonoBehaviour
         timeElapsed = 0;
     }
 
-    public bool GroundCheck()
+    public void GroundCheck()
     {
-        if(check) { return false; }
-
-        Debug.DrawRay(transform.position, transform.forward, Color.red, 100f);
-        return Physics.Raycast(transform.position, transform.forward, 1f, layerMask);
+        //if(check) { return false; }
+        Debug.Log("bruh");
+        Debug.DrawRay(transform.position, transform.forward * 10, Color.red, 100f);
+        if(Physics.Raycast(transform.position, transform.forward, 1f, layerMask)) {
+            movement.isGrounded = true;
+            movement.stats.amountOfJumps = movement.stats.maxJumps;
+        }
 
     }
 

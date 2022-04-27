@@ -9,10 +9,10 @@ public class PlayerMovement : MonoBehaviour
 {
     public LayerMask layerMask;
 
-    private SOPlayerStats stats;
+    public SOPlayerStats stats;
     private Rigidbody rb;
     private Animator animator;
-    private bool isGrounded;
+    public bool isGrounded;
     private float radius;
 
     private void Awake()
@@ -100,13 +100,6 @@ public class PlayerMovement : MonoBehaviour
         if(collision.gameObject.layer == LayerMask.NameToLayer("Floor"))
         {
             GroundCheck();
-        }
-        else if (collision.gameObject.CompareTag("Sword")) {
-            if (collision.gameObject.GetComponent<LookWithMouse>().GroundCheck()) {
-                isGrounded = true;
-                stats.amountOfJumps = stats.maxJumps;
-                
-            }
         }
     }
 }
