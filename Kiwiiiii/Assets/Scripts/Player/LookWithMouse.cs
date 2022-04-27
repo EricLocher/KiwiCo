@@ -48,7 +48,7 @@ public class LookWithMouse : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Floor")) {
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Floor")) {
             check = false;
             down = false;
         }
@@ -56,7 +56,7 @@ public class LookWithMouse : MonoBehaviour
 
     void OnCollisionExit(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Floor")) {
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Floor")) {
             check = true;
         }
     }
