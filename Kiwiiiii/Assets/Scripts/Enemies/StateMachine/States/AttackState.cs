@@ -22,13 +22,6 @@ public class AttackState : EnemyState
     public override void Update(float dt)
     {
         activeAttack?.Invoke();
-
-        if (!agent.fov.TargetInView(agent.target)) { stateMachine.ChangeState(EnemyStates.Idle); }
-
-        if (Vector3.Distance(agent.transform.position, agent.target.position) < agent.fov.outerRadius)
-        {
-            stateMachine.ChangeState(EnemyStates.Chase);
-        }
     }
 
     public override void ExitState()

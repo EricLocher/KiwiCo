@@ -4,113 +4,80 @@ using UnityEngine;
 
 public class TestAttacks : MonoBehaviour
 {
+    [SerializeField]
+    Enemy enemy;
+
     public GameObject damageArea;
 
     private Animator animator;
-    private Color damageAreaColor;
+    private SpriteRenderer damageAreaSprite;
+    private Color fadeColor;
+    private Color invisible;
     private SphereCollider damageCollider;
-
-    private float drawFrequency = 2;
-    private float timer = 2.5f;
-
-    private bool fadeOut;
-    private bool firstAttack;
-    private bool doneAttacking;
 
     private void Start()
     {
         animator = GetComponentInChildren<Animator>();
-        damageAreaColor = damageArea.GetComponent<SpriteRenderer>().color;
+        damageAreaSprite = damageArea.GetComponent<SpriteRenderer>();
         damageCollider = damageArea.GetComponent<SphereCollider>();
+
+        invisible = new Color(damageAreaSprite.color.r, damageAreaSprite.color.g, damageAreaSprite.color.b, 0);
     }
 
     void EnterAttack()
     {
-        //TODO: New color setting damageArea.a to 0
-        fadeOut = true;
-        firstAttack = false;
+        damageAreaSprite.color = invisible;
+        StartCoroutine(FadeIn(2));
         return;
     }
 
-    void ActiveAttack()
-    {
-        Invoke(nameof(DrawDamageArea), drawFrequency);
-    }
-
-    void ExitAttack()
-    {
-        return;
-    }
-
-    void DrawDamageArea()
-    {
-        if (fadeOut)
-        {
-            if (firstAttack)
-            {
-                FadeIn();
-                firstAttack = false;
-            }
-
-            Invoke(nameof(FadeIn), 2);
-        }
-
-        if (damageAreaColor.a >= 1)
-        {
-            fadeOut = false;
-            FadeOut();
-            Invoke(nameof(SpinAttack), 1);
-        }
-
-        if (doneAttacking)
-        {
-            fadeOut = true;
-            doneAttacking = false;
-            timer = 2.5f;
-        }
-
-    }
-
-    void SpinAttack()
+    IEnumerator SpinAttack()
     {
         animator.SetBool("attacking", true);
         damageCollider.enabled = true;
-        timer -= Time.deltaTime;
 
-        if (timer <= 0)
+        yield return new WaitForSeconds(2);
+        damageCollider.enabled = false;
+        animator.SetBool("attacking", false);
+        damageAreaSprite.color = invisible;
+
+        enemy.stateMachine.ChangeState(EnemyStates.Chase);
+    }
+
+    IEnumerator FadeIn(float time)
+    {
+        for (float fadeamount = 0; fadeamount <= 1; fadeamount += time * Time.deltaTime)
         {
-            damageCollider.enabled = false;
-            animator.SetBool("attacking", false);
-            doneAttacking = true;
+            Debug.Log("Fadein");
+            fadeColor = new Color(damageAreaSprite.color.r, damageAreaSprite.color.g, damageAreaSprite.color.b, fadeamount);
+            damageAreaSprite.color = fadeColor;
+            yield return new WaitForEndOfFrame();
         }
+
+        StartCoroutine(FadeOut(2));
+        yield return null;
     }
 
-    void FadeIn()
+    IEnumerator FadeOut(float time)
     {
-        /*
-        float fadeamount = color.a + (fadespeed * dt)
-        newColor = new Color (r, g, b, fadeamount)
-        damageAreaColor = newColor
-        */
-    }
+        for (float fadeamount = 1; fadeamount >= 0; fadeamount -= time * Time.deltaTime)
+        {
+            fadeColor = new Color(damageAreaSprite.color.r, damageAreaSprite.color.g, damageAreaSprite.color.b, fadeamount);
+            damageAreaSprite.color = fadeColor;
+            yield return new WaitForEndOfFrame();
+        }
 
-    void FadeOut()
-    {
-        /* float fadeamount = color.a - (fadespeed * dt)
-        newColor = new Color (r, g, b, fadeamount)
-        damageAreaColor = newColor
-        */
+        StartCoroutine(SpinAttack());
+        yield return null;
     }
 
     private void OnEnable()
     {
         AttackState.enterAttack += EnterAttack;
-        AttackState.exitAttack += ExitAttack;
     }
 
     private void OnDisable()
     {
         AttackState.enterAttack -= EnterAttack;
-        AttackState.exitAttack -= ExitAttack;
     }
 }
