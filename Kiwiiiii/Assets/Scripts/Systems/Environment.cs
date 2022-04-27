@@ -22,7 +22,6 @@ public class Environment : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-
         if(other.gameObject.tag == "Player")
         {
             if(type == Object.JumpPad)
