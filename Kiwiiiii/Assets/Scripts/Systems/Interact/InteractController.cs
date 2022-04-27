@@ -41,7 +41,6 @@ public class InteractController : MonoBehaviour
         if(!value.performed) { return; }
        
 
-
         GameObject closestInteractable = interactables[0];
         float dist = Vector3.Distance(transform.position, interactables[0].transform.position);
 
