@@ -25,7 +25,6 @@ public class Environment : MonoBehaviour
 
         if(other.gameObject.tag == "Player")
         {
-        Debug.Log("On Collision");
             if(type == Object.JumpPad)
                 direction = transform.TransformDirection(Vector3.up * force);
 
