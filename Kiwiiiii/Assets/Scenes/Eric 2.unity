@@ -344,19 +344,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3409975541139939140, guid: 73e236827e84ef14dbd11f330fac65e8, type: 3}
   m_PrefabInstance: {fileID: 437289672}
   m_PrefabAsset: {fileID: 0}
---- !u!65 &317622843
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 317622841}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 6, y: 50, z: 5}
-  m_Center: {x: 0, y: 20, z: 0}
 --- !u!1 &357674868
 GameObject:
   m_ObjectHideFlags: 0
@@ -598,11 +585,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3047246989994116934, guid: 73e236827e84ef14dbd11f330fac65e8, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3409975541139939140, guid: 73e236827e84ef14dbd11f330fac65e8, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3909190813293745987, guid: 73e236827e84ef14dbd11f330fac65e8, type: 3}
       propertyPath: m_LocalPosition.z
@@ -634,7 +621,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4260723233905367183, guid: 73e236827e84ef14dbd11f330fac65e8, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5261179116413408735, guid: 73e236827e84ef14dbd11f330fac65e8, type: 3}
       propertyPath: m_Mass
@@ -660,6 +647,10 @@ PrefabInstance:
       propertyPath: m_CollisionDetection
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6615841382941534568, guid: 73e236827e84ef14dbd11f330fac65e8, type: 3}
+      propertyPath: WeaponHolder
+      value: 
+      objectReference: {fileID: 317622841}
     - target: {fileID: 7895457381819548122, guid: 73e236827e84ef14dbd11f330fac65e8, type: 3}
       propertyPath: rb
       value: 
