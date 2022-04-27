@@ -745,10 +745,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 388704538, guid: 73e236827e84ef14dbd11f330fac65e8, type: 3}
+      propertyPath: interactController
+      value: 
+      objectReference: {fileID: 2082294351}
     - target: {fileID: 541035777, guid: 73e236827e84ef14dbd11f330fac65e8, type: 3}
       propertyPath: m_Layer
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 734907203, guid: 73e236827e84ef14dbd11f330fac65e8, type: 3}
+      propertyPath: interactNotice
+      value: 
+      objectReference: {fileID: 1802665641}
     - target: {fileID: 1426636927, guid: 73e236827e84ef14dbd11f330fac65e8, type: 3}
       propertyPath: interactNotice
       value: 
@@ -1876,6 +1884,17 @@ Rigidbody:
   m_CorrespondingSourceObject: {fileID: 5261179116413408735, guid: 73e236827e84ef14dbd11f330fac65e8, type: 3}
   m_PrefabInstance: {fileID: 1074832614}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2082294351 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 734907203, guid: 73e236827e84ef14dbd11f330fac65e8, type: 3}
+  m_PrefabInstance: {fileID: 1074832614}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2082294345}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb6c256f26d1e264fa2c83a81a862705, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &2117396270 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 80181770047322750, guid: e2c60b65eadcf42498fcbdb6e9f9f024, type: 3}
