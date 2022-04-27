@@ -101,5 +101,12 @@ public class PlayerMovement : MonoBehaviour
         {
             GroundCheck();
         }
+        else if (collision.gameObject.CompareTag("Sword")) {
+            if (collision.gameObject.GetComponent<LookWithMouse>().GroundCheck()) {
+                isGrounded = true;
+                stats.amountOfJumps = stats.maxJumps;
+                
+            }
+        }
     }
 }

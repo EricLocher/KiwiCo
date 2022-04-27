@@ -9,6 +9,7 @@ public class LookWithMouse : MonoBehaviour
     [SerializeField, Range(0, 10)] float sensitivity;
     [SerializeField] Rigidbody rb;
     [SerializeField] float smoothTime;
+    [SerializeField] LayerMask layerMask;
 
     float timeElapsed = 0;
     bool down = false;
@@ -25,7 +26,6 @@ public class LookWithMouse : MonoBehaviour
             rb.angularVelocity = new Vector3(delta.x, delta.y, delta.z);
         }
         else if(timeElapsed < smoothTime) {
-            
             rb.MoveRotation(Quaternion.Lerp(rb.rotation, Quaternion.Euler(180, 0, 0), timeElapsed / smoothTime));
             timeElapsed += Time.fixedDeltaTime;
         }else {
@@ -44,6 +44,15 @@ public class LookWithMouse : MonoBehaviour
         if(!check) { return; }
         down = !down;
         timeElapsed = 0;
+    }
+
+    public bool GroundCheck()
+    {
+        if(check) { return false; }
+
+        Debug.DrawRay(transform.position, transform.forward, Color.red, 100f);
+        return Physics.Raycast(transform.position, transform.forward, 1f, layerMask);
+
     }
 
     void OnCollisionEnter(Collision collision)

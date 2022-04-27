@@ -23,7 +23,7 @@ public class PlayerInput : MonoBehaviour
         controls.Player.Mouse.performed += ctx => cameraController?.MouseInput(ctx);
         controls.Player.Jump.performed += ctx => movement.Jump(ctx);
         controls.Player.Dash.performed += ctx => movement.Dash();
-        controls.Player.Spin.started += ctx => lookWithMouse.PointDown();
+        controls.Player.PointDown.started += ctx => lookWithMouse.PointDown();
         controls.Player.Sheath.performed += ctx => weapons.Sheath(ctx);
         controls.Player.Interact.performed += ctx => interactController.Interact(ctx);
         controls.Player.Hotbar2.performed += ctx => hotbar.UseItem(1);
