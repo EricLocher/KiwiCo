@@ -15,7 +15,7 @@ public class EnemySword : MonoBehaviour
     {
         if (col.gameObject.tag == ("Player"))
         {
-            playerHealth.TakeDamage();
+            //playerHealth.TakeDamage();
         }
     }
 }

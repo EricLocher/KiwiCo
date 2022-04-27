@@ -5,13 +5,13 @@ using UnityEngine;
 public class FOV : MonoBehaviour
 {
     [Header("FOV Settings")]
-    [Range(0, 10)]
+    [Range(0, 50)]
     public float innerRadius;
-    [Range(0, 10)]
+    [Range(0, 50)]
     public float outerRadius;
     [Space]
 
-    [Range(0, 10)]
+    [Range(0, 50)]
     public float fovRadius;
     [Range(0, 360)]
     public float fovAngle;

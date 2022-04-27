@@ -19,6 +19,7 @@ public abstract class Enemy : MonoBehaviour
         navMeshAgent = GetComponent<NavMeshAgent>();
         stateMachine.enemy = this;
 
+        //TODO: Move these to specific enemy scripts (instead of registering them to Enemy Stats)
         stateMachine.RegisterState(EnemyStates.Idle, new IdleState(this, stateMachine));
         stateMachine.RegisterState(EnemyStates.Chase, new ChaseState(this, stateMachine));
         stateMachine.RegisterState(EnemyStates.Attack, new AttackState(this, stateMachine));

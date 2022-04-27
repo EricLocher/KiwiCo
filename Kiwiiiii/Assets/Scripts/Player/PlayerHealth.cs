@@ -16,10 +16,10 @@ public class PlayerHealth : MonoBehaviour
         //healthSlider.value = playerStats.playerStats.health;
     }
 
-    public void TakeDamage()
+    public void TakeDamage(float damage)
     {
         //healthSlider.value = playerStats.playerStats.health--;
-        playerStats.playerStats.health--;
+        playerStats.playerStats.health = playerStats.playerStats.health - damage;
         Debug.Log(("Enemy did damage, current player health: ") + playerStats.playerStats.health);
     }
 
