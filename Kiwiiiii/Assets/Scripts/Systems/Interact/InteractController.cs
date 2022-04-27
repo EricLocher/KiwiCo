@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 public class InteractController : MonoBehaviour
 {
 
-    public List<GameObject> interactables = new List<GameObject>();
+    List<GameObject> interactables = new List<GameObject>();
     public GameObject interactNotice;
 
     private void OnTriggerEnter(Collider other)

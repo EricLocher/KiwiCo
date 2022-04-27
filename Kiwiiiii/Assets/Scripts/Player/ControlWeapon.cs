@@ -3,14 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LookWithMouse : MonoBehaviour
+public class ControlWeapon : MonoBehaviour
 {
-    Vector3 delta = Vector3.zero;
     [SerializeField, Range(0, 10)] float sensitivity;
     [SerializeField] Rigidbody rb;
     [SerializeField] float smoothTime;
-    [SerializeField] LayerMask layerMask;
     [SerializeField] PlayerMovement movement;
+    [SerializeField] SwordBehavior sword;
+
+    float deltaY = 0;
 
     float timeElapsed = 0;
     bool down = false;
@@ -24,23 +25,29 @@ public class LookWithMouse : MonoBehaviour
     void FixedUpdate()
     {
         if (!down) {
-            rb.angularVelocity = new Vector3(delta.x, delta.y, delta.z);
-        }
-        else if(timeElapsed < smoothTime) {
-            rb.MoveRotation(Quaternion.Lerp(rb.rotation, Quaternion.Euler(180, 0, 0), timeElapsed / smoothTime));
-            timeElapsed += Time.fixedDeltaTime;
-            GroundCheck();
+            rb.angularVelocity = new Vector3(0, deltaY, 0);
         }
         else {
-            rb.MoveRotation(Quaternion.Euler(180, 0, 0));
-            rb.angularVelocity = Vector3.zero;
-            GroundCheck();
+            if (timeElapsed < smoothTime) {
+                rb.MoveRotation(Quaternion.Lerp(rb.rotation, Quaternion.Euler(180, 0, 0), timeElapsed / smoothTime));
+                timeElapsed += Time.fixedDeltaTime;
+            }
+            else {
+                rb.MoveRotation(Quaternion.Euler(180, 0, 0));
+                rb.angularVelocity = Vector3.zero;
+            }
+
+            if (sword.GroundCheck()) {
+                movement.isGrounded = true;
+                movement.stats.amountOfJumps = movement.stats.maxJumps;
+            }
+            
         }
     }
 
-    public void UpdateCamera(Vector3 input)
+    public void MouseInput(Vector3 input)
     {
-        delta.y = input.x * sensitivity;
+        deltaY = input.x * sensitivity;
     }
 
     public void PointDown()
@@ -48,18 +55,6 @@ public class LookWithMouse : MonoBehaviour
         if(!check) { return; }
         down = !down;
         timeElapsed = 0;
-    }
-
-    public void GroundCheck()
-    {
-        BoxCollider collider = GetComponentInChildren<BoxCollider>();
-
-
-        if(Physics.Raycast(transform.position + collider.center, transform.up, collider.size.y + .1f, layerMask)) {
-            movement.isGrounded = true;
-            movement.stats.amountOfJumps = movement.stats.maxJumps;
-        }
-
     }
 
     void OnCollisionEnter(Collision collision)
