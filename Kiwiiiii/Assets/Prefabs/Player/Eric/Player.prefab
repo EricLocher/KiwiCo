@@ -218,9 +218,9 @@ GameObject:
   - component: {fileID: 3909190813293745987}
   - component: {fileID: 7895457381819548122}
   - component: {fileID: 6615841382941534568}
+  - component: {fileID: 2936404659942511198}
   - component: {fileID: 648850510102987735}
   - component: {fileID: 383109518}
-  - component: {fileID: 2936404659942511198}
   m_Layer: 2
   m_Name: Weapon
   m_TagString: Untagged
@@ -272,6 +272,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   character: {fileID: 3552751785856790081}
   WeaponHolder: {fileID: 4260723233905367183}
+--- !u!114 &2936404659942511198
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4260723233905367183}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18f7631008f27574a8296a95afc01c4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerHealth: {fileID: 4470585119122227099}
 --- !u!54 &648850510102987735
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -384,19 +397,6 @@ ConfigurableJoint:
   m_EnablePreprocessing: 1
   m_MassScale: 10
   m_ConnectedMassScale: 1
---- !u!114 &2936404659942511198
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4260723233905367183}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18f7631008f27574a8296a95afc01c4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerHealth: {fileID: 4470585119122227099}
 --- !u!1 &8993400851200873566
 GameObject:
   m_ObjectHideFlags: 0

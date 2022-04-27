@@ -55,7 +55,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Spin"",
+                    ""name"": ""PointDown"",
                     ""type"": ""Button"",
                     ""id"": ""213b17cf-f101-4aa1-9f85-fe24a5302e7d"",
                     ""expectedControlType"": ""Button"",
@@ -94,15 +94,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""name"": ""Hotbar 2"",
                     ""type"": ""Button"",
                     ""id"": ""d6c43144-7b65-47fc-9bda-3efaf0813ecd"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Down"",
-                    ""type"": ""Button"",
-                    ""id"": ""9f3fd172-bfef-4420-972e-d537373ba133"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -271,7 +262,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard and Mouse"",
-                    ""action"": ""Spin"",
+                    ""action"": ""PointDown"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -282,7 +273,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""interactions"": ""Hold(duration=2)"",
                     ""processors"": """",
                     ""groups"": ""Keyboard and Mouse"",
-                    ""action"": ""Spin"",
+                    ""action"": ""PointDown"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -327,17 +318,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Hotbar 2"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""d8832870-c312-4b5b-8229-8b11e3add462"",
-                    ""path"": ""<Keyboard>/g"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard and Mouse"",
-                    ""action"": ""Down"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -407,12 +387,11 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_Player_Movement = m_Player.FindAction("Movement", throwIfNotFound: true);
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
         m_Player_Dash = m_Player.FindAction("Dash", throwIfNotFound: true);
-        m_Player_Spin = m_Player.FindAction("Spin", throwIfNotFound: true);
+        m_Player_PointDown = m_Player.FindAction("PointDown", throwIfNotFound: true);
         m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
         m_Player_Mouse = m_Player.FindAction("Mouse", throwIfNotFound: true);
         m_Player_Sheath = m_Player.FindAction("Sheath", throwIfNotFound: true);
         m_Player_Hotbar2 = m_Player.FindAction("Hotbar 2", throwIfNotFound: true);
-        m_Player_Down = m_Player.FindAction("Down", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Newaction = m_UI.FindAction("New action", throwIfNotFound: true);
@@ -478,12 +457,11 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Movement;
     private readonly InputAction m_Player_Jump;
     private readonly InputAction m_Player_Dash;
-    private readonly InputAction m_Player_Spin;
+    private readonly InputAction m_Player_PointDown;
     private readonly InputAction m_Player_Interact;
     private readonly InputAction m_Player_Mouse;
     private readonly InputAction m_Player_Sheath;
     private readonly InputAction m_Player_Hotbar2;
-    private readonly InputAction m_Player_Down;
     public struct PlayerActions
     {
         private @PlayerControls m_Wrapper;
@@ -491,12 +469,11 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public InputAction @Movement => m_Wrapper.m_Player_Movement;
         public InputAction @Jump => m_Wrapper.m_Player_Jump;
         public InputAction @Dash => m_Wrapper.m_Player_Dash;
-        public InputAction @Spin => m_Wrapper.m_Player_Spin;
+        public InputAction @PointDown => m_Wrapper.m_Player_PointDown;
         public InputAction @Interact => m_Wrapper.m_Player_Interact;
         public InputAction @Mouse => m_Wrapper.m_Player_Mouse;
         public InputAction @Sheath => m_Wrapper.m_Player_Sheath;
         public InputAction @Hotbar2 => m_Wrapper.m_Player_Hotbar2;
-        public InputAction @Down => m_Wrapper.m_Player_Down;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -515,9 +492,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Dash.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDash;
                 @Dash.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDash;
                 @Dash.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDash;
-                @Spin.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSpin;
-                @Spin.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSpin;
-                @Spin.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSpin;
+                @PointDown.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPointDown;
+                @PointDown.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPointDown;
+                @PointDown.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPointDown;
                 @Interact.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
                 @Interact.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
                 @Interact.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
@@ -530,9 +507,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Hotbar2.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnHotbar2;
                 @Hotbar2.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnHotbar2;
                 @Hotbar2.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnHotbar2;
-                @Down.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDown;
-                @Down.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDown;
-                @Down.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDown;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -546,9 +520,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Dash.started += instance.OnDash;
                 @Dash.performed += instance.OnDash;
                 @Dash.canceled += instance.OnDash;
-                @Spin.started += instance.OnSpin;
-                @Spin.performed += instance.OnSpin;
-                @Spin.canceled += instance.OnSpin;
+                @PointDown.started += instance.OnPointDown;
+                @PointDown.performed += instance.OnPointDown;
+                @PointDown.canceled += instance.OnPointDown;
                 @Interact.started += instance.OnInteract;
                 @Interact.performed += instance.OnInteract;
                 @Interact.canceled += instance.OnInteract;
@@ -561,9 +535,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Hotbar2.started += instance.OnHotbar2;
                 @Hotbar2.performed += instance.OnHotbar2;
                 @Hotbar2.canceled += instance.OnHotbar2;
-                @Down.started += instance.OnDown;
-                @Down.performed += instance.OnDown;
-                @Down.canceled += instance.OnDown;
             }
         }
     }
@@ -624,12 +595,11 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         void OnMovement(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnDash(InputAction.CallbackContext context);
-        void OnSpin(InputAction.CallbackContext context);
+        void OnPointDown(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
         void OnMouse(InputAction.CallbackContext context);
         void OnSheath(InputAction.CallbackContext context);
         void OnHotbar2(InputAction.CallbackContext context);
-        void OnDown(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {
