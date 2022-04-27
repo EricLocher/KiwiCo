@@ -1,5 +1,4 @@
 using UnityEngine;
-using System.Collections;
 using UnityEngine.InputSystem;
 
 public class CameraController : MonoBehaviour
@@ -19,10 +18,10 @@ public class CameraController : MonoBehaviour
     float sensitivity = 3f;
     [SerializeField, Range(0.1f, 20f)]
     float collisionSensitivity = 4.5f;
-    [SerializeField, Range(0f, 180f)]
-    float maxClampY = 60;
-    [SerializeField, Range(-180f, 0f)]
-    float minClampY = -60f;
+    [SerializeField, Range(-360f, 360f)]
+    float maxClampY = 55;
+    [SerializeField, Range(-360f, 360f)]
+    float minClampY = -13;
     [SerializeField, Range(-90f, 0f)]
     float zoomDistance = -10f;
     [SerializeField]
@@ -30,18 +29,27 @@ public class CameraController : MonoBehaviour
 
     RaycastHit _camHit;
     Vector3 camDist;
+    float y = 0f, x = 0f;
+    Quaternion rotation;
 
     void Start()
     {
         camDist = cam.transform.localPosition;
         camDist.z = zoomDistance;
         Cursor.visible = false;
+        Vector3 Angles = transform.eulerAngles;
+        x = Angles.x;
+        y = Angles.y;
     }
 
     void Update()
     {
         cameraCenter.transform.position = new Vector3(target.transform.position.x,
             target.transform.position.y + yOffset, target.transform.position.z);
+
+        y = ClampAngle(y, -13, 55);
+        rotation = Quaternion.Euler(y, x, 0);
+        cameraCenter.transform.rotation = rotation;
 
         CameraCollision();
     }
@@ -50,15 +58,11 @@ public class CameraController : MonoBehaviour
     {
         Vector2 input = ctx.ReadValue<Vector2>();
 
-        var rotation = Quaternion.Euler(
-            cameraCenter.transform.rotation.eulerAngles.x - input.y * sensitivity / 2,
-            cameraCenter.transform.rotation.eulerAngles.y + input.x * sensitivity,
-            cameraCenter.transform.rotation.eulerAngles.z);
+        input.x *= sensitivity;
+        input.y *= sensitivity / 2;
 
-        // fixa
-        //rotation.x = Mathf.Clamp(rotation.x, minClampY, maxClampY);
-
-        cameraCenter.transform.rotation = rotation;
+        x += input.x;
+        y += (input.y * -1);
     }
 
     void CameraCollision()
@@ -82,12 +86,18 @@ public class CameraController : MonoBehaviour
         }
 
         Destroy(obj);
+    }
 
-        // justera
-        if (cam.transform.localPosition.z > -1f)
+    static float ClampAngle(float angle, float min, float max)
+    {
+        if (angle < -360)
         {
-            cam.transform.localPosition =
-                new Vector3(cam.transform.localPosition.x, cam.transform.localPosition.y, -1f);
+            angle += 360;
         }
+        if (angle > 360)
+        {
+            angle -= 360;
+        }
+        return Mathf.Clamp(angle, min, max);
     }
 }
