@@ -10,6 +10,7 @@ public class ControlWeapon : MonoBehaviour
     [SerializeField] float smoothTime;
     [SerializeField] PlayerMovement movement;
     [SerializeField] SwordBehavior sword;
+    [SerializeField] float maxAngular;
 
     float deltaY = 0;
 
@@ -19,7 +20,7 @@ public class ControlWeapon : MonoBehaviour
 
     void Start()
     {
-        rb.maxAngularVelocity = 100;
+        rb.maxAngularVelocity = maxAngular;
     }
 
     void FixedUpdate()
