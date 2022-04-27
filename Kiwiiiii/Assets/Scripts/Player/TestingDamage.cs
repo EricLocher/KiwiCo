@@ -4,12 +4,7 @@ using UnityEngine;
 
 public class TestingDamage : MonoBehaviour
 {
-    private PlayerHealth playerHealth;
-
-    void Start()
-    {
-        playerHealth = GetComponentInParent<PlayerHealth>();    
-    }
+    [SerializeField] PlayerHealth playerHealth;
 
     void OnTriggerEnter(Collider col)
     {
