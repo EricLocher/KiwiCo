@@ -17,6 +17,9 @@ public class Environment : MonoBehaviour
 
     Vector3 direction;
 
+    [SerializeField]
+    Vector3 DirectionalBoostPad = Vector3.left;
+
     void OnCollisionEnter(Collision collision)
     {
         if(collision.gameObject.tag == "Player")
@@ -28,7 +31,7 @@ public class Environment : MonoBehaviour
                 direction = transform.InverseTransformDirection(collision.gameObject.GetComponent<Rigidbody>().velocity * force);
 
             if(type == Object.DirectionalBoostPad)
-                direction = direction = transform.TransformDirection(Vector3.left * force);
+                direction = direction = transform.TransformDirection(DirectionalBoostPad * force);
 
             collision.gameObject.GetComponent<Rigidbody>().AddForce(direction, ForceMode.Force);
         }
