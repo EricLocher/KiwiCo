@@ -9,10 +9,10 @@ public class PlayerMovement : MonoBehaviour
 {
     public LayerMask layerMask;
 
-    public SOPlayerStats stats;
+    [HideInInspector] public SOPlayerStats stats;
+    [HideInInspector] public bool isGrounded;
     private Rigidbody rb;
     private Animator animator;
-    public bool isGrounded;
     private float radius;
 
     private void Awake()
