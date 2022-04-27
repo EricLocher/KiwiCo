@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+[ExecuteInEditMode]
 public class CameraController : MonoBehaviour
 {
     [Header("Target to follow")]
@@ -51,7 +52,8 @@ public class CameraController : MonoBehaviour
         rotation = Quaternion.Euler(y, x, 0);
         cameraCenter.transform.rotation = rotation;
 
-        CameraCollision();
+        if(!Application.isEditor)
+            CameraCollision();
     }
 
     public void MouseInput(InputAction.CallbackContext ctx)
