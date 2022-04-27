@@ -21,6 +21,8 @@ public class PlayerMovement : MonoBehaviour
         radius = GetComponent<SphereCollider>().radius;
         rb = GetComponent<Rigidbody>();
         stats = GetComponentInParent<PlayerController>().playerStats;
+
+        stats.amountOfDashes = stats.maxDashes;
     }
 
     #region Movement
