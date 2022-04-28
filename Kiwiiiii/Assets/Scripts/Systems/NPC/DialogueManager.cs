@@ -14,6 +14,10 @@ public class DialogueManager : MonoBehaviour
 
     private Queue<string> sentances;
 
+    private void Awake()
+    {
+        DontDestroyOnLoad(gameObject);
+    }
     void Start()
     {
         sentances = new Queue<string>();

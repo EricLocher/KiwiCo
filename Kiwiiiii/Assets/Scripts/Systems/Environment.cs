@@ -27,7 +27,7 @@ public class Environment : MonoBehaviour
     {
         if(other.isTrigger) { return; }
 
-        if(other.gameObject.tag == "Player")
+        if(other.gameObject.CompareTag("Player"))
         {
             if(type == Object.JumpPad)
                 direction = transform.TransformDirection(Vector3.up * force);

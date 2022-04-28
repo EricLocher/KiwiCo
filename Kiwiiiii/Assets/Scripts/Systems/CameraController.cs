@@ -52,7 +52,7 @@ public class CameraController : MonoBehaviour
         cameraCenter.transform.position = new Vector3(target.transform.position.x,
             target.transform.position.y + yOffset, target.transform.position.z);
 
-        y = ClampAngle(y, -13, 55);
+        y = ClampAngle(y, minClampY, maxClampY);
         rotation = Quaternion.Euler(y, x, 0);
         cameraCenter.transform.rotation = rotation;
 
@@ -64,8 +64,8 @@ public class CameraController : MonoBehaviour
     {
         Vector2 input = ctx.ReadValue<Vector2>();
 
-        input.x *= sensitivity;
-        input.y *= sensitivity / 2;
+        input.x *= sensitivity * Time.deltaTime;
+        input.y *= sensitivity / 2 * Time.deltaTime;
 
         x += input.x;
         y += (input.y * -1);
@@ -83,7 +83,6 @@ public class CameraController : MonoBehaviour
 
         if (Physics.Linecast(cameraCenter.transform.position, obj.transform.position, out _camHit))
         {
-
             var transform1 = cam.transform;
             transform1.position = _camHit.point;
             var localPosition = transform1.localPosition;
