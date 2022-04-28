@@ -19,12 +19,7 @@ public class WeaponsBehavior : MonoBehaviour
     {
         if (context.performed)
         {
-            if (WeaponHolder.activeSelf)
-            {
-                WeaponHolder.SetActive(false);
-            }
-            else
-                WeaponHolder.SetActive(true);
+            WeaponHolder.SetActive(!WeaponHolder.activeSelf);
         }
     }
 }
