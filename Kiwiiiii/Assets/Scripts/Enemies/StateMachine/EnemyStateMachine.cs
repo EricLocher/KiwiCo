@@ -19,13 +19,13 @@ public class EnemyStateMachine
 
     public void Update()
     {
-        Debug.Log(moveSpots);
         //"?" check if the variable is a null reference, if not we call the specified function.
         currentState?.Update(Time.deltaTime);
     }
 
     public void ChangeState(EnemyStates id)
     {
+        Debug.Log(id);
         currentState?.ExitState();
         currentState = states[id];
         currentState?.EnterState();
