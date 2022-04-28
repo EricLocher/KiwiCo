@@ -7,52 +7,42 @@ public class ShootAttack : MonoBehaviour
     [SerializeField]
     Enemy enemy;
 
-    [Range(0.0f, 1.0f)]
-    public float attackPropability;
-
-    [Range(0.0f, 1.0f)]
-    public float hitAccuracy;
-
+    public float force = 5;
     public float damagePoints = 3;
 
+    public GameObject sphere;
+    public Transform gun;
+
     private Animator animator;
-    private PlayerHealth playerHealth;
+    private Rigidbody sphereRB;
+    private Transform playerTransform;
 
-    private float random;
-
-    private bool shoot;
 
     void Start()
     {
-        random = Random.Range(0.0f, 1.0f);
         animator = GetComponent<Animator>();
-        playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
+        playerTransform = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
     }
 
     void EnterAttack()
     {
-        StartCoroutine(Shoot());
+        StartCoroutine(ShootBall());
     }
 
-    void ActiveAttack()
+    void ExitAttack()
     {
-        animator.SetBool("shooting", shoot);
+        animator.SetBool("shooting", false);
     }
 
-    IEnumerator Shoot()
+    IEnumerator ShootBall()
     {
-        shoot = false;
+        animator.SetBool("shooting", true);
+        Vector3 direction = (gun.transform.position - playerTransform.position).normalized;
 
-        if (random > (1.0f - attackPropability))
-        {
-            shoot = true;
-            bool isHit = random > 1.0f - hitAccuracy;
+        GameObject newSphere = Instantiate(sphere, gun.transform.position, gun.transform.rotation);
+        sphereRB = newSphere.GetComponent<Rigidbody>();
 
-            if (isHit)
-            {
-                playerHealth.TakeDamage(damagePoints);
-            }
-        }
+        sphereRB.AddForce(direction * force);
 
         yield return new WaitForSeconds(2);
         enemy.stateMachine.ChangeState(EnemyStates.Chase);
@@ -61,12 +51,12 @@ public class ShootAttack : MonoBehaviour
     private void OnEnable()
     {
         AttackState.enterAttack += EnterAttack;
-        AttackState.activeAttack += ActiveAttack;
+        AttackState.exitAttack += ExitAttack;
     }
 
     private void OnDisable()
     {
         AttackState.enterAttack -= EnterAttack;
-        AttackState.activeAttack -= ActiveAttack;
+        AttackState.exitAttack -= ExitAttack;
     }
 }
