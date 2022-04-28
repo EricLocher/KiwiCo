@@ -25,12 +25,18 @@ public class ShootAttack : MonoBehaviour
     void Start()
     {
         random = Random.Range(0.0f, 1.0f);
+        animator = GetComponent<Animator>();
         playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
     }
 
     void EnterAttack()
     {
-        //StartCoroutine(Shoot());
+        StartCoroutine(Shoot());
+    }
+
+    void ActiveAttack()
+    {
+        animator.SetBool("shooting", shoot);
     }
 
     IEnumerator Shoot()
@@ -48,8 +54,6 @@ public class ShootAttack : MonoBehaviour
             }
         }
 
-        animator.SetBool("shooting", shoot);
-
         yield return new WaitForSeconds(2);
         enemy.stateMachine.ChangeState(EnemyStates.Chase);
     }
@@ -57,10 +61,12 @@ public class ShootAttack : MonoBehaviour
     private void OnEnable()
     {
         AttackState.enterAttack += EnterAttack;
+        AttackState.activeAttack += ActiveAttack;
     }
 
     private void OnDisable()
     {
         AttackState.enterAttack -= EnterAttack;
+        AttackState.activeAttack -= ActiveAttack;
     }
 }
