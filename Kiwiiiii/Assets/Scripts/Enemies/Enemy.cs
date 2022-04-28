@@ -4,14 +4,13 @@ using UnityEngine;
 using UnityEngine.AI;
 
 [Serializable, RequireComponent(typeof(NavMeshAgent), typeof(FOV))]
-public abstract class Enemy : MonoBehaviour
+public class Enemy : MonoBehaviour
 {
     [SerializeField] public Transform target;
-
+    public EnemyAttack attack;
+    public EnemyStateMachine stateMachine;
     [HideInInspector] public NavMeshAgent navMeshAgent;
     [HideInInspector] public FOV fov;
-
-    public EnemyStateMachine stateMachine;
 
     void Awake()
     {
@@ -19,7 +18,6 @@ public abstract class Enemy : MonoBehaviour
         navMeshAgent = GetComponent<NavMeshAgent>();
         stateMachine.enemy = this;
 
-        //TODO: Move these to specific enemy scripts (instead of registering them to Enemy Stats)
         stateMachine.RegisterState(EnemyStates.Idle, new IdleState(this, stateMachine));
         stateMachine.RegisterState(EnemyStates.Chase, new ChaseState(this, stateMachine));
         stateMachine.RegisterState(EnemyStates.Attack, new AttackState(this, stateMachine));
@@ -27,23 +25,17 @@ public abstract class Enemy : MonoBehaviour
 
         stateMachine.ChangeState(EnemyStates.Idle);
 
-        stateMachine.Update();
-    }
-
-    private void Start()
-    {
-        SetDestination(transform);
-    }
-
-    void Update()
-    {
-        stateMachine.Update();
-        //TODO: Implement statechange to death somewhere
+   
     }
 
     public void SetDestination(Transform target)
     {
         navMeshAgent.SetDestination(target.position);
+    }
+
+    private void Update()
+    {
+        stateMachine.Update();
     }
 }
 

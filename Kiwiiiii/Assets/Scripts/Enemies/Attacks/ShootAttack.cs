@@ -2,65 +2,53 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShootAttack : MonoBehaviour
+public class ShootAttack : EnemyAttack
 {
     [SerializeField]
     Enemy enemy;
 
-    [Range(0.0f, 1.0f)]
-    public float attackPropability;
-
-    [Range(0.0f, 1.0f)]
-    public float hitAccuracy;
-
+    public float force = 5;
     public float damagePoints = 3;
 
+    public GameObject sphere;
+    public Transform gun;
+
     private Animator animator;
-    private PlayerHealth playerHealth;
+    private Rigidbody sphereRB;
+    private Transform playerTransform;
 
-    private float random;
+    private Vector3 direction;
 
-    private bool shoot;
 
     void Start()
     {
-        random = Random.Range(0.0f, 1.0f);
-        playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
+        animator = GetComponent<Animator>();
+        playerTransform = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
     }
 
-    void EnterAttack()
+    public override void EnterAttack()
     {
-        //StartCoroutine(Shoot());
+        StartCoroutine(ShootBall());
+    }
+    public override void ActiveAttack()
+    {
+        sphereRB?.AddForce(direction *+ force);
     }
 
-    IEnumerator Shoot()
+    public override void ExitAttack()
     {
-        shoot = false;
+        animator.SetBool("shooting", false);
+    }
 
-        if (random > (1.0f - attackPropability))
-        {
-            shoot = true;
-            bool isHit = random > 1.0f - hitAccuracy;
+    IEnumerator ShootBall()
+    {
+        animator.SetBool("shooting", true);
+        direction = (gun.transform.position - playerTransform.position).normalized;
 
-            if (isHit)
-            {
-                playerHealth.TakeDamage(damagePoints);
-            }
-        }
-
-        animator.SetBool("shooting", shoot);
+        GameObject newSphere = Instantiate(sphere, gun.transform.position, gun.transform.rotation);
+        sphereRB = newSphere.GetComponent<Rigidbody>();
 
         yield return new WaitForSeconds(2);
         enemy.stateMachine.ChangeState(EnemyStates.Chase);
-    }
-
-    private void OnEnable()
-    {
-        AttackState.enterAttack += EnterAttack;
-    }
-
-    private void OnDisable()
-    {
-        AttackState.enterAttack -= EnterAttack;
     }
 }
