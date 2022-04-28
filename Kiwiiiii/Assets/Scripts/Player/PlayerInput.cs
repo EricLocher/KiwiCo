@@ -8,7 +8,7 @@ public class PlayerInput : MonoBehaviour
 {
     [SerializeField] PlayerMovement movement;
     [SerializeField] WeaponsBehavior weapons;
-    [SerializeField] LookWithMouse lookWithMouse;
+    [SerializeField] ControlWeapon lookWithMouse;
     [SerializeField] InteractController interactController;
     [SerializeField] HotbarBehavior hotbar;
 
@@ -32,7 +32,7 @@ public class PlayerInput : MonoBehaviour
     private void FixedUpdate()
     {
         Move();
-        lookWithMouse.UpdateCamera(controls.Player.Mouse.ReadValue<Vector2>());
+        lookWithMouse.MouseInput(controls.Player.Mouse.ReadValue<Vector2>());
     }
 
     public void Spin(InputAction.CallbackContext context)

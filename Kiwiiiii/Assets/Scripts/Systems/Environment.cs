@@ -15,6 +15,9 @@ public class Environment : MonoBehaviour
     [SerializeField, Range(0f, 1000f)]
     float force = 500f;
 
+    [SerializeField]
+    ForceMode forceMode;
+
     Vector3 direction;
 
     [SerializeField]
@@ -22,6 +25,8 @@ public class Environment : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
+        if(other.isTrigger) { return; }
+
         if(other.gameObject.tag == "Player")
         {
             if(type == Object.JumpPad)
@@ -33,7 +38,7 @@ public class Environment : MonoBehaviour
             if(type == Object.DirectionalBoostPad)
                 direction = direction = transform.TransformDirection(DirectionalBoostPad * force);
 
-            other.gameObject.GetComponent<Rigidbody>().AddForce(direction, ForceMode.Force);
+            other.gameObject.GetComponent<Rigidbody>().AddForce(direction, forceMode);
         }
     }
 }

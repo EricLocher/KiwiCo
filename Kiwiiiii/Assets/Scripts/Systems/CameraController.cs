@@ -35,9 +35,13 @@ public class CameraController : MonoBehaviour
 
     void Start()
     {
+        if (Application.isPlaying) {
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+
         camDist = cam.transform.localPosition;
         camDist.z = zoomDistance;
-        Cursor.visible = false;
         Vector3 Angles = transform.eulerAngles;
         x = Angles.x;
         y = Angles.y;
