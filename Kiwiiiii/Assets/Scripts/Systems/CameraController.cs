@@ -52,7 +52,7 @@ public class CameraController : MonoBehaviour
         cameraCenter.transform.position = new Vector3(target.transform.position.x,
             target.transform.position.y + yOffset, target.transform.position.z);
 
-        y = ClampAngle(y, -13, 55);
+        y = ClampAngle(y, minClampY, maxClampY);
         rotation = Quaternion.Euler(y, x, 0);
         cameraCenter.transform.rotation = rotation;
 
