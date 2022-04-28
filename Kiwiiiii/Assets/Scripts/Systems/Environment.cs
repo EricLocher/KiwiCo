@@ -11,17 +11,6 @@ public class Environment : MonoBehaviour
     };
     [SerializeField]
     Object type;
-    enum DirectionalBoost
-    {
-        Forward,
-        Back,
-        Left,
-        Right,
-        Up,
-        Down
-    };
-    [SerializeField]
-    DirectionalBoost DirectionBoost;
 
     [SerializeField, Range(0f, 1000f)]
     float force = 500f;
@@ -30,7 +19,9 @@ public class Environment : MonoBehaviour
     ForceMode forceMode;
 
     Vector3 direction;
-    Vector3 DirectionBoostPad;
+
+    [SerializeField]
+    Vector3 DirectionalBoostPad = Vector3.left;
 
     void OnTriggerEnter(Collider other)
     {
@@ -45,27 +36,7 @@ public class Environment : MonoBehaviour
                 direction = transform.InverseTransformDirection(other.gameObject.GetComponent<Rigidbody>().velocity * force);
 
             if(type == Object.DirectionalBoostPad)
-            {
-                if (DirectionBoost == DirectionalBoost.Forward)
-                    DirectionBoostPad = Vector3.forward;
-
-                if (DirectionBoost == DirectionalBoost.Back)
-                    DirectionBoostPad = Vector3.back;
-
-                if (DirectionBoost == DirectionalBoost.Left)
-                    DirectionBoostPad = Vector3.left;
-
-                if (DirectionBoost == DirectionalBoost.Right)
-                    DirectionBoostPad = Vector3.right;
-
-                if (DirectionBoost == DirectionalBoost.Up)
-                    DirectionBoostPad = Vector3.up;
-
-                if (DirectionBoost == DirectionalBoost.Down)
-                    DirectionBoostPad = Vector3.down;
-
-                direction = transform.TransformDirection(DirectionBoostPad * force);
-            }
+                direction = direction = transform.TransformDirection(DirectionalBoostPad * force);
 
             other.gameObject.GetComponent<Rigidbody>().AddForce(direction, forceMode);
         }
