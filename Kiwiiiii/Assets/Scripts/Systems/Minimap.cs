@@ -11,6 +11,8 @@ public class Minimap : MonoBehaviour
     [SerializeField]
     float yOffset = 12f;
 
+    float shadowDistance;
+
     void Update()
     {
         transform.position = new Vector3(target.transform.position.x, target.transform.position.y + yOffset, target.transform.position.z);
