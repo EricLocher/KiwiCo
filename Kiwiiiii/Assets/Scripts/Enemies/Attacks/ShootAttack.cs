@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShootAttack : MonoBehaviour
+public class ShootAttack : EnemyAttack
 {
     [SerializeField]
     Enemy enemy;
@@ -17,6 +17,8 @@ public class ShootAttack : MonoBehaviour
     private Rigidbody sphereRB;
     private Transform playerTransform;
 
+    private Vector3 direction;
+
 
     void Start()
     {
@@ -24,12 +26,16 @@ public class ShootAttack : MonoBehaviour
         playerTransform = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
     }
 
-    void EnterAttack()
+    public override void EnterAttack()
     {
         StartCoroutine(ShootBall());
     }
+    public override void ActiveAttack()
+    {
+        sphereRB?.AddForce(direction *+ force);
+    }
 
-    void ExitAttack()
+    public override void ExitAttack()
     {
         animator.SetBool("shooting", false);
     }
@@ -37,26 +43,12 @@ public class ShootAttack : MonoBehaviour
     IEnumerator ShootBall()
     {
         animator.SetBool("shooting", true);
-        Vector3 direction = (gun.transform.position - playerTransform.position).normalized;
+        direction = (gun.transform.position - playerTransform.position).normalized;
 
         GameObject newSphere = Instantiate(sphere, gun.transform.position, gun.transform.rotation);
         sphereRB = newSphere.GetComponent<Rigidbody>();
 
-        sphereRB.AddForce(direction * force);
-
         yield return new WaitForSeconds(2);
         enemy.stateMachine.ChangeState(EnemyStates.Chase);
-    }
-
-    private void OnEnable()
-    {
-        AttackState.enterAttack += EnterAttack;
-        AttackState.exitAttack += ExitAttack;
-    }
-
-    private void OnDisable()
-    {
-        AttackState.enterAttack -= EnterAttack;
-        AttackState.exitAttack -= ExitAttack;
     }
 }

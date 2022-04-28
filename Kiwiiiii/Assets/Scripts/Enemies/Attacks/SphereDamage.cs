@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,26 +6,20 @@ using UnityEngine;
 public class SphereDamage : MonoBehaviour
 {
     private PlayerHealth playerHealth;
-    
-    private Vector3 initalPos;
-    
-    private float maxDistance;
-    private float distance = 40;
+
 
     private void Start()
     {
         playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
-        initalPos = transform.position;
+     
     }
 
-    private void Update()
-    {
-        maxDistance = Vector3.Distance(initalPos, transform.position) + distance;
 
-        if(distance < maxDistance)
-        {
-            Destroy(gameObject);
-        }
+
+    private void Kill()
+    {
+        Debug.Log("kill sphere");
+        Destroy(gameObject);
     }
 
     private void OnTriggerEnter(Collider col)
@@ -32,8 +27,9 @@ public class SphereDamage : MonoBehaviour
         if (col.gameObject.CompareTag("Player"))
         {
             playerHealth.TakeDamage(3);
+
+            Kill();
         }
-     
-        Destroy(gameObject);
+
     }
 }

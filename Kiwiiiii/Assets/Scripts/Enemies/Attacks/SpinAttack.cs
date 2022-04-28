@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpinAttack : MonoBehaviour
+public class SpinAttack : EnemyAttack
 {
     [SerializeField]
     Enemy enemy;
@@ -24,11 +24,16 @@ public class SpinAttack : MonoBehaviour
         invisible = new Color(damageAreaSprite.color.r, damageAreaSprite.color.g, damageAreaSprite.color.b, 0);
     }
 
-    void EnterAttack()
+    public override void EnterAttack()
     {
         damageAreaSprite.color = invisible;
         StartCoroutine(FadeIn(2));
         return;
+    }
+
+    public override void ExitAttack()
+    {
+        throw new System.NotImplementedException();
     }
 
     IEnumerator Attack()
@@ -70,13 +75,8 @@ public class SpinAttack : MonoBehaviour
         yield return null;
     }
 
-    private void OnEnable()
+    public override void ActiveAttack()
     {
-        AttackState.enterAttack += EnterAttack;
-    }
-
-    private void OnDisable()
-    {
-        AttackState.enterAttack -= EnterAttack;
+        throw new System.NotImplementedException();
     }
 }
