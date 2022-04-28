@@ -83,7 +83,6 @@ public class CameraController : MonoBehaviour
 
         if (Physics.Linecast(cameraCenter.transform.position, obj.transform.position, out _camHit))
         {
-
             var transform1 = cam.transform;
             transform1.position = _camHit.point;
             var localPosition = transform1.localPosition;
