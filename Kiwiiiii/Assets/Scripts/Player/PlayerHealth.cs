@@ -19,13 +19,12 @@ public class PlayerHealth : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
-<<<<<<< HEAD
-        //healthSlider.value = playerStats.playerStats.health--;
+
         playerStats.playerStats.health = playerStats.playerStats.health - damage;
-=======
+
         if (healthSlider != null)
-            healthSlider.value = playerStats.playerStats.health--;
->>>>>>> main
+            healthSlider.value = playerStats.playerStats.health;
+
         Debug.Log(("Enemy did damage, current player health: ") + playerStats.playerStats.health);
     }
 
