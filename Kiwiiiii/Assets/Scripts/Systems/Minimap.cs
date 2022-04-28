@@ -9,12 +9,14 @@ public class Minimap : MonoBehaviour
     GameObject target;
 
     [SerializeField]
-    float yOffset = 12f;
-
-    float shadowDistance;
+    float ortSize = 20f;
+    [SerializeField]
+    float yOffset = 20f;
 
     void Update()
     {
+        GetComponent<Camera>().orthographicSize = ortSize;
+
         transform.position = new Vector3(target.transform.position.x, target.transform.position.y + yOffset, target.transform.position.z);
     }
 }
