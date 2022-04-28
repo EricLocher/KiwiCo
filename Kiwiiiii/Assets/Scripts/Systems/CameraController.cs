@@ -64,8 +64,8 @@ public class CameraController : MonoBehaviour
     {
         Vector2 input = ctx.ReadValue<Vector2>();
 
-        input.x *= sensitivity;
-        input.y *= sensitivity / 2;
+        input.x *= sensitivity * Time.deltaTime;
+        input.y *= sensitivity / 2 * Time.deltaTime;
 
         x += input.x;
         y += (input.y * -1);
