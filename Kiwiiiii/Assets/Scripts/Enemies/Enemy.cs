@@ -36,8 +36,11 @@ public class Enemy : MonoBehaviour
 
     private void Update()
     {
-        if (stats.healthAmount <= 0)
+
+
+        if (stats.stats.health <= 0)
         {
+            Debug.Log("dead");
             stateMachine.ChangeState(EnemyStates.Death);
         }
 

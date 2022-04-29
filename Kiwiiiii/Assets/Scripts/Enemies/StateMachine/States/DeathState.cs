@@ -9,7 +9,7 @@ public class DeathState : EnemyState
 
     public override void EnterState()
     {
-        Object.Destroy(agent);
+        Object.Destroy(agent.gameObject);
     }
 
     public override void Update(float dt)
