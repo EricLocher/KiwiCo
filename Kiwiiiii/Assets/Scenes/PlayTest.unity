@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 1481.7754, g: 1835.8867, b: 2430.4492, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -190,15 +190,14 @@ PrefabInstance:
       propertyPath: dialogue.sentances.Array.data[0]
       value: 'Welcome to the tutorial!
 
-        Press <color=green>*E*</color> to
-        skip sentance.'
+        Press <color=red>*E*</color> to skip
+        sentance.'
       objectReference: {fileID: 0}
     - target: {fileID: 397070988334261257, guid: e19350680c6722945817e215c44be7c2, type: 3}
       propertyPath: dialogue.sentances.Array.data[1]
-      value: 'You can jump with *SPACE*, dash with *SHIFT*, Point your sword down
-        with *MOUSE1*
-
-        and holster your sword with *1*.'
+      value: You can jump with  <color=red>*SPACE*</color>, dash with  <color=red>*SHIFT*</color>,
+        Point your sword down with  <color=red>*MOUSE1*</color> and holster your
+        sword with  <color=red>*1*</color>.
       objectReference: {fileID: 0}
     - target: {fileID: 397070988334261257, guid: e19350680c6722945817e215c44be7c2, type: 3}
       propertyPath: dialogue.sentances.Array.data[2]

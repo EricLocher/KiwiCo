@@ -56,13 +56,12 @@ public class DialogueManager : MonoBehaviour
 
     IEnumerator TypeSentance(string sentance)
     {
-
-        dialogueText.text = "";
-        foreach (char letter in sentance.ToCharArray())
+        string[] array = sentance.Split(' ');
+        dialogueText.text = array[0];
+        for (int i = 1; i < array.Length; ++i)
         {
-            dialogueText.text += letter;
-
-            yield return null;
+            yield return new WaitForSeconds(0.2f);
+            dialogueText.text += " " + array[i];
         }
     }
 
