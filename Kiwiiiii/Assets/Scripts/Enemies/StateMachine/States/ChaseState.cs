@@ -14,6 +14,8 @@ public class ChaseState : EnemyState
     {
         agent.chase.ActiveChase();
 
+        agent.transform.LookAt(agent.target);
+
         if (!agent.fov.TargetInView(agent.target)) { stateMachine.ChangeState(EnemyStates.Idle); }
 
         if (Vector3.Distance(agent.transform.position, agent.target.position) < agent.fov.innerRadius)
