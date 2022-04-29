@@ -31,11 +31,6 @@ public class SpinAttack : EnemyAttack
         return;
     }
 
-    public override void ExitAttack()
-    {
-        throw new System.NotImplementedException();
-    }
-
     IEnumerator Attack()
     {
         animator.SetBool("attacking", true);
@@ -77,6 +72,11 @@ public class SpinAttack : EnemyAttack
 
     public override void ActiveAttack()
     {
-        throw new System.NotImplementedException();
+        return;
+    }
+
+    public override void ExitAttack()
+    {
+        return;
     }
 }

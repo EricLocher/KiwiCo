@@ -128,6 +128,7 @@ GameObject:
   - component: {fileID: 8033360133348434878}
   - component: {fileID: 3519804186759991674}
   - component: {fileID: 52852384442896208}
+  - component: {fileID: 1075037829}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -327,7 +328,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   attack: {fileID: 8033360133348434878}
-  chase: {fileID: 0}
+  chase: {fileID: 1075037829}
   stateMachine:
     enemy: {fileID: 0}
     moveSpots:
@@ -338,6 +339,18 @@ MonoBehaviour:
     enemyState: 1
   navMeshAgent: {fileID: 0}
   fov: {fileID: 0}
+--- !u!114 &1075037829
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8033360133348434824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36b21298eb34671459967486d8851e5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8033360133949725805
 GameObject:
   m_ObjectHideFlags: 0

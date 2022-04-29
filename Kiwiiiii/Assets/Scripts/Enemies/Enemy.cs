@@ -7,6 +7,7 @@ using UnityEngine.AI;
 public class Enemy : MonoBehaviour
 {
     [SerializeField] public Transform target;
+    
     public EnemyAttack attack;
     public EnemyChase chase;
     public EnemyStateMachine stateMachine;
@@ -25,8 +26,6 @@ public class Enemy : MonoBehaviour
         stateMachine.RegisterState(EnemyStates.Death, new DeathState(this, stateMachine));
 
         stateMachine.ChangeState(EnemyStates.Idle);
-
-   
     }
 
     public void SetDestination(Transform target)
