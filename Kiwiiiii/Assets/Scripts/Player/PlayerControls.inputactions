@@ -76,6 +76,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Schlam",
+                    "type": "Button",
+                    "id": "6cd56379-2738-4291-bbd4-40150231791a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -236,7 +245,7 @@
                 {
                     "name": "",
                     "id": "df461aa3-4a87-4e20-93f3-3ba992fff508",
-                    "path": "<Mouse>/leftButton",
+                    "path": "<Mouse>/rightButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard and Mouse",
@@ -296,6 +305,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Hotbar 2",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f20d489d-8739-4888-9981-b1ffb9cc5078",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard and Mouse",
+                    "action": "Schlam",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
