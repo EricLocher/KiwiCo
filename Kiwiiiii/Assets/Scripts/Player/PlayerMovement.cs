@@ -31,11 +31,13 @@ public class PlayerMovement : MonoBehaviour
          Vector3 dir = Camera.main.transform.TransformDirection(movement);
          rb.AddForce(dir * stats.moveSpeed, ForceMode.Force);
     }
+                  
+    public void Dash(InputAction.CallbackContext context)
+    {
+        Vector3 dir = Camera.main.transform.forward;
 
-    public void Dash()
-    {       
-        if(stats.amountOfDashes <= 0) { return; }
-        rb.AddForce(rb.velocity.normalized * stats.dashSpeed, ForceMode.Impulse);
+        if (stats.amountOfDashes <= 0) { return; }
+        rb.AddForce(dir.normalized * stats.dashSpeed, ForceMode.Impulse);
         stats.amountOfDashes--;
 
         if (stats.amountOfDashes >= stats.maxDashes)
