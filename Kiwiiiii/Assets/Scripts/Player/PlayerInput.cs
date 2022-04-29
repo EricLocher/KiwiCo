@@ -27,6 +27,7 @@ public class PlayerInput : MonoBehaviour
         controls.Player.Sheath.performed += ctx => weapons.Sheath(ctx);
         controls.Player.Interact.performed += ctx => interactController.Interact(ctx);
         controls.Player.Hotbar2.performed += ctx => hotbar.UseItem(1);
+        controls.Player.Schlam.performed += ctx => movement.Schlam(ctx);
     }
 
     private void FixedUpdate()
@@ -42,7 +43,6 @@ public class PlayerInput : MonoBehaviour
             movement.Spin();
             //transform.Rotate(0f, 180f, 0f, Space.Self);
         }
-
     }
 
     public void Move()
