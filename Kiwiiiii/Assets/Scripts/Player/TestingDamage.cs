@@ -6,11 +6,13 @@ public class TestingDamage : MonoBehaviour
 {
     [SerializeField] PlayerHealth playerHealth;
 
-    void OnTriggerEnter(Collider col)
+    void OnTriggerEnter(Collider collision)
     {
-        if(col.gameObject.tag == ("Enemy"))
+        if (collision.gameObject.CompareTag("Enemy"))
         {
-            playerHealth.DoDamage();
+            var damage = GetComponent<Rigidbody>().velocity.x * 5f;
+            Debug.Log(damage);
+            playerHealth.DoDamage(damage);
         }
     }
 }
