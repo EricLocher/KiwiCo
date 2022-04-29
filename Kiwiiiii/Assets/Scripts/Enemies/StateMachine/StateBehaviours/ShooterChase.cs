@@ -9,7 +9,7 @@ public class ShooterChase : EnemyChase
     public override void EnterChase()
     {
         animator = GetComponent<Animator>();
-        animator.SetBool("running", true);
+        animator.SetTrigger("run");
     }
     public override void ActiveChase()
     {
@@ -17,6 +17,6 @@ public class ShooterChase : EnemyChase
     }
     public override void ExitChase()
     {
-        animator.SetBool("running", false);
+        animator.SetTrigger("idle");
     }
 }

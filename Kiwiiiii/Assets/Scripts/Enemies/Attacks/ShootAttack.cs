@@ -14,21 +14,26 @@ public class ShootAttack : EnemyAttack
     public Transform gun;
 
     private Animator animator;
-    private Rigidbody sphereRB;
-    private Transform playerTransform;
 
-    private Vector3 direction;
-
+    Coroutine currentCoroutine;
 
     void Start()
     {
+        currentCoroutine = null;
         animator = GetComponent<Animator>();
-        playerTransform = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
     }
 
     public override void EnterAttack()
     {
-        StartCoroutine(InstantiateBall());
+        if (currentCoroutine == null)
+        {
+            Vector3 direction = (enemy.target.position - gun.transform.position).normalized;
+            currentCoroutine = StartCoroutine(InstantiateBall(direction));
+        }
+        else
+        {
+            enemy.stateMachine.ChangeState(EnemyStates.Chase);
+        }
     }
 
     public override void ActiveAttack()
@@ -38,18 +43,18 @@ public class ShootAttack : EnemyAttack
 
     public override void ExitAttack()
     {
-        animator.SetBool("shooting", false);
+        animator.SetTrigger("idle");
     }
 
-    IEnumerator InstantiateBall()
+    IEnumerator InstantiateBall(Vector3 direction)
     {
-        animator.SetBool("shooting", true);
-        direction = (playerTransform.position - gun.transform.position).normalized;
+        enemy.stateMachine.ChangeState(EnemyStates.Chase);
+        yield return new WaitForSeconds(2);
+        animator.SetTrigger("shoot");
 
         SphereDamage newSphere = Instantiate(sphere, gun.transform.position, gun.transform.rotation).GetComponent<SphereDamage>();
         newSphere.direction = direction;
 
-        yield return new WaitForSeconds(2);
-        enemy.stateMachine.ChangeState(EnemyStates.Chase);
+        currentCoroutine = null;
     }
 }
