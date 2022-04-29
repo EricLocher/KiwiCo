@@ -100,13 +100,22 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Schlam"",
-                    ""type"": ""Button"",
+                    ""name"": ""Mouse1"",
+                    ""type"": ""Value"",
                     ""id"": ""6cd56379-2738-4291-bbd4-40150231791a"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
-                    ""initialStateCheck"": false
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Schlam"",
+                    ""type"": ""Button"",
+                    ""id"": ""f8babe5c-fe1a-4971-94e1-1e38785938bf"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""MultiTap(tapDelay=0.15)"",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -337,6 +346,17 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard and Mouse"",
+                    ""action"": ""Mouse1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""49d7c5ce-f3d8-4fe3-b5ed-07cbc6b0dbec"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
                     ""action"": ""Schlam"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -412,6 +432,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_Player_Mouse = m_Player.FindAction("Mouse", throwIfNotFound: true);
         m_Player_Sheath = m_Player.FindAction("Sheath", throwIfNotFound: true);
         m_Player_Hotbar2 = m_Player.FindAction("Hotbar 2", throwIfNotFound: true);
+        m_Player_Mouse1 = m_Player.FindAction("Mouse1", throwIfNotFound: true);
         m_Player_Schlam = m_Player.FindAction("Schlam", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
@@ -483,6 +504,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Mouse;
     private readonly InputAction m_Player_Sheath;
     private readonly InputAction m_Player_Hotbar2;
+    private readonly InputAction m_Player_Mouse1;
     private readonly InputAction m_Player_Schlam;
     public struct PlayerActions
     {
@@ -496,6 +518,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public InputAction @Mouse => m_Wrapper.m_Player_Mouse;
         public InputAction @Sheath => m_Wrapper.m_Player_Sheath;
         public InputAction @Hotbar2 => m_Wrapper.m_Player_Hotbar2;
+        public InputAction @Mouse1 => m_Wrapper.m_Player_Mouse1;
         public InputAction @Schlam => m_Wrapper.m_Player_Schlam;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
@@ -530,6 +553,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Hotbar2.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnHotbar2;
                 @Hotbar2.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnHotbar2;
                 @Hotbar2.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnHotbar2;
+                @Mouse1.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMouse1;
+                @Mouse1.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMouse1;
+                @Mouse1.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMouse1;
                 @Schlam.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSchlam;
                 @Schlam.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSchlam;
                 @Schlam.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSchlam;
@@ -561,6 +587,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Hotbar2.started += instance.OnHotbar2;
                 @Hotbar2.performed += instance.OnHotbar2;
                 @Hotbar2.canceled += instance.OnHotbar2;
+                @Mouse1.started += instance.OnMouse1;
+                @Mouse1.performed += instance.OnMouse1;
+                @Mouse1.canceled += instance.OnMouse1;
                 @Schlam.started += instance.OnSchlam;
                 @Schlam.performed += instance.OnSchlam;
                 @Schlam.canceled += instance.OnSchlam;
@@ -629,6 +658,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         void OnMouse(InputAction.CallbackContext context);
         void OnSheath(InputAction.CallbackContext context);
         void OnHotbar2(InputAction.CallbackContext context);
+        void OnMouse1(InputAction.CallbackContext context);
         void OnSchlam(InputAction.CallbackContext context);
     }
     public interface IUIActions

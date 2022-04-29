@@ -78,13 +78,22 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Schlam",
-                    "type": "Button",
+                    "name": "Mouse1",
+                    "type": "Value",
                     "id": "6cd56379-2738-4291-bbd4-40150231791a",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Schlam",
+                    "type": "Button",
+                    "id": "f8babe5c-fe1a-4971-94e1-1e38785938bf",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "MultiTap(tapDelay=0.15)",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -315,6 +324,17 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard and Mouse",
+                    "action": "Mouse1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "49d7c5ce-f3d8-4fe3-b5ed-07cbc6b0dbec",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
                     "action": "Schlam",
                     "isComposite": false,
                     "isPartOfComposite": false

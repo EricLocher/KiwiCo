@@ -33,6 +33,8 @@ public class CameraController : MonoBehaviour
     float y = 0f, x = 0f;
     Quaternion rotation;
 
+    bool mouseDown = true;
+
     void Start()
     {
         if (Application.isPlaying) {
@@ -53,8 +55,11 @@ public class CameraController : MonoBehaviour
             target.transform.position.y + yOffset, target.transform.position.z);
 
         y = ClampAngle(y, minClampY, maxClampY);
-        rotation = Quaternion.Euler(y, x, 0);
-        cameraCenter.transform.rotation = rotation;
+
+        if (mouseDown) {
+            rotation = Quaternion.Euler(y, x, 0);
+            cameraCenter.transform.rotation = rotation;
+        }
 
         if(Application.isPlaying)
             CameraCollision();
@@ -62,6 +67,7 @@ public class CameraController : MonoBehaviour
 
     public void MouseInput(InputAction.CallbackContext ctx)
     {
+        if(!mouseDown) { return; }
         Vector2 input = ctx.ReadValue<Vector2>();
 
         input.x *= sensitivity * Time.deltaTime;
@@ -69,6 +75,11 @@ public class CameraController : MonoBehaviour
 
         x += input.x;
         y += (input.y * -1);
+    }
+
+    public void OnMouseDown(bool check)
+    {
+        mouseDown = !check;
     }
 
     void CameraCollision()

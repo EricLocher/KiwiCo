@@ -19,13 +19,30 @@ public class PlayerInput : MonoBehaviour
     {
         controls = new PlayerControls();
         cameraController = Camera.main.GetComponent<CameraController>();
-   
+
+        //Hold to stop camera rotation
+        controls.Player.Mouse1.started += ctx => cameraController?.OnMouseDown(true);
+        controls.Player.Mouse1.canceled += ctx => cameraController?.OnMouseDown(false);
+
+        //Camera Rotation mouse delta input
         controls.Player.Mouse.performed += ctx => cameraController?.MouseInput(ctx);
+
+        //Jump
         controls.Player.Jump.performed += ctx => movement.Jump(ctx);
+
+        //Dash
         controls.Player.Dash.performed += ctx => movement.Dash(ctx);
+
+        //Point Sword Down
         controls.Player.PointDown.started += ctx => lookWithMouse.PointDown();
+
+        //Sheath sword
         controls.Player.Sheath.performed += ctx => weapons.Sheath(ctx);
+
+        //Interact with interactable object
         controls.Player.Interact.performed += ctx => interactController.Interact(ctx);
+
+        //Hotbar
         controls.Player.Hotbar2.performed += ctx => hotbar.UseItem(1);
         controls.Player.Schlam.performed += ctx => movement.Schlam(ctx);
     }
