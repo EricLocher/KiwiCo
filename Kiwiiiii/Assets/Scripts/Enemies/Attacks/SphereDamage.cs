@@ -5,20 +5,22 @@ using UnityEngine;
 
 public class SphereDamage : MonoBehaviour
 {
+    public float force = 5;
+    public Vector3 direction;
+
+    private Rigidbody rb;
     private PlayerHealth playerHealth;
-
-
+    
     private void Start()
     {
         playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
-     
+        rb = GetComponent<Rigidbody>();
+        
+        rb.AddForce(direction * force, ForceMode.Impulse);
     }
-
-
 
     private void Kill()
     {
-        Debug.Log("kill sphere");
         Destroy(gameObject);
     }
 

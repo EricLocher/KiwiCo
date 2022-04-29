@@ -8,6 +8,7 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField] public Transform target;
     public EnemyAttack attack;
+    public EnemyChase chase;
     public EnemyStateMachine stateMachine;
     [HideInInspector] public NavMeshAgent navMeshAgent;
     [HideInInspector] public FOV fov;

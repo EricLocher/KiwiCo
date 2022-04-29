@@ -28,11 +28,12 @@ public class ShootAttack : EnemyAttack
 
     public override void EnterAttack()
     {
-        StartCoroutine(ShootBall());
+        StartCoroutine(InstantiateBall());
     }
+
     public override void ActiveAttack()
     {
-        sphereRB?.AddForce(direction *+ force);
+        return;
     }
 
     public override void ExitAttack()
@@ -40,13 +41,13 @@ public class ShootAttack : EnemyAttack
         animator.SetBool("shooting", false);
     }
 
-    IEnumerator ShootBall()
+    IEnumerator InstantiateBall()
     {
         animator.SetBool("shooting", true);
-        direction = (gun.transform.position - playerTransform.position).normalized;
+        direction = (playerTransform.position - gun.transform.position).normalized;
 
-        GameObject newSphere = Instantiate(sphere, gun.transform.position, gun.transform.rotation);
-        sphereRB = newSphere.GetComponent<Rigidbody>();
+        SphereDamage newSphere = Instantiate(sphere, gun.transform.position, gun.transform.rotation).GetComponent<SphereDamage>();
+        newSphere.direction = direction;
 
         yield return new WaitForSeconds(2);
         enemy.stateMachine.ChangeState(EnemyStates.Chase);
