@@ -7,6 +7,7 @@ public class TestingDamage : MonoBehaviour
     [SerializeField] PlayerHealth playerHealth;
     [SerializeField] float damageMultiplyFactor = 5f;
     [SerializeField] float damageMinimumValue = 1f;
+    [SerializeField] float damageMaxValue = 1f;
 
     void OnTriggerEnter(Collider collision)
     {
@@ -14,7 +15,11 @@ public class TestingDamage : MonoBehaviour
         {
             var swordVelocity = GetComponent<Rigidbody>().velocity;
             var damage = (Mathf.Abs(swordVelocity.y) + damageMinimumValue) * damageMultiplyFactor;
-            playerHealth.DoDamage(damage);
+
+            Mathf.Clamp(damage, damageMinimumValue, damageMaxValue);
+
+            collision.GetComponent<EnemyStats>().stats.health -= damage;
+
         }
     }
 }

@@ -9,6 +9,7 @@ public class EnemyStats : MonoBehaviour
 
     void Start()
     {
+        stats = Instantiate(stats);
         stats.health = healthAmount;
     }
 }
