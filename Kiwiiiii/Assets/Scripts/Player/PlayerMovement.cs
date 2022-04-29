@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -44,6 +45,13 @@ public class PlayerMovement : MonoBehaviour
         { return; }
 
         StartCoroutine(DashTimer());
+    }
+
+    internal void Schlam(InputAction.CallbackContext ctx)
+    {
+        //DO SCHLAAAAAAAM
+        rb.AddForce(Vector3.down * 30, ForceMode.Impulse);
+
     }
 
     private IEnumerator DashTimer()

@@ -20,11 +20,13 @@ public class GameController : MonoBehaviour
 
     void Awake()
     {
-        if(_instance == null) {
+        if (_instance == null)
+        {
             _instance = this;
             DontDestroyOnLoad(gameObject);
         }
-        else {
+        else
+        {
             Destroy(this.gameObject);
         }
 
@@ -57,6 +59,18 @@ public class GameController : MonoBehaviour
     public static void LoadScene(int sceneIndex)
     {
         SceneManager.LoadScene(sceneIndex);
+    }
+
+    public static void Quit()
+    {
+        // save any game data here
+#if UNITY_EDITOR
+        // Application.Quit() does not work in the editor so
+        // UnityEditor.EditorApplication.isPlaying need to be set to false to end the game
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+         Application.Quit();
+#endif
     }
 }
 
