@@ -46,12 +46,16 @@ public class GameController : MonoBehaviour
         {
             Time.timeScale = 0;
             gameState = GameStates.Paused;
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
         }
         else
         {
             Time.timeScale = 1;
             gameState = GameStates.Playing;
             onStateChange?.Invoke(gameState);
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
         }
         onStateChange?.Invoke(gameState);
     }

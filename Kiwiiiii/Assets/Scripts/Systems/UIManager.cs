@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class UIManager : MonoBehaviour
 {
@@ -8,10 +10,19 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] GameObject pauseScreen;
 
+    [SerializeField] Slider sensSlider;
+
+    [SerializeField] TMP_Text sensText;
+
+    [SerializeField] CameraController cam;
+
     void Start()
     {
         foreach (Transform child in transform)
             uiElements.Add(child.gameObject);
+
+        sensSlider.value = cam.sensitivity;
+        sensText.text = "Sensitivity: " + sensSlider.value;
     }
 
     public void OnPause(GameStates state)
@@ -30,6 +41,12 @@ public class UIManager : MonoBehaviour
 
             pauseScreen.SetActive(false);
         }
+    }
+
+    public void SensitivityChange()
+    {
+        cam.sensitivity = sensSlider.value;
+        sensText.text = "Sensitivity: " + sensSlider.value;
     }
 
     void OnEnable() => GameController.onStateChange += OnPause;

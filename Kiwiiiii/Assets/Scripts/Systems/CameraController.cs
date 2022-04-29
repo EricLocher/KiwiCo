@@ -16,8 +16,6 @@ public class CameraController : MonoBehaviour
     [SerializeField, Range(0f, 10f)]
     float yOffset = 1f;
     [SerializeField, Range(0.1f, 20f)]
-    float sensitivity = 3f;
-    [SerializeField, Range(0.1f, 20f)]
     float collisionSensitivity = 4.5f;
     [SerializeField, Range(-360f, 360f)]
     float maxClampY = 55;
@@ -27,6 +25,8 @@ public class CameraController : MonoBehaviour
     float zoomDistance = -10f;
     [SerializeField]
     LayerMask layerMask;
+
+    public float sensitivity = 3f;
 
     RaycastHit _camHit;
     Vector3 camDist;
