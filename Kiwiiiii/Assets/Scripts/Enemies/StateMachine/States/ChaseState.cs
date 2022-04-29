@@ -7,11 +7,13 @@ public class ChaseState : EnemyState
 
     public override void EnterState()
     {
-        return;
+        agent.chase.EnterChase();
     }
 
     public override void Update(float dt)
     {
+        agent.chase.ActiveChase();
+
         if (!agent.fov.TargetInView(agent.target)) { stateMachine.ChangeState(EnemyStates.Idle); }
 
         if (Vector3.Distance(agent.transform.position, agent.target.position) < agent.fov.innerRadius)
@@ -26,7 +28,7 @@ public class ChaseState : EnemyState
 
     public override void ExitState()
     {
-        return;
+        agent.chase.ExitChase();
     }
 
 }
