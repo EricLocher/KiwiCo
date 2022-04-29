@@ -10,6 +10,7 @@ public class Enemy : MonoBehaviour
     
     public EnemyAttack attack;
     public EnemyChase chase;
+    public EnemyStats stats;
     public EnemyStateMachine stateMachine;
     [HideInInspector] public NavMeshAgent navMeshAgent;
     [HideInInspector] public FOV fov;
@@ -35,6 +36,11 @@ public class Enemy : MonoBehaviour
 
     private void Update()
     {
+        if (stats.healthAmount <= 0)
+        {
+            stateMachine.ChangeState(EnemyStates.Death);
+        }
+
         stateMachine.Update();
     }
 }
