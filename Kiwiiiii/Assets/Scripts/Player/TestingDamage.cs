@@ -5,13 +5,15 @@ using UnityEngine;
 public class TestingDamage : MonoBehaviour
 {
     [SerializeField] PlayerHealth playerHealth;
+    [SerializeField] float damageMultiplyFactor = 5f;
+    [SerializeField] float damageMinimumValue = 1f;
 
     void OnTriggerEnter(Collider collision)
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            var damage = GetComponent<Rigidbody>().velocity.x * 5f;
-            Debug.Log(damage);
+            var swordVelocity = GetComponent<Rigidbody>().velocity;
+            var damage = (Mathf.Abs(swordVelocity.y) + damageMinimumValue) * damageMultiplyFactor;
             playerHealth.DoDamage(damage);
         }
     }

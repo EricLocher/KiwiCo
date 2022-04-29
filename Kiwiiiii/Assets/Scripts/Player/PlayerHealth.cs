@@ -24,14 +24,11 @@ public class PlayerHealth : MonoBehaviour
 
         if (healthSlider != null)
             healthSlider.value = playerStats.playerStats.health;
-
-        Debug.Log(("Enemy did damage, current player health: ") + playerStats.playerStats.health);
     }
 
     public void DoDamage(float damage)
     {
         enemyStats.stats.health -= damage;
-        Debug.Log(("Player did damage, current enemy health: ") + enemyStats.stats.health);
     }
 
     public void Heal(float healAmt)

@@ -15,7 +15,7 @@ public class AttackZone : MonoBehaviour
     {
         if (col.gameObject.tag == ("Player"))
         {
-            playerHealth.TakeDamage(1);
+            playerHealth.TakeDamage(0.1f);
         }
     }
 }
