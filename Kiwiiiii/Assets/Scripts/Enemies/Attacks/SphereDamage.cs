@@ -28,7 +28,7 @@ public class SphereDamage : MonoBehaviour
     {
         if (col.gameObject.CompareTag("Player"))
         {
-            playerHealth.TakeDamage(playerHealth.soPlayerStats.health, 3);
+            playerHealth.TakeDamage(3);
 
             Kill();
         }
