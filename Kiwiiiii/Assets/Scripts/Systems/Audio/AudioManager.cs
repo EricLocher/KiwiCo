@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+using UnityEngine.UI;
 /*
  * How to use
  * To make global sound call
@@ -19,13 +19,14 @@ public class AudioManager : MonoBehaviour
     public float menuVolume;
 
     public static AudioManager instance;
+    public Slider masterSlider, sfxSlider, musicSlider;
 
     void Awake()
     {
-        if(instance == null)
+        if (instance == null)
         {
             instance = this;
-            if(gameObject.tag == "AudioManager")
+            if (gameObject.tag == "AudioManager")
                 DontDestroyOnLoad(gameObject);
         }
 
@@ -35,19 +36,20 @@ public class AudioManager : MonoBehaviour
             sound.audio.clip = sound.clip;
             sound.audio.volume = sound.volume;
             sound.audio.loop = sound.loop;
+            sound.audio.outputAudioMixerGroup = sound.mixer;
         }
     }
 
     void Update()
     {
-        if(SceneManager.GetActiveScene().name == "Menu")
+        if (SceneManager.GetActiveScene().name == "Menu")
         {
-            PauseAllSound();
-            Play("Menu Music");
+            AudioManager.instance.PauseAllSound();
+            AudioManager.instance.Play("Menu Music");
         }
         else
         {
-            PauseSound("Menu Music");
+            AudioManager.instance.PauseSound("Menu Music");
         }
     }
 
@@ -77,10 +79,37 @@ public class AudioManager : MonoBehaviour
     {
         foreach (Sound sound in sounds)
         {
-            if(sound.name == name)
+            if (sound.name == name)
             {
                 sound.audio.Pause();
             }
+        }
+    }
+
+    public void SetMasterVolume()
+    {
+        float soundLevel = masterSlider.value;
+        foreach (Sound sound in sounds)
+        {
+            sound.mixer.audioMixer.SetFloat("Master", soundLevel);
+        }
+    }
+
+    public void SetSfxVolume()
+    {
+        float soundLevel = sfxSlider.value;
+        foreach (Sound sound in sounds)
+        {
+            sound.mixer.audioMixer.SetFloat("SFX", soundLevel);
+        }
+    }
+
+    public void SetMusicVolume()
+    {
+        float soundLevel = musicSlider.value;
+        foreach (Sound sound in sounds)
+        {
+            sound.mixer.audioMixer.SetFloat("Music", soundLevel);
         }
     }
 }
