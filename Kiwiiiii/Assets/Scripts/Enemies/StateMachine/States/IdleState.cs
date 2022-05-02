@@ -15,7 +15,7 @@ public class IdleState : EnemyState
 
     public override void EnterState()
     {
-        agent.SetDestination(agent.transform);
+        agent.SetDestination(agent.transform.position);
         waitTime = 2;
         hasWaited = false;
     }
@@ -51,16 +51,8 @@ public class IdleState : EnemyState
     public void SelectNewDestination()
     {
         hasWaited = true;
-        int newRandomDestination = Random.Range(0, stateMachine.moveSpots.Length);
-
-        //Select a new random point, avoid the one in use.
-        while (randomDestinationSpot == newRandomDestination)
-        {
-            newRandomDestination = Random.Range(0, stateMachine.moveSpots.Length);
-        }
-
-        randomDestinationSpot = newRandomDestination;
-        agent.SetDestination(stateMachine.moveSpots[randomDestinationSpot]);
+        if (stateMachine.moveSpots.hasSpots)
+            agent.SetDestination(stateMachine.moveSpots.GetNewSpot());
     }
 
     public void Patrol()

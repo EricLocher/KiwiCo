@@ -25,7 +25,7 @@ public class ChaseState : EnemyState
         }
 
         //Otherwise chase target.
-        agent.SetDestination(agent.target);
+        agent.SetDestination(agent.target.position);
     }
 
     public override void ExitState()

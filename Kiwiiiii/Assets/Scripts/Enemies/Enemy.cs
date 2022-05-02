@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-[Serializable, RequireComponent(typeof(NavMeshAgent), typeof(FOV))]
+[Serializable, RequireComponent(typeof(NavMeshAgent), typeof(FOV), typeof(PatrolSpots))]
 public class Enemy : MonoBehaviour
 {
     [SerializeField] public Transform target;
@@ -19,6 +19,7 @@ public class Enemy : MonoBehaviour
     {
         fov = GetComponent<FOV>();
         navMeshAgent = GetComponent<NavMeshAgent>();
+        stateMachine.moveSpots = GetComponent<PatrolSpots>();
         stateMachine.enemy = this;
 
         stateMachine.RegisterState(EnemyStates.Idle, new IdleState(this, stateMachine));
@@ -29,18 +30,15 @@ public class Enemy : MonoBehaviour
         stateMachine.ChangeState(EnemyStates.Idle);
     }
 
-    public void SetDestination(Transform target)
+    public void SetDestination(Vector3 pos)
     {
-        navMeshAgent.SetDestination(target.position);
+        navMeshAgent.SetDestination(pos);
     }
 
     private void Update()
     {
-
-
         if (stats.stats.health <= 0)
         {
-            Debug.Log("dead");
             stateMachine.ChangeState(EnemyStates.Death);
         }
 

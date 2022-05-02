@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,11 +10,11 @@ public class EnemyStateMachine
     [HideInInspector]
     public Enemy enemy;
 
+    [HideInInspector]
+    public PatrolSpots moveSpots;
+    EnemyStates enemyState = EnemyStates.Idle;
+
     Dictionary<EnemyStates, EnemyState> states = new Dictionary<EnemyStates, EnemyState>();
-
-    public Transform[] moveSpots;
-
-    public EnemyStates enemyState = EnemyStates.Idle;
 
     public void Update()
     {

@@ -532,6 +532,7 @@ GameObject:
   - component: {fileID: 3025217583516844951}
   - component: {fileID: 388704538}
   - component: {fileID: 1426636928}
+  - component: {fileID: 257640946811748189}
   m_Layer: 2
   m_Name: Player
   m_TagString: Player
@@ -587,6 +588,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerStats: {fileID: 11400000, guid: d94cd7ea8d4267d4a81227f4c1b06c40, type: 2}
+  health: {fileID: 0}
+--- !u!114 &257640946811748189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3025217583516844945}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4016c71128d172846a641ad0562b2d50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthSlider: {fileID: 0}
 --- !u!1 &4260723233905367183
 GameObject:
   m_ObjectHideFlags: 0
@@ -780,6 +795,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18f7631008f27574a8296a95afc01c4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerHealth: {fileID: 0}
   damageMultiplyFactor: 2
   damageMinimumValue: 1
   damageMaxValue: 25

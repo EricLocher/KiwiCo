@@ -20,6 +20,8 @@ public class PlayerInput : MonoBehaviour
         controls = new PlayerControls();
         cameraController = Camera.main.GetComponent<CameraController>();
 
+        #region Input bindings
+
         //Hold to stop camera rotation
         controls.Player.Mouse1.started += ctx => cameraController?.OnMouseDown(true);
         controls.Player.Mouse1.canceled += ctx => cameraController?.OnMouseDown(false);
@@ -45,6 +47,8 @@ public class PlayerInput : MonoBehaviour
         //Hotbar
         controls.Player.Hotbar2.performed += ctx => hotbar.UseItem(1);
         controls.Player.Schlam.performed += ctx => movement.Schlam(ctx);
+
+        #endregion
     }
 
     private void FixedUpdate()

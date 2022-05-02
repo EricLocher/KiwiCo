@@ -20,9 +20,6 @@ public class SkillTreeEditor : Editor
             window.Init(skillTree, controller.windowStyleSheet);
             window.CreateWindow();
         }
-
-
-
     }
 
     void OnEnable()
