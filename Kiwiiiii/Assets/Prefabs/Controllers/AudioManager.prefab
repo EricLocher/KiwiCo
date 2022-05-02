@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8442977217905806071}
   m_Layer: 0
   m_Name: AudioManager
-  m_TagString: Untagged
+  m_TagString: AudioManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -46,7 +46,7 @@ MonoBehaviour:
   sounds:
   - name: Menu Music
     clip: {fileID: 8300000, guid: cfab4741c1856f44a90497bb05a6fc7e, type: 3}
-    volume: 0.25
+    volume: 0.1
     audio: {fileID: 0}
     loop: 1
   menuVolume: 0

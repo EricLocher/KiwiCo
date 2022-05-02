@@ -4,7 +4,11 @@ using UnityEngine.SceneManagement;
 
 /*
  * How to use
- * AudioManager.instance.PlayOnce("name");
+ * To make global sound call
+ * AudioManager.instance.Play("name");
+ * 
+ * To make local sound call
+ * GetComponent<AudioManager>().Play("name");
  */
 
 
@@ -21,11 +25,8 @@ public class AudioManager : MonoBehaviour
         if(instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
+            if(gameObject.tag == "AudioManager")
+                DontDestroyOnLoad(gameObject);
         }
 
         foreach (Sound sound in sounds)
