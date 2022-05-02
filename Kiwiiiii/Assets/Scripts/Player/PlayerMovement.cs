@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Interactions;
+using UnityEngine.VFX;
 
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerMovement : MonoBehaviour
@@ -15,6 +16,8 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody rb;
     private Animator animator;
     private float radius;
+
+    [SerializeField] VisualEffect slam;
 
     private void Awake()
     {
@@ -51,6 +54,7 @@ public class PlayerMovement : MonoBehaviour
     {
         //DO SCHLAAAAAAAM
         rb.AddForce(Vector3.down * 30, ForceMode.Impulse);
+        slam.Play();
 
     }
 
@@ -97,6 +101,7 @@ public class PlayerMovement : MonoBehaviour
         {
             isGrounded = true;
             stats.amountOfJumps = stats.maxJumps;
+            stats.jumpForce = stats.defaultJumpForce;
         }
 
         //if(Physics.SphereCast(transform.position, radius, Vector3.down, out hit, radius + .1f , layerMask))

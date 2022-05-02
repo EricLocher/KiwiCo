@@ -10,6 +10,7 @@ public class SOPlayerStats : ScriptableObject
     public float moveSpeed;
     public float dashSpeed;
     public float jumpForce;
+    public float defaultJumpForce;
 
     public int amountOfDashes;
     public int maxDashes;

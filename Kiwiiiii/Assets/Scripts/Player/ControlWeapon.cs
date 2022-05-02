@@ -12,8 +12,8 @@ public class ControlWeapon : MonoBehaviour
     [SerializeField] SwordBehavior sword;
     [SerializeField] float maxAngular;
 
-    float deltaY = 0;
 
+    float deltaY = 0;
     float timeElapsed = 0;
     bool down = false;
     bool check = true;
@@ -40,9 +40,10 @@ public class ControlWeapon : MonoBehaviour
 
             if (sword.GroundCheck()) {
                 movement.isGrounded = true;
-                movement.stats.amountOfJumps = movement.stats.maxJumps;
+                movement.stats.amountOfJumps = 1;
+                movement.stats.jumpForce = movement.stats.defaultJumpForce * 3;
+
             }
-            
         }
     }
 
