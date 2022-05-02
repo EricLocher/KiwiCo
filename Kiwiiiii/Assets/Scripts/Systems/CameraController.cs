@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -80,6 +81,15 @@ public class CameraController : MonoBehaviour
     public void OnMouseDown(bool check)
     {
         mouseDown = !check;
+    }
+
+    public void OnMouseScroll(InputAction.CallbackContext ctx)
+    {
+        var zoom = (ctx.ReadValue<float>() / 120);
+
+        camDist.z += zoom;
+
+        camDist.z = Mathf.Clamp(camDist.z, -20f, -2f);
     }
 
     void CameraCollision()
