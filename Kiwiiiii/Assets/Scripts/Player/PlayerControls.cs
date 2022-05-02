@@ -73,15 +73,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""Mouse"",
-                    ""type"": ""Value"",
-                    ""id"": ""0fa727c5-01c7-4d38-9b73-1d4f6db8468f"",
-                    ""expectedControlType"": ""Vector2"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": true
-                },
-                {
                     ""name"": ""Sheath"",
                     ""type"": ""Button"",
                     ""id"": ""39275a52-bb7d-4248-8a0f-ae7986f5d949"",
@@ -100,21 +91,39 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Mouse1"",
-                    ""type"": ""Value"",
-                    ""id"": ""6cd56379-2738-4291-bbd4-40150231791a"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": true
-                },
-                {
                     ""name"": ""Schlam"",
                     ""type"": ""Button"",
                     ""id"": ""f8babe5c-fe1a-4971-94e1-1e38785938bf"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": ""MultiTap(tapDelay=0.15)"",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Mouse1"",
+                    ""type"": ""Value"",
+                    ""id"": ""41f54808-f705-4535-8bd6-067cc2bc6195"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Mouse"",
+                    ""type"": ""Value"",
+                    ""id"": ""e3e2b30d-f7c8-48bd-a927-3300e190916f"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Scroll"",
+                    ""type"": ""Value"",
+                    ""id"": ""4810cdf5-8a44-4153-b4cd-acd9dc984f39"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """",
                     ""initialStateCheck"": true
                 }
             ],
@@ -308,17 +317,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""c7784857-f322-402f-ae24-02fdf8399b5f"",
-                    ""path"": ""<Mouse>/delta"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Mouse"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""1ef98142-d0a9-43e3-9cd0-7553f833ba37"",
                     ""path"": ""<Keyboard>/1"",
                     ""interactions"": """",
@@ -341,7 +339,18 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""f20d489d-8739-4888-9981-b1ffb9cc5078"",
+                    ""id"": ""49d7c5ce-f3d8-4fe3-b5ed-07cbc6b0dbec"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Schlam"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""90c6f009-be02-46c4-bcbc-300410a44eda"",
                     ""path"": ""<Mouse>/leftButton"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -352,12 +361,23 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""49d7c5ce-f3d8-4fe3-b5ed-07cbc6b0dbec"",
-                    ""path"": ""<Keyboard>/space"",
+                    ""id"": ""2fa5987a-5cf8-475c-a790-4f99badc9b92"",
+                    ""path"": ""<Mouse>/delta"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Schlam"",
+                    ""action"": ""Mouse"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""46f880fe-7a84-4bea-a96c-97b247771219"",
+                    ""path"": ""<Mouse>/scroll/y"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Scroll"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -429,11 +449,12 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_Player_Dash = m_Player.FindAction("Dash", throwIfNotFound: true);
         m_Player_PointDown = m_Player.FindAction("PointDown", throwIfNotFound: true);
         m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
-        m_Player_Mouse = m_Player.FindAction("Mouse", throwIfNotFound: true);
         m_Player_Sheath = m_Player.FindAction("Sheath", throwIfNotFound: true);
         m_Player_Hotbar2 = m_Player.FindAction("Hotbar 2", throwIfNotFound: true);
-        m_Player_Mouse1 = m_Player.FindAction("Mouse1", throwIfNotFound: true);
         m_Player_Schlam = m_Player.FindAction("Schlam", throwIfNotFound: true);
+        m_Player_Mouse1 = m_Player.FindAction("Mouse1", throwIfNotFound: true);
+        m_Player_Mouse = m_Player.FindAction("Mouse", throwIfNotFound: true);
+        m_Player_Scroll = m_Player.FindAction("Scroll", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Newaction = m_UI.FindAction("New action", throwIfNotFound: true);
@@ -501,11 +522,12 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Dash;
     private readonly InputAction m_Player_PointDown;
     private readonly InputAction m_Player_Interact;
-    private readonly InputAction m_Player_Mouse;
     private readonly InputAction m_Player_Sheath;
     private readonly InputAction m_Player_Hotbar2;
-    private readonly InputAction m_Player_Mouse1;
     private readonly InputAction m_Player_Schlam;
+    private readonly InputAction m_Player_Mouse1;
+    private readonly InputAction m_Player_Mouse;
+    private readonly InputAction m_Player_Scroll;
     public struct PlayerActions
     {
         private @PlayerControls m_Wrapper;
@@ -515,11 +537,12 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public InputAction @Dash => m_Wrapper.m_Player_Dash;
         public InputAction @PointDown => m_Wrapper.m_Player_PointDown;
         public InputAction @Interact => m_Wrapper.m_Player_Interact;
-        public InputAction @Mouse => m_Wrapper.m_Player_Mouse;
         public InputAction @Sheath => m_Wrapper.m_Player_Sheath;
         public InputAction @Hotbar2 => m_Wrapper.m_Player_Hotbar2;
-        public InputAction @Mouse1 => m_Wrapper.m_Player_Mouse1;
         public InputAction @Schlam => m_Wrapper.m_Player_Schlam;
+        public InputAction @Mouse1 => m_Wrapper.m_Player_Mouse1;
+        public InputAction @Mouse => m_Wrapper.m_Player_Mouse;
+        public InputAction @Scroll => m_Wrapper.m_Player_Scroll;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -544,21 +567,24 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Interact.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
                 @Interact.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
                 @Interact.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
-                @Mouse.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMouse;
-                @Mouse.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMouse;
-                @Mouse.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMouse;
                 @Sheath.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSheath;
                 @Sheath.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSheath;
                 @Sheath.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSheath;
                 @Hotbar2.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnHotbar2;
                 @Hotbar2.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnHotbar2;
                 @Hotbar2.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnHotbar2;
-                @Mouse1.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMouse1;
-                @Mouse1.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMouse1;
-                @Mouse1.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMouse1;
                 @Schlam.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSchlam;
                 @Schlam.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSchlam;
                 @Schlam.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSchlam;
+                @Mouse1.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMouse1;
+                @Mouse1.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMouse1;
+                @Mouse1.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMouse1;
+                @Mouse.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMouse;
+                @Mouse.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMouse;
+                @Mouse.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMouse;
+                @Scroll.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnScroll;
+                @Scroll.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnScroll;
+                @Scroll.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnScroll;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -578,21 +604,24 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Interact.started += instance.OnInteract;
                 @Interact.performed += instance.OnInteract;
                 @Interact.canceled += instance.OnInteract;
-                @Mouse.started += instance.OnMouse;
-                @Mouse.performed += instance.OnMouse;
-                @Mouse.canceled += instance.OnMouse;
                 @Sheath.started += instance.OnSheath;
                 @Sheath.performed += instance.OnSheath;
                 @Sheath.canceled += instance.OnSheath;
                 @Hotbar2.started += instance.OnHotbar2;
                 @Hotbar2.performed += instance.OnHotbar2;
                 @Hotbar2.canceled += instance.OnHotbar2;
-                @Mouse1.started += instance.OnMouse1;
-                @Mouse1.performed += instance.OnMouse1;
-                @Mouse1.canceled += instance.OnMouse1;
                 @Schlam.started += instance.OnSchlam;
                 @Schlam.performed += instance.OnSchlam;
                 @Schlam.canceled += instance.OnSchlam;
+                @Mouse1.started += instance.OnMouse1;
+                @Mouse1.performed += instance.OnMouse1;
+                @Mouse1.canceled += instance.OnMouse1;
+                @Mouse.started += instance.OnMouse;
+                @Mouse.performed += instance.OnMouse;
+                @Mouse.canceled += instance.OnMouse;
+                @Scroll.started += instance.OnScroll;
+                @Scroll.performed += instance.OnScroll;
+                @Scroll.canceled += instance.OnScroll;
             }
         }
     }
@@ -655,11 +684,12 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         void OnDash(InputAction.CallbackContext context);
         void OnPointDown(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
-        void OnMouse(InputAction.CallbackContext context);
         void OnSheath(InputAction.CallbackContext context);
         void OnHotbar2(InputAction.CallbackContext context);
-        void OnMouse1(InputAction.CallbackContext context);
         void OnSchlam(InputAction.CallbackContext context);
+        void OnMouse1(InputAction.CallbackContext context);
+        void OnMouse(InputAction.CallbackContext context);
+        void OnScroll(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

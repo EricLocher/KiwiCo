@@ -51,15 +51,6 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Mouse",
-                    "type": "Value",
-                    "id": "0fa727c5-01c7-4d38-9b73-1d4f6db8468f",
-                    "expectedControlType": "Vector2",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
-                },
-                {
                     "name": "Sheath",
                     "type": "Button",
                     "id": "39275a52-bb7d-4248-8a0f-ae7986f5d949",
@@ -78,21 +69,39 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Mouse1",
-                    "type": "Value",
-                    "id": "6cd56379-2738-4291-bbd4-40150231791a",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
-                },
-                {
                     "name": "Schlam",
                     "type": "Button",
                     "id": "f8babe5c-fe1a-4971-94e1-1e38785938bf",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "MultiTap(tapDelay=0.15)",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Mouse1",
+                    "type": "Value",
+                    "id": "41f54808-f705-4535-8bd6-067cc2bc6195",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Mouse",
+                    "type": "Value",
+                    "id": "e3e2b30d-f7c8-48bd-a927-3300e190916f",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Scroll",
+                    "type": "Value",
+                    "id": "4810cdf5-8a44-4153-b4cd-acd9dc984f39",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
                     "initialStateCheck": true
                 }
             ],
@@ -286,17 +295,6 @@
                 },
                 {
                     "name": "",
-                    "id": "c7784857-f322-402f-ae24-02fdf8399b5f",
-                    "path": "<Mouse>/delta",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Mouse",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "1ef98142-d0a9-43e3-9cd0-7553f833ba37",
                     "path": "<Keyboard>/1",
                     "interactions": "",
@@ -319,7 +317,18 @@
                 },
                 {
                     "name": "",
-                    "id": "f20d489d-8739-4888-9981-b1ffb9cc5078",
+                    "id": "49d7c5ce-f3d8-4fe3-b5ed-07cbc6b0dbec",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Schlam",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "90c6f009-be02-46c4-bcbc-300410a44eda",
                     "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
@@ -330,12 +339,23 @@
                 },
                 {
                     "name": "",
-                    "id": "49d7c5ce-f3d8-4fe3-b5ed-07cbc6b0dbec",
-                    "path": "<Keyboard>/space",
+                    "id": "2fa5987a-5cf8-475c-a790-4f99badc9b92",
+                    "path": "<Mouse>/delta",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Schlam",
+                    "action": "Mouse",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "46f880fe-7a84-4bea-a96c-97b247771219",
+                    "path": "<Mouse>/scroll/y",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Scroll",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

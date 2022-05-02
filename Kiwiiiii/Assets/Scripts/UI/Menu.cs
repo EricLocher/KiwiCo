@@ -8,7 +8,7 @@ public class Menu : MonoBehaviour
 
     public void ToggleSettings()
     {
-        if(settings.active == false)
+        if(settings.activeInHierarchy == false)
         {
             settings.SetActive(true);
         }
