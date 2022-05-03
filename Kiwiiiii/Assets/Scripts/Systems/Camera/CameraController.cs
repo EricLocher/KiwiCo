@@ -17,6 +17,7 @@ public class CameraController : MonoBehaviour
     [SerializeField, Range(-360f, 360f)] float minClampY = -13;
     [SerializeField, Range(-90f, 0f)] float zoomDistance = -10f;
     [SerializeField] LayerMask layerMask;
+    [SerializeField] Vector2 centerBounds;
 
     public float sensitivity = 3f;
 
@@ -44,6 +45,7 @@ public class CameraController : MonoBehaviour
 
     void Update()
     {
+        InBounds();
         cameraCenter.transform.position = new Vector3(target.transform.position.x,
         target.transform.position.y + yOffset, target.transform.position.z);
 
@@ -106,6 +108,24 @@ public class CameraController : MonoBehaviour
         }
 
         Destroy(obj);
+    }
+
+    void InBounds()
+    {
+        Vector2 camCenter = new Vector2(cam.pixelWidth / 2, cam.pixelHeight / 2);
+
+        float vh = cam.pixelHeight / 100;
+        float vw = cam.pixelWidth / 100;
+
+        Vector3 targetPos = cam.WorldToScreenPoint(target.transform.position) - (Vector3)camCenter;
+        targetPos = new Vector2(Mathf.Abs(targetPos.x), Mathf.Abs(targetPos.y));
+
+        if (targetPos.x < (centerBounds.x * vw) / 2 && targetPos.y < (centerBounds.y * vh) / 2) {
+            //Within
+        }
+        else {
+            //Outside
+        }
     }
 
     static float ClampAngle(float angle, float min, float max)

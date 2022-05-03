@@ -18,6 +18,11 @@ public class PatrolSpots : MonoBehaviour
 
     int? lastSelectedSpot = null;
 
+    private void Start()
+    {
+        circlePos = transform.position;
+    }
+
     public void AddSpot(Vector3 point)
     {
         spots.Add(transform.position + point);
@@ -47,7 +52,6 @@ public class PatrolSpots : MonoBehaviour
         {
             Vector2 newPos = Random.insideUnitCircle * circleRadius;
             return circlePos + new Vector3(newPos.x, 0, newPos.y);
-
         }
 
         int newSpot = Random.Range(0, spots.Count);

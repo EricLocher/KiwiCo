@@ -62,7 +62,7 @@ public class EventZoneEditor : Editor
             EditorGUILayout.BeginVertical("Box", GUILayout.MinHeight(400));
 
             for (int i = 0; i < editors.Count; i++) {
-
+                EditorGUILayout.LabelField(_target.events[i].ToString(), EditorStyles.boldLabel);
                 editors[i].OnInspectorGUI();
                 if (GUILayout.Button("Remove Event")) {
                     _target.RemoveEvent(i);
@@ -81,9 +81,6 @@ public class EventZoneEditor : Editor
                 }
 
                 EditorGUILayout.EndHorizontal();
-
-
-                EditorGUILayout.Space();
             }
 
             EditorGUILayout.EndVertical();

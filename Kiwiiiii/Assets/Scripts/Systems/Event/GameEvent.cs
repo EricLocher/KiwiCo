@@ -7,13 +7,12 @@ using UnityEngine;
 public abstract class GameEvent : ScriptableObject
 {
     [SerializeField]
-    public string EventName;
-    public string EventID;
+    public string eventName;
 
     protected EventZone zone;
 
+    public virtual void Init() { }
     public abstract void StartEvent(EventZone zone);
     public abstract void UpdateEvent();
     public abstract void CompletedEvent();
-
 }

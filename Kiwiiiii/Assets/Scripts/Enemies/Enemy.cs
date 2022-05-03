@@ -2,11 +2,13 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.VFX;
 
 [Serializable, RequireComponent(typeof(NavMeshAgent), typeof(FOV), typeof(PatrolSpots))]
 public class Enemy : MonoBehaviour
 {
     [SerializeField] public Transform target;
+    [SerializeField] public VisualEffect AppearEffect;
     
     public EnemyAttack attack;
     public EnemyChase chase;
@@ -33,6 +35,11 @@ public class Enemy : MonoBehaviour
     public void SetDestination(Vector3 pos)
     {
         navMeshAgent.SetDestination(pos);
+    }
+
+    private void OnEnable()
+    {
+        AppearEffect.Play();
     }
 
     private void Update()

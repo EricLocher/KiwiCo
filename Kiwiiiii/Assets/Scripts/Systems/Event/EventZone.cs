@@ -8,6 +8,12 @@ public class EventZone : MonoBehaviour
     [HideInInspector] public List<GameEvent> events = new List<GameEvent>();
     GameEvent currentEvent = null;
 
+    void Start()
+    {
+        foreach (GameEvent _event in events) {
+            _event.Init();
+        }
+    }
 
     public void NextEvent()
     {

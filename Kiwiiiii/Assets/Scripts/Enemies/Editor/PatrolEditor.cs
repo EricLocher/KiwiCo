@@ -83,7 +83,7 @@ public class PatrolEditor : Editor
         if (patrolSpots.circle)
         {
             Handles.color = Color.red;
-            Handles.DrawWireArc(patrolSpots.circlePos, Vector3.up, Vector3.forward, 360, patrolSpots.circleRadius);
+            Handles.DrawWireArc(patrolSpots.transform.position, Vector3.up, Vector3.forward, 360, patrolSpots.circleRadius);
             return;
         }
 
