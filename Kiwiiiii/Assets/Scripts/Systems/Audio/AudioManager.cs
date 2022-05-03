@@ -38,18 +38,10 @@ public class AudioManager : MonoBehaviour
             sound.audio.loop = sound.loop;
             sound.audio.outputAudioMixerGroup = sound.mixer;
         }
-    }
-
-    void Update()
-    {
         if (SceneManager.GetActiveScene().name == "Menu")
         {
-            AudioManager.instance.PauseAllSound();
-            AudioManager.instance.Play("Menu Music");
-        }
-        else
-        {
-            AudioManager.instance.PauseSound("Menu Music");
+            instance.PauseSound("Game Music");
+            instance.Play("Menu Music");
         }
     }
 

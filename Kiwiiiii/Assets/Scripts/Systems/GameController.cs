@@ -62,6 +62,8 @@ public class GameController : MonoBehaviour
 
     public static void LoadScene(int sceneIndex)
     {
+        AudioManager.instance.PauseSound("Menu Music");
+        AudioManager.instance.Play("Game Music");
         SceneManager.LoadScene(sceneIndex);
     }
 
