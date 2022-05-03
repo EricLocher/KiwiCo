@@ -45,9 +45,9 @@ public class CameraController : MonoBehaviour
 
     void Update()
     {
-        if (IsWithinBound()) { return; }
-            cameraCenter.transform.position = new Vector3(target.transform.position.x,
-            target.transform.position.y + yOffset, target.transform.position.z);
+        if(CameraBorder()) { return; }
+        cameraCenter.transform.position = new Vector3(target.transform.position.x,
+        target.transform.position.y + yOffset, target.transform.position.z);
 
         y = ClampAngle(y, minClampY, maxClampY);
 
@@ -87,14 +87,28 @@ public class CameraController : MonoBehaviour
         camDist.z = Mathf.Clamp(camDist.z, -20f, -2f);
     }
 
-    bool IsWithinBound()
+    bool CameraBorder()
     {
-        var targetPos = cam.WorldToScreenPoint(target.transform.position);
-        if (targetPos.x > bounds.min.x && targetPos.x < bounds.max.x && targetPos.y < bounds.min.y && targetPos.y > bounds.max.y)
+        Vector3 cameraCenter = new Vector2(cam.pixelWidth / 2, cam.pixelHeight / 2);
+
+        Vector3 targetPos = cam.WorldToScreenPoint(target.transform.position) - cameraCenter;
+        Vector3 boundsPos = cameraCenter - (bounds.extents * 100);
+        //Can be removed
+
+        if (
+                 targetPos.x > (-boundsPos.x) && targetPos.x < boundsPos.x
+                 &&
+                 targetPos.y < (-boundsPos.y) && targetPos.y > boundsPos.y
+            )
         {
+            Debug.Log("within");
             return true;
         }
-        return false;
+        else
+        {
+            Debug.Log("outside");
+            return false;
+        }
     }
 
     private void OnDrawGizmos()
