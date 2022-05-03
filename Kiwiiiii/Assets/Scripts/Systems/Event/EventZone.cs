@@ -5,9 +5,8 @@ using UnityEngine;
 public class EventZone : MonoBehaviour
 {
     [HideInInspector] public SphereCollider zoneCollider;
-    public List<GameEvent> events = new List<GameEvent>();
-
-    public GameEvent currentEvent = null;
+    [HideInInspector] public List<GameEvent> events = new List<GameEvent>();
+    GameEvent currentEvent = null;
 
 
     public void NextEvent()

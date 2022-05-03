@@ -12,10 +12,9 @@ public class EventZoneEditor : Editor
 
     public override void OnInspectorGUI()
     {
-        DrawDefaultInspector();
-
         _target.CheckDependency();
 
+        EditorGUILayout.LabelField("Zone radius", EditorStyles.boldLabel);
         float sliderVal = EditorGUILayout.Slider(_target.zoneCollider.radius, 10, 100);
         if (_target.zoneCollider.radius != sliderVal) {
             Undo.RecordObject(_target, "Updated Radius");
@@ -40,12 +39,12 @@ public class EventZoneEditor : Editor
         if (addEvent) {
 
             if (GUILayout.Button("Add Enemy Event")) {
-                _target.AddEvent(new EnemyEvent());
+                _target.AddEvent((GameEvent)CreateInstance(typeof(EnemyEvent)));
                 CreateEditors();
             }
 
             if (GUILayout.Button("Add NPC Event")) {
-                _target.AddEvent(new NPCEvent());
+                _target.AddEvent((GameEvent)CreateInstance(typeof(NPCEvent)));
                 CreateEditors();
             }
 
@@ -60,9 +59,10 @@ public class EventZoneEditor : Editor
         showEditors = EditorGUILayout.Foldout(showEditors, "Events", true);
 
         if (showEditors) {
-            EditorGUILayout.BeginVertical("Box");
+            EditorGUILayout.BeginVertical("Box", GUILayout.MinHeight(400));
 
             for (int i = 0; i < editors.Count; i++) {
+
                 editors[i].OnInspectorGUI();
                 if (GUILayout.Button("Remove Event")) {
                     _target.RemoveEvent(i);
