@@ -5,6 +5,11 @@ public class Save : MonoBehaviour
 {
     public int sceneIndex;
 
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        sceneIndex = SceneManager.GetActiveScene().buildIndex;
+    }
+
     public void SaveAll()
     {
         SaveData.Save(this);

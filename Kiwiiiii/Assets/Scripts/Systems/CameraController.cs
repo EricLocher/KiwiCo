@@ -105,12 +105,10 @@ public class CameraController : MonoBehaviour
                  targetPos.y < (-boundsPos.y) && targetPos.y > boundsPos.y
             )
         {
-            Debug.Log("within");
             return true;
         }
         else
         {
-            Debug.Log("outside");
             return false;
         }
     }
