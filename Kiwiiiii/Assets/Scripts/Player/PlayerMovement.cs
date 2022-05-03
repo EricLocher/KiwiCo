@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Interactions;
 using UnityEngine.VFX;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerMovement : MonoBehaviour
@@ -16,7 +17,7 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody rb;
     private Animator animator;
     private float radius;
-
+    [SerializeField] Slider dashSlider;
     [SerializeField] VisualEffect slam;
 
     private void Awake()
@@ -43,6 +44,7 @@ public class PlayerMovement : MonoBehaviour
         if (stats.amountOfDashes <= 0) { return; }
         rb.AddForce(dir.normalized * stats.dashSpeed, ForceMode.Impulse);
         stats.amountOfDashes--;
+        dashSlider.value++;
 
         if (stats.amountOfDashes >= stats.maxDashes)
         { return; }
@@ -62,6 +64,7 @@ public class PlayerMovement : MonoBehaviour
     {
         yield return new WaitForSeconds(5f);
         stats.amountOfDashes++;
+        dashSlider.value--;
     }
 
     public void Jump(InputAction.CallbackContext context)
