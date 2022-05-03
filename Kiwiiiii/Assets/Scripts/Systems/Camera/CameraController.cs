@@ -43,12 +43,8 @@ public class CameraController : MonoBehaviour
         y = Angles.y;
     }
 
-    void Update()
+    void FixedUpdate()
     {
-        InBounds();
-        cameraCenter.transform.position = new Vector3(target.transform.position.x,
-        target.transform.position.y + yOffset, target.transform.position.z);
-
         y = ClampAngle(y, minClampY, maxClampY);
 
         if (mouseDown)
@@ -59,6 +55,11 @@ public class CameraController : MonoBehaviour
 
         if (Application.isPlaying)
             CameraCollision();
+
+
+            var camPos = new Vector3(target.transform.position.x, target.transform.position.y + yOffset, target.transform.position.z);
+            cameraCenter.transform.position = Vector3.Lerp(cameraCenter.transform.position, camPos, 4 * Time.fixedDeltaTime);
+
     }
 
     public void MouseInput(InputAction.CallbackContext ctx)
@@ -110,7 +111,7 @@ public class CameraController : MonoBehaviour
         Destroy(obj);
     }
 
-    void InBounds()
+    bool InBounds()
     {
         Vector2 camCenter = new Vector2(cam.pixelWidth / 2, cam.pixelHeight / 2);
 
@@ -121,10 +122,10 @@ public class CameraController : MonoBehaviour
         targetPos = new Vector2(Mathf.Abs(targetPos.x), Mathf.Abs(targetPos.y));
 
         if (targetPos.x < (centerBounds.x * vw) / 2 && targetPos.y < (centerBounds.y * vh) / 2) {
-            //Within
+            return true;
         }
         else {
-            //Outside
+            return false;
         }
     }
 
