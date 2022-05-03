@@ -3,11 +3,27 @@ using UnityEngine.SceneManagement;
 
 public class Save : MonoBehaviour
 {
+    [HideInInspector]
     public int sceneIndex;
+
+    private void Awake()
+    {
+        DontDestroyOnLoad(this);
+    }
+
+    void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        sceneIndex = SceneManager.GetActiveScene().buildIndex;
+        if (SceneManager.GetActiveScene().buildIndex != 0)
+        {
+            sceneIndex = SceneManager.GetActiveScene().buildIndex;
+            SaveAll();
+            Debug.Log("Saving");
+        }
     }
 
     public void SaveAll()
