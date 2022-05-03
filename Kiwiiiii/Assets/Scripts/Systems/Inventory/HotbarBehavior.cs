@@ -5,15 +5,7 @@ using TMPro;
 
 public class HotbarBehavior : MonoBehaviour
 {
-    //This script is temporary
-    // AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-    // AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAUIUIUIOOOOOOOOOOOOOOEEEEEEEEEEEEEEEOOOOOOOOOOOOOOEIEIEIOOO
-    // Det var en gång en kod som borde funka
-    // Men den ville inte det för den var Satans egna barn
-    // Ful är den också
-    // KAPISHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
-    // Hjärnmush
-    // moschscshchschschschshcshshcshchschshcshchshchschshccshscchschschshcshchsch
+    //TODO: More intuitive system
 
     private PlayerController stats;
     [SerializeField] ItemBerry berry;
