@@ -20,7 +20,7 @@ MonoBehaviour:
     x: 941
     y: -190
     width: 425
-    height: 2138
+    height: 1640
 --- !u!114 &114350483966674976
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -31,7 +31,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7d4c867f6b72b714dbb5fd1780afe208, type: 3}
-  m_Name: LowPolySmoke
+  m_Name: SimpleFire
   m_EditorClassIdentifier: 
   m_UIIgnoredErrors: []
   m_Parent: {fileID: 0}
@@ -56,7 +56,7 @@ VisualEffectResource:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: LowPolySmoke
+  m_Name: SimpleFire
   m_Graph: {fileID: 114350483966674976}
   m_Infos:
     m_RendererSettings:
@@ -1008,7 +1008,7 @@ MonoBehaviour:
   m_Parent: {fileID: 114350483966674976}
   m_Children:
   - {fileID: 8926484042661614696}
-  m_UIPosition: {x: 942, y: 814}
+  m_UIPosition: {x: 942, y: 592}
   m_UICollapsed: 0
   m_UISuperCollapsed: 0
   m_InputSlots: []
@@ -1068,7 +1068,7 @@ MonoBehaviour:
   - {fileID: 8926484042661614630}
   - {fileID: 8926484042661614624}
   - {fileID: 8926484042661614626}
-  m_UIPosition: {x: 942, y: 1306}
+  m_UIPosition: {x: 942, y: 806}
   m_UICollapsed: 0
   m_UISuperCollapsed: 0
   m_InputSlots:
