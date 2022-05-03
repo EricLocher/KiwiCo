@@ -9,6 +9,13 @@ public class PatrolSpots : MonoBehaviour
     public bool hasSpots { get { return (spots.Count > 0); } }
     public Vector3 this[int i] { get { return spots[i]; } }
 
+    [HideInInspector]
+    public bool circle;
+    [HideInInspector]
+    public float circleRadius;
+    [HideInInspector]
+    public Vector3 circlePos;
+
     int? lastSelectedSpot = null;
 
     public void AddSpot(Vector3 point)
@@ -36,6 +43,13 @@ public class PatrolSpots : MonoBehaviour
 
     public Vector3 GetNewSpot()
     {
+        if (circle)
+        {
+            Vector2 newPos = Random.insideUnitCircle * circleRadius;
+            return circlePos + new Vector3(newPos.x, 0, newPos.y);
+
+        }
+
         int newSpot = Random.Range(0, spots.Count);
 
         //Select a new random point, avoid the one in use.

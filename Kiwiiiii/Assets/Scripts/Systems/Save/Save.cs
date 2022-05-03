@@ -36,5 +36,7 @@ public class Save : MonoBehaviour
         GameData data = SaveData.Load();
         sceneIndex = data.sceneIndex;
         SceneManager.LoadScene(sceneIndex);
+        AudioManager.instance.PauseSound("Menu Music");
+        AudioManager.instance.Play("Game Music");
     }
 }

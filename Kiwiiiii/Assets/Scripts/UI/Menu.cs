@@ -8,7 +8,8 @@ public class Menu : MonoBehaviour
 
     public void ToggleSettings()
     {
-        if(settings.activeInHierarchy == false)
+        AudioManager.instance.PlayOnce("Menu Button");
+        if (settings.activeInHierarchy == false)
         {
             settings.SetActive(true);
         }
