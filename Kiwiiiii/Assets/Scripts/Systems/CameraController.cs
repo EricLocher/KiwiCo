@@ -17,9 +17,6 @@ public class CameraController : MonoBehaviour
     [SerializeField, Range(-360f, 360f)] float minClampY = -13;
     [SerializeField, Range(-90f, 0f)] float zoomDistance = -10f;
     [SerializeField] LayerMask layerMask;
-    [SerializeField] Bounds bounds;
-    [SerializeField] RectTransform panel;
-
 
     public float sensitivity = 3f;
 
@@ -47,7 +44,6 @@ public class CameraController : MonoBehaviour
 
     void Update()
     {
-        if(CameraBorder()) { return; }
         cameraCenter.transform.position = new Vector3(target.transform.position.x,
         target.transform.position.y + yOffset, target.transform.position.z);
 
@@ -89,35 +85,6 @@ public class CameraController : MonoBehaviour
         camDist.z = Mathf.Clamp(camDist.z, -20f, -2f);
     }
 
-    bool CameraBorder()
-    {
-        Vector3 cameraCenter = new Vector2(cam.pixelWidth / 2, cam.pixelHeight / 2);
-
-        Vector3 targetPos = cam.WorldToScreenPoint(target.transform.position) - cameraCenter;
-        Vector3 boundsPos = cameraCenter - (bounds.extents * 100);
-        
-        //Can be removed, here for testing.
-        panel.sizeDelta = (bounds.extents * 100) / 2; panel.sizeDelta = (bounds.extents * 100) / 2;
-
-        if (
-                 targetPos.x > (-boundsPos.x) && targetPos.x < boundsPos.x
-                 &&
-                 targetPos.y < (-boundsPos.y) && targetPos.y > boundsPos.y
-            )
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
-
-    //private void OnDrawGizmos()
-    //{
-    //    Gizmos.color = Color.yellow;
-    //    Gizmos.DrawWireCube(target.transform.position, bounds.extents);
-    //}
 
     void CameraCollision()
     {
