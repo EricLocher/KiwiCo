@@ -5,7 +5,7 @@ using UnityEngine;
 public class EventZone : MonoBehaviour
 {
     [HideInInspector] public SphereCollider zoneCollider;
-    [HideInInspector] public List<GameEvent> events = new List<GameEvent>();
+    public List<GameEvent> events = new List<GameEvent>();
 
     public GameEvent currentEvent = null;
 
@@ -39,6 +39,13 @@ public class EventZone : MonoBehaviour
     {
         if (zoneCollider != null) { return; }
         zoneCollider = GetComponent<SphereCollider>();
+    }
+
+    public void SwapElements(int index1, int index2)
+    {
+        GameEvent holder = events[index1];
+        events[index1] = events[index2];
+        events[index2] = holder;
     }
 
     #endregion

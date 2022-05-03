@@ -16,6 +16,8 @@ public class PatrolEditor : Editor
             showSpots = !showSpots;
         }
 
+        if(!showSpots) { return; }
+
         if (GUILayout.Button("Add Spot")) {
             Undo.RecordObject(target, "Added New Spot");
             patrolSpots.AddSpot(new Vector3(0, 10, 0));

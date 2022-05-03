@@ -68,6 +68,21 @@ public class EventZoneEditor : Editor
                     _target.RemoveEvent(i);
                     CreateEditors();
                 }
+
+                EditorGUILayout.BeginHorizontal();
+
+                if (i != 0 && GUILayout.Button("Move Up")) {
+                    _target.SwapElements(i, i - 1);
+                    CreateEditors();
+                }
+                if (i != (editors.Count - 1) && GUILayout.Button("Move Down")) {
+                    _target.SwapElements(i, i + 1);
+                    CreateEditors();
+                }
+
+                EditorGUILayout.EndHorizontal();
+
+
                 EditorGUILayout.Space();
             }
 
