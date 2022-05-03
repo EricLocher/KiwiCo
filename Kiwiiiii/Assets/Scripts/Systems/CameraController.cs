@@ -18,6 +18,8 @@ public class CameraController : MonoBehaviour
     [SerializeField, Range(-90f, 0f)] float zoomDistance = -10f;
     [SerializeField] LayerMask layerMask;
     [SerializeField] Bounds bounds;
+    [SerializeField] RectTransform panel;
+
 
     public float sensitivity = 3f;
 
@@ -93,7 +95,9 @@ public class CameraController : MonoBehaviour
 
         Vector3 targetPos = cam.WorldToScreenPoint(target.transform.position) - cameraCenter;
         Vector3 boundsPos = cameraCenter - (bounds.extents * 100);
-        //Can be removed
+        
+        //Can be removed, here for testing.
+        panel.sizeDelta = (bounds.extents * 100) / 2; panel.sizeDelta = (bounds.extents * 100) / 2;
 
         if (
                  targetPos.x > (-boundsPos.x) && targetPos.x < boundsPos.x
@@ -111,11 +115,11 @@ public class CameraController : MonoBehaviour
         }
     }
 
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireCube(target.transform.position, bounds.extents);
-    }
+    //private void OnDrawGizmos()
+    //{
+    //    Gizmos.color = Color.yellow;
+    //    Gizmos.DrawWireCube(target.transform.position, bounds.extents);
+    //}
 
     void CameraCollision()
     {
