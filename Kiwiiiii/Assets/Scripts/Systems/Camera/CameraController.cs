@@ -2,7 +2,6 @@ using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-[ExecuteInEditMode]
 public class CameraController : MonoBehaviour
 {
     [Header("Target to follow")]
@@ -44,7 +43,7 @@ public class CameraController : MonoBehaviour
         y = Angles.y;
     }
 
-    void FixedUpdate()
+    void Update()
     {
         y = ClampAngle(y, minClampY, maxClampY);
 
@@ -58,7 +57,7 @@ public class CameraController : MonoBehaviour
             CameraCollision();
 
         var camPos = new Vector3(target.transform.position.x, target.transform.position.y + yOffset, target.transform.position.z);
-        cameraCenter.transform.position = Vector3.Lerp(cameraCenter.transform.position, camPos, lerpRate * Time.fixedDeltaTime);
+        cameraCenter.transform.position = Vector3.Lerp(cameraCenter.transform.position, camPos, lerpRate * Time.deltaTime);
 
     }
 

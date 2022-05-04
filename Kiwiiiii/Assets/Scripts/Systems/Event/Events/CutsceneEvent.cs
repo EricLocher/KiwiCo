@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 [Serializable]
 public class CutsceneEvent : GameEvent
 {
-    Camera camera;
+    [SerializeField] GameObject cameraCenter;
     [SerializeField] AnimationClip anim;
     [SerializeField] Animator animation;
     [SerializeField] Animator animBars;
@@ -18,20 +18,18 @@ public class CutsceneEvent : GameEvent
 
     public override void Init()
     {
-        camera = Camera.main;
-        cutsceneController = camera.GetComponent<CutsceneController>();
+        cutsceneController = cameraCenter.GetComponent<CutsceneController>();
     }
 
     public override void StartEvent(EventZone zone)
     {
+        player.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
         cutsceneController.InitStart();
 
-        camStartPos = camera.transform.position;
-        camStartRot = camera.transform.eulerAngles;
+        camStartPos = cameraCenter.transform.position;
+        camStartRot = cameraCenter.transform.eulerAngles;
 
         WaitForCinematic();
-
-
     }
 
     private async void WaitForCinematic()
@@ -45,12 +43,12 @@ public class CutsceneEvent : GameEvent
 
     public override void CompletedEvent()
     {
+        player.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
         animation.enabled = false;
         animBars.SetTrigger("Close");
-        //animBars.enabled = false;
 
-        camera.transform.position = camStartPos;
-        camera.transform.eulerAngles = camStartRot;
+        cameraCenter.transform.position = camStartPos;
+        cameraCenter.transform.eulerAngles = camStartRot;
 
         cutsceneController.isOpen = false;
     }
