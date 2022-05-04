@@ -18,6 +18,7 @@ public class CameraController : MonoBehaviour
     [SerializeField, Range(-90f, 0f)] float zoomDistance = -10f;
     [SerializeField] LayerMask layerMask;
     [SerializeField] Vector2 centerBounds;
+    [SerializeField] float lerpRate = 4f;
 
     public float sensitivity = 3f;
 
@@ -56,9 +57,8 @@ public class CameraController : MonoBehaviour
         if (Application.isPlaying)
             CameraCollision();
 
-
-            var camPos = new Vector3(target.transform.position.x, target.transform.position.y + yOffset, target.transform.position.z);
-            cameraCenter.transform.position = Vector3.Lerp(cameraCenter.transform.position, camPos, 4 * Time.fixedDeltaTime);
+        var camPos = new Vector3(target.transform.position.x, target.transform.position.y + yOffset, target.transform.position.z);
+        cameraCenter.transform.position = Vector3.Lerp(cameraCenter.transform.position, camPos, lerpRate * Time.fixedDeltaTime);
 
     }
 
@@ -93,7 +93,6 @@ public class CameraController : MonoBehaviour
     {
         var transform2 = cam.transform;
         transform2.localPosition = camDist;
-
         GameObject obj = new GameObject();
         obj.transform.SetParent(transform2.parent);
         var position = cam.transform.localPosition;
@@ -105,28 +104,11 @@ public class CameraController : MonoBehaviour
             transform1.position = _camHit.point;
             var localPosition = transform1.localPosition;
             localPosition = new Vector3(localPosition.x, localPosition.y, localPosition.z + collisionSensitivity);
+            localPosition.z = Mathf.Clamp(localPosition.z, -20f, -2f);
             transform1.localPosition = localPosition;
         }
 
         Destroy(obj);
-    }
-
-    bool InBounds()
-    {
-        Vector2 camCenter = new Vector2(cam.pixelWidth / 2, cam.pixelHeight / 2);
-
-        float vh = cam.pixelHeight / 100;
-        float vw = cam.pixelWidth / 100;
-
-        Vector3 targetPos = cam.WorldToScreenPoint(target.transform.position) - (Vector3)camCenter;
-        targetPos = new Vector2(Mathf.Abs(targetPos.x), Mathf.Abs(targetPos.y));
-
-        if (targetPos.x < (centerBounds.x * vw) / 2 && targetPos.y < (centerBounds.y * vh) / 2) {
-            return true;
-        }
-        else {
-            return false;
-        }
     }
 
     static float ClampAngle(float angle, float min, float max)
