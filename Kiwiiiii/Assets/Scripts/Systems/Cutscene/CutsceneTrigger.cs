@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CutsceneTrigger : MonoBehaviour
-{
+{/*
     public Camera CutSceneCamera;
     private CutsceneController cutsceneController;
     public Animator animCam;
@@ -54,7 +54,6 @@ public class CutsceneTrigger : MonoBehaviour
         animBars.SetBool("Blackbars", false);
         animCam.SetBool("Cinematic", false);
         cutsceneController.isOpen = false; ;
-
     }
-
+    */
 }

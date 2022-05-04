@@ -48,6 +48,12 @@ public class EventZoneEditor : Editor
                 CreateEditors();
             }
 
+            if (GUILayout.Button("Add Cinematic Event"))
+            {
+                _target.AddEvent((GameEvent)CreateInstance(typeof(CutsceneEvent)));
+                CreateEditors();
+            }
+
             EditorGUILayout.Space(10);
         }
     }

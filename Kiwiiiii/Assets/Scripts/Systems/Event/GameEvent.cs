@@ -13,6 +13,6 @@ public abstract class GameEvent : ScriptableObject
 
     public virtual void Init() { }
     public abstract void StartEvent(EventZone zone);
-    public abstract void UpdateEvent();
+    public virtual void UpdateEvent() { }
     public abstract void CompletedEvent();
 }
