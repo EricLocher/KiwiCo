@@ -43,7 +43,7 @@ public class CameraController : MonoBehaviour
         y = Angles.y;
     }
 
-    void Update()
+    void FixedUpdate()
     {
         y = ClampAngle(y, minClampY, maxClampY);
 
@@ -57,7 +57,7 @@ public class CameraController : MonoBehaviour
             CameraCollision();
 
         var camPos = new Vector3(target.transform.position.x, target.transform.position.y + yOffset, target.transform.position.z);
-        cameraCenter.transform.position = Vector3.Lerp(cameraCenter.transform.position, camPos, lerpRate * Time.deltaTime);
+        cameraCenter.transform.position = Vector3.Lerp(cameraCenter.transform.position, camPos, lerpRate * Time.fixedDeltaTime);
 
     }
 

@@ -24,6 +24,8 @@ public class CutsceneEvent : GameEvent
     public override void StartEvent(EventZone zone)
     {
         player.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+        FindObjectOfType<Canvas>().GetComponent<UIManager>().HideAllUIExceptCutscene();
+
         cutsceneController.InitStart();
 
         camStartPos = cameraCenter.transform.position;
@@ -44,6 +46,8 @@ public class CutsceneEvent : GameEvent
     public override void CompletedEvent()
     {
         player.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+        FindObjectOfType<Canvas>().GetComponent<UIManager>().ShowAllUIElements();
+
         animation.enabled = false;
         animBars.SetTrigger("Close");
 
