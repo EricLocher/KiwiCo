@@ -9,11 +9,11 @@ public class SphereDamage : MonoBehaviour
     public Vector3 direction;
 
     private Rigidbody rb;
-    private PlayerHealth playerHealth;
+    private PlayerController player;
     
     private void Start()
     {
-        playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         rb = GetComponent<Rigidbody>();
         
         rb.AddForce(direction * force, ForceMode.Impulse);
@@ -28,7 +28,7 @@ public class SphereDamage : MonoBehaviour
     {
         if (col.gameObject.CompareTag("Player"))
         {
-            playerHealth.TakeDamage(3);
+            player.DealDamage(3);
 
             Kill();
         }

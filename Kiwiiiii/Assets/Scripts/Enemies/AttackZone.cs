@@ -4,18 +4,18 @@ using UnityEngine;
 
 public class AttackZone : MonoBehaviour
 {
-    private PlayerHealth playerHealth;
+    private PlayerController player;
 
     private void Start()
     {
-        playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
     }
 
     private void OnTriggerStay(Collider col)
     {
         if (col.gameObject.tag == ("Player"))
         {
-            playerHealth.TakeDamage(0.1f);
+            player.DealDamage(0.1f);
         }
     }
 }

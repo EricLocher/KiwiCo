@@ -5,35 +5,28 @@ using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
-    private EnemyStats enemyStats;
     private PlayerController playerStats;
     public Slider healthSlider;
 
     void Start()
     {
-        enemyStats = GameObject.FindGameObjectWithTag("Enemy")?.GetComponent<EnemyStats>();
         playerStats = GetComponent<PlayerController>();
         if (healthSlider != null)
-            healthSlider.value = playerStats.playerStats.health;
+            healthSlider.value = playerStats.stats.health;
     }
 
     public void TakeDamage(float damage)
     {
 
-        playerStats.playerStats.health = playerStats.playerStats.health - damage;
+        playerStats.stats.health = playerStats.stats.health - damage;
 
         if (healthSlider != null)
-            healthSlider.value = playerStats.playerStats.health;
-    }
-
-    public void DoDamage(float damage)
-    {
-        enemyStats.stats.health -= damage;
+            healthSlider.value = playerStats.stats.health;
     }
 
     public void Heal(float healAmt)
     {
         if(healthSlider != null)
-            healthSlider.value = playerStats.playerStats.health += healAmt;
+            healthSlider.value = playerStats.stats.health += healAmt;
     }
 }

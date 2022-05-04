@@ -24,7 +24,7 @@ public class PlayerMovement : MonoBehaviour
         animator = GetComponentInChildren<Animator>();
         radius = GetComponent<SphereCollider>().radius;
         rb = GetComponent<Rigidbody>();
-        stats = GetComponentInParent<PlayerController>().playerStats;
+        stats = GetComponentInParent<PlayerController>().stats;
 
         stats.amountOfDashes = stats.maxDashes;
     }

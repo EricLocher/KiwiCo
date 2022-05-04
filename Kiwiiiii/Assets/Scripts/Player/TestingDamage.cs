@@ -5,7 +5,6 @@ using UnityEngine.VFX;
 
 public class TestingDamage : MonoBehaviour
 {
-    [SerializeField] PlayerHealth playerHealth;
     [SerializeField] float damageMultiplyFactor = 5f;
     [SerializeField] float damageMinimumValue = 1f;
     [SerializeField] float damageMaxValue = 1f;
@@ -16,8 +15,6 @@ public class TestingDamage : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy"))
         {
             var swordVelocity = GetComponent<Rigidbody>().angularVelocity;
-
-            if (Mathf.Abs(swordVelocity.y) < 3f) { return; }
                 
             impact.Play();
 
@@ -27,7 +24,9 @@ public class TestingDamage : MonoBehaviour
 
             Mathf.Clamp(damage, damageMinimumValue, damageMaxValue);
 
-            collision.GetComponent<EnemyStats>().stats.health -= damage;
+            collision.GetComponent<Enemy>().DealDamage(damage);
+
+            swordVelocity.y = 0;
 
         }
     }

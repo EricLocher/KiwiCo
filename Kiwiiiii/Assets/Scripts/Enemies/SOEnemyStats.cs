@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "EnemyStats", menuName = "Utilities/Stats/EnemyStats")]
-public class SOEnemyStats : ScriptableObject
+public class SOEnemyStats : SOCharacterStats
 {
-    public float health;
+    public int test;
 }

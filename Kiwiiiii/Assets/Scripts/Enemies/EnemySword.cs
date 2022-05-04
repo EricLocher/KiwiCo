@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class EnemySword : MonoBehaviour
 {
-    private PlayerHealth playerHealth;
+    private PlayerController player;
 
     private void Start()
     {
-        playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
     }
 
     private void OnCollisionEnter(Collision col)
