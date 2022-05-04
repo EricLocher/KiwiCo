@@ -6,9 +6,9 @@ public class ItemBerry : MonoBehaviour, IItem
 {
     public void Use(PlayerController controller)
     {
-        if(controller.playerStats.berriesInInventory == 0)
+        if(controller.stats.berriesInInventory == 0)
         { return; }
-        controller.health.Heal(50);
-        controller.playerStats.berriesInInventory--;
+        controller.Heal(50);
+        controller.stats.berriesInInventory--;
     }
 }

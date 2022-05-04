@@ -1,21 +1,21 @@
 using System;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.VFX;
 
 [Serializable, RequireComponent(typeof(NavMeshAgent), typeof(FOV), typeof(PatrolSpots))]
-public class Enemy : MonoBehaviour
+public class Enemy : Character
 {
+    public SOEnemyStats stats { get { return (SOEnemyStats)stats; } }
+
     [SerializeField] public Transform target;
     [SerializeField] public VisualEffect AppearEffect;
-    
-    public EnemyAttack attack;
-    public EnemyChase chase;
-    public EnemyStats stats;
-    public EnemyStateMachine stateMachine;
     [HideInInspector] public NavMeshAgent navMeshAgent;
     [HideInInspector] public FOV fov;
+
+    public EnemyAttack attack;
+    public EnemyChase chase;
+    public EnemyStateMachine stateMachine;
 
     void Awake()
     {
@@ -44,12 +44,12 @@ public class Enemy : MonoBehaviour
 
     private void Update()
     {
-        if (stats.stats.health <= 0)
-        {
-            stateMachine.ChangeState(EnemyStates.Death);
-        }
-
         stateMachine.Update();
+    }
+
+    protected override void OnDeath()
+    {
+        stateMachine.ChangeState(EnemyStates.Death);
     }
 }
 

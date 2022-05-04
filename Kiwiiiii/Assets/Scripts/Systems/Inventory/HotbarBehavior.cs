@@ -29,7 +29,7 @@ public class HotbarBehavior : MonoBehaviour
     public void Items()
     {
        // Debug.Log(stats.berriesInInventory + "yoyoyo man wazzup");
-        amount.text = stats.playerStats.berriesInInventory.ToString();
+        amount.text = stats.stats.berriesInInventory.ToString();
     }
 
     public void UseItem(int index)
