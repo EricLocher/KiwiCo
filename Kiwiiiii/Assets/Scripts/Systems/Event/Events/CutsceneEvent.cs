@@ -25,6 +25,7 @@ public class CutsceneEvent : GameEvent
     {
         player.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
         FindObjectOfType<Canvas>().GetComponent<UIManager>().HideAllUIExceptCutscene();
+        cameraCenter.transform.GetChild(0).GetComponent<CameraController>().IsCinematic = true;
 
         cutsceneController.InitStart();
 
@@ -47,7 +48,7 @@ public class CutsceneEvent : GameEvent
     {
         player.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
         FindObjectOfType<Canvas>().GetComponent<UIManager>().ShowAllUIElements();
-
+        cameraCenter.transform.GetChild(0).GetComponent<CameraController>().IsCinematic = false;
         animation.enabled = false;
         animBars.SetTrigger("Close");
 

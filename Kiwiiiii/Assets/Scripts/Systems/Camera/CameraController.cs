@@ -20,6 +20,7 @@ public class CameraController : MonoBehaviour
     [SerializeField] float lerpRate = 4f;
 
     public float sensitivity = 3f;
+    public bool IsCinematic = false;
 
     RaycastHit _camHit;
     Vector3 camDist;
@@ -53,7 +54,7 @@ public class CameraController : MonoBehaviour
             cameraCenter.transform.rotation = rotation;
         }
 
-        if (Application.isPlaying)
+        if (!IsCinematic)
             CameraCollision();
 
         var camPos = new Vector3(target.transform.position.x, target.transform.position.y + yOffset, target.transform.position.z);
