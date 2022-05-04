@@ -29,7 +29,7 @@ public class CutsceneController : MonoBehaviour
 
     public IEnumerator StartText()
     {
-        yield return new WaitForSeconds(4f);
+        yield return new WaitForSeconds(2f);
         isOpen = true;
         StartCoroutine(TypeSentance(sentance));
     }

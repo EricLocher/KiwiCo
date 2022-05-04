@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 3334218863282747873}
   - component: {fileID: 3334218863282747874}
   - component: {fileID: 3334218863282747875}
+  - component: {fileID: 1102342362}
+  - component: {fileID: 1102342363}
   m_Layer: 0
   m_Name: Camera
   m_TagString: MainCamera
@@ -145,11 +147,11 @@ MonoBehaviour:
       enableBigTilePrepass: 0
       isFptlEnabled: 0
   clearColorMode: 0
-  backgroundColorHDR: {r: 0.025, g: 0.07, b: 0.19, a: 0}
+  backgroundColorHDR: {r: 1, g: 1, b: 1, a: 0}
   clearDepth: 1
   volumeLayerMask:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 257
   volumeAnchorOverride: {fileID: 0}
   antialiasing: 0
   SMAAQuality: 2
@@ -215,7 +217,6 @@ MonoBehaviour:
   cameraCenter: {fileID: 3334218864611319964}
   cam: {fileID: 3334218863282747872}
   yOffset: 1
-  sensitivity: 0.05
   collisionSensitivity: 4.5
   maxClampY: 55
   minClampY: -13
@@ -223,6 +224,44 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 883
+  centerBounds: {x: 38.28, y: 51.1}
+  lerpRate: 4
+  sensitivity: 4
+--- !u!95 &1102342362
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3334218863282747877}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: bfeaf164406d8894cb316b8fa2ebcb0e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1102342363
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3334218863282747877}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68a611c421dab874cbb0d53d6d06273b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueText: {fileID: 0}
+  dialogueBox: {fileID: 0}
+  sentance: hello asfasfasfasfasfasdasdasdasda
+  isOpen: 0
 --- !u!1 &3334218864611319964
 GameObject:
   m_ObjectHideFlags: 0
