@@ -34,9 +34,6 @@ public class PlayerInput : MonoBehaviour
         //Jump
         controls.Player.Jump.performed += ctx => movement.Jump(ctx);
 
-        //Dash
-        controls.Player.Dash.performed += ctx => movement.Dash(ctx);
-
         //Point Sword Down
         controls.Player.PointDown.started += ctx => lookWithMouse.PointDown();
 
@@ -48,7 +45,6 @@ public class PlayerInput : MonoBehaviour
 
         //Hotbar
         controls.Player.Hotbar2.performed += ctx => hotbar.UseItem(1);
-        controls.Player.Schlam.performed += ctx => movement.Schlam(ctx);
 
         #endregion
     }

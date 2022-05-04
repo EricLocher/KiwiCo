@@ -30,7 +30,7 @@ public class DebugConsole : MonoBehaviour
             DontDestroyOnLoad(gameObject);
         }
         else {
-            Destroy(this.gameObject);
+            Destroy(gameObject);
         }
 
         openConsole.Enable();

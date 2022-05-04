@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Character : MonoBehaviour
 {
-
     public SOCharacterStats CharacterStats;
 
     void Start()

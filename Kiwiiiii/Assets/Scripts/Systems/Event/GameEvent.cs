@@ -9,6 +9,9 @@ public abstract class GameEvent : ScriptableObject
     [SerializeField]
     public string eventName;
 
+    [HideInInspector]
+    public bool Minimized = true;
+
     protected EventZone zone;
 
     public virtual void Init() { }

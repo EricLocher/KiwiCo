@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29bbe5eb25b7bea489b8921b43fbe33d, type: 3}
+  m_Name: Slam
+  m_EditorClassIdentifier: 
+  action:
+    m_Name: Action
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 9d1ca570-f901-4b81-9048-5c1f1cb51aa9
+    m_Processors: 
+    m_Interactions: Hold(duration=1)
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 19f93b28-289e-439e-bc95-9b4ddd61de33
+      m_Path: <Keyboard>/space
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Action
+      m_Flags: 0
+    m_Flags: 0
+  name: Slam
+  coolDownTime: 2
+  maxAmount: 1
+  currentAmount: 1
+  slamForce: 30
