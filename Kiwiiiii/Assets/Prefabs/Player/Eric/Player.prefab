@@ -613,7 +613,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d9fb45c39d07ce44aa945df058514c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 5261179116413408735}
+  movement: {fileID: 0}
   abilities:
   - {fileID: 11400000, guid: 68f340cb4e48dad4d8d9cc74510ffa9e, type: 2}
   - {fileID: 11400000, guid: c85277dc91379374797270de0951b0de, type: 2}
@@ -922,6 +922,7 @@ MonoBehaviour:
   damageMinimumValue: 1
   damageMaxValue: 25
   impact: {fileID: 235772340}
+  damagePopup: {fileID: 0}
 --- !u!114 &2050244577
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -990,6 +991,7 @@ MonoBehaviour:
     m_Bits: 96
   stats: {fileID: 0}
   isGrounded: 0
+  rb: {fileID: 0}
   characterHitBox: {fileID: 3105965049227968369}
   slam: {fileID: 0}
 --- !u!114 &734907203

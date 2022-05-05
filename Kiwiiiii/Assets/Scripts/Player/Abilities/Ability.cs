@@ -4,7 +4,9 @@ using UnityEngine.InputSystem;
 
 public abstract class Ability : ScriptableObject
 {
+    [Header("Input")]
     [SerializeField] InputAction action;
+    [Header("Ability Settings")]
     public new string name = "NoName";
     public float coolDownTime = 0;
     public int maxAmount = 1;

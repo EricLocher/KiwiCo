@@ -1,11 +1,6 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.Interactions;
 using UnityEngine.VFX;
-using UnityEngine.UI;
 
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerMovement : MonoBehaviour
@@ -20,6 +15,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] SphereCollider characterHitBox;
     [SerializeField] VisualEffect slam;
 
+    bool jump = false;
+
     private void Awake()
     {
         animator = GetComponentInChildren<Animator>();
@@ -33,25 +30,26 @@ public class PlayerMovement : MonoBehaviour
     #region Movement
     public void Move(Vector3 movement)
     {
-         Vector3 dir = Camera.main.transform.TransformDirection(movement);
-         rb.AddForce(dir * stats.moveSpeed, ForceMode.Force);
+        Vector3 dir = Camera.main.transform.TransformDirection(movement);
+        rb.AddForce(dir * stats.moveSpeed, ForceMode.Force);
     }
 
-    public void Jump(InputAction context)
+    public void Jump(InputAction.CallbackContext ctx)
     {
-        if (context.WasPressedThisFrame())
-        {
-            if (isGrounded || stats.amountOfJumps > 0)
-            {
-                rb.AddForce(Vector3.up * stats.jumpForce, ForceMode.Impulse);
-                stats.amountOfJumps--;
-            }
-        }
+        jump = true;
         //TODO: Fall multiplier
     }
 
     void FixedUpdate()
     {
+        if (jump) {
+            if (isGrounded || stats.amountOfJumps > 0) {
+                rb.AddForce(Vector3.up * stats.jumpForce, ForceMode.Impulse);
+                stats.amountOfJumps--;
+            }
+            jump = false;
+        }
+
         GroundCheck();
     }
 
@@ -72,12 +70,12 @@ public class PlayerMovement : MonoBehaviour
 
         RaycastHit hit;
 
-        if (Physics.Raycast(transform.position, Vector3.down, out hit, radius + .1f, layerMask))
-        {
+        if (Physics.Raycast(transform.position, Vector3.down, out hit, 0.5f, layerMask)) {
             isGrounded = true;
             stats.amountOfJumps = stats.maxJumps;
             stats.jumpForce = stats.defaultJumpForce;
-        } else {
+        }
+        else {
             isGrounded = false;
         }
 
