@@ -10,14 +10,15 @@ public class ZoneTP : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            collision.gameObject.transform.position = targetPos;
+
+            collision.gameObject.transform.parent.transform.position = (transform.position + targetPos);
         }
     }
 
     void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawLine(transform.position, targetPos);
+        Gizmos.DrawLine(transform.position, transform.position + targetPos);
     }
 
 }
