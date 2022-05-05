@@ -14,7 +14,7 @@ public class PlayerMovement : MonoBehaviour
 
     [HideInInspector] public SOPlayerStats stats;
     [HideInInspector] public bool isGrounded;
-    private Rigidbody rb;
+    public Rigidbody rb;
     private Animator animator;
     private float radius;
     [SerializeField] SphereCollider characterHitBox;

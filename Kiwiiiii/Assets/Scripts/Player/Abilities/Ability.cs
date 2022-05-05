@@ -10,6 +10,8 @@ public abstract class Ability : ScriptableObject
     public int maxAmount = 1;
     public int currentAmount;
 
+    protected PlayerMovement movement;
+
     public float timer
     {
         get {
@@ -20,26 +22,30 @@ public abstract class Ability : ScriptableObject
 
     List<float> timers;
 
-    public void Init(Rigidbody rb)
+    public void Init(PlayerMovement movement)
     {
         action.Enable();
-        action.performed += ctx => Activate(ctx, rb);
+        this.movement = movement;
+        action.performed += ctx => Activate(ctx);
         currentAmount = maxAmount;
         timers = new List<float>();
+        InitAbility();
     }
 
-    public virtual void Activate(InputAction.CallbackContext ctx, Rigidbody rb)
+    protected virtual void InitAbility() { }
+
+    public virtual void Activate(InputAction.CallbackContext ctx)
     {
         if (currentAmount <= 0) { return; }
 
-        DoAbility(rb);
+        DoAbility();
 
         currentAmount--;
 
         timers.Add(coolDownTime);
     }
 
-    public abstract void DoAbility(Rigidbody rb);
+    public abstract void DoAbility();
 
     public virtual void UpdateAbility(float dt)
     {

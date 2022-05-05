@@ -15,8 +15,8 @@ public class PatrolEditor : Editor
         if (GUILayout.Button("Use Circle"))
         {
             Undo.RecordObject(target, "Updated Behaviour");
-            patrolSpots.circlePos = patrolSpots.transform.position;
             patrolSpots.circle = !patrolSpots.circle;
+            patrolSpots.circlePos = patrolSpots.transform.position;
         }
 
 
@@ -59,6 +59,7 @@ public class PatrolEditor : Editor
                     }
                 }
             }
+            
         }
         else
         {
@@ -71,6 +72,8 @@ public class PatrolEditor : Editor
                 patrolSpots.circleRadius = sliderVal;
             }
         }
+
+        PrefabUtility.RecordPrefabInstancePropertyModifications(target);
     }
 
     void OnSceneGUI()
@@ -83,7 +86,10 @@ public class PatrolEditor : Editor
         if (patrolSpots.circle)
         {
             Handles.color = Color.red;
-            Handles.DrawWireArc(patrolSpots.transform.position, Vector3.up, Vector3.forward, 360, patrolSpots.circleRadius);
+            if(patrolSpots.circlePos == null)
+                Handles.DrawWireArc(patrolSpots.transform.position, Vector3.up, Vector3.forward, 360, patrolSpots.circleRadius);
+            else
+                Handles.DrawWireArc(patrolSpots.circlePos, Vector3.up, Vector3.forward, 360, patrolSpots.circleRadius);
             return;
         }
 
@@ -109,7 +115,7 @@ public class PatrolEditor : Editor
                 lastMovedIndex = i;
             }
         }
-
+        PrefabUtility.RecordPrefabInstancePropertyModifications(patrolSpots);
     }
 
     private void OnEnable()

@@ -6,10 +6,10 @@ public class Dash : Ability
 {
     public float speed;
 
-    public override void DoAbility(Rigidbody rb)
+    public override void DoAbility()
     {
         Vector3 dir = Camera.main.transform.forward;
 
-        rb.AddForce(dir.normalized * speed, ForceMode.Impulse);
+        movement.rb.AddForce(dir.normalized * speed, ForceMode.Impulse);
     }
 }

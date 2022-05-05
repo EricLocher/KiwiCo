@@ -15,20 +15,21 @@ public class ShootAttack : EnemyAttack
 
     private Animator animator;
 
+    PlayerController playerController;
+
     Coroutine currentCoroutine;
 
     void Start()
     {
         currentCoroutine = null;
-        animator = GetComponent<Animator>();
+        playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
     }
 
     public override void EnterAttack()
     {
         if (currentCoroutine == null)
         {
-            Vector3 direction = (enemy.target.position - gun.transform.position).normalized;
-            currentCoroutine = StartCoroutine(InstantiateBall(direction));
+            currentCoroutine = StartCoroutine(InstantiateBall());
         }
         else
         {
@@ -43,17 +44,18 @@ public class ShootAttack : EnemyAttack
 
     public override void ExitAttack()
     {
-        animator.SetTrigger("idle");
+        //animator.SetTrigger("idle");
     }
 
-    IEnumerator InstantiateBall(Vector3 direction)
+    IEnumerator InstantiateBall()
     {
+
         enemy.stateMachine.ChangeState(EnemyStates.Chase);
-        yield return new WaitForSeconds(2);
-        animator.SetTrigger("shoot");
+        yield return new WaitForSeconds(1);
+        //animator.SetTrigger("shoot");
 
         SphereDamage newSphere = Instantiate(sphere, gun.transform.position, gun.transform.rotation).GetComponent<SphereDamage>();
-        newSphere.direction = direction;
+        newSphere.target = playerController;
 
         currentCoroutine = null;
     }

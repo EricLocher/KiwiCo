@@ -5,18 +5,22 @@ using UnityEngine;
 
 public class SphereDamage : MonoBehaviour
 {
-    public float force = 5;
-    public Vector3 direction;
+    public float force = 2;
 
     private Rigidbody rb;
-    private PlayerController player;
+    public PlayerController target;
     
     private void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         rb = GetComponent<Rigidbody>();
-        
-        rb.AddForce(direction * force, ForceMode.Impulse);
+
+    }
+
+    private void Update()
+    {
+        transform.LookAt(target.transform.GetChild(0).transform);
+
+        rb.AddForce(transform.forward * force, ForceMode.Force);
     }
 
     private void Kill()
@@ -28,8 +32,13 @@ public class SphereDamage : MonoBehaviour
     {
         if (col.gameObject.CompareTag("Player"))
         {
-            player.DealDamage(3);
+            if(col.isTrigger) { return; }
 
+            target.DealDamage(3);
+
+            Kill();
+        }
+        else if(!col.gameObject.CompareTag("Enemy")) {
             Kill();
         }
 
