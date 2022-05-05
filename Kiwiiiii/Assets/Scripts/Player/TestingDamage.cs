@@ -14,20 +14,17 @@ public class TestingDamage : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            var swordVelocity = GetComponent<Rigidbody>().angularVelocity;
+            Rigidbody swordRb = GetComponent<Rigidbody>();
                 
             impact.Play();
 
-            var damage = (Mathf.Abs(swordVelocity.y) + damageMinimumValue) * damageMultiplyFactor;
-
-            Debug.Log(damage);
+            var damage = (Mathf.Abs(swordRb.angularVelocity.y) + damageMinimumValue) * damageMultiplyFactor;
 
             Mathf.Clamp(damage, damageMinimumValue, damageMaxValue);
 
             collision.GetComponent<Enemy>().DealDamage(damage);
 
-            swordVelocity.y = 0;
-
+            swordRb.angularVelocity = new Vector3(swordRb.angularVelocity.x, 0, swordRb.angularVelocity.z);
         }
     }
 }

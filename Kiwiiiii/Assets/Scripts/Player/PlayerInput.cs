@@ -32,7 +32,7 @@ public class PlayerInput : MonoBehaviour
         controls.Player.Mouse.performed += ctx => cameraController?.MouseInput(ctx);
 
         //Jump
-        controls.Player.Jump.performed += ctx => movement.Jump(ctx);
+        
 
         //Point Sword Down
         controls.Player.PointDown.started += ctx => lookWithMouse.PointDown();
@@ -53,6 +53,10 @@ public class PlayerInput : MonoBehaviour
     {
         Move();
         lookWithMouse.MouseInput(controls.Player.Mouse.ReadValue<Vector2>());
+
+        //We need to tweak this
+        movement.Jump(controls.Player.Jump);
+
     }
 
     public void Spin(InputAction.CallbackContext context)

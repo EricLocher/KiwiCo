@@ -17,12 +17,13 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody rb;
     private Animator animator;
     private float radius;
+    [SerializeField] SphereCollider characterHitBox;
     [SerializeField] VisualEffect slam;
 
     private void Awake()
     {
         animator = GetComponentInChildren<Animator>();
-        radius = GetComponent<SphereCollider>().radius;
+        radius = characterHitBox.radius;
         rb = GetComponent<Rigidbody>();
         stats = GetComponentInParent<PlayerController>().stats;
 
@@ -36,18 +37,22 @@ public class PlayerMovement : MonoBehaviour
          rb.AddForce(dir * stats.moveSpeed, ForceMode.Force);
     }
 
-    public void Jump(InputAction.CallbackContext context)
+    public void Jump(InputAction context)
     {
-        if (context.performed)
+        if (context.WasPressedThisFrame())
         {
             if (isGrounded || stats.amountOfJumps > 0)
             {
-                isGrounded = false;
                 rb.AddForce(Vector3.up * stats.jumpForce, ForceMode.Impulse);
                 stats.amountOfJumps--;
             }
         }
         //TODO: Fall multiplier
+    }
+
+    void FixedUpdate()
+    {
+        GroundCheck();
     }
 
     public void Spin()
@@ -57,8 +62,6 @@ public class PlayerMovement : MonoBehaviour
 
     private void GroundCheck()
     {
-        if (isGrounded)
-        { return; }
 
         InputSystem.Update();
         //if (Physics.CheckSphere(transform.position, radius + 0.1f))
@@ -69,11 +72,13 @@ public class PlayerMovement : MonoBehaviour
 
         RaycastHit hit;
 
-        if (Physics.Raycast(transform.position, Vector3.down, out hit, radius + 1f, layerMask))
+        if (Physics.Raycast(transform.position, Vector3.down, out hit, radius + .1f, layerMask))
         {
             isGrounded = true;
             stats.amountOfJumps = stats.maxJumps;
             stats.jumpForce = stats.defaultJumpForce;
+        } else {
+            isGrounded = false;
         }
 
         //if(Physics.SphereCast(transform.position, radius, Vector3.down, out hit, radius + .1f , layerMask))
@@ -84,11 +89,4 @@ public class PlayerMovement : MonoBehaviour
     }
     #endregion
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        if(collision.gameObject.layer == LayerMask.NameToLayer("Floor"))
-        {
-            GroundCheck();
-        }
-    }
 }
