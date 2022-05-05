@@ -9,6 +9,14 @@ public class TestingDamage : MonoBehaviour
     [SerializeField] float damageMinimumValue = 1f;
     [SerializeField] float damageMaxValue = 1f;
     [SerializeField] VisualEffect impact;
+    [SerializeField] GameObject damagePopup;
+    GameObject damageHolder;
+
+    private void Start()
+    {
+        damageHolder = new GameObject();
+        damageHolder.name = "DamageHolder";
+    }
 
     void OnTriggerEnter(Collider collision)
     {
@@ -24,7 +32,12 @@ public class TestingDamage : MonoBehaviour
 
             collision.GetComponent<Enemy>().DealDamage(damage);
 
-            swordRb.angularVelocity = new Vector3(swordRb.angularVelocity.x, 0, swordRb.angularVelocity.z);
+            swordVelocity.y = 0;
+
+            var randomPos = Random.Range(-2f, 2f);
+            var collPos = collision.transform.position;
+            var popup = Instantiate(damagePopup, new Vector3(collPos.x + randomPos, collPos.y + 2, collPos.z + randomPos), Quaternion.identity, damageHolder.transform);
+            popup.GetComponent<DamagePopup>().PopupDamage((int)damage);
         }
     }
 }

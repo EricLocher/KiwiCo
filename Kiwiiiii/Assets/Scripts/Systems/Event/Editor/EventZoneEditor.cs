@@ -16,7 +16,8 @@ public class EventZoneEditor : Editor
 
         EditorGUILayout.LabelField("Zone radius", EditorStyles.boldLabel);
         float sliderVal = EditorGUILayout.Slider(_target.zoneCollider.radius, 10, 100);
-        if (_target.zoneCollider.radius != sliderVal) {
+        if (_target.zoneCollider.radius != sliderVal)
+        {
             Undo.RecordObject(_target, "Updated Radius");
 
             _target.zoneCollider.radius = sliderVal;
@@ -24,6 +25,7 @@ public class EventZoneEditor : Editor
 
         DrawButtons();
         DrawInspectors();
+        PrefabUtility.RecordPrefabInstancePropertyModifications(_target);
     }
 
     public void OnSceneGUI()
@@ -36,17 +38,18 @@ public class EventZoneEditor : Editor
     {
         addEvent = EditorGUILayout.Foldout(addEvent, "Add Event", true);
 
-        if (addEvent) {
+        if (addEvent)
+        {
 
-            if (GUILayout.Button("Add Enemy Event")) {
-                Undo.RecordObject(target, "Added Event");
+            if (GUILayout.Button("Add Enemy Event"))
+            {
 
                 _target.AddEvent((GameEvent)CreateInstance(typeof(EnemyEvent)));
                 CreateEditors();
             }
 
-            if (GUILayout.Button("Add NPC Event")) {
-                Undo.RecordObject(target, "Added Event");
+            if (GUILayout.Button("Add NPC Event"))
+            {
 
                 _target.AddEvent((GameEvent)CreateInstance(typeof(NPCEvent)));
                 CreateEditors();
@@ -64,34 +67,40 @@ public class EventZoneEditor : Editor
 
     void DrawInspectors()
     {
+
         if (editors.Count == 0) { return; }
 
         showEditors = EditorGUILayout.Foldout(showEditors, "Events", true);
 
-        if (showEditors) {
+        if (showEditors)
+        {
             EditorGUILayout.BeginVertical("Box");
 
-            for (int i = 0; i < editors.Count; i++) {
+            for (int i = 0; i < editors.Count; i++)
+            {
 
                 _target.events[i].Minimized = EditorGUILayout.Foldout(_target.events[i].Minimized, _target.events[i].ToString(), true);
 
-                if(!_target.events[i].Minimized) { continue; }
+                if (!_target.events[i].Minimized) { continue; }
 
                 editors[i].OnInspectorGUI();
 
-                if (GUILayout.Button("Remove Event")) {
+                if (GUILayout.Button("Remove Event"))
+                {
                     _target.RemoveEvent(i);
                     CreateEditors();
                 }
 
                 EditorGUILayout.BeginHorizontal();
 
-                if (i != 0 && GUILayout.Button("Move Up")) {
+                if (i != 0 && GUILayout.Button("Move Up"))
+                {
                     _target.SwapElements(i, i - 1);
                     CreateEditors();
                 }
 
-                if (i != (editors.Count - 1) && GUILayout.Button("Move Down")) {
+                if (i != (editors.Count - 1) && GUILayout.Button("Move Down"))
+                {
                     _target.SwapElements(i, i + 1);
                     CreateEditors();
                 }
@@ -106,7 +115,8 @@ public class EventZoneEditor : Editor
     void CreateEditors()
     {
         editors.Clear();
-        foreach (GameEvent GameEvent in _target.events) {
+        foreach (GameEvent GameEvent in _target.events)
+        {
             editors.Add(CreateEditor(GameEvent));
         }
     }
