@@ -35,34 +35,6 @@ public class PlayerMovement : MonoBehaviour
          Vector3 dir = Camera.main.transform.TransformDirection(movement);
          rb.AddForce(dir * stats.moveSpeed, ForceMode.Force);
     }
-                  
-    public void Dash(InputAction.CallbackContext context)
-    {
-        Vector3 dir = Camera.main.transform.forward;
-
-        if (stats.amountOfDashes <= 0) { return; }
-        rb.AddForce(dir.normalized * stats.dashSpeed, ForceMode.Impulse);
-        stats.amountOfDashes--;
-
-        if (stats.amountOfDashes >= stats.maxDashes)
-        { return; }
-
-        StartCoroutine(DashTimer());
-    }
-
-    internal void Schlam(InputAction.CallbackContext ctx)
-    {
-        //DO SCHLAAAAAAAM
-        rb.AddForce(Vector3.down * 30, ForceMode.Impulse);
-        slam.Play();
-
-    }
-
-    private IEnumerator DashTimer()
-    {
-        yield return new WaitForSeconds(5f);
-        stats.amountOfDashes++;
-    }
 
     public void Jump(InputAction.CallbackContext context)
     {

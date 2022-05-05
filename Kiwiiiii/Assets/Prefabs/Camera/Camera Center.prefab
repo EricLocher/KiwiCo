@@ -57,7 +57,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
+  near clip plane: 0.01
   far clip plane: 1000
   field of view: 60
   orthographic: 0
@@ -65,7 +65,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 887
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -145,11 +145,11 @@ MonoBehaviour:
       enableBigTilePrepass: 0
       isFptlEnabled: 0
   clearColorMode: 0
-  backgroundColorHDR: {r: 0.025, g: 0.07, b: 0.19, a: 0}
+  backgroundColorHDR: {r: 1, g: 1, b: 1, a: 0}
   clearDepth: 1
   volumeLayerMask:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 257
   volumeAnchorOverride: {fileID: 0}
   antialiasing: 0
   SMAAQuality: 2
@@ -215,7 +215,6 @@ MonoBehaviour:
   cameraCenter: {fileID: 3334218864611319964}
   cam: {fileID: 3334218863282747872}
   yOffset: 1
-  sensitivity: 0.05
   collisionSensitivity: 4.5
   maxClampY: 55
   minClampY: -13
@@ -223,6 +222,10 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 883
+  centerBounds: {x: 20, y: 35}
+  lerpRate: 4
+  sensitivity: 5
+  IsCinematic: 0
 --- !u!1 &3334218864611319964
 GameObject:
   m_ObjectHideFlags: 0
@@ -232,6 +235,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3334218864611319963}
+  - component: {fileID: 2123006912}
+  - component: {fileID: 2123006913}
   m_Layer: 0
   m_Name: Camera Center
   m_TagString: Untagged
@@ -254,3 +259,40 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &2123006912
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3334218864611319964}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: bfeaf164406d8894cb316b8fa2ebcb0e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &2123006913
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3334218864611319964}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68a611c421dab874cbb0d53d6d06273b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueText: {fileID: 0}
+  dialogueBox: {fileID: 0}
+  sentance: "Hello im eric and i am retarded xdxdasfdasj akjhfakshjfa sjfoasjf p\xF6lasjf
+    \xF6ajskf\xF6 asj\xF6lfaj s\xF6lfjas\xF6lf ja\xF6slfj \xF6alsfj \xF6lasjf \xF6lasjf\xF6l
+    asjf\xF6 j"
+  isOpen: 0

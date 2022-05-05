@@ -8,14 +8,13 @@ using UnityEngine.SceneManagement;
 public class UIManager : MonoBehaviour
 {
     List<GameObject> uiElements = new List<GameObject>();
-
-    [SerializeField] GameObject pauseScreen;
-
     [SerializeField] Slider sensSlider;
-
     [SerializeField] TMP_Text sensText;
-
     [SerializeField] CameraController cam;
+    [SerializeField] GameObject pauseScreen;
+    [SerializeField] GameObject dialogueBox;
+    [SerializeField] GameObject interactNotice;
+    [SerializeField] GameObject blackbars;
 
     void Start()
     {
@@ -42,6 +41,26 @@ public class UIManager : MonoBehaviour
 
             pauseScreen.SetActive(false);
         }
+    }
+
+    public void HideAllUIExceptCutscene()
+    {
+        foreach (Transform child in transform)
+        {
+            child.gameObject.SetActive(false);
+        }
+        dialogueBox.SetActive(true);
+        blackbars.SetActive(true);
+    }
+
+    public void ShowAllUIElements()
+    {
+        foreach (Transform child in transform)
+        {
+            child.gameObject.SetActive(true);
+        }
+        interactNotice.SetActive(false);
+        pauseScreen.SetActive(false);
     }
 
     public void SensitivityChange()
