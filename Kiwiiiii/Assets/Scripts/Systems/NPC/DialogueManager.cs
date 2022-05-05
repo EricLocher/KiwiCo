@@ -13,6 +13,8 @@ public class DialogueManager : MonoBehaviour
     public bool IsOpen;
 
     private Queue<string> sentances;
+    public delegate void OnDoneDelegate();
+    public event OnDoneDelegate OnDone;
 
     private void Awake()
     {
@@ -24,8 +26,9 @@ public class DialogueManager : MonoBehaviour
         IsOpen = false;
     }
 
-    public void StartDialogue(Dialogue dialogue)
+    public void StartDialogue(Dialogue dialogue, OnDoneDelegate onDoneDelegate)
     {
+        OnDone = onDoneDelegate;
         IsOpen = true;
         animator.SetBool("IsOpen", IsOpen);
 
@@ -69,5 +72,7 @@ public class DialogueManager : MonoBehaviour
     {
         IsOpen = false;
         animator.SetBool("IsOpen", IsOpen);
+        OnDone?.Invoke();
+        OnDone = null;
     }
 }

@@ -70,7 +70,7 @@ public class PlayerMovement : MonoBehaviour
 
         RaycastHit hit;
 
-        if (Physics.Raycast(transform.position, Vector3.down, out hit, 0.5f, layerMask)) {
+        if (Physics.Raycast(transform.position, Vector3.down, out hit, 0.51f, layerMask)) {
             isGrounded = true;
             stats.amountOfJumps = stats.maxJumps;
             stats.jumpForce = stats.defaultJumpForce;
