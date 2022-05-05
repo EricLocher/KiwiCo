@@ -32,8 +32,6 @@ public class TestingDamage : MonoBehaviour
 
             collision.GetComponent<Enemy>().DealDamage(damage);
 
-            swordVelocity.y = 0;
-
             var randomPos = Random.Range(-2f, 2f);
             var collPos = collision.transform.position;
             var popup = Instantiate(damagePopup, new Vector3(collPos.x + randomPos, collPos.y + 2, collPos.z + randomPos), Quaternion.identity, damageHolder.transform);
