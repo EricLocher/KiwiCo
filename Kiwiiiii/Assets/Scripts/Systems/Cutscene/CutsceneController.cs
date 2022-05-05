@@ -8,7 +8,6 @@ public class CutsceneController : MonoBehaviour
     public Queue<string> sentances;
     public TextMeshProUGUI dialogueText;
     public Animator dialogueBox;
-    public string sentance;
     public bool isOpen;
 
     void Start()
@@ -22,26 +21,26 @@ public class CutsceneController : MonoBehaviour
         dialogueBox.SetBool("IsOpen", isOpen);
     }
 
-    public void InitStart()
+    public void InitStart(string sentence)
     {
-        StartCoroutine(StartText());
+        StartCoroutine(StartText(sentence));
     }
 
-    public IEnumerator StartText()
+    public IEnumerator StartText(string sentence)
     {
         yield return new WaitForSeconds(2f);
         isOpen = true;
-        StartCoroutine(TypeSentance(sentance));
+        StartCoroutine(TypeSentence(sentence));
     }
 
-    IEnumerator TypeSentance(string sentance)
+    IEnumerator TypeSentence(string sentence)
     {
         dialogueText.text = "";
-        foreach (char letter in sentance.ToCharArray())
+        foreach (char letter in sentence.ToCharArray())
         {
             dialogueText.text += letter;
 
-            yield return null;
+            yield return new WaitForSeconds(0.1f);
         }
     }
 }

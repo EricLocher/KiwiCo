@@ -25,6 +25,7 @@ public class EventZoneEditor : Editor
 
         DrawButtons();
         DrawInspectors();
+        PrefabUtility.RecordPrefabInstancePropertyModifications(_target);
     }
 
     public void OnSceneGUI()
