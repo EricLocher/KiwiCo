@@ -271,10 +271,14 @@ MonoBehaviour:
   fov: {fileID: 0}
   damagePopup: {fileID: 3432873184914692212, guid: 91e9d37f0c993324481dcad819e13585, type: 3}
   attack: {fileID: 1014077915690703666}
+  idle: {fileID: 0}
   chase: {fileID: 1075037829}
+  surprise: {fileID: 0}
   stateMachine:
     enemy: {fileID: 0}
     moveSpots: {fileID: 0}
+  enemyAttacks:
+  - {fileID: 1014077915690703666}
 --- !u!114 &1075037829
 MonoBehaviour:
   m_ObjectHideFlags: 0

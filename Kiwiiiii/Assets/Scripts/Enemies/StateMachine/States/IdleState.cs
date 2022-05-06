@@ -37,7 +37,7 @@ public class IdleState : EnemyState
             return;
         }
 
-        stateMachine.ChangeState(EnemyStates.Surprise);
+        stateMachine.ChangeState(EnemyStates.Chase);
     }
 
     public override void ExitState()
