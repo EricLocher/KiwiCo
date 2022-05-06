@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpearAttack : EnemyAttack
+public class SwingAttack : EnemyAttack
 {
-    public override void ActiveAttack()
+    public override void EnterAttack()
     {
-        throw new System.NotImplementedException();
+        return;
     }
 
-    public override void EnterAttack()
+    public override void ActiveAttack()
     {
         throw new System.NotImplementedException();
     }
