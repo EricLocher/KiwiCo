@@ -20,6 +20,7 @@ public enum EnemyStates
 {
     Init,
     Idle,
+    Surprise,
     Chase,
     Attack,
     Death
