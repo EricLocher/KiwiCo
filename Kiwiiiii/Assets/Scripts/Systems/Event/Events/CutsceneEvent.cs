@@ -55,6 +55,6 @@ public class CutsceneEvent : GameEvent
         cameraCenter.transform.position = camStartPos;
         cameraCenter.transform.eulerAngles = camStartRot;
 
-        cutsceneController.isOpen = false;
+        cutsceneController.SetAnim(false);
     }
 }
