@@ -9,14 +9,17 @@ public class TestingDamage : MonoBehaviour
     [SerializeField] float damageMinimumValue = 1f;
     [SerializeField] float damageMaxValue = 1f;
     [SerializeField] VisualEffect impact;
+    Rigidbody swordRb;
 
+    private void Awake()
+    {
+        swordRb = GetComponent<Rigidbody>();
+    }
 
     void OnTriggerEnter(Collider collision)
     {
         if (collision.gameObject.CompareTag("Enemy"))
-        {
-            Rigidbody swordRb = GetComponent<Rigidbody>();
-                
+        {   
             impact.Play();
 
             var damage = (Mathf.Abs(swordRb.angularVelocity.y) + damageMinimumValue) * damageMultiplyFactor;
@@ -26,4 +29,7 @@ public class TestingDamage : MonoBehaviour
             collision.GetComponent<Enemy>().DealDamage(damage);
         }
     }
+
+
+    
 }

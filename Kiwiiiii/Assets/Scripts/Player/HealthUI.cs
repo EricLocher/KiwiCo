@@ -9,7 +9,5 @@ public class HealthUI : MonoBehaviour
     void Update()
     {
         fillImage.fillAmount = (player.stats.health / 100f);
-
-        Debug.Log(player.stats.health);
     }
 }

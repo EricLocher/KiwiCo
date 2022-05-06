@@ -24,6 +24,7 @@ public class ControlWeapon : MonoBehaviour
 
     void Start()
     {
+        Physics.IgnoreLayerCollision(LayerMask.NameToLayer("Weapon"), LayerMask.NameToLayer("Enemy"));
         rb.maxAngularVelocity = maxAngular;
     }
 
@@ -35,6 +36,7 @@ public class ControlWeapon : MonoBehaviour
             }
             else if (behaviour2) {
                 rb.angularVelocity = new Vector3(0, rb.angularVelocity.y + deltaY, 0);
+                rb.angularVelocity += new Vector3(0, deltaY, 0);
             }
         }
         else {
