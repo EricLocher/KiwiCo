@@ -7,12 +7,12 @@ public class ChaseState : EnemyState
 
     public override void EnterState()
     {
-        agent.chase.EnterChase();
+        agent.chase?.EnterChase();
     }
 
     public override void Update(float dt)
     {
-        agent.chase.ActiveChase();
+        agent.chase?.ActiveChase();
 
         agent.transform.LookAt(agent.target);
 
@@ -30,7 +30,7 @@ public class ChaseState : EnemyState
 
     public override void ExitState()
     {
-        agent.chase.ExitChase();
+        agent.chase?.ExitChase();
     }
 
 }
