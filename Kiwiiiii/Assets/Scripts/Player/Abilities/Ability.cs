@@ -4,6 +4,8 @@ using UnityEngine.InputSystem;
 
 public abstract class Ability : ScriptableObject
 {
+    [Header("Icon")]
+    public Sprite icon;
     [Header("Input")]
     [SerializeField] InputAction action;
     [Header("Ability Settings")]

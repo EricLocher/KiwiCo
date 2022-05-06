@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02ac1aebc8763b84796c4ed0620ed1d4, type: 3}
   m_Name: Dash
   m_EditorClassIdentifier: 
+  icon: {fileID: 21300000, guid: de435b44426df57408d32019c0db0860, type: 3}
   action:
     m_Name: Action
     m_Type: 0
@@ -32,4 +33,5 @@ MonoBehaviour:
   name: Dash
   coolDownTime: 2
   maxAmount: 3
+  currentAmount: 0
   speed: 10

@@ -7,13 +7,14 @@ using TMPro;
 public class AbilityButton : MonoBehaviour
 {
     [SerializeField] Slider slider;
-    [SerializeField] TMP_Text count, abilityName;
+    [SerializeField] TMP_Text count;
+    [SerializeField] Image img;
     public Ability ability;
 
     private void Start()
     {
+        img.sprite = ability.icon;
         slider.maxValue = ability.coolDownTime;
-        abilityName.text = ability.name;
         if(ability.maxAmount == 1) {
             count.enabled = false;
         }
