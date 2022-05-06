@@ -46,6 +46,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   radius: 6
+  force: 10
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 64
   IsSlamming: 0
 --- !u!2083052967 &3185466971110368523
 VisualEffect:
@@ -69,7 +73,10 @@ VisualEffect:
     m_Vector3f:
       m_Array: []
     m_Vector4f:
-      m_Array: []
+      m_Array:
+      - m_Value: {x: 1.8835875, y: 2.3245065, z: 1.831097, w: 0.7529412}
+        m_Name: Color
+        m_Overridden: 1
     m_Uint:
       m_Array: []
     m_Int:

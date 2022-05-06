@@ -6,10 +6,13 @@ using UnityEngine.VFX;
 public class SlamEffect : MonoBehaviour
 {
     public float radius;
-    float force = 10;
-    public bool IsSlamming = false;
+    [SerializeField] float force = 10;
+    [SerializeField] LayerMask layerMask;
+    [HideInInspector] public bool IsSlamming = false;
+
     PlayerMovement movement;
     VisualEffect vfx;
+    
 
     public void OnCreate(PlayerMovement movement, float force, float radius)
     {
@@ -53,8 +56,11 @@ public class SlamEffect : MonoBehaviour
 
         }
 
-        vfx.SetVector3("pos", transform.position);
         if (movement.isGrounded) {
+            RaycastHit hit;
+            Physics.Raycast(transform.position, Vector3.down, out hit, layerMask);
+
+            vfx.SetVector3("pos", hit.point);
             vfx.Play();
             IsSlamming = false;
         }
