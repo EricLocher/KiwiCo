@@ -304,17 +304,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""363974c9-9bc0-4b11-8975-95a1315ea7a5"",
-                    ""path"": ""<Keyboard>/q"",
-                    ""interactions"": ""Hold(duration=2)"",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard and Mouse"",
-                    ""action"": ""PointDown"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""38b6fdb3-4a80-4949-9e17-3621da9783da"",
                     ""path"": ""<Keyboard>/e"",
                     ""interactions"": """",

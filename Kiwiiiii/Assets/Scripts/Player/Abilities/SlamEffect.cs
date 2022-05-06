@@ -21,13 +21,18 @@ public class SlamEffect : MonoBehaviour
 
     private void Update()
     {
-        if (!IsSlamming || !movement.isGrounded) { return; }
+        if (!IsSlamming) { return; }
+
         Slam();
     }
 
     public void Slam()
     {
-        Collider[] collisions = Physics.OverlapSphere(transform.position, radius);
+        float _radius = movement.isGrounded ? radius : radius / 2;
+        float _force = movement.isGrounded ? force : force / 2;
+
+
+        Collider[] collisions = Physics.OverlapSphere(transform.position, _radius);
 
         foreach (Collider collider in collisions) {
 
@@ -39,9 +44,9 @@ public class SlamEffect : MonoBehaviour
 
             if (rb == null) { continue; }
 
-            rb.AddExplosionForce(force, transform.position, radius, 0.0f, ForceMode.Impulse);
+            rb.AddExplosionForce(_force, transform.position, _radius, 0.0f, ForceMode.Impulse);
 
-            if (collider.CompareTag("Enemy")) {
+            if (collider.CompareTag("Enemy") && movement.isGrounded) {
                 Enemy enemy = collider.GetComponent<Enemy>();
                 enemy.DealDamage(10);
             }
@@ -49,8 +54,11 @@ public class SlamEffect : MonoBehaviour
         }
 
         vfx.SetVector3("pos", transform.position);
-        vfx.Play();
-        IsSlamming = false;
+        if (movement.isGrounded) {
+            vfx.Play();
+            IsSlamming = false;
+        }
+
 
     }
 
