@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SphereDamage : MonoBehaviour
@@ -9,7 +6,7 @@ public class SphereDamage : MonoBehaviour
 
     private Rigidbody rb;
     public PlayerController target;
-    
+
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -30,15 +27,15 @@ public class SphereDamage : MonoBehaviour
 
     private void OnTriggerEnter(Collider col)
     {
-        if (col.gameObject.CompareTag("Player"))
-        {
-            if(col.isTrigger) { return; }
+        if (col.isTrigger) { return; }
+        if (col.gameObject.CompareTag("Player")) {
 
             target.DealDamage(3);
 
             Kill();
         }
-        else if(!col.gameObject.CompareTag("Enemy")) {
+        else if (!col.gameObject.CompareTag("Enemy")) {
+            Debug.Log(col.gameObject.name);
             Kill();
         }
 

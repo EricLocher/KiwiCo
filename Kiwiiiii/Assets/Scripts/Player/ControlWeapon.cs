@@ -13,7 +13,7 @@ public class ControlWeapon : MonoBehaviour
     [SerializeField] float maxAngular;
 
     [Header("Different Behaviors")]
-    [SerializeField] bool behavior1 = true;
+    [SerializeField] bool behaviour1 = true;
     [SerializeField] bool behaviour2 = false;
 
     float deltaY = 0;
@@ -30,7 +30,7 @@ public class ControlWeapon : MonoBehaviour
     void FixedUpdate()
     {
         if (!down) {
-            if (behavior1) {
+            if (behaviour1) {
                 rb.angularVelocity = new Vector3(0, deltaY, 0);
             }
             else if (behaviour2) {
@@ -58,13 +58,13 @@ public class ControlWeapon : MonoBehaviour
 
     public void MouseInput(Vector3 input)
     {
-        deltaY = input.x * sensitivity;
+        if(!behaviour1) { return; }
+        deltaY = input.x * sensitivity * 2;
     }
 
     public void MouseInput(float input)
     {
-
-
+        if(!behaviour2) { return; }
         if (Mathf.Sign(rb.angularVelocity.y) != Mathf.Sign(input)) {
             input *= 1000;
         }

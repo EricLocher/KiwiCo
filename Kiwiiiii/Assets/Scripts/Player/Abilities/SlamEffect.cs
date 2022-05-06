@@ -31,6 +31,8 @@ public class SlamEffect : MonoBehaviour
 
         foreach (Collider collider in collisions) {
 
+            if(collider.isTrigger) { continue; }
+
             if(collider.CompareTag("Player") || collider.CompareTag("Sword")) { continue; }
 
             Rigidbody rb = collider.GetComponent<Rigidbody>();
@@ -38,6 +40,12 @@ public class SlamEffect : MonoBehaviour
             if (rb == null) { continue; }
 
             rb.AddExplosionForce(force, transform.position, radius, 0.0f, ForceMode.Impulse);
+
+            if (collider.CompareTag("Enemy")) {
+                Enemy enemy = collider.GetComponent<Enemy>();
+                enemy.DealDamage(10);
+            }
+
         }
 
         vfx.SetVector3("pos", transform.position);

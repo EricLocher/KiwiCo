@@ -12,6 +12,7 @@ public class Enemy : Character
     [SerializeField] public VisualEffect AppearEffect;
     [HideInInspector] public NavMeshAgent navMeshAgent;
     [HideInInspector] public FOV fov;
+    [SerializeField] DamagePopup damagePopup;
 
     public EnemyAttack attack;
     public EnemyChase chase;
@@ -45,6 +46,19 @@ public class Enemy : Character
     private void Update()
     {
         stateMachine.Update();
+    }
+
+    public override void DealDamage(float value)
+    {
+
+        CharacterStats.health -= value;
+
+        var randomPos = UnityEngine.Random.Range(-2f, 2f);
+        var collPos = transform.position;
+        DamagePopup popup = Instantiate(damagePopup, new Vector3(collPos.x + randomPos, collPos.y + 2, collPos.z + randomPos), Quaternion.identity, transform);
+        popup.PopupDamage((int)value);
+        if (CharacterStats.health <= 0) { OnDeath(); }
+
     }
 
     protected override void OnDeath()

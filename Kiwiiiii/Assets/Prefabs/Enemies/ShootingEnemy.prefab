@@ -209,9 +209,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa780a38f3a5d794bb906f0fbaf8d211, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  innerRadius: 1.69
-  outerRadius: 3.63
-  fovRadius: 5.56
+  innerRadius: 7.9
+  outerRadius: 10.1
+  fovRadius: 13.6
   fovAngle: 70
   obstacleMask:
     serializedVersion: 2
@@ -269,6 +269,7 @@ MonoBehaviour:
   AppearEffect: {fileID: 2325907674223485259}
   navMeshAgent: {fileID: 0}
   fov: {fileID: 0}
+  damagePopup: {fileID: 3432873184914692212, guid: 91e9d37f0c993324481dcad819e13585, type: 3}
   attack: {fileID: 1014077915690703666}
   chase: {fileID: 1075037829}
   stateMachine:
