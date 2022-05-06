@@ -125,6 +125,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Q/E"",
+                    ""type"": ""Button"",
+                    ""id"": ""9942dd78-d8e7-4596-82ae-67ce7bdf1f67"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -380,6 +389,39 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""action"": ""Scroll"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""1D Axis"",
+                    ""id"": ""d7da9762-ccec-4de0-bc66-e976396afa71"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Q/E"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""a261f9c1-d95a-43ad-8c65-ac1220b5b113"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Q/E"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""4477b9d2-0fcb-49b5-a3e4-92d6b49fb7b4"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Q/E"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         },
@@ -455,6 +497,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_Player_Mouse1 = m_Player.FindAction("Mouse1", throwIfNotFound: true);
         m_Player_Mouse = m_Player.FindAction("Mouse", throwIfNotFound: true);
         m_Player_Scroll = m_Player.FindAction("Scroll", throwIfNotFound: true);
+        m_Player_QE = m_Player.FindAction("Q/E", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Newaction = m_UI.FindAction("New action", throwIfNotFound: true);
@@ -528,6 +571,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Mouse1;
     private readonly InputAction m_Player_Mouse;
     private readonly InputAction m_Player_Scroll;
+    private readonly InputAction m_Player_QE;
     public struct PlayerActions
     {
         private @PlayerControls m_Wrapper;
@@ -543,6 +587,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public InputAction @Mouse1 => m_Wrapper.m_Player_Mouse1;
         public InputAction @Mouse => m_Wrapper.m_Player_Mouse;
         public InputAction @Scroll => m_Wrapper.m_Player_Scroll;
+        public InputAction @QE => m_Wrapper.m_Player_QE;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -585,6 +630,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Scroll.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnScroll;
                 @Scroll.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnScroll;
                 @Scroll.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnScroll;
+                @QE.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnQE;
+                @QE.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnQE;
+                @QE.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnQE;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -622,6 +670,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Scroll.started += instance.OnScroll;
                 @Scroll.performed += instance.OnScroll;
                 @Scroll.canceled += instance.OnScroll;
+                @QE.started += instance.OnQE;
+                @QE.performed += instance.OnQE;
+                @QE.canceled += instance.OnQE;
             }
         }
     }
@@ -690,6 +741,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         void OnMouse1(InputAction.CallbackContext context);
         void OnMouse(InputAction.CallbackContext context);
         void OnScroll(InputAction.CallbackContext context);
+        void OnQE(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

@@ -53,7 +53,7 @@ public class PlayerInput : MonoBehaviour
     {
         Move();
         lookWithMouse.MouseInput(controls.Player.Mouse.ReadValue<Vector2>());
-
+        lookWithMouse.MouseInput(controls.Player.QE.ReadValue<float>());
         //We need to tweak this
 
     }

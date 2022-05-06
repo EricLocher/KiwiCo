@@ -7,16 +7,20 @@ public class ControlWeapon : MonoBehaviour
 {
     [SerializeField, Range(0, 10)] float sensitivity;
     [SerializeField] Rigidbody rb;
-    [SerializeField] float smoothTime;
+    [SerializeField] float smoothTime, swingSmoothTime;
     [SerializeField] PlayerMovement movement;
     [SerializeField] SwordBehavior sword;
     [SerializeField] float maxAngular;
 
+    [Header("Different Behaviors")]
+    [SerializeField] bool behavior1 = true;
+    [SerializeField] bool behaviour2 = false;
 
     float deltaY = 0;
     float timeElapsed = 0;
     bool down = false;
     bool check = true;
+    public bool swing = false;
 
     void Start()
     {
@@ -26,7 +30,12 @@ public class ControlWeapon : MonoBehaviour
     void FixedUpdate()
     {
         if (!down) {
-            rb.angularVelocity = new Vector3(0, deltaY, 0);
+            if (behavior1) {
+                rb.angularVelocity = new Vector3(0, deltaY, 0);
+            }
+            else if (behaviour2) {
+                rb.angularVelocity = new Vector3(0, rb.angularVelocity.y + deltaY, 0);
+            }
         }
         else {
             if (timeElapsed < smoothTime) {
@@ -50,6 +59,17 @@ public class ControlWeapon : MonoBehaviour
     public void MouseInput(Vector3 input)
     {
         deltaY = input.x * sensitivity;
+    }
+
+    public void MouseInput(float input)
+    {
+
+
+        if (Mathf.Sign(rb.angularVelocity.y) != Mathf.Sign(input)) {
+            input *= 1000;
+        }
+
+        deltaY = input * 5;
     }
 
     public void PointDown()
