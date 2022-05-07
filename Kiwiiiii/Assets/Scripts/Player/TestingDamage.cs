@@ -24,8 +24,7 @@ public class TestingDamage : MonoBehaviour
 
             var damage = (Mathf.Abs(swordRb.angularVelocity.y) + damageMinimumValue) * damageMultiplyFactor;
 
-            Mathf.Clamp(damage, damageMinimumValue, damageMaxValue);
-
+            damage = Mathf.Clamp(damage, damageMinimumValue, damageMaxValue);
             collision.GetComponent<Enemy>().DealDamage(damage);
         }
     }

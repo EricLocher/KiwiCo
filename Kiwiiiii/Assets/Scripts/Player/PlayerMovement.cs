@@ -13,7 +13,8 @@ public class PlayerMovement : MonoBehaviour
     private Animator animator;
     private float radius;
     [SerializeField] SphereCollider characterHitBox;
-    [SerializeField] VisualEffect slam;
+
+    [SerializeField] VisualEffect jumpVFX;
 
     bool jump = false;
 
@@ -46,6 +47,7 @@ public class PlayerMovement : MonoBehaviour
             if (isGrounded || stats.amountOfJumps > 0) {
                 rb.AddForce(Vector3.up * stats.jumpForce, ForceMode.Impulse);
                 stats.amountOfJumps--;
+                jumpVFX.Play();
             }
             jump = false;
         }
