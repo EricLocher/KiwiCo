@@ -10,6 +10,8 @@ public class Sound
 
     public AudioMixerGroup mixer;
 
+    public float maxDistance = 20f;
+
     [Range(0f, 1f)]
     public float volume;
 

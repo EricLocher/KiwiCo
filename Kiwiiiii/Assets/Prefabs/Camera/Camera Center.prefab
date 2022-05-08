@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3334218863282747876}
   - component: {fileID: 3334218863282747872}
-  - component: {fileID: 3334218863282747873}
   - component: {fileID: 3334218863282747874}
   - component: {fileID: 3334218863282747875}
   m_Layer: 0
@@ -65,7 +64,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 887
+    m_Bits: 3063
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -77,14 +76,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &3334218863282747873
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3334218863282747877}
-  m_Enabled: 1
 --- !u!114 &3334218863282747874
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -291,8 +282,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueText: {fileID: 0}
+  nameText: {fileID: 0}
   dialogueBox: {fileID: 0}
-  sentance: "Hello im eric and i am retarded xdxdasfdasj akjhfakshjfa sjfoasjf p\xF6lasjf
-    \xF6ajskf\xF6 asj\xF6lfaj s\xF6lfjas\xF6lf ja\xF6slfj \xF6alsfj \xF6lasjf \xF6lasjf\xF6l
-    asjf\xF6 j"
   isOpen: 0

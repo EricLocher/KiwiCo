@@ -15,6 +15,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject dialogueBox;
     [SerializeField] GameObject interactNotice;
     [SerializeField] GameObject blackbars;
+    [SerializeField] Animator BG;
 
     void Start()
     {
@@ -67,6 +68,11 @@ public class UIManager : MonoBehaviour
     {
         cam.sensitivity = sensSlider.value;
         sensText.text = "Sensitivity: " + sensSlider.value;
+    }
+
+    public void OpenSettings()
+    {
+        BG.Play("OpenMore");
     }
 
     void OnEnable() => GameController.onStateChange += OnPause;

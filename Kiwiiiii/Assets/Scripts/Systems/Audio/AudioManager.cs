@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -8,7 +9,7 @@ using UnityEngine.UI;
  * AudioManager.instance.Play("name");
  * 
  * To make local sound call
- * GetComponent<AudioManager>().Play("name");
+ * AudioManager.instance.PlayLocal("name", gameObject);
  */
 
 
@@ -20,6 +21,7 @@ public class AudioManager : MonoBehaviour
 
     public static AudioManager instance;
     public Slider masterSlider, sfxSlider, musicSlider;
+    [SerializeField] float multiplier = 30f;
 
     void Awake()
     {
@@ -38,11 +40,6 @@ public class AudioManager : MonoBehaviour
             sound.audio.loop = sound.loop;
             sound.audio.outputAudioMixerGroup = sound.mixer;
         }
-        if (SceneManager.GetActiveScene().name == "Menu")
-        {
-            instance.PauseSound("Game Music");
-            instance.Play("Menu Music");
-        }
     }
 
     public void Play(string name)
@@ -57,6 +54,57 @@ public class AudioManager : MonoBehaviour
         Sound s = Array.Find(sounds, sound => sound.name == name);
 
         s.audio.PlayOneShot(s.clip);
+    }
+
+    public void PlayLocal(string name, GameObject target)
+    {
+        GameObject obj = new GameObject();
+        obj.name = "LocalSound";
+        obj.transform.SetParent(target.transform);
+        obj.transform.position = target.transform.position;
+
+        var source = obj.AddComponent<AudioSource>();
+
+        Sound s = Array.Find(sounds, sound => sound.name == name);
+
+        source.clip = s.clip;
+        source.volume = s.volume;
+        source.loop = s.loop;
+        source.outputAudioMixerGroup = s.mixer;
+        source.spatialBlend = 1f;
+        source.dopplerLevel = 0f;
+        source.maxDistance = s.maxDistance;
+
+        source.Play();
+    }
+
+    public void PlayOnceLocal(string name, GameObject target)
+    {
+        GameObject obj = new GameObject();
+        obj.name = "LocalSound";
+        obj.transform.SetParent(target.transform);
+        obj.transform.position = target.transform.position;
+
+        var source = obj.AddComponent<AudioSource>();
+
+        Sound s = Array.Find(sounds, sound => sound.name == name);
+
+        source.clip = s.clip;
+        source.volume = s.volume;
+        source.loop = s.loop;
+        source.outputAudioMixerGroup = s.mixer;
+        source.spatialBlend = 1f;
+        source.dopplerLevel = 0f;
+        source.maxDistance = s.maxDistance;
+
+        s.audio.PlayOneShot(s.clip);
+        StartCoroutine(DestroyLocalSound(source.clip.length, obj));
+    }
+
+    IEnumerator DestroyLocalSound(float time, GameObject obj)
+    {
+        yield return new WaitForSeconds(time);
+        Destroy(obj);
     }
 
     public void PauseAllSound()
@@ -83,7 +131,7 @@ public class AudioManager : MonoBehaviour
         float soundLevel = masterSlider.value;
         foreach (Sound sound in sounds)
         {
-            sound.mixer.audioMixer.SetFloat("Master", soundLevel);
+            sound.mixer.audioMixer.SetFloat("Master", Mathf.Log10(soundLevel) * multiplier);
         }
     }
 
@@ -92,7 +140,7 @@ public class AudioManager : MonoBehaviour
         float soundLevel = sfxSlider.value;
         foreach (Sound sound in sounds)
         {
-            sound.mixer.audioMixer.SetFloat("SFX", soundLevel);
+            sound.mixer.audioMixer.SetFloat("SFX", Mathf.Log10(soundLevel) * multiplier);
         }
     }
 
@@ -101,7 +149,7 @@ public class AudioManager : MonoBehaviour
         float soundLevel = musicSlider.value;
         foreach (Sound sound in sounds)
         {
-            sound.mixer.audioMixer.SetFloat("Music", soundLevel);
+            sound.mixer.audioMixer.SetFloat("Music", Mathf.Log10(soundLevel) * multiplier);
         }
     }
 }
