@@ -44,7 +44,7 @@ public class GameController : MonoBehaviour
     {
         if (shouldPause)
         {
-            Time.timeScale = 0;
+            //Time.timeScale = 0;
             gameState = GameStates.Paused;
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
@@ -62,8 +62,6 @@ public class GameController : MonoBehaviour
 
     public static void LoadScene(int sceneIndex)
     {
-        AudioManager.instance.PauseSound("Menu Music");
-        AudioManager.instance.Play("Game Music");
         SceneManager.LoadScene(sceneIndex);
     }
 

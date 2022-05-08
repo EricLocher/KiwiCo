@@ -55,6 +55,8 @@ public class ShootAttack : EnemyAttack
         //animator.SetTrigger("shoot");
 
         SphereDamage newSphere = Instantiate(sphere, gun.transform.position, gun.transform.rotation).GetComponent<SphereDamage>();
+        AudioManager.instance.PlayOnceLocal("EnemyFire", gameObject);
+        AudioManager.instance.PlayLocal("EnemyFireBurn", newSphere.gameObject);
         newSphere.target = playerController;
 
         currentCoroutine = null;

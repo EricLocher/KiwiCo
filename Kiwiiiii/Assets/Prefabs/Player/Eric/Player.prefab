@@ -845,6 +845,7 @@ GameObject:
   - component: {fileID: 5261179116413408735}
   - component: {fileID: 7630924585738198862}
   - component: {fileID: 3105965049227968369}
+  - component: {fileID: 1395842713}
   m_Layer: 2
   m_Name: Character
   m_TagString: Player
@@ -944,6 +945,14 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 2
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!81 &1395842713
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8993400851200873566}
+  m_Enabled: 1
 --- !u!1001 &53475752209978819
 PrefabInstance:
   m_ObjectHideFlags: 0
