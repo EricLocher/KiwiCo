@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85b4d734e0b3691438ce8ae424ba9160, type: 3}
+  m_Name: SwordProjectile
+  m_EditorClassIdentifier: 
+  icon: {fileID: 21300000, guid: af41e3f4ca2ea344fa9e57875135bd55, type: 3}
+  action:
+    m_Name: Action
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 8722b57a-1099-45ac-b7fc-bc4bf7618edc
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: a61ea0d9-dcb6-4108-b643-bd84ccc34502
+      m_Path: <Keyboard>/g
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Action
+      m_Flags: 0
+    m_Flags: 0
+  name: Slash
+  coolDownTime: 1
+  maxAmount: 5
+  currentAmount: 0
+  projectilePrefab: {fileID: 8394758904297185423, guid: a278dc23da3fc114a85413da660a27e3, type: 3}
+  speed: 10
+  damage: 1
+  lifeTime: 2
