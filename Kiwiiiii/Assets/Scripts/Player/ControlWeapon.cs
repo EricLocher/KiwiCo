@@ -6,11 +6,11 @@ using UnityEngine;
 public class ControlWeapon : MonoBehaviour
 {
     [SerializeField, Range(0, 10)] float sensitivity;
-    [SerializeField] Rigidbody rb;
     [SerializeField] float smoothTime, swingSmoothTime;
     [SerializeField] PlayerMovement movement;
     [SerializeField] SwordBehavior sword;
     [SerializeField] float maxAngular;
+    public Rigidbody rb;
 
     [Header("Different Behaviors")]
     [SerializeField] bool behaviour1 = true;
@@ -30,6 +30,7 @@ public class ControlWeapon : MonoBehaviour
 
     void FixedUpdate()
     {
+
         if (!down) {
             if (behaviour1) {
                 rb.angularVelocity = new Vector3(0, deltaY, 0);
@@ -95,4 +96,5 @@ public class ControlWeapon : MonoBehaviour
             check = true;
         }
     }
+
 }

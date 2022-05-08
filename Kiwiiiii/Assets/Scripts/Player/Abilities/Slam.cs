@@ -6,19 +6,20 @@ public class Slam : Ability
     SlamEffect _effect;
     [Header("Slam Specific Settings")]
     [SerializeField] SlamEffect effect;
-    public float Speed = 30;
-    public float force = 10;
-    public float radius = 6;
+    [SerializeField] float speed = 30;
+    [SerializeField] float force = 10;
+    [SerializeField] float radius = 6;
+    [SerializeField] float damage = 10;
 
     protected override void InitAbility()
     {
         _effect = Instantiate(effect, movement.transform);
-        _effect.OnCreate(movement, force, radius);
+        _effect.OnCreate(movement, force, radius, damage);
     }
 
     public override void DoAbility()
     {
-        movement.rb.AddForce(Vector3.down * Speed, ForceMode.Impulse);
+        movement.rb.AddForce(Vector3.down * speed, ForceMode.Impulse);
 
         _effect.IsSlamming = true;
     }

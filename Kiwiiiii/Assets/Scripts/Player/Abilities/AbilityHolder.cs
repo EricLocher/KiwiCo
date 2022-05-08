@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 public class AbilityHolder : MonoBehaviour
 {
     [SerializeField] PlayerMovement movement;
+    [SerializeField] ControlWeapon sword;
     public List<Ability> abilities;
 
     void Awake()
@@ -13,7 +14,7 @@ public class AbilityHolder : MonoBehaviour
         for (int i = 0; i < abilities.Count; i++) {
             abilities[i] = Instantiate(abilities[i]);
 
-            abilities[i].Init(movement);
+            abilities[i].Init(movement, sword);
         }
     }
 
@@ -23,6 +24,4 @@ public class AbilityHolder : MonoBehaviour
             ability.UpdateAbility(Time.deltaTime);
         }
     }
-
-
 }

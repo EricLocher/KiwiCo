@@ -5,20 +5,24 @@ using UnityEngine.VFX;
 
 public class SlamEffect : MonoBehaviour
 {
-    public float radius;
-    [SerializeField] float force = 10;
     [SerializeField] LayerMask layerMask;
     [HideInInspector] public bool IsSlamming = false;
 
     PlayerMovement movement;
+    float force = 10;
+    float radius;
+    float damage;
+
     VisualEffect vfx;
     
 
-    public void OnCreate(PlayerMovement movement, float force, float radius)
+    public void OnCreate(PlayerMovement movement, float force, float radius, float damage)
     {
         this.movement = movement;
         this.radius = radius;
         this.force = force;
+        this.damage = damage;
+
         vfx = GetComponent<VisualEffect>();
     }
 
@@ -51,7 +55,7 @@ public class SlamEffect : MonoBehaviour
 
             if (collider.CompareTag("Enemy") && movement.isGrounded) {
                 Enemy enemy = collider.GetComponent<Enemy>();
-                enemy.DealDamage(10);
+                enemy.DealDamage(damage);
             }
 
         }
@@ -64,9 +68,5 @@ public class SlamEffect : MonoBehaviour
             vfx.Play();
             IsSlamming = false;
         }
-
-
     }
-
-
 }

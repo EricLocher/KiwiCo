@@ -15,7 +15,7 @@ public abstract class Ability : ScriptableObject
     public int currentAmount;
 
     protected PlayerMovement movement;
-
+    protected ControlWeapon sword;
     public float timer
     {
         get {
@@ -26,11 +26,15 @@ public abstract class Ability : ScriptableObject
 
     List<float> timers;
 
-    public void Init(PlayerMovement movement)
+    public void Init(PlayerMovement movement, ControlWeapon sword)
     {
         action.Enable();
+
         this.movement = movement;
+        this.sword = sword;
+
         action.performed += ctx => Activate(ctx);
+
         currentAmount = maxAmount;
         timers = new List<float>();
         InitAbility();
