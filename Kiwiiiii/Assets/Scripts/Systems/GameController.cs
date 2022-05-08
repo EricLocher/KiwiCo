@@ -60,11 +60,6 @@ public class GameController : MonoBehaviour
         onStateChange?.Invoke(gameState);
     }
 
-    public static void LoadScene(int sceneIndex)
-    {
-        SceneManager.LoadScene(sceneIndex);
-    }
-
     public static void Quit()
     {
         // save any game data here
