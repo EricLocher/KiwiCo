@@ -11,7 +11,7 @@ public class CameraController : MonoBehaviour
 
     [Header("Settings")]
     [SerializeField, Range(0f, 10f)] float yOffset = 1f;
-    [SerializeField, Range(0.1f, 20f)] float collisionSensitivity = 4.5f;
+    [SerializeField, Range(-100f, 0f)] float collisionSensitivity = 4.5f;
     [SerializeField, Range(-360f, 360f)] float maxClampY = 55;
     [SerializeField, Range(-360f, 360f)] float minClampY = -13;
     [SerializeField, Range(-90f, 0f)] float zoomDistance = -10f;
@@ -98,7 +98,7 @@ public class CameraController : MonoBehaviour
         var position = cam.transform.localPosition;
         obj.transform.localPosition = new Vector3(position.x, position.y, position.z - collisionSensitivity);
 
-        if (Physics.Linecast(cameraCenter.transform.position, obj.transform.position, out _camHit))
+        if (Physics.Linecast(cameraCenter.transform.position, obj.transform.position, out _camHit, layerMask))
         {
             var transform1 = cam.transform;
             transform1.position = _camHit.point;
