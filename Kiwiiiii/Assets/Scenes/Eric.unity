@@ -3053,7 +3053,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 23.1
+  m_Radius: 27.2
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &2091285933
 Transform:
@@ -3175,6 +3175,18 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 339138357, guid: 73e236827e84ef14dbd11f330fac65e8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 339138358, guid: 73e236827e84ef14dbd11f330fac65e8, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 339138359, guid: 73e236827e84ef14dbd11f330fac65e8, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 719066656, guid: 73e236827e84ef14dbd11f330fac65e8, type: 3}
       propertyPath: movement
       value: 
@@ -3189,6 +3201,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1230683571232551025, guid: 73e236827e84ef14dbd11f330fac65e8, type: 3}
       propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2920489082489778086, guid: 73e236827e84ef14dbd11f330fac65e8, type: 3}
+      propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3025217583516844945, guid: 73e236827e84ef14dbd11f330fac65e8, type: 3}
@@ -3243,6 +3259,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3617926648873143794, guid: 73e236827e84ef14dbd11f330fac65e8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3840404920489008829, guid: 73e236827e84ef14dbd11f330fac65e8, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -3271,6 +3291,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5455223205099218082, guid: 73e236827e84ef14dbd11f330fac65e8, type: 3}
+      propertyPath: playerController
+      value: 
+      objectReference: {fileID: 2103873772}
     - target: {fileID: 7630924585738198862, guid: 73e236827e84ef14dbd11f330fac65e8, type: 3}
       propertyPath: m_IsTrigger
       value: 0

@@ -6,7 +6,7 @@ public class Character : MonoBehaviour
 {
     public SOCharacterStats CharacterStats;
 
-    void Start()
+    void Awake()
     {
         CharacterStats = Instantiate(CharacterStats);
     }

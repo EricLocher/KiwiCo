@@ -6,27 +6,30 @@ using UnityEngine.VFX;
 public class PlayerMovement : MonoBehaviour
 {
     public LayerMask layerMask;
+    public PlayerController playerController;
+    [SerializeField] SphereCollider characterHitBox;
+    [SerializeField] VisualEffect jumpVFX;
 
+    [HideInInspector] public Rigidbody rb;
     [HideInInspector] public SOPlayerStats stats;
     [HideInInspector] public bool isGrounded;
-    public Rigidbody rb;
     private Animator animator;
-    private float radius;
-    [SerializeField] SphereCollider characterHitBox;
 
-    [SerializeField] VisualEffect jumpVFX;
 
     bool jump = false;
 
     private void Awake()
     {
         animator = GetComponentInChildren<Animator>();
-        radius = characterHitBox.radius;
         rb = GetComponent<Rigidbody>();
-        stats = GetComponentInParent<PlayerController>().stats;
+    }
 
+    void Start()
+    {
+        stats = playerController.stats;
         stats.amountOfDashes = stats.maxDashes;
     }
+
 
     #region Movement
     public void Move(Vector3 movement)
@@ -43,16 +46,21 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
+        if(Mathf.Abs(rb.velocity.y) <= 1)
+            GroundCheck();
+        else {
+            isGrounded = false;
+        }
         if (jump) {
             if (isGrounded || stats.amountOfJumps > 0) {
                 rb.AddForce(Vector3.up * stats.jumpForce, ForceMode.Impulse);
                 stats.amountOfJumps--;
-                jumpVFX.Play();
+                if(!isGrounded)
+                    jumpVFX.Play();
             }
             jump = false;
         }
 
-        GroundCheck();
     }
 
     public void Spin()
@@ -62,17 +70,12 @@ public class PlayerMovement : MonoBehaviour
 
     private void GroundCheck()
     {
-
         InputSystem.Update();
-        //if (Physics.CheckSphere(transform.position, radius + 0.1f))
-        //{
-        //    isGrounded = true;
-        //    print("grounded");
-        //}
 
         RaycastHit hit;
 
-        if (Physics.Raycast(transform.position, Vector3.down, out hit, 0.51f, layerMask)) {
+        if (Physics.Raycast(transform.position, Vector3.down, out hit, 2f, layerMask)) {
+            if(Vector3.Angle(hit.normal, Vector3.up) > 45f) { isGrounded = false; return; }
             isGrounded = true;
             stats.amountOfJumps = stats.maxJumps;
             stats.jumpForce = stats.defaultJumpForce;
@@ -80,12 +83,6 @@ public class PlayerMovement : MonoBehaviour
         else {
             isGrounded = false;
         }
-
-        //if(Physics.SphereCast(transform.position, radius, Vector3.down, out hit, radius + .1f , layerMask))
-        //{
-        //    Debug.Log("You hit the ground");
-        //    isGrounded = true;
-        //}
     }
     #endregion
 
