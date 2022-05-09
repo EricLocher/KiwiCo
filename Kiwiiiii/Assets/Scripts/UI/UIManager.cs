@@ -23,6 +23,11 @@ public class UIManager : MonoBehaviour
         sensText.text = "Sensitivity: " + sensSlider.value;
     }
 
+    public void CallPause()
+    {
+        GameController.Instance.PauseGame();
+    }
+
     public void OnPause(GameStates state)
     {
         if (state == GameStates.Paused)
@@ -38,6 +43,7 @@ public class UIManager : MonoBehaviour
             foreach (GameObject obj in uiElements)
                 obj.SetActive(true);
 
+            interactNotice.SetActive(false);
             pauseScreen.SetActive(false);
         }
     }

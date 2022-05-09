@@ -16,7 +16,7 @@ public class GameController : MonoBehaviour
     public delegate void ChangeHandler(GameStates state);
     public static event ChangeHandler onStateChange;
 
-    bool pause;
+    public bool pause;
 
     void Awake()
     {
@@ -32,7 +32,7 @@ public class GameController : MonoBehaviour
 
         pauseGame.Enable();
 
-        pauseGame.performed += ctx => PauseGame(pause);
+        pauseGame.performed += ctx => PauseGame();
     }
 
     void Update()
@@ -40,9 +40,9 @@ public class GameController : MonoBehaviour
         if (gameState == GameStates.Playing) { pause = true; } else { pause = false; }
     }
 
-    public static void PauseGame(bool shouldPause)
+    public void PauseGame()
     {
-        if (shouldPause)
+        if (Instance.pause)
         {
             //Time.timeScale = 0;
             gameState = GameStates.Paused;

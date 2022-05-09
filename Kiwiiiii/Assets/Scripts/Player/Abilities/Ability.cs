@@ -7,7 +7,7 @@ public abstract class Ability : ScriptableObject
     [Header("Icon")]
     public Sprite icon;
     [Header("Input")]
-    [SerializeField] InputAction action;
+    public InputAction action;
     [Header("Ability Settings")]
     public new string name = "NoName";
     public float coolDownTime = 0;

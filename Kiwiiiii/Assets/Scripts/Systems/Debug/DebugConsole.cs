@@ -48,7 +48,7 @@ public class DebugConsole : MonoBehaviour
     {
         showConsole = !showConsole;
         devCanvas.SetActive(showConsole);
-        GameController.PauseGame(showConsole);
+        GameController.Instance.PauseGame();
         inputField.ActivateInputField();
     }
 

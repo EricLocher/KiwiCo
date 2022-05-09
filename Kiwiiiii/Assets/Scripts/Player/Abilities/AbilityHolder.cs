@@ -24,4 +24,13 @@ public class AbilityHolder : MonoBehaviour
             ability.UpdateAbility(Time.deltaTime);
         }
     }
+
+    void OnDestroy()
+    {
+        foreach (Ability ability in abilities)
+        {
+            ability.action.Disable();
+        }
+    }
+
 }
