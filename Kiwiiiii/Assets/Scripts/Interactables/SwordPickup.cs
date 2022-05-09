@@ -10,7 +10,7 @@ public class SwordPickup : MonoBehaviour
 
     private void FixedUpdate()
     {
-        system.SetVector3("pos", slashPoint.position);
+        //system.SetVector3("pos", slashPoint.position);
     }
 
 }
