@@ -13,7 +13,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] CameraController cam;
     [SerializeField] GameObject pauseScreen, dialogueBox, interactNotice, blackbars, levelLoader;
     [SerializeField] Animator BG;
-    bool showSettings = true;
+    bool showSettings;
 
     void Start()
     {
@@ -21,7 +21,8 @@ public class UIManager : MonoBehaviour
             uiElements.Add(child.gameObject);
 
         sensSlider.value = cam.sensitivity;
-        sensText.text = "Sensitivity: " + sensSlider.value;
+        sensText.text = "" + Mathf.Round(sensSlider.value * 100.0f) * 0.01f;
+        showSettings = false;
     }
 
     public void CallPause()
@@ -73,21 +74,24 @@ public class UIManager : MonoBehaviour
     public void SensitivityChange()
     {
         cam.sensitivity = sensSlider.value;
-        sensText.text = "Sensitivity: " + sensSlider.value;
+        sensText.text = ""+Mathf.Round(sensSlider.value * 100.0f) * 0.01f;
     }
 
     public void OpenSettings()
     {
-        if (showSettings)
+        bool check = showSettings;
+        if (!check)
         {
-            BG.Play("OpenMore");
-            showSettings = false;
-        }
-        if (!showSettings)
-        {
-            BG.Play("CloseMore");
+            BG.SetTrigger("Open");
             showSettings = true;
         }
+        else if (check)
+        {
+            BG.SetTrigger("Close");
+            showSettings = false;
+        }
+        Debug.Log("check: " + check);
+        Debug.Log("Show: " + showSettings);
     }
 
     void OnEnable() => GameController.onStateChange += OnPause;

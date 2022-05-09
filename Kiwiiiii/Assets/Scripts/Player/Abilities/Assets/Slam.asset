@@ -35,6 +35,44 @@ MonoBehaviour:
   maxAmount: 1
   currentAmount: 1
   effect: {fileID: 3043495388817609895, guid: feb54d40b2402fc40883b53079e54955, type: 3}
-  Speed: 30
+  speed: 30
   force: 10
   radius: 6
+  damage: 10
+  minDistFromGround: 3
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 64
+  graph:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.6
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 0.5
+      inSlope: -2.485971
+      outSlope: -2.485971
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.118590005
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4

@@ -1035,6 +1035,7 @@ MonoBehaviour:
     m_Interactions: 
     m_SingletonActionBindings: []
     m_Flags: 0
+  pause: 0
 --- !u!1001 &835808778
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3290,6 +3291,10 @@ PrefabInstance:
     - target: {fileID: 3909190813293745987, guid: 73e236827e84ef14dbd11f330fac65e8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5261179116413408735, guid: 73e236827e84ef14dbd11f330fac65e8, type: 3}
+      propertyPath: m_Drag
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5455223205099218082, guid: 73e236827e84ef14dbd11f330fac65e8, type: 3}
       propertyPath: playerController

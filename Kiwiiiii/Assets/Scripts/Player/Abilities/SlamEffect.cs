@@ -39,7 +39,7 @@ public class SlamEffect : MonoBehaviour
         float _force = movement.isGrounded ? force : force / 2;
 
 
-        Collider[] collisions = Physics.OverlapSphere(transform.position, _radius);
+        Collider[] collisions = Physics.OverlapSphere(movement.transform.position, _radius);
 
         foreach (Collider collider in collisions) {
 
@@ -51,12 +51,20 @@ public class SlamEffect : MonoBehaviour
 
             if (rb == null) { continue; }
 
-            rb.AddExplosionForce(_force, transform.position, _radius, 0.0f, ForceMode.Impulse);
-
             if (collider.CompareTag("Enemy") && movement.isGrounded) {
                 Enemy enemy = collider.GetComponent<Enemy>();
-                enemy.DealDamage(damage);
+
+                #region Calculate Damage
+
+                float distToEnemy = Vector3.Distance(movement.transform.position, enemy.transform.position) / radius;
+                float damageToDeal = damage / distToEnemy;
+
+                #endregion
+                Debug.Log("?!?!?!");
+                enemy.DealDamage(damageToDeal);
             }
+
+            rb.AddExplosionForce(_force, movement.transform.position, _radius, 0.0f, ForceMode.Impulse);
 
         }
 

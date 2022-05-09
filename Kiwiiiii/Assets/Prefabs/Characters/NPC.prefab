@@ -31,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 397070988334261258}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_LocalScale: {x: 1.4999999, y: 1.5, z: 1.4999999}
   m_Children:
   - {fileID: 9028411336740398389}
   - {fileID: 3249106793854352700}
@@ -97,10 +97,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.754
+  m_Radius: 0.3150284
   m_Height: 1.76
   m_Direction: 1
-  m_Center: {x: 0, y: 0.454, z: 0}
+  m_Center: {x: 0.027486922, y: 0.454, z: -0.028698647}
 --- !u!114 &397070988334261257
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -115,12 +115,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 1813624882525461582}
   dialogue:
-    name: Jelric Bamadis
+    name: Guide
     sentances:
-    - 1
-    - '2 '
-    - 3
+    - 'Oh dear! Where did you come from? You look so different..
+
+'
+    - 'Nay, there is no time for an explanation! '
+    - Can you get that <color="green">sword</color> out of the stone over there?
+    - Quickly now! You must go and kill those <color="red">monsters</color> on the
+      other side of the lake!
   dialogueManager: {fileID: 0}
+  vfx: {fileID: 5848915306403062380}
+  character: {fileID: 0}
 --- !u!2083052967 &5848915306403062380
 VisualEffect:
   m_ObjectHideFlags: 0

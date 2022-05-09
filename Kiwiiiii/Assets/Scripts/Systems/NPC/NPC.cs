@@ -7,6 +7,7 @@ public class NPC : MonoBehaviour, IInteractable
     public Dialogue dialogue;
     public DialogueManager dialogueManager;
     [SerializeField] VisualEffect vfx;
+    [SerializeField] Rigidbody character;
 
     void OnEnable()
     {
@@ -20,6 +21,7 @@ public class NPC : MonoBehaviour, IInteractable
         if (!dialogueManager.IsOpen) 
         {
             dialogueManager.StartDialogue(dialogue, StopTalking);
+            character.constraints = RigidbodyConstraints.FreezeAll;
         }
         else 
         {
@@ -30,6 +32,7 @@ public class NPC : MonoBehaviour, IInteractable
     public void StopTalking()
     {
         animator.SetBool("IsTalking", false);
+        character.constraints = RigidbodyConstraints.None;
     }
 
 
