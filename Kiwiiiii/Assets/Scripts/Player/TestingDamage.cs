@@ -18,6 +18,8 @@ public class TestingDamage : MonoBehaviour
 
     void OnTriggerEnter(Collider collision)
     {
+        if(!transform.GetChild(0).gameObject.activeSelf) { return; }
+
         if (collision.gameObject.CompareTag("Enemy"))
         {   
             impact.Play();
