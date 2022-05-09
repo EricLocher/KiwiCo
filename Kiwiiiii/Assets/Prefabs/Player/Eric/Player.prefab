@@ -491,6 +491,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movement: {fileID: 5455223205099218082}
+  sword: {fileID: 0}
   abilities:
   - {fileID: 11400000, guid: 68f340cb4e48dad4d8d9cc74510ffa9e, type: 2}
   - {fileID: 11400000, guid: c85277dc91379374797270de0951b0de, type: 2}
@@ -653,12 +654,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sensitivity: 1
-  rb: {fileID: 648850510102987735}
   smoothTime: 1
   swingSmoothTime: 0
   movement: {fileID: 5455223205099218082}
   sword: {fileID: 916140358}
   maxAngular: 15
+  rb: {fileID: 648850510102987735}
   behaviour1: 0
   behaviour2: 1
   swing: 0
@@ -885,11 +886,12 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 96
-  stats: {fileID: 0}
-  isGrounded: 0
-  rb: {fileID: 5261179116413408735}
+  playerController: {fileID: 1426636928}
   characterHitBox: {fileID: 3105965049227968369}
   jumpVFX: {fileID: 339138358}
+  rb: {fileID: 5261179116413408735}
+  stats: {fileID: 0}
+  isGrounded: 0
 --- !u!114 &734907203
 MonoBehaviour:
   m_ObjectHideFlags: 0
