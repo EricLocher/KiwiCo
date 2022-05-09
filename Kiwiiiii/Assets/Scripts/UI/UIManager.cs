@@ -13,6 +13,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] CameraController cam;
     [SerializeField] GameObject pauseScreen, dialogueBox, interactNotice, blackbars, levelLoader;
     [SerializeField] Animator BG;
+    bool showSettings = true;
 
     void Start()
     {
@@ -77,7 +78,16 @@ public class UIManager : MonoBehaviour
 
     public void OpenSettings()
     {
-        BG.Play("OpenMore");
+        if (showSettings)
+        {
+            BG.Play("OpenMore");
+            showSettings = false;
+        }
+        if (!showSettings)
+        {
+            BG.Play("CloseMore");
+            showSettings = true;
+        }
     }
 
     void OnEnable() => GameController.onStateChange += OnPause;
