@@ -24,7 +24,7 @@ public class Enemy : Character
     public List<EnemyAttack> enemyAttacks;
 
 
-    void Awake()
+    protected override void Init()
     {
         fov = GetComponent<FOV>();
         navMeshAgent = GetComponent<NavMeshAgent>();
