@@ -3796,6 +3796,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 471197419, guid: 569029955974c9848bc1b12c28fa0a5e, type: 3}
+      propertyPath: m_UpdateMode
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 592548613, guid: 569029955974c9848bc1b12c28fa0a5e, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 39.88
@@ -3933,8 +3937,24 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1513723927, guid: 569029955974c9848bc1b12c28fa0a5e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 108371825}
+    - target: {fileID: 1513723927, guid: 569029955974c9848bc1b12c28fa0a5e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1513723927, guid: 569029955974c9848bc1b12c28fa0a5e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: CallQuit
+      objectReference: {fileID: 0}
+    - target: {fileID: 1513723927, guid: 569029955974c9848bc1b12c28fa0a5e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UIManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1513723927, guid: 569029955974c9848bc1b12c28fa0a5e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 1945830722, guid: 569029955974c9848bc1b12c28fa0a5e, type: 3}
       propertyPath: m_RootOrder
@@ -4011,6 +4031,22 @@ PrefabInstance:
     - target: {fileID: 2409340034668103739, guid: 569029955974c9848bc1b12c28fa0a5e, type: 3}
       propertyPath: m_text
       value: Press <color=red>F</color> to interact!
+      objectReference: {fileID: 0}
+    - target: {fileID: 2409340034743905485, guid: 569029955974c9848bc1b12c28fa0a5e, type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2409340034743905485, guid: 569029955974c9848bc1b12c28fa0a5e, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2409340034743905485, guid: 569029955974c9848bc1b12c28fa0a5e, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2409340034743905485, guid: 569029955974c9848bc1b12c28fa0a5e, type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2409340035292851770, guid: 569029955974c9848bc1b12c28fa0a5e, type: 3}
       propertyPath: m_IsActive
@@ -4171,6 +4207,10 @@ PrefabInstance:
     - target: {fileID: 7047093413441673993, guid: 569029955974c9848bc1b12c28fa0a5e, type: 3}
       propertyPath: m_Name
       value: SensSlider
+      objectReference: {fileID: 0}
+    - target: {fileID: 9094733431703994850, guid: 569029955974c9848bc1b12c28fa0a5e, type: 3}
+      propertyPath: m_UpdateMode
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 569029955974c9848bc1b12c28fa0a5e, type: 3}
