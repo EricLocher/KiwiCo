@@ -9,7 +9,10 @@ public class Character : MonoBehaviour
     void Awake()
     {
         CharacterStats = Instantiate(CharacterStats);
+        Init();
     }
+
+    protected virtual void Init() { }
 
     public virtual void DealDamage(float value)
     {
