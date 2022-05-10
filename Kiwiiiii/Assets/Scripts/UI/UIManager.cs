@@ -16,17 +16,12 @@ public class UIManager : MonoBehaviour
 
     void Start()
     {
-        if(SceneManager.GetActiveScene().buildIndex != 0)
-        {
-            foreach (Transform child in transform)
-                uiElements.Add(child.gameObject);
-
-            sensSlider.value = Save.instance.sensitivity;
-            masterSlider.value = Save.instance.master;
-            sfxSlider.value = Save.instance.sfx;
-            musicSlider.value = Save.instance.music;
-            sensText.text = "" + Mathf.Round(sensSlider.value * 100.0f) * 0.01f;
-        }
+        Save.instance.LoadAllSettings();
+        sensSlider.value = Save.instance.sensitivity;
+        masterSlider.value = Save.instance.master;
+        sfxSlider.value = Save.instance.sfx;
+        musicSlider.value = Save.instance.music;
+        sensText.text = "" + Mathf.Round(sensSlider.value * 100.0f) * 0.01f;
     }
 
     public void CallPause()
@@ -86,8 +81,8 @@ public class UIManager : MonoBehaviour
 
     public void SensitivityChange()
     {
-        cam.sensitivity = sensSlider.value;
-        sensText.text = ""+Mathf.Round(sensSlider.value * 100.0f) * 0.01f;
+        Save.instance.sensitivity = sensSlider.value;
+        sensText.text = "" + Mathf.Round(sensSlider.value * 100.0f) * 0.01f;
         Save.instance.sensitivity = sensSlider.value;
         Save.instance.SaveAll();
     }
@@ -95,7 +90,7 @@ public class UIManager : MonoBehaviour
     public void OpenSettings()
     {
         if (BG.GetCurrentAnimatorStateInfo(0).normalizedTime < 1f) { return; }
-        
+
         if (BG.GetCurrentAnimatorStateInfo(0).IsName("OpenMore"))
         {
             BG.SetTrigger("Close");
