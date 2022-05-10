@@ -7,6 +7,7 @@ public class ChaseState : EnemyState
 
     public override void EnterState()
     {
+        Debug.Log("Enter Chase");
         agent.chase?.EnterChase();
     }
 
@@ -32,5 +33,7 @@ public class ChaseState : EnemyState
     {
         agent.chase?.ExitChase();
     }
+
+
 
 }

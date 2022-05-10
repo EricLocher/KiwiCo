@@ -14,11 +14,16 @@ public class ChampSurprise : EnemySurprise
 
     public override void ActiveSurprise()
     {
-        return;
+        WaitForAnimation();
     }
 
     public override void ExitSurprise()
     {
         animator.ResetTrigger("alert");
+    }
+
+    IEnumerator WaitForAnimation()
+    {
+        yield return new WaitForSeconds(2);
     }
 }
