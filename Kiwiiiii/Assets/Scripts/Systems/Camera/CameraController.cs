@@ -22,7 +22,7 @@ public class CameraController : MonoBehaviour
     public float sensitivity = 3f;
     public bool IsCinematic = false;
 
-    RaycastHit _camHit, _newPos;
+    RaycastHit _camHit;
     Vector3 camDist;
     float y = 0f, x = 0f;
     Quaternion rotation;
@@ -36,6 +36,8 @@ public class CameraController : MonoBehaviour
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
         }
+
+        sensitivity = Save.instance.sensitivity;
 
         camDist = cam.transform.localPosition;
         camDist.z = zoomDistance;

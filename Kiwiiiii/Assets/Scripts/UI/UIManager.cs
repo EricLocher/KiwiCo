@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 public class UIManager : MonoBehaviour
 {
     List<GameObject> uiElements = new List<GameObject>();
-    [SerializeField] Slider sensSlider, masterSlider, sfxSlider, musicSlider;
+    public Slider sensSlider, masterSlider, sfxSlider, musicSlider;
     [SerializeField] TMP_Text sensText;
     [SerializeField] CameraController cam;
     [SerializeField] GameObject pauseScreen, dialogueBox, interactNotice, blackbars;
@@ -21,7 +21,10 @@ public class UIManager : MonoBehaviour
             foreach (Transform child in transform)
                 uiElements.Add(child.gameObject);
 
-            sensSlider.value = cam.sensitivity;
+            sensSlider.value = Save.instance.sensitivity;
+            masterSlider.value = Save.instance.master;
+            sfxSlider.value = Save.instance.sfx;
+            musicSlider.value = Save.instance.music;
             sensText.text = "" + Mathf.Round(sensSlider.value * 100.0f) * 0.01f;
         }
     }
@@ -38,6 +41,7 @@ public class UIManager : MonoBehaviour
 
     public void LoadScene(string sceneName)
     {
+        GameController.Instance.SetTime(true);
         LevelLoader.Instance.LoadLoading(sceneName);
     }
 
@@ -84,6 +88,8 @@ public class UIManager : MonoBehaviour
     {
         cam.sensitivity = sensSlider.value;
         sensText.text = ""+Mathf.Round(sensSlider.value * 100.0f) * 0.01f;
+        Save.instance.sensitivity = sensSlider.value;
+        Save.instance.SaveAll();
     }
 
     public void OpenSettings()
@@ -103,16 +109,22 @@ public class UIManager : MonoBehaviour
     public void SetMaV()
     {
         AudioManager.instance.SetMasterVolume(masterSlider.value);
+        Save.instance.master = masterSlider.value;
+        Save.instance.SaveAll();
     }
 
     public void SetSfV()
     {
         AudioManager.instance.SetSfxVolume(sfxSlider.value);
+        Save.instance.sfx = sfxSlider.value;
+        Save.instance.SaveAll();
     }
 
     public void SetMuV()
     {
         AudioManager.instance.SetMusicVolume(musicSlider.value);
+        Save.instance.music = musicSlider.value;
+        Save.instance.SaveAll();
     }
 
     void OnEnable() => GameController.onStateChange += OnPause;

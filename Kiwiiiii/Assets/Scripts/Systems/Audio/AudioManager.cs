@@ -27,8 +27,7 @@ public class AudioManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-            if (gameObject.tag == "AudioManager")
-                DontDestroyOnLoad(gameObject);
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
