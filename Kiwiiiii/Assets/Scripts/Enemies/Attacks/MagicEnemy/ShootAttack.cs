@@ -7,19 +7,31 @@ public class ShootAttack : EnemyAttack
     [SerializeField]
     Enemy enemy;
 
+    [Range(0, 50)]
     public float force = 5;
+
+    [Range(0, 50)]
     public float damagePoints = 3;
+
+    [Range(0, 10)]
+    public float secondsBetweenEachShot = 0.5f;
+
+    [Range(0, 30)]
+    public float secondsBetweenWaves = 3;
+
+
+    [Range(0, 50)]
+    public int numberOfShotsInWave = 5;
 
     public GameObject sphere;
     public Transform gun;
+    public Transform playerTransform;
 
     private Animator animator;
 
-    private int wave = 5;
+    Coroutine currentCoroutine;
 
     PlayerController playerController;
-
-    Coroutine currentCoroutine;
 
     void Start()
     {
@@ -53,20 +65,21 @@ public class ShootAttack : EnemyAttack
     {
 
         enemy.stateMachine.ChangeState(EnemyStates.Chase);
-        yield return new WaitForSeconds(5);
         //animator.SetTrigger("shoot");
 
-        for (int i = 0; i < wave; i++)
+        for (int i = 0; i < numberOfShotsInWave; i++)
         {
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(secondsBetweenEachShot);
 
             SphereDamage newSphere = Instantiate(sphere, gun.transform.position, gun.transform.rotation).GetComponent<SphereDamage>();
 
-            AudioManager.instance.PlayLocal("EnemyFireBurn", newSphere.gameObject);
-            AudioManager.instance.PlayOnceLocal("EnemyFire", gameObject);
+            //AudioManager.instance.PlayLocal("EnemyFireBurn", newSphere.gameObject);
+            //AudioManager.instance.PlayOnceLocal("EnemyFire", gameObject);
 
             newSphere.target = playerController;
         }
+
+        yield return new WaitForSeconds(secondsBetweenWaves);
 
         currentCoroutine = null;
     }

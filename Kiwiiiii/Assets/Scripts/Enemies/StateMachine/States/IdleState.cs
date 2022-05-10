@@ -26,6 +26,8 @@ public class IdleState : EnemyState
 
         waitTime -= dt;
 
+        //agent.animator.SetFloat("movement", agent.navMeshAgent.speed);
+
         if (waitTime <= 0 && hasWaited == false)
         {
             SelectNewDestination();
@@ -37,7 +39,6 @@ public class IdleState : EnemyState
             return;
         }
 
-        Debug.Log("Before Enter Surprise");
         stateMachine.ChangeState(EnemyStates.Surprise);
     }
 
@@ -54,8 +55,8 @@ public class IdleState : EnemyState
     public void SelectNewDestination()
     {
         hasWaited = true;
-        if (stateMachine.moveSpots.hasSpots)
-            agent.SetDestination(stateMachine.moveSpots.GetNewSpot());
+
+        agent.SetDestination(stateMachine.moveSpots.GetNewSpot());
     }
 
     public void Patrol()

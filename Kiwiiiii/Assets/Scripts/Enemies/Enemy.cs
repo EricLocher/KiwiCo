@@ -11,6 +11,7 @@ public class Enemy : Character
 
     [SerializeField] public Transform target;
     [SerializeField] public VisualEffect AppearEffect;
+    [SerializeField] public Animator animator;
     [HideInInspector] public NavMeshAgent navMeshAgent;
     [HideInInspector] public FOV fov;
     [SerializeField] DamagePopup damagePopup;

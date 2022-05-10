@@ -9,7 +9,6 @@ public class SurpriseState : EnemyState
 
     public override void EnterState()
     {
-        Debug.Log("Enter Surprise");
         agent.surprise?.EnterSurprise();
     }
 
@@ -31,7 +30,5 @@ public class SurpriseState : EnemyState
     public override void ExitState()
     {
         agent.surprise?.ExitSurprise();
-
-        Debug.Log("Change to chase");
     }
 }
