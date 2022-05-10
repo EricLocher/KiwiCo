@@ -14,6 +14,7 @@ public class PlayerInput : MonoBehaviour
 
     PlayerControls controls;
     CameraController cameraController;
+    GameStates state;
 
     private void Awake()
     {

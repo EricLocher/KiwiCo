@@ -14,6 +14,7 @@ public class LevelLoader : MonoBehaviour
 
     public void LoadNextLevel()
     {
+        GameController.Instance.SetTime(true);
         StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex + 1));
     }
 
@@ -26,6 +27,7 @@ public class LevelLoader : MonoBehaviour
 
     public void LoadSpecificLevel(int levelIndex)
     {
+        GameController.Instance.SetTime(true);
         StartCoroutine(LoadSpecific(levelIndex));
     }
 

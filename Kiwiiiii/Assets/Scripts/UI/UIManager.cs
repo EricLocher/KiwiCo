@@ -30,6 +30,11 @@ public class UIManager : MonoBehaviour
         GameController.Instance.PauseGame();
     }
 
+    public void CallQuit()
+    {
+        GameController.Instance.Quit();
+    }
+
     public void OnPause(GameStates state)
     {
         if (state == GameStates.Paused)

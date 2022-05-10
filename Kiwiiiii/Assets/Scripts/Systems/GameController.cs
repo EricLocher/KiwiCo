@@ -1,8 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
@@ -44,12 +41,14 @@ public class GameController : MonoBehaviour
     {
         if (Instance.pause)
         {
+            SetTime(false);
             gameState = GameStates.Paused;
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
         }
         else
         {
+            SetTime(true);
             gameState = GameStates.Playing;
             onStateChange?.Invoke(gameState);
             Cursor.visible = false;
@@ -58,16 +57,24 @@ public class GameController : MonoBehaviour
         onStateChange?.Invoke(gameState);
     }
 
-    public static void Quit()
+    public void Quit()
     {
         // save any game data here
 #if UNITY_EDITOR
-        // Application.Quit() does not work in the editor so
-        // UnityEditor.EditorApplication.isPlaying need to be set to false to end the game
+        Application.Quit();
         UnityEditor.EditorApplication.isPlaying = false;
 #else
          Application.Quit();
 #endif
+    }
+
+    public void SetTime(bool scale)
+    {
+        if (!scale)
+            Time.timeScale = 0f;
+
+        if (scale)
+            Time.timeScale = 1f;
     }
 }
 
