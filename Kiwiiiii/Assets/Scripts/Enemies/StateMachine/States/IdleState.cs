@@ -37,6 +37,7 @@ public class IdleState : EnemyState
             return;
         }
 
+        Debug.Log("Before Enter Surprise");
         stateMachine.ChangeState(EnemyStates.Surprise);
     }
 
