@@ -14,7 +14,7 @@ public class PlayerMovement : MonoBehaviour
     [HideInInspector] public SOPlayerStats stats;
     [HideInInspector] public bool isGrounded;
     private Animator animator;
-
+    public VisualEffect chargeVFX;
 
     bool jump = false;
 

@@ -1,6 +1,3 @@
-using UnityEngine.InputSystem;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ControlWeapon : MonoBehaviour
@@ -10,20 +7,20 @@ public class ControlWeapon : MonoBehaviour
     [SerializeField] PlayerMovement movement;
     [SerializeField] SwordBehavior sword;
     [SerializeField] float maxAngular;
+    
     public Rigidbody rb;
+    BoxCollider damageCollider;
 
-    [Header("Different Behaviors")]
-    [SerializeField] bool behaviour1 = true;
-    [SerializeField] bool behaviour2 = false;
+    public bool down = false;
+    bool sheath = false;
+    bool check = true;
 
     float deltaY = 0;
     float timeElapsed = 0;
-    bool down = false;
-    bool check = true;
-    public bool swing = false;
 
     void Start()
     {
+        damageCollider = GetComponent<BoxCollider>();
         Physics.IgnoreLayerCollision(LayerMask.NameToLayer("Weapon"), LayerMask.NameToLayer("Enemy"));
         rb.maxAngularVelocity = maxAngular;
     }
@@ -32,13 +29,8 @@ public class ControlWeapon : MonoBehaviour
     {
 
         if (!down) {
-            if (behaviour1) {
-                rb.angularVelocity = new Vector3(0, deltaY, 0);
-            }
-            else if (behaviour2) {
-                rb.angularVelocity = new Vector3(0, rb.angularVelocity.y + deltaY, 0);
-                rb.angularVelocity += new Vector3(0, deltaY, 0);
-            }
+            rb.angularVelocity = new Vector3(0, rb.angularVelocity.y + deltaY, 0);
+            rb.angularVelocity += new Vector3(0, deltaY, 0);
         }
         else {
             if (timeElapsed < smoothTime) {
@@ -59,15 +51,23 @@ public class ControlWeapon : MonoBehaviour
         }
     }
 
-    public void MouseInput(Vector3 input)
+    #region Inputs
+
+    public void SheathWeapon()
     {
-        if(!behaviour1) { return; }
-        deltaY = input.x * sensitivity * 2;
+        sheath = !sheath;
+        down = false;
+
+        sword.gameObject.SetActive(!sheath);
+        damageCollider.enabled = !sheath;
+
+        if (sheath) {
+            rb.MoveRotation(Quaternion.Euler(90, 0, 0));         
+        }
     }
 
     public void MouseInput(float input)
     {
-        if(!behaviour2) { return; }
         if (Mathf.Sign(rb.angularVelocity.y) != Mathf.Sign(input)) {
             input *= 1000;
         }
@@ -77,11 +77,14 @@ public class ControlWeapon : MonoBehaviour
 
     public void PointDown()
     {
-        if(!check) { return; }
+        if (!check) { return; }
         down = !down;
         timeElapsed = 0;
     }
 
+    #endregion
+
+    #region Collision
     void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Floor")) {
@@ -96,5 +99,5 @@ public class ControlWeapon : MonoBehaviour
             check = true;
         }
     }
-
+    #endregion
 }
