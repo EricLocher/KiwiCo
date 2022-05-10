@@ -20,7 +20,6 @@ public class AudioManager : MonoBehaviour
     public float menuVolume;
 
     public static AudioManager instance;
-    public Slider masterSlider, sfxSlider, musicSlider;
     [SerializeField] float multiplier = 30f;
 
     void Awake()
@@ -126,27 +125,24 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    public void SetMasterVolume()
+    public void SetMasterVolume(float soundLevel)
     {
-        float soundLevel = masterSlider.value;
         foreach (Sound sound in sounds)
         {
             sound.mixer.audioMixer.SetFloat("Master", Mathf.Log10(soundLevel) * multiplier);
         }
     }
 
-    public void SetSfxVolume()
+    public void SetSfxVolume(float soundLevel)
     {
-        float soundLevel = sfxSlider.value;
         foreach (Sound sound in sounds)
         {
             sound.mixer.audioMixer.SetFloat("SFX", Mathf.Log10(soundLevel) * multiplier);
         }
     }
 
-    public void SetMusicVolume()
+    public void SetMusicVolume(float soundLevel)
     {
-        float soundLevel = musicSlider.value;
         foreach (Sound sound in sounds)
         {
             sound.mixer.audioMixer.SetFloat("Music", Mathf.Log10(soundLevel) * multiplier);
