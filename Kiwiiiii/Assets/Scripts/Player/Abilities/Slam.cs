@@ -65,7 +65,7 @@ public class Slam : Ability
         started = false;
         timePassed = 0;
     }
-
+    
     public override void UpdateAbility(float dt)
     {
         base.UpdateAbility(dt);
