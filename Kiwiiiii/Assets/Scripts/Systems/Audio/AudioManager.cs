@@ -30,6 +30,10 @@ public class AudioManager : MonoBehaviour
             if (gameObject.tag == "AudioManager")
                 DontDestroyOnLoad(gameObject);
         }
+        else
+        {
+            Destroy(this.gameObject);
+        }
 
         foreach (Sound sound in sounds)
         {
