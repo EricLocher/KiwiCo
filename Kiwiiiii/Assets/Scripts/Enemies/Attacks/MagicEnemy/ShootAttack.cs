@@ -15,6 +15,8 @@ public class ShootAttack : EnemyAttack
 
     private Animator animator;
 
+    private int wave = 5;
+
     PlayerController playerController;
 
     Coroutine currentCoroutine;
@@ -51,13 +53,20 @@ public class ShootAttack : EnemyAttack
     {
 
         enemy.stateMachine.ChangeState(EnemyStates.Chase);
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(5);
         //animator.SetTrigger("shoot");
 
+        AudioManager.instance.PlayLocal("EnemyFireBurn", newSphere.gameObject);
         SphereDamage newSphere = Instantiate(sphere, gun.transform.position, gun.transform.rotation).GetComponent<SphereDamage>();
         AudioManager.instance.PlayOnceLocal("EnemyFire", gameObject);
-        AudioManager.instance.PlayLocal("EnemyFireBurn", newSphere.gameObject);
         newSphere.target = playerController;
+        for (int i = 0; i < wave; i++)
+        {
+            yield return new WaitForSeconds(0.5f);
+
+            SphereDamage newSphere = Instantiate(sphere, gun.transform.position, gun.transform.rotation).GetComponent<SphereDamage>();
+            newSphere.target = playerController;
+        }
 
         currentCoroutine = null;
     }

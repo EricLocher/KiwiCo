@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class StabAttack : EnemyAttack
 {
+    private Animator animator;
+
     public override void EnterAttack()
     {
+        animator = GetComponent<Animator>();
         return;
     }
 
