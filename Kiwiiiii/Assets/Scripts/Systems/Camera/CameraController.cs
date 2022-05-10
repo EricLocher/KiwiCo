@@ -22,7 +22,7 @@ public class CameraController : MonoBehaviour
     public float sensitivity = 3f;
     public bool IsCinematic = false;
 
-    RaycastHit _camHit;
+    RaycastHit _camHit, _newPos;
     Vector3 camDist;
     float y = 0f, x = 0f;
     Quaternion rotation;
@@ -59,7 +59,6 @@ public class CameraController : MonoBehaviour
 
         var camPos = new Vector3(target.transform.position.x, target.transform.position.y + yOffset, target.transform.position.z);
         cameraCenter.transform.position = Vector3.Lerp(cameraCenter.transform.position, camPos, lerpRate * Time.fixedDeltaTime);
-
     }
 
     public void MouseInput(InputAction.CallbackContext ctx)
@@ -98,8 +97,14 @@ public class CameraController : MonoBehaviour
         var position = cam.transform.localPosition;
         obj.transform.localPosition = new Vector3(position.x, position.y, position.z - collisionSensitivity);
 
-        if (Physics.Linecast(cameraCenter.transform.position, obj.transform.position, out _camHit, layerMask))
+        var objPos = obj.transform.position;
+        var camCenPos = cameraCenter.transform.position;
+        Vector3 dir = (objPos - camCenPos).normalized;
+        float dist = Vector3.Distance(camCenPos, objPos);
+
+        if (Physics.Raycast(camCenPos, dir, out _camHit, layerMask))
         {
+            if(Vector3.Distance(_camHit.point, camCenPos) > dist) { Destroy(obj); return; }
             var transform1 = cam.transform;
             transform1.position = _camHit.point;
             var localPosition = transform1.localPosition;
