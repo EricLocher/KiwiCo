@@ -7,13 +7,10 @@ public class Slam : Ability
     SlamEffect _effect;
     [Header("Slam Specific Settings")]
     [SerializeField] SlamEffect effect;
-    [SerializeField] float speed = 30;
-    [SerializeField] float force = 10;
-    [SerializeField] float radius = 6;
-    [SerializeField] float damage = 10;
+    [SerializeField] AnimationCurve speed, damage, radius, force, gravity;
     [SerializeField] float minDistFromGround = 10;
     [SerializeField] LayerMask layerMask;
-    [SerializeField] AnimationCurve graph;
+    [SerializeField] float chargeTime = 2;
 
     float _damage;
     float _radius;
@@ -33,7 +30,11 @@ public class Slam : Ability
 
     public override void Activate(InputAction.CallbackContext ctx)
     {
-        if(!started) { return; }
+        timePassed = 0;
+
+        if (!started) { return; }
+        started = false;
+ 
         movement.chargeVFX.Stop();
         base.Activate(ctx);
     }
@@ -48,19 +49,16 @@ public class Slam : Ability
     {
         sword.down = false;
         sword.rb.MoveRotation(Quaternion.Euler(90, 0, 0));
-        movement.rb.AddForce(Vector3.down * _speed, ForceMode.Impulse);
-        _effect.setVariables(_force, _radius, _damage);
+        movement.rb.AddForce(Vector3.down * 2, ForceMode.Impulse);
+        _effect.setVariables(_force, _radius, _damage, _speed);
         _effect.IsSlamming = true;
-        timePassed = 0;
-        started = false;
     }
 
     public override void CanceledAbility(InputAction.CallbackContext ctx)
     {
         movement.chargeVFX.Stop();
-        Debug.Log(timePassed);
 
-        if (timePassed > 0.25f) {
+        if (timePassed > 0.5f) {
             Activate(ctx);
         }
 
@@ -82,14 +80,16 @@ public class Slam : Ability
             timePassed += dt;
             if(timePassed > 0.25f && timePassed < 0.3f) { movement.chargeVFX.Play(); }
             movement.chargeVFX.SetVector3("pos", movement.transform.position);
-            movement.chargeVFX.SetFloat("timePassed", timePassed/2);
+            movement.chargeVFX.SetFloat("timePassed", timePassed / chargeTime);
 
-            _damage = damage * timePassed;
-            _force = force * timePassed;
-            _speed = speed * timePassed;
-            _radius = radius * timePassed;
+            float sampleTime = timePassed / chargeTime;
 
-            movement.rb.AddForce(Vector3.up * (3 * timePassed), ForceMode.Force);
+            _damage = damage.Evaluate(sampleTime);
+            _force = force.Evaluate(sampleTime);
+            _speed = speed.Evaluate(sampleTime);
+            _radius = radius.Evaluate(sampleTime);
+
+            movement.rb.AddForce(Vector3.up * (gravity.Evaluate(sampleTime)), ForceMode.Force);
         }
     }
 }

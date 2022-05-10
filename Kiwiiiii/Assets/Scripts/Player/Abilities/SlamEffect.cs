@@ -13,12 +13,15 @@ public class SlamEffect : MonoBehaviour
     float force = 10;
     float radius;
     float damage;
+    float speed;
 
-    public void setVariables(float force, float radius, float damage)
+    public void setVariables(float force, float radius, float damage, float speed)
     {
         this.force = force;
         this.radius = radius;
         this.damage = damage;
+        this.speed = speed;
+        Debug.Log(radius);
     }
 
     public void OnCreate(PlayerMovement movement)
@@ -36,10 +39,14 @@ public class SlamEffect : MonoBehaviour
     public void Slam()
     {
         Physics.IgnoreLayerCollision(LayerMask.NameToLayer("Ignore Raycast"), LayerMask.NameToLayer("Enemy"), true);
+        movement.rb.AddForce(Vector3.down * speed, ForceMode.Force);
+        speed += speed * Time.deltaTime;
+        damage += damage * Time.deltaTime;
+        radius += radius * (0.5f * Time.deltaTime);
+        
 
         if (movement.isGrounded) {
-
-            Debug.Log("hit ground");
+            Debug.Log(radius);
             Collider[] collisions = Physics.OverlapSphere(movement.transform.position, radius);
 
             foreach (Collider collider in collisions) {
@@ -57,8 +64,8 @@ public class SlamEffect : MonoBehaviour
 
                     #region Calculate Damage
 
-                    float distToEnemy = Vector3.Distance(movement.transform.position, enemy.transform.position) / radius;
-                    float damageToDeal = damage / distToEnemy;
+                    float distToEnemy = 1 - Vector3.Distance(movement.transform.position, enemy.transform.position) / radius;
+                    float damageToDeal = damage * distToEnemy;
 
                     #endregion
 
@@ -73,6 +80,7 @@ public class SlamEffect : MonoBehaviour
             Physics.Raycast(movement.transform.position, Vector3.down, out hit, layerMask);
 
             slamVFX.SetVector3("pos", hit.point);
+            slamVFX.SetFloat("size", radius);
             slamVFX.Play();
             IsSlamming = false;
 
