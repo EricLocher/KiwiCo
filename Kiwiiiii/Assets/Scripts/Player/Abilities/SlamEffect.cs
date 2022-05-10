@@ -21,7 +21,6 @@ public class SlamEffect : MonoBehaviour
         this.radius = radius;
         this.damage = damage;
         this.speed = speed;
-        Debug.Log(radius);
     }
 
     public void OnCreate(PlayerMovement movement)
@@ -46,14 +45,11 @@ public class SlamEffect : MonoBehaviour
         
 
         if (movement.isGrounded) {
-            Debug.Log(radius);
             Collider[] collisions = Physics.OverlapSphere(movement.transform.position, radius);
 
             foreach (Collider collider in collisions) {
 
-                if (collider.isTrigger) { continue; }
-
-                if (collider.CompareTag("Player") || collider.CompareTag("Sword")) { continue; }
+                if (collider.isTrigger || collider.CompareTag("Player") || collider.CompareTag("Sword")) { continue; }
 
                 Rigidbody rb = collider.GetComponent<Rigidbody>();
 
@@ -73,7 +69,6 @@ public class SlamEffect : MonoBehaviour
                 }
 
                 rb.AddExplosionForce(force, movement.transform.position, radius, 0.0f, ForceMode.Impulse);
-
             }
 
             RaycastHit hit;

@@ -56,8 +56,8 @@ public abstract class Ability : ScriptableObject
     }
 
     public virtual void StartedAbility(InputAction.CallbackContext ctx) { }
-    public abstract void DoAbility();
     public virtual void CanceledAbility(InputAction.CallbackContext ctx) { }
+    public abstract void DoAbility();
 
     public virtual void UpdateAbility(float dt)
     {
