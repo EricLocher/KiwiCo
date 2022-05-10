@@ -7,9 +7,10 @@ public class Slam : Ability
     SlamEffect _effect;
     [Header("Slam Specific Settings")]
     [SerializeField] SlamEffect effect;
-    [SerializeField] AnimationCurve speed, damage, radius, force;
+    [SerializeField] AnimationCurve speed, damage, radius, force, gravity;
     [SerializeField] float minDistFromGround = 10;
     [SerializeField] LayerMask layerMask;
+    [SerializeField] float chargeTime = 2;
 
     float _damage;
     float _radius;
@@ -48,7 +49,7 @@ public class Slam : Ability
     {
         sword.down = false;
         sword.rb.MoveRotation(Quaternion.Euler(90, 0, 0));
-        movement.rb.AddForce(Vector3.down * _speed, ForceMode.Impulse);
+        movement.rb.AddForce(Vector3.down * 2, ForceMode.Impulse);
         _effect.setVariables(_force, _radius, _damage, _speed);
         _effect.IsSlamming = true;
     }
@@ -79,14 +80,16 @@ public class Slam : Ability
             timePassed += dt;
             if(timePassed > 0.25f && timePassed < 0.3f) { movement.chargeVFX.Play(); }
             movement.chargeVFX.SetVector3("pos", movement.transform.position);
-            movement.chargeVFX.SetFloat("timePassed", timePassed/2);
+            movement.chargeVFX.SetFloat("timePassed", timePassed / chargeTime);
 
-            _damage = damage.Evaluate(timePassed / 2);
-            _force = force.Evaluate(timePassed / 2);
-            _speed = speed.Evaluate(timePassed / 2);
-            _radius = radius.Evaluate(timePassed / 2);
+            float sampleTime = timePassed / chargeTime;
 
-            movement.rb.AddForce(Vector3.up * (3 * timePassed), ForceMode.Force);
+            _damage = damage.Evaluate(sampleTime);
+            _force = force.Evaluate(sampleTime);
+            _speed = speed.Evaluate(sampleTime);
+            _radius = radius.Evaluate(sampleTime);
+
+            movement.rb.AddForce(Vector3.up * (gravity.Evaluate(sampleTime)), ForceMode.Force);
         }
     }
 }
