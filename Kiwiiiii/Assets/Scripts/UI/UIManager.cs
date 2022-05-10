@@ -11,7 +11,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] Slider sensSlider, masterSlider, sfxSlider, musicSlider;
     [SerializeField] TMP_Text sensText;
     [SerializeField] CameraController cam;
-    [SerializeField] GameObject pauseScreen, dialogueBox, interactNotice, blackbars, levelLoader;
+    [SerializeField] GameObject pauseScreen, dialogueBox, interactNotice, blackbars;
     [SerializeField] Animator BG;
 
     void Start()
@@ -36,6 +36,11 @@ public class UIManager : MonoBehaviour
         GameController.Instance.Quit();
     }
 
+    public void LoadScene(string sceneName)
+    {
+        LevelLoader.Instance.LoadLoading(sceneName);
+    }
+
     public void OnPause(GameStates state)
     {
         if (state == GameStates.Paused)
@@ -44,7 +49,6 @@ public class UIManager : MonoBehaviour
                 obj.SetActive(false);
 
             pauseScreen.SetActive(true);
-            levelLoader.SetActive(true);
         }
         else if (state != GameStates.Paused)
         {
@@ -64,7 +68,6 @@ public class UIManager : MonoBehaviour
         }
         dialogueBox.SetActive(true);
         blackbars.SetActive(true);
-        levelLoader.SetActive(true);
     }
 
     public void ShowAllUIElements()
