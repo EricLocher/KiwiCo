@@ -990,9 +990,9 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 635948613}
-        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
-        m_MethodName: SetSfxVolume
+      - m_Target: {fileID: 1265997819}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: SetSfV
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1093,9 +1093,9 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 635948613}
-        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
-        m_MethodName: SetMusicVolume
+      - m_Target: {fileID: 1265997819}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: SetMuV
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1196,9 +1196,9 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 635948613}
-        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
-        m_MethodName: SetMasterVolume
+      - m_Target: {fileID: 1265997819}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: SetMaV
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1283,17 +1283,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 621274078}
   m_CullTransparentMesh: 1
---- !u!114 &635948613 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8442977217905806071, guid: 9abe44e845a5eaa46a3b08e5d3c6613f, type: 3}
-  m_PrefabInstance: {fileID: 8442977217738812884}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 470fc2fd82fcf00428891eefe68491e5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &833921588
 GameObject:
   m_ObjectHideFlags: 0
@@ -1902,6 +1891,7 @@ GameObject:
   - component: {fileID: 1265997813}
   - component: {fileID: 1265997817}
   - component: {fileID: 1265997818}
+  - component: {fileID: 1265997819}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -2023,6 +2013,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   transitionAnimator: {fileID: 1686065908}
   transitionAnimationEnd: {fileID: 7400000, guid: 7578301d27387904193c28d7e230b172, type: 2}
+--- !u!114 &1265997819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1265997812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79b00424619dec4488e46cd3abc8dbb5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sensSlider: {fileID: 0}
+  masterSlider: {fileID: 598618213}
+  sfxSlider: {fileID: 498184936}
+  musicSlider: {fileID: 558395681}
+  sensText: {fileID: 0}
+  cam: {fileID: 0}
+  pauseScreen: {fileID: 0}
+  dialogueBox: {fileID: 0}
+  interactNotice: {fileID: 0}
+  blackbars: {fileID: 0}
+  levelLoader: {fileID: 0}
+  BG: {fileID: 0}
 --- !u!1 &1300583806
 GameObject:
   m_ObjectHideFlags: 0

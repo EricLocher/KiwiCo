@@ -8,21 +8,22 @@ using UnityEngine.SceneManagement;
 public class UIManager : MonoBehaviour
 {
     List<GameObject> uiElements = new List<GameObject>();
-    [SerializeField] Slider sensSlider;
+    [SerializeField] Slider sensSlider, masterSlider, sfxSlider, musicSlider;
     [SerializeField] TMP_Text sensText;
     [SerializeField] CameraController cam;
     [SerializeField] GameObject pauseScreen, dialogueBox, interactNotice, blackbars, levelLoader;
     [SerializeField] Animator BG;
-    bool showSettings;
 
     void Start()
     {
-        foreach (Transform child in transform)
-            uiElements.Add(child.gameObject);
+        if(SceneManager.GetActiveScene().buildIndex != 0)
+        {
+            foreach (Transform child in transform)
+                uiElements.Add(child.gameObject);
 
-        sensSlider.value = cam.sensitivity;
-        sensText.text = "" + Mathf.Round(sensSlider.value * 100.0f) * 0.01f;
-        showSettings = false;
+            sensSlider.value = cam.sensitivity;
+            sensText.text = "" + Mathf.Round(sensSlider.value * 100.0f) * 0.01f;
+        }
     }
 
     public void CallPause()
@@ -84,19 +85,31 @@ public class UIManager : MonoBehaviour
 
     public void OpenSettings()
     {
-        bool check = showSettings;
-        if (!check)
-        {
-            BG.SetTrigger("Open");
-            showSettings = true;
-        }
-        else if (check)
+        if (BG.GetCurrentAnimatorStateInfo(0).normalizedTime < 1f) { return; }
+        
+        if (BG.GetCurrentAnimatorStateInfo(0).IsName("OpenMore"))
         {
             BG.SetTrigger("Close");
-            showSettings = false;
         }
-        Debug.Log("check: " + check);
-        Debug.Log("Show: " + showSettings);
+        else
+        {
+            BG.SetTrigger("Open");
+        }
+    }
+
+    public void SetMaV()
+    {
+        AudioManager.instance.SetMasterVolume(masterSlider.value);
+    }
+
+    public void SetSfV()
+    {
+        AudioManager.instance.SetSfxVolume(sfxSlider.value);
+    }
+
+    public void SetMuV()
+    {
+        AudioManager.instance.SetMusicVolume(musicSlider.value);
     }
 
     void OnEnable() => GameController.onStateChange += OnPause;
