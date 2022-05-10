@@ -53,11 +53,17 @@ public class Save : MonoBehaviour
         AudioManager.instance.SetMasterVolume(master);
         AudioManager.instance.SetSfxVolume(sfx);
         AudioManager.instance.SetMusicVolume(music);
+    }
 
-        Debug.Log("scene: " + sceneIndex);
-        Debug.Log("sens: " + sensitivity);
-        Debug.Log("master: " + master);
-        Debug.Log("sfx: " + sfx);
-        Debug.Log("music: " + music);
+    public void LoadAllSettings()
+    {
+        GameData data = SaveData.Load();
+        sensitivity = data.sensitivity;
+        master = data.master;
+        sfx = data.sfx;
+        music = data.music;
+        AudioManager.instance.SetMasterVolume(master);
+        AudioManager.instance.SetSfxVolume(sfx);
+        AudioManager.instance.SetMusicVolume(music);
     }
 }
