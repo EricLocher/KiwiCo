@@ -33,7 +33,9 @@ public abstract class Ability : ScriptableObject
         this.movement = movement;
         this.sword = sword;
 
+        action.started += ctx => StartedAbility(ctx);
         action.performed += ctx => Activate(ctx);
+        action.canceled += ctx => CanceledAbility(ctx);
 
         currentAmount = maxAmount;
         timers = new List<float>();
@@ -53,7 +55,9 @@ public abstract class Ability : ScriptableObject
         timers.Add(coolDownTime);
     }
 
+    public virtual void StartedAbility(InputAction.CallbackContext ctx) { }
     public abstract void DoAbility();
+    public virtual void CanceledAbility(InputAction.CallbackContext ctx) { }
 
     public virtual void UpdateAbility(float dt)
     {

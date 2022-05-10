@@ -7,8 +7,7 @@ using UnityEngine.InputSystem;
 public class PlayerInput : MonoBehaviour
 {
     [SerializeField] PlayerMovement movement;
-    [SerializeField] WeaponsBehavior weapons;
-    [SerializeField] ControlWeapon lookWithMouse;
+    [SerializeField] ControlWeapon sword;
     [SerializeField] InteractController interactController;
     [SerializeField] HotbarBehavior hotbar;
 
@@ -36,10 +35,10 @@ public class PlayerInput : MonoBehaviour
         controls.Player.Jump.performed += ctx => movement.Jump(ctx);
 
         //Point Sword Down
-        controls.Player.PointDown.started += ctx => lookWithMouse.PointDown();
+        controls.Player.PointDown.started += ctx => sword.PointDown();
 
         //Sheath sword
-        controls.Player.Sheath.performed += ctx => weapons.Sheath(ctx);
+        controls.Player.Sheath.performed += ctx => sword.SheathWeapon();
 
         //Interact with interactable object
         controls.Player.Interact.performed += ctx => interactController.Interact(ctx);
@@ -53,8 +52,7 @@ public class PlayerInput : MonoBehaviour
     private void FixedUpdate()
     {
         Move();
-        lookWithMouse.MouseInput(controls.Player.Mouse.ReadValue<Vector2>());
-        lookWithMouse.MouseInput(controls.Player.QE.ReadValue<float>());
+        sword.MouseInput(controls.Player.QE.ReadValue<float>());
         //We need to tweak this
 
     }
