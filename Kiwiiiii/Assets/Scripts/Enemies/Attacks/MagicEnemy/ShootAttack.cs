@@ -25,9 +25,6 @@ public class ShootAttack : EnemyAttack
 
     public GameObject sphere;
     public Transform gun;
-    public Transform playerTransform;
-
-    private Animator animator;
 
     Coroutine currentCoroutine;
 
