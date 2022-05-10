@@ -46,7 +46,7 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        if(Mathf.Abs(rb.velocity.y) <= 0.1f)
+        if(Mathf.Abs(rb.velocity.y) <= 1f)
             GroundCheck();
         else {
             isGrounded = false;

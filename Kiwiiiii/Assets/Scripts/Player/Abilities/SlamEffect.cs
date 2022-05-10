@@ -38,6 +38,8 @@ public class SlamEffect : MonoBehaviour
         Physics.IgnoreLayerCollision(LayerMask.NameToLayer("Ignore Raycast"), LayerMask.NameToLayer("Enemy"), true);
 
         if (movement.isGrounded) {
+
+            Debug.Log("hit ground");
             Collider[] collisions = Physics.OverlapSphere(movement.transform.position, radius);
 
             foreach (Collider collider in collisions) {
