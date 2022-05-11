@@ -1,8 +1,6 @@
 using System;
 using System.Collections;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 /*
  * How to use
  * To make global sound call
@@ -27,8 +25,11 @@ public class AudioManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-            if (gameObject.tag == "AudioManager")
-                DontDestroyOnLoad(gameObject);
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(this.gameObject);
         }
 
         foreach (Sound sound in sounds)
@@ -104,6 +105,13 @@ public class AudioManager : MonoBehaviour
     {
         yield return new WaitForSeconds(time);
         Destroy(obj);
+    }
+
+    public string GetRandomAudio(string[] audio)
+    {
+        int randomIndex = UnityEngine.Random.Range(0, audio.Length);
+
+        return audio[randomIndex]; 
     }
 
     public void PauseAllSound()

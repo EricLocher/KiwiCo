@@ -1,40 +1,52 @@
-using System.Collections;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class LevelLoader : MonoBehaviour
 {
-    [SerializeField] Animator transitionAnimator;
-    [SerializeField] AnimationClip transitionAnimationEnd;
+    public static LevelLoader Instance;
 
-    void OnEnable()
+    private void Awake()
     {
-        transitionAnimator.SetTrigger("End");
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
-    public void LoadNextLevel()
+    public async void LoadLoading(string sceneName)
     {
-        GameController.Instance.SetTime(true);
-        StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex + 1));
+        var scene = SceneManager.LoadSceneAsync("Loading");
+        scene.allowSceneActivation = false;
+
+        do
+        {
+            await Task.Delay(100);
+
+        } while (scene.progress < 0.9f);
+
+        scene.allowSceneActivation = true;
+        LoadScene(sceneName);
     }
 
-    IEnumerator LoadLevel(int levelIndex)
+    public async void LoadScene(string sceneName)
     {
-        transitionAnimator.SetTrigger("Start");
-        yield return new WaitForSeconds(transitionAnimationEnd.length);
-        SceneManager.LoadScene(levelIndex);
-    }
+        var scene = SceneManager.LoadSceneAsync(sceneName);
+        scene.allowSceneActivation = false;
 
-    public void LoadSpecificLevel(int levelIndex)
-    {
-        GameController.Instance.SetTime(true);
-        StartCoroutine(LoadSpecific(levelIndex));
-    }
+        do
+        {
+            await Task.Delay(100);
+            GameObject.FindGameObjectWithTag("Loading").GetComponent<Image>().fillAmount = scene.progress;
 
-    IEnumerator LoadSpecific(int levelIndex)
-    {
-        transitionAnimator.SetTrigger("Start");
-        yield return new WaitForSeconds(transitionAnimationEnd.length);
-        SceneManager.LoadScene(levelIndex);
+        } while (scene.progress < 0.9f);
+
+        scene.allowSceneActivation = true;
     }
 }

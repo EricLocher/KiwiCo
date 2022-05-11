@@ -5,10 +5,21 @@ public class Save : MonoBehaviour
 {
     [HideInInspector]
     public int sceneIndex;
+    public float master = 1f, music = 1f, sfx = 1f, sensitivity = 5f;
+
+    public static Save instance;
 
     private void Awake()
     {
-        DontDestroyOnLoad(this);
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
     }
 
     void OnEnable()
@@ -22,7 +33,6 @@ public class Save : MonoBehaviour
         {
             sceneIndex = SceneManager.GetActiveScene().buildIndex;
             SaveAll();
-            Debug.Log("Saving");
         }
     }
 
@@ -35,8 +45,25 @@ public class Save : MonoBehaviour
     {
         GameData data = SaveData.Load();
         sceneIndex = data.sceneIndex;
+        sensitivity = data.sensitivity;
+        master = data.master;
+        sfx = data.sfx;
+        music = data.music;
         SceneManager.LoadScene(sceneIndex);
-        AudioManager.instance.PauseSound("Menu Music");
-        AudioManager.instance.Play("Game Music");
+        AudioManager.instance.SetMasterVolume(master);
+        AudioManager.instance.SetSfxVolume(sfx);
+        AudioManager.instance.SetMusicVolume(music);
+    }
+
+    public void LoadAllSettings()
+    {
+        GameData data = SaveData.Load();
+        sensitivity = data.sensitivity;
+        master = data.master;
+        sfx = data.sfx;
+        music = data.music;
+        AudioManager.instance.SetMasterVolume(master);
+        AudioManager.instance.SetSfxVolume(sfx);
+        AudioManager.instance.SetMusicVolume(music);
     }
 }

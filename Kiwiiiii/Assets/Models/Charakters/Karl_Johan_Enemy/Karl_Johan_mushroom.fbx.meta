@@ -8,16 +8,13 @@ ModelImporter:
     second: Idle
   - first:
       74: -1803976989739477343
-    second: Sword swing
+    second: Walk_Cycle
   - first:
-      74: -1803976989739477343
-    second: Walk Cycle
+      74: -998496362607748373
+    second: Knock_Back
   - first:
-      74: -2213524819414272467
-    second: Sword swing
-  - first:
-      74: -107768190754101317
-    second: Knock back
+      74: -8978840444350128254
+    second: Sword_Swing
   - first:
       74: -3745917278484660868
     second: Alert
@@ -61,7 +58,7 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 1
+      loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -79,40 +76,11 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 1
     - serializedVersion: 16
-      name: Walk Cycle
+      name: Walk_Cycle
       takeName: Take 001
       internalID: 0
       firstFrame: 21
       lastFrame: 40
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 1
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 1
-    - serializedVersion: 16
-      name: Sword swing
-      takeName: Take 001
-      internalID: 0
-      firstFrame: 41
-      lastFrame: 59
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -137,7 +105,36 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 1
     - serializedVersion: 16
-      name: Knock back
+      name: Sword_Swing
+      takeName: Take 001
+      internalID: 0
+      firstFrame: 41
+      lastFrame: 60
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 1
+    - serializedVersion: 16
+      name: Knock_Back
       takeName: Take 001
       internalID: 0
       firstFrame: 61
@@ -169,8 +166,8 @@ ModelImporter:
       name: Alert
       takeName: Take 001
       internalID: 0
-      firstFrame: 79
-      lastFrame: 85
+      firstFrame: 77
+      lastFrame: 97
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

@@ -7,23 +7,20 @@ using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
-    List<GameObject> uiElements = new List<GameObject>();
-    [SerializeField] Slider sensSlider, masterSlider, sfxSlider, musicSlider;
+    public Slider sensSlider, masterSlider, sfxSlider, musicSlider;
     [SerializeField] TMP_Text sensText;
     [SerializeField] CameraController cam;
-    [SerializeField] GameObject pauseScreen, dialogueBox, interactNotice, blackbars, levelLoader;
+    [SerializeField] GameObject pauseScreen, dialogueBox, interactNotice, blackbars;
     [SerializeField] Animator BG;
 
     void Start()
     {
-        if(SceneManager.GetActiveScene().buildIndex != 0)
-        {
-            foreach (Transform child in transform)
-                uiElements.Add(child.gameObject);
-
-            sensSlider.value = cam.sensitivity;
-            sensText.text = "" + Mathf.Round(sensSlider.value * 100.0f) * 0.01f;
-        }
+        Save.instance.LoadAllSettings();
+        sensSlider.value = Save.instance.sensitivity;
+        masterSlider.value = Save.instance.master;
+        sfxSlider.value = Save.instance.sfx;
+        musicSlider.value = Save.instance.music;
+        sensText.text = "" + Mathf.Round(sensSlider.value * 100.0f) * 0.01f;
     }
 
     public void CallPause()
@@ -36,20 +33,25 @@ public class UIManager : MonoBehaviour
         GameController.Instance.Quit();
     }
 
+    public void LoadScene(string sceneName)
+    {
+        GameController.Instance.SetTime(true);
+        LevelLoader.Instance.LoadLoading(sceneName);
+    }
+
     public void OnPause(GameStates state)
     {
         if (state == GameStates.Paused)
         {
-            foreach (GameObject obj in uiElements)
-                obj.SetActive(false);
+            foreach (Transform child in gameObject.transform)
+                child.gameObject.SetActive(false);
 
             pauseScreen.SetActive(true);
-            levelLoader.SetActive(true);
         }
         else if (state != GameStates.Paused)
         {
-            foreach (GameObject obj in uiElements)
-                obj.SetActive(true);
+            foreach (Transform child in gameObject.transform)
+                child.gameObject.SetActive(true);
 
             interactNotice.SetActive(false);
             pauseScreen.SetActive(false);
@@ -64,7 +66,6 @@ public class UIManager : MonoBehaviour
         }
         dialogueBox.SetActive(true);
         blackbars.SetActive(true);
-        levelLoader.SetActive(true);
     }
 
     public void ShowAllUIElements()
@@ -79,14 +80,16 @@ public class UIManager : MonoBehaviour
 
     public void SensitivityChange()
     {
-        cam.sensitivity = sensSlider.value;
-        sensText.text = ""+Mathf.Round(sensSlider.value * 100.0f) * 0.01f;
+        Save.instance.sensitivity = sensSlider.value;
+        sensText.text = "" + Mathf.Round(sensSlider.value * 100.0f) * 0.01f;
+        Save.instance.sensitivity = sensSlider.value;
+        Save.instance.SaveAll();
     }
 
     public void OpenSettings()
     {
         if (BG.GetCurrentAnimatorStateInfo(0).normalizedTime < 1f) { return; }
-        
+
         if (BG.GetCurrentAnimatorStateInfo(0).IsName("OpenMore"))
         {
             BG.SetTrigger("Close");
@@ -100,16 +103,22 @@ public class UIManager : MonoBehaviour
     public void SetMaV()
     {
         AudioManager.instance.SetMasterVolume(masterSlider.value);
+        Save.instance.master = masterSlider.value;
+        Save.instance.SaveAll();
     }
 
     public void SetSfV()
     {
         AudioManager.instance.SetSfxVolume(sfxSlider.value);
+        Save.instance.sfx = sfxSlider.value;
+        Save.instance.SaveAll();
     }
 
     public void SetMuV()
     {
         AudioManager.instance.SetMusicVolume(musicSlider.value);
+        Save.instance.music = musicSlider.value;
+        Save.instance.SaveAll();
     }
 
     void OnEnable() => GameController.onStateChange += OnPause;

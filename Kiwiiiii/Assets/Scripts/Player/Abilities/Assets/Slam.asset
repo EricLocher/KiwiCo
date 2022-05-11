@@ -19,7 +19,7 @@ MonoBehaviour:
     m_ExpectedControlType: 
     m_Id: 9d1ca570-f901-4b81-9048-5c1f1cb51aa9
     m_Processors: 
-    m_Interactions: Hold(duration=2)
+    m_Interactions: Hold(duration=1.5)
     m_SingletonActionBindings:
     - m_Name: 
       m_Id: 19f93b28-289e-439e-bc95-9b4ddd61de33
@@ -35,44 +35,137 @@ MonoBehaviour:
   maxAmount: 1
   currentAmount: 1
   effect: {fileID: 3043495388817609895, guid: feb54d40b2402fc40883b53079e54955, type: 3}
-  speed: 20
-  force: 7
-  radius: 6
-  damage: 7
-  minDistFromGround: 3
-  layerMask:
+  speed:
     serializedVersion: 2
-    m_Bits: 64
-  graph:
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 10
+      inSlope: 10
+      outSlope: 10
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 20
+      inSlope: 10
+      outSlope: 10
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  damage:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 15
+      inSlope: 5
+      outSlope: 5
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 20
+      inSlope: 5
+      outSlope: 5
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  radius:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 3
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 5
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  force:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 20
+      inSlope: 20
+      outSlope: 20
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 40
+      inSlope: 20
+      outSlope: 20
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  gravity:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 2
-      outSlope: 2
+      inSlope: 0.78928864
+      outSlope: 0.78928864
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0
+      outWeight: 0.056195967
     - serializedVersion: 3
-      time: 0.6
+      time: 0.65
       value: 1
-      inSlope: 0
-      outSlope: 0
+      inSlope: 0.0337169
+      outSlope: 0.0337169
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0
+      outWeight: 0.2859589
     - serializedVersion: 3
       time: 1
-      value: 0.5
-      inSlope: -2.485971
-      outSlope: -2.485971
+      value: -1
+      inSlope: -0.15688916
+      outSlope: -0.15688916
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.118590005
+      inWeight: 0.41020033
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  minDistFromGround: 5
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 64
+  chargeTime: 1.5

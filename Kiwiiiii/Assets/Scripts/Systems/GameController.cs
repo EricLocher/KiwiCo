@@ -59,7 +59,7 @@ public class GameController : MonoBehaviour
 
     public void Quit()
     {
-        // save any game data here
+        Save.instance.SaveAll();
 #if UNITY_EDITOR
         Application.Quit();
         UnityEditor.EditorApplication.isPlaying = false;
