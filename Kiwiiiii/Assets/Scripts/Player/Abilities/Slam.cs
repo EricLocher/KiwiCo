@@ -49,7 +49,7 @@ public class Slam : Ability
     {
         sword.down = false;
         sword.rb.MoveRotation(Quaternion.Euler(90, 0, 0));
-        movement.rb.AddForce(Vector3.down * 2, ForceMode.Impulse);
+        movement.rb.AddForce(Vector3.down * _speed, ForceMode.Impulse);
         _effect.setVariables(_force, _radius, _damage, _speed);
         _effect.IsSlamming = true;
     }

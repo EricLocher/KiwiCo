@@ -12,7 +12,7 @@ public class PlayerMovement : MonoBehaviour
 
     [HideInInspector] public Rigidbody rb;
     [HideInInspector] public SOPlayerStats stats;
-    [HideInInspector] public bool isGrounded;
+     public bool isGrounded;
     private Animator animator;
     public VisualEffect chargeVFX;
 
@@ -46,17 +46,14 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        if(Mathf.Abs(rb.velocity.y) <= 1f)
-            GroundCheck();
-        else {
-            isGrounded = false;
-        }
+
+        GroundCheck();
+
         if (jump) {
             if (isGrounded || stats.amountOfJumps > 0) {
+                if (!isGrounded) { jumpVFX.Play(); }
                 rb.AddForce(Vector3.up * stats.jumpForce, ForceMode.Impulse);
                 stats.amountOfJumps--;
-                if(!isGrounded)
-                    jumpVFX.Play();
             }
             jump = false;
         }
@@ -74,8 +71,12 @@ public class PlayerMovement : MonoBehaviour
 
         RaycastHit hit;
 
-        if (Physics.Raycast(transform.position, Vector3.down, out hit, 2f, layerMask)) {
-            if(Vector3.Angle(hit.normal, Vector3.up) > 45f) { isGrounded = false; return; }
+        if (Physics.SphereCast(transform.position + new Vector3(0, characterHitBox.radius, 0), characterHitBox.radius + 0.05f, Vector3.down, out hit, 2f, layerMask)) {
+            if (Vector3.Angle(hit.normal, Vector3.up) > 45f) { isGrounded = false; return; }
+            float dist = Vector3.Distance(transform.position, hit.point);
+
+            if(dist > characterHitBox.radius + 0.05f) { isGrounded = false; return; }
+
             isGrounded = true;
             stats.amountOfJumps = stats.maxJumps;
             stats.jumpForce = stats.defaultJumpForce;
