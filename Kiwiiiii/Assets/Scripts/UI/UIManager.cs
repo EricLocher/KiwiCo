@@ -7,7 +7,6 @@ using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
-    List<GameObject> uiElements = new List<GameObject>();
     public Slider sensSlider, masterSlider, sfxSlider, musicSlider;
     [SerializeField] TMP_Text sensText;
     [SerializeField] CameraController cam;
@@ -44,15 +43,15 @@ public class UIManager : MonoBehaviour
     {
         if (state == GameStates.Paused)
         {
-            foreach (GameObject obj in uiElements)
-                obj.SetActive(false);
+            foreach (Transform child in gameObject.transform)
+                child.gameObject.SetActive(false);
 
             pauseScreen.SetActive(true);
         }
         else if (state != GameStates.Paused)
         {
-            foreach (GameObject obj in uiElements)
-                obj.SetActive(true);
+            foreach (Transform child in gameObject.transform)
+                child.gameObject.SetActive(true);
 
             interactNotice.SetActive(false);
             pauseScreen.SetActive(false);
