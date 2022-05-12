@@ -32,6 +32,8 @@ public class Enemy : Character
         stateMachine.moveSpots = GetComponent<PatrolSpots>();
         stateMachine.enemy = this;
 
+        stats.health = 200;
+
         stateMachine.RegisterState(EnemyStates.Idle, new IdleState(this, stateMachine));
         stateMachine.RegisterState(EnemyStates.Surprise, new SurpriseState(this, stateMachine));
         stateMachine.RegisterState(EnemyStates.Chase, new ChaseState(this, stateMachine));
@@ -53,6 +55,15 @@ public class Enemy : Character
 
     private void Update()
     {
+        if (navMeshAgent.hasPath)
+        {
+            animator.SetBool("moving", true);
+        }
+        else
+        {
+            animator.SetBool("moving", false);
+        }
+
         stateMachine.Update();
     }
 

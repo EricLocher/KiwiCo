@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8199138921200552607}
   - component: {fileID: 2397107579379601006}
+  - component: {fileID: 3221369433430456734}
   m_Layer: 0
   m_Name: pillar_3_LOD
   m_TagString: Untagged
@@ -66,6 +67,19 @@ LODGroup:
     renderers:
     - renderer: {fileID: 2006344593051837901}
   m_Enabled: 1
+--- !u!65 &3221369433430456734
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 223356927689635645}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.27929306, y: 1.958842, z: 0.29330397}
+  m_Center: {x: 0.21055532, y: 1.1171838, z: -0.63456655}
 --- !u!1 &578459911786183424
 GameObject:
   m_ObjectHideFlags: 0

@@ -7,6 +7,7 @@ public class PaintFoliageWindow : EditorWindow
     [SerializeField] List<GameObject> palette = new List<GameObject>();
     [SerializeField] int paletteIndex;
     GameObject holder = null;
+    GameObject group = null;
     float brushSize = 1f;
     int density = 1;
     Vector3 targetPos = new Vector3();
@@ -86,7 +87,7 @@ public class PaintFoliageWindow : EditorWindow
         if (paletteIndex < palette.Count && Event.current.type == EventType.MouseDown && Event.current.button == 0)
         {
             GameObject prefab = palette[paletteIndex];
-            if(holder == null)
+            if (holder == null)
             {
                 holder = new GameObject("Terrain Holder");
             }
@@ -95,23 +96,42 @@ public class PaintFoliageWindow : EditorWindow
 
             GameObject[] amount = new GameObject[density];
 
-            for(int i = 0; i < density; i++)
+            if (group == null)
             {
-                GameObject gameObject = PrefabUtility.InstantiatePrefab(prefab, holder.transform) as GameObject;
+                foreach (GameObject obj in palette)
+                {
+                    group = new GameObject(obj.name);
+                    group.transform.SetParent(holder.transform);
+                }
+            }
+
+            for (int i = 0; i < density; i++)
+            {
+                GameObject gameObject = PrefabUtility.InstantiatePrefab(prefab) as GameObject;
+
+                foreach (Transform child in holder.transform)
+                {
+                    if (gameObject.name == child.name)
+                        gameObject.transform.SetParent(child.transform);
+                }
 
                 Vector3 randomPoint = Random.insideUnitCircle * brushSize;
                 randomPoint = new Vector3(randomPoint.x, 0, randomPoint.y);
 
                 Vector3 placementPos = targetPos + randomPoint;
+                Vector3 placementRot = new Vector3();
 
                 RaycastHit grounded;
 
                 if (Physics.Raycast(placementPos, Vector3.down, out grounded))
                 {
                     placementPos = grounded.point;
+                    placementRot = grounded.normal;
                 }
 
                 gameObject.transform.position = placementPos;
+                gameObject.transform.up = placementRot;
+                Debug.Log(placementRot);
 
                 Undo.RegisterCreatedObjectUndo(gameObject, "");
             }

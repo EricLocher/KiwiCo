@@ -64,7 +64,7 @@ public class PatrolEditor : Editor
         else
         {
             EditorGUILayout.LabelField("Patrol Radius", EditorStyles.boldLabel);
-            float sliderVal = EditorGUILayout.Slider(patrolSpots.circleRadius, 10, 100);
+            float sliderVal = EditorGUILayout.Slider(patrolSpots.circleRadius, 5, 100);
             if (patrolSpots.circleRadius != sliderVal)
             {
                 Undo.RecordObject(patrolSpots, "Updated Radius");

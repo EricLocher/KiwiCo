@@ -37,7 +37,7 @@ public class CameraController : MonoBehaviour
             Cursor.lockState = CursorLockMode.Locked;
         }
 
-        sensitivity = Save.instance.sensitivity;
+        //sensitivity = Save.instance.sensitivity;
 
         camDist = cam.transform.localPosition;
         camDist.z = zoomDistance;

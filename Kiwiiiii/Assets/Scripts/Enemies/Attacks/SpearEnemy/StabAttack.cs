@@ -5,25 +5,29 @@ using UnityEngine;
 public class StabAttack : EnemyAttack
 {
     [SerializeField] Enemy enemy;
+    [SerializeField] CapsuleCollider stabCollider;
 
     [Range(0, 10)]
     public int secondsBetweenStabs = 3;
 
+    private PlayerController player;
     private Animator animator;
 
     private void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         animator = GetComponent<Animator>();
     }
 
     public override void EnterAttack()
     {
+        StartCoroutine(Attack());
         return;
     }
 
     public override void ActiveAttack()
     {
-        Attack();
+        return;
     }
 
     public override void ExitAttack()
@@ -34,10 +38,20 @@ public class StabAttack : EnemyAttack
     IEnumerator Attack()
     {
         animator.SetTrigger("stab");
-        //TODO: OnCollision damage
-        yield return new WaitForSeconds(secondsBetweenStabs);
+        stabCollider.enabled = true;
+
+        yield return new WaitForSecondsRealtime(secondsBetweenStabs);
 
         animator.ResetTrigger("stab");
+        stabCollider.enabled = false;
         enemy.stateMachine.ChangeState(EnemyStates.Chase);
+    }
+
+    private void OnTriggerStay(Collider col)
+    {
+        if (col.gameObject.tag == ("Player"))
+        {
+            player.DealDamage(0.1f);
+        }
     }
 }
