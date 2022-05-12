@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6007250876956599074}
   - component: {fileID: 6007250876956599075}
+  - component: {fileID: 1182085969103094305}
   m_Layer: 0
   m_Name: rock_2_2
   m_TagString: Untagged
@@ -61,6 +62,19 @@ LODGroup:
     renderers:
     - renderer: {fileID: 4996201635164046340}
   m_Enabled: 1
+--- !u!65 &1182085969103094305
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6007250876956599072}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5545973, y: 0.8429889, z: 0.6267083}
+  m_Center: {x: -0.03256616, y: 0.03909418, z: 0.06916234}
 --- !u!1001 &6007250876049952617
 PrefabInstance:
   m_ObjectHideFlags: 0
