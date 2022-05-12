@@ -53,6 +53,15 @@ public class Enemy : Character
 
     private void Update()
     {
+        if (navMeshAgent.hasPath)
+        {
+            animator.SetBool("moving", true);
+        }
+        else
+        {
+            animator.SetBool("moving", false);
+        }
+
         stateMachine.Update();
     }
 

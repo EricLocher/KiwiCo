@@ -26,8 +26,6 @@ public class IdleState : EnemyState
 
         waitTime -= dt;
 
-        //agent.animator.SetFloat("movement", agent.navMeshAgent.speed);
-
         if (waitTime <= 0 && hasWaited == false)
         {
             SelectNewDestination();

@@ -18,7 +18,7 @@ public class Character : MonoBehaviour
     {
         CharacterStats.health -= value;
 
-        if(CharacterStats.health <= 0) { OnDeath(); }
+        if (CharacterStats.health <= 0) { OnDeath(); }
     }
 
     public virtual void Heal(float value)
