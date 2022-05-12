@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5885602955955338095, guid: 5791a349976337f47b5951771bba2864, type: 3}
       propertyPath: m_Name
-      value: champ_enemy
+      value: champ_enemy Variant
       objectReference: {fileID: 0}
     - target: {fileID: 5885602955955338095, guid: 5791a349976337f47b5951771bba2864, type: 3}
       propertyPath: m_TagString
@@ -94,8 +94,8 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 2.3665514
-  m_Center: {x: -0.0000000028514042, y: 1.6840246, z: -0.18253744}
+  m_Radius: 1.4891927
+  m_Center: {x: -0.20603909, y: 1.4535174, z: -0.39270937}
 --- !u!136 &847584830034186983
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -200,6 +200,21 @@ VisualEffect:
       m_Array: []
     m_Bool:
       m_Array: []
+--- !u!114 &371574982
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2563369503588219643}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d66d3abfc569e38458b7dfb1fdcaacdd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemy: {fileID: 4743249756542762924}
+  swingCollider: {fileID: 4743249756542762938}
+  secondsBetweenSwings: 3
 --- !u!114 &4743249756542762924
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -218,7 +233,7 @@ MonoBehaviour:
   animator: {fileID: 3410213562985564878}
   navMeshAgent: {fileID: 0}
   fov: {fileID: 0}
-  damagePopup: {fileID: 0}
+  damagePopup: {fileID: 3432873184914692212, guid: 91e9d37f0c993324481dcad819e13585, type: 3}
   attack: {fileID: 0}
   idle: {fileID: 0}
   chase: {fileID: 4743249756542762929}
@@ -328,18 +343,3 @@ MonoBehaviour:
   enemy: {fileID: 4743249756542762924}
   stabCollider: {fileID: 847584830034186983}
   secondsBetweenStabs: 3
---- !u!114 &371574982
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2563369503588219643}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d66d3abfc569e38458b7dfb1fdcaacdd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemy: {fileID: 4743249756542762924}
-  swingCollider: {fileID: 4743249756542762938}
-  secondsBetweenSwings: 3
