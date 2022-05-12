@@ -21,7 +21,6 @@ public class StabAttack : EnemyAttack
 
     public override void EnterAttack()
     {
-        Debug.Log("Enter attack");
         StartCoroutine(Attack());
         return;
     }
@@ -38,14 +37,10 @@ public class StabAttack : EnemyAttack
 
     IEnumerator Attack()
     {
-        Debug.Log("Attack");
-
         animator.SetTrigger("stab");
         stabCollider.enabled = true;
 
         yield return new WaitForSecondsRealtime(secondsBetweenStabs);
-
-        Debug.Log("WFS done");
 
         animator.ResetTrigger("stab");
         stabCollider.enabled = false;
