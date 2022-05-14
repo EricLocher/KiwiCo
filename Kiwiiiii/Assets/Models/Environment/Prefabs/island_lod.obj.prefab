@@ -172,7 +172,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3531055908889983821}
   - component: {fileID: 8600409696465112124}
-  - component: {fileID: 57138206438223862}
   m_Layer: 0
   m_Name: island_lod.obj
   m_TagString: Untagged
@@ -216,11 +215,11 @@ LODGroup:
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 6556365114843293004}
-  - screenRelativeHeight: 0.125
+  - screenRelativeHeight: 0.08753362
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 7397294420603947619}
-  - screenRelativeHeight: 0.0625
+  - screenRelativeHeight: 0.03065343
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 5500551589265781183}
@@ -229,20 +228,6 @@ LODGroup:
     renderers:
     - renderer: {fileID: 1975940594683289670}
   m_Enabled: 1
---- !u!64 &57138206438223862
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4200455512306622967}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
 --- !u!1 &5949501139166915864
 GameObject:
   m_ObjectHideFlags: 0
@@ -335,6 +320,7 @@ GameObject:
   - component: {fileID: 3597559204017878826}
   - component: {fileID: 7944093964225022817}
   - component: {fileID: 6556365114843293004}
+  - component: {fileID: 4689204036926799586}
   m_Layer: 0
   m_Name: mesh_LOD0
   m_TagString: Untagged
@@ -405,3 +391,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &4689204036926799586
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6320274932677603448}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -7676251268795185082, guid: 2b941727050e0f84387caff44a752357, type: 3}
