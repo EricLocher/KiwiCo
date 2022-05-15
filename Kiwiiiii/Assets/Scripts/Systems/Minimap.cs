@@ -5,11 +5,8 @@ using UnityEngine;
 [ExecuteInEditMode]
 public class Minimap : MonoBehaviour
 {
-    [SerializeField]
-    GameObject target;
-
-    [SerializeField]
-    float yOffset = 20f;
+    [SerializeField] GameObject target;
+    [SerializeField] float yOffset = 20f;
 
     void Update()
     {
