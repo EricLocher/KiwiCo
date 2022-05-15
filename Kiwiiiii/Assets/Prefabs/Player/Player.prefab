@@ -230,6 +230,7 @@ GameObject:
   - component: {fileID: 1426636927}
   - component: {fileID: 1426636928}
   - component: {fileID: 4470585119122227099}
+  - component: {fileID: 3058690252424186042}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -268,8 +269,13 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 64
+  playerController: {fileID: 0}
+  characterHitBox: {fileID: 0}
+  jumpVFX: {fileID: 0}
+  rb: {fileID: 0}
   stats: {fileID: 0}
   isGrounded: 0
+  chargeVFX: {fileID: 0}
 --- !u!114 &388704538
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -283,8 +289,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movement: {fileID: 0}
-  weapons: {fileID: 0}
-  lookWithMouse: {fileID: 0}
+  sword: {fileID: 0}
   interactController: {fileID: 0}
   hotbar: {fileID: 0}
 --- !u!114 &3025217583516844950
@@ -334,10 +339,6 @@ MonoBehaviour:
     m_ActionName: Player/Interact[/Keyboard/e]
   - m_PersistentCalls:
       m_Calls: []
-    m_ActionId: 0fa727c5-01c7-4d38-9b73-1d4f6db8468f
-    m_ActionName: Player/Mouse[/Mouse/delta]
-  - m_PersistentCalls:
-      m_Calls: []
     m_ActionId: 6fdd2677-ac6e-42f2-b94c-93e10b39e0ba
     m_ActionName: UI/New action
   - m_PersistentCalls:
@@ -348,6 +349,26 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: d6c43144-7b65-47fc-9bda-3efaf0813ecd
     m_ActionName: Player/Hotbar 2[/Keyboard/2]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: f8babe5c-fe1a-4971-94e1-1e38785938bf
+    m_ActionName: Player/Schlam[/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 41f54808-f705-4535-8bd6-067cc2bc6195
+    m_ActionName: Player/Mouse1[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: e3e2b30d-f7c8-48bd-a927-3300e190916f
+    m_ActionName: Player/Mouse[/Mouse/delta]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 4810cdf5-8a44-4153-b4cd-acd9dc984f39
+    m_ActionName: Player/Scroll[/Mouse/scroll/y]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 9942dd78-d8e7-4596-82ae-67ce7bdf1f67
+    m_ActionName: Player/Q/E[/Keyboard/q,/Keyboard/e]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Keyboard and Mouse
   m_DefaultActionMap: Player
@@ -409,11 +430,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sensitivity: 0
-  rb: {fileID: 0}
   smoothTime: 0
+  swingSmoothTime: 0
   movement: {fileID: 0}
   sword: {fileID: 0}
   maxAngular: 0
+  rb: {fileID: 0}
+  down: 0
 --- !u!135 &1426636935
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -452,8 +475,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 082609c35490aae48a2aeef65dadf98c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerStats: {fileID: 11400000, guid: d94cd7ea8d4267d4a81227f4c1b06c40, type: 2}
-  health: {fileID: 4470585119122227099}
+  CharacterStats: {fileID: 0}
 --- !u!114 &4470585119122227099
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -466,7 +488,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4016c71128d172846a641ad0562b2d50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthSlider: {fileID: 0}
+  fillImage: {fileID: 0}
+  player: {fileID: 0}
+--- !u!114 &3058690252424186042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3025217583516844945}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e8f14c943eed37449610f5156db0895, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tempDialogue: {fileID: 11400000, guid: 85f418b363c7dc646839f4c9f0cd073e, type: 2}
 --- !u!1 &7829146126197696162
 GameObject:
   m_ObjectHideFlags: 0
