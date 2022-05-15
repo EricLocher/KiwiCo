@@ -1,18 +1,25 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class Boss : Character
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] List<Enemy> enemies;
+    [HideInInspector] public Transform target;
+    [HideInInspector] public PatrolSpots spawnAreas;
+    public SOBossStats stats { get { return (SOBossStats)stats; } }
+
+    BossStateMachine stateMachine;
+
+    protected override void Init()
     {
-        
+        target = GameObject.FindGameObjectWithTag("Player").transform.GetChild(0);
+        spawnAreas = GetComponent<PatrolSpots>();
+        stateMachine.boss = this;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        stateMachine.Update();
     }
 }

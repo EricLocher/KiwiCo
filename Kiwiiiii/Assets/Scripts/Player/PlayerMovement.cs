@@ -9,14 +9,18 @@ public class PlayerMovement : MonoBehaviour
     public PlayerController playerController;
     [SerializeField] SphereCollider characterHitBox;
     [SerializeField] VisualEffect jumpVFX;
+    [SerializeField, Range(0, 90)] float maxAngle = 45f;
 
     [HideInInspector] public Rigidbody rb;
     [HideInInspector] public SOPlayerStats stats;
-     public bool isGrounded;
+    [HideInInspector] public bool isGrounded;
     private Animator animator;
     public VisualEffect chargeVFX;
 
+    Vector3[] groundCheckDirections = new Vector3[5] { Vector3.down, new Vector3(.5f, -.5f, 0), new Vector3(-.5f, -.5f, 0), new Vector3(0, -.5f, .5f), new Vector3(0, -.5f, -.5f) };
     bool jump = false;
+
+
 
     private void Awake()
     {
@@ -53,8 +57,8 @@ public class PlayerMovement : MonoBehaviour
             if (isGrounded || stats.amountOfJumps > 0) {
                 if (!isGrounded) { jumpVFX.Play(); }
                 string[] jumpSounds = new string[] { "jump1", "jump2", "jump3", "jump4", "jump5", "jump6", "jump7", "jump8" };
-                var chosen = AudioManager.instance.GetRandomAudio(jumpSounds);
-                AudioManager.instance.PlayOnce(chosen);
+                //var chosen = AudioManager.instance.GetRandomAudio(jumpSounds);
+                //AudioManager.instance.PlayOnce(chosen);
                 rb.AddForce(Vector3.up * stats.jumpForce, ForceMode.Impulse);
                 stats.amountOfJumps--;
             }
@@ -73,20 +77,24 @@ public class PlayerMovement : MonoBehaviour
         InputSystem.Update();
 
         RaycastHit hit;
+        for (int i = 0; i < groundCheckDirections.Length; i++) {
+            if (Physics.Raycast(transform.position, groundCheckDirections[i], out hit, 2f, layerMask)) {
+                if (Vector3.Angle(hit.normal, Vector3.up) > maxAngle) { continue; }
+                float dist = Vector3.Distance(transform.position, hit.point);
 
-        if (Physics.SphereCast(transform.position + new Vector3(0, characterHitBox.radius, 0), characterHitBox.radius + 0.05f, Vector3.down, out hit, 2f, layerMask)) {
-            if (Vector3.Angle(hit.normal, Vector3.up) > 45f) { isGrounded = false; return; }
-            float dist = Vector3.Distance(transform.position, hit.point);
+                if (dist > characterHitBox.radius + .1f) { continue; }
+                Debug.DrawRay(transform.position, groundCheckDirections[i] * 2f, Color.red);
 
-            if(dist > characterHitBox.radius + 0.05f) { isGrounded = false; return; }
-
-            isGrounded = true;
-            stats.amountOfJumps = stats.maxJumps;
-            stats.jumpForce = stats.defaultJumpForce;
+                isGrounded = true;
+                stats.amountOfJumps = stats.maxJumps;
+                stats.jumpForce = stats.defaultJumpForce;
+                return;
+            }
         }
-        else {
-            isGrounded = false;
-        }
+
+
+        isGrounded = false;
+
     }
     #endregion
 
