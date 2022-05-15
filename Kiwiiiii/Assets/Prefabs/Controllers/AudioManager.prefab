@@ -45,8 +45,109 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sounds:
   - name: Menu Music
-    clip: {fileID: 8300000, guid: cfab4741c1856f44a90497bb05a6fc7e, type: 3}
-    volume: 0.1
+    clip: {fileID: 8300000, guid: 8c2b4675af5489846aaa54263ee483ae, type: 3}
+    mixer: {fileID: -5187013955568488995, guid: 5adc6ebd34bdc914cab810124bff624a, type: 2}
+    maxDistance: 0
+    volume: 1
     audio: {fileID: 0}
     loop: 1
+  - name: Menu Button
+    clip: {fileID: 8300000, guid: eddb2bc4ee35e824abcff22f798f312e, type: 3}
+    mixer: {fileID: -8124911405333129162, guid: 5adc6ebd34bdc914cab810124bff624a, type: 2}
+    maxDistance: 0
+    volume: 1
+    audio: {fileID: 0}
+    loop: 0
+  - name: Game Music
+    clip: {fileID: 8300000, guid: cfab4741c1856f44a90497bb05a6fc7e, type: 3}
+    mixer: {fileID: -5187013955568488995, guid: 5adc6ebd34bdc914cab810124bff624a, type: 2}
+    maxDistance: 0
+    volume: 1
+    audio: {fileID: 0}
+    loop: 1
+  - name: EnemyFire
+    clip: {fileID: 8300000, guid: d5eb7e8e06eec3647ba0deb35c3d0a5d, type: 3}
+    mixer: {fileID: -8124911405333129162, guid: 5adc6ebd34bdc914cab810124bff624a, type: 2}
+    maxDistance: 0
+    volume: 1
+    audio: {fileID: 0}
+    loop: 0
+  - name: EnemyFireBurn
+    clip: {fileID: 8300000, guid: 0bcd6b605dff6824b9f4953a7e6628f0, type: 3}
+    mixer: {fileID: -8124911405333129162, guid: 5adc6ebd34bdc914cab810124bff624a, type: 2}
+    maxDistance: 0
+    volume: 1
+    audio: {fileID: 0}
+    loop: 1
+  - name: Pause
+    clip: {fileID: 8300000, guid: 3c010309edc9cdb44820adeff64b047f, type: 3}
+    mixer: {fileID: -8124911405333129162, guid: 5adc6ebd34bdc914cab810124bff624a, type: 2}
+    maxDistance: 0
+    volume: 1
+    audio: {fileID: 0}
+    loop: 0
+  - name: Unpause
+    clip: {fileID: 8300000, guid: d70ba89f291c9714fb67def7e3728058, type: 3}
+    mixer: {fileID: -8124911405333129162, guid: 5adc6ebd34bdc914cab810124bff624a, type: 2}
+    maxDistance: 0
+    volume: 1
+    audio: {fileID: 0}
+    loop: 0
+  - name: jump1
+    clip: {fileID: 8300000, guid: 5f2f30b4a7e1acb40ac38f39c85f48bd, type: 3}
+    mixer: {fileID: -8124911405333129162, guid: 5adc6ebd34bdc914cab810124bff624a, type: 2}
+    maxDistance: 0
+    volume: 1
+    audio: {fileID: 0}
+    loop: 0
+  - name: jump2
+    clip: {fileID: 8300000, guid: c1e5fab771e412548b812cbabc109c9f, type: 3}
+    mixer: {fileID: -8124911405333129162, guid: 5adc6ebd34bdc914cab810124bff624a, type: 2}
+    maxDistance: 0
+    volume: 1
+    audio: {fileID: 0}
+    loop: 0
+  - name: jump3
+    clip: {fileID: 8300000, guid: d08558dfa4e27cb4b803b0761bce75a1, type: 3}
+    mixer: {fileID: -8124911405333129162, guid: 5adc6ebd34bdc914cab810124bff624a, type: 2}
+    maxDistance: 0
+    volume: 1
+    audio: {fileID: 0}
+    loop: 0
+  - name: jump4
+    clip: {fileID: 8300000, guid: 5c82cac5ef2ae914187383900cbe6928, type: 3}
+    mixer: {fileID: -8124911405333129162, guid: 5adc6ebd34bdc914cab810124bff624a, type: 2}
+    maxDistance: 0
+    volume: 1
+    audio: {fileID: 0}
+    loop: 0
+  - name: jump5
+    clip: {fileID: 8300000, guid: c068123c7748d804d9fd5624cd2ae9b0, type: 3}
+    mixer: {fileID: -8124911405333129162, guid: 5adc6ebd34bdc914cab810124bff624a, type: 2}
+    maxDistance: 0
+    volume: 1
+    audio: {fileID: 0}
+    loop: 0
+  - name: jump6
+    clip: {fileID: 8300000, guid: aaa7c4333084c1347ad88391c8e79b91, type: 3}
+    mixer: {fileID: -8124911405333129162, guid: 5adc6ebd34bdc914cab810124bff624a, type: 2}
+    maxDistance: 0
+    volume: 1
+    audio: {fileID: 0}
+    loop: 0
+  - name: jump7
+    clip: {fileID: 8300000, guid: 7804c0bda20ce5940b4eede434005af8, type: 3}
+    mixer: {fileID: -8124911405333129162, guid: 5adc6ebd34bdc914cab810124bff624a, type: 2}
+    maxDistance: 0
+    volume: 1
+    audio: {fileID: 0}
+    loop: 0
+  - name: jump8
+    clip: {fileID: 8300000, guid: f5866be1bbfca6a4d8c7c1604ae29de0, type: 3}
+    mixer: {fileID: -8124911405333129162, guid: 5adc6ebd34bdc914cab810124bff624a, type: 2}
+    maxDistance: 0
+    volume: 1
+    audio: {fileID: 0}
+    loop: 0
   menuVolume: 0
+  multiplier: 60
