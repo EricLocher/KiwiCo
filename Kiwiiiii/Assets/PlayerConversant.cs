@@ -2,22 +2,64 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using System;
 
 namespace Quest.Dialogue
 {
     public class PlayerConversant : MonoBehaviour
     {
-        [SerializeField] SODialogue currentDialogue;
+        [SerializeField] SODialogue tempDialogue;
+        [SerializeField] string playerName;
+        SODialogue currentDialogue;
+        aiConversant currentNPCSpeaker = null;
         DialogueNode currentNode = null;
         bool isChoosing = false;
 
-        private void Awake()
+        //updates the dialogue ui whenever a change has been triggered
+        public event Action onDialogueUpdate;
+
+        //IEnumerator Start()
+        //{
+        //    yield return new WaitForSeconds(2);
+        //    StartDialogue(tempDialogue);
+        //}
+
+        public void StartDialogue(aiConversant newConversant, SODialogue newDialogue)
         {
+            currentNPCSpeaker = newConversant;
+            currentDialogue = newDialogue;
             currentNode = currentDialogue.GetRootNode();
+            TriggerEnterNodeAction();
+            onDialogueUpdate();
         }
+        public void QuitConversing()
+        {
+            currentDialogue = null;
+            TriggerExitNodeAction();
+            currentNode = null;
+            isChoosing = false;
+            currentNPCSpeaker = null;
+            onDialogueUpdate();
+        }
+
         public bool IsChoosing()
         {
             return isChoosing;
+        }
+
+        public string GetCurrentSpeakerName()
+        {
+            if(isChoosing)
+            { return playerName; }
+            else
+            {
+                return currentNPCSpeaker.GetName();
+            }
+        }
+
+        public bool CurrentDialogueIsActive()
+        {
+            return currentDialogue != null;
         }
 
         public string GetText()
@@ -34,22 +76,65 @@ namespace Quest.Dialogue
             return currentDialogue.GetPlayerChildren(currentNode);
         }
 
+        public void ChoiceSelect(DialogueNode chosenNode)
+        {
+            currentNode = chosenNode;
+            TriggerEnterNodeAction();
+            isChoosing = false;
+            NextDialogue();
+        }
+
         public void NextDialogue()
         {
             int numberOfPlayerResponses = currentDialogue.GetPlayerChildren(currentNode).Count();
             if(numberOfPlayerResponses > 0)
             {
                 isChoosing = true;
+                TriggerExitNodeAction();
+                onDialogueUpdate();
                 return;
             }
 
             DialogueNode[] children = currentDialogue.GetAIChildren(currentNode).ToArray();
-            int randomIndex = Random.Range(0, children.Count());
+            int randomIndex = UnityEngine.Random.Range(0, children.Count());
+            TriggerExitNodeAction();
             currentNode = children[randomIndex];
+            TriggerEnterNodeAction();
+            onDialogueUpdate();
         }
+
         public bool HasNextDialogue()
         {            
             return currentDialogue.GetAllChildren(currentNode).Count() > 0;
+        }
+
+
+        //Trigger Actions are what you want to happen at a specific dialogue, ex. an enemy attacks, trigger a cutscene etc
+        private void TriggerEnterNodeAction()
+        {
+            if(currentNode != null)
+            {
+                TriggerAction(currentNode.GetOnEnterAction());
+                //Debug.Log(currentNode.GetOnEnterAction());
+            }
+        }
+        private void TriggerExitNodeAction()
+        {
+            if (currentNode != null)
+            {
+                TriggerAction(currentNode.GetOnExitAction());
+                //Debug.Log(currentNode.GetOnExitAction());
+            }
+        }
+        private void TriggerAction(string action)
+        {
+            if(action == "")
+            { return; }
+
+            foreach (DialogueTrigger trigger in currentNPCSpeaker.GetComponents<DialogueTrigger>())
+            {
+                trigger.Trigger(action);
+            }
         }
     }
 }
