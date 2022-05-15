@@ -41,6 +41,7 @@ public class GameController : MonoBehaviour
     {
         if (Instance.pause)
         {
+            AudioManager.instance.PlayOnce("Pause");
             SetTime(false);
             gameState = GameStates.Paused;
             Cursor.visible = true;
@@ -48,6 +49,7 @@ public class GameController : MonoBehaviour
         }
         else
         {
+            AudioManager.instance.PlayOnce("Unpause");
             SetTime(true);
             gameState = GameStates.Playing;
             onStateChange?.Invoke(gameState);

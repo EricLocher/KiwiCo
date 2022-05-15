@@ -111,7 +111,7 @@ public class AudioManager : MonoBehaviour
     {
         int randomIndex = UnityEngine.Random.Range(0, audio.Length);
 
-        return audio[randomIndex]; 
+        return audio[randomIndex];
     }
 
     public void PauseAllSound()

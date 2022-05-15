@@ -52,6 +52,9 @@ public class PlayerMovement : MonoBehaviour
         if (jump) {
             if (isGrounded || stats.amountOfJumps > 0) {
                 if (!isGrounded) { jumpVFX.Play(); }
+                string[] jumpSounds = new string[] { "jump1", "jump2", "jump3", "jump4", "jump5", "jump6", "jump7", "jump8" };
+                var chosen = AudioManager.instance.GetRandomAudio(jumpSounds);
+                AudioManager.instance.PlayOnce(chosen);
                 rb.AddForce(Vector3.up * stats.jumpForce, ForceMode.Impulse);
                 stats.amountOfJumps--;
             }

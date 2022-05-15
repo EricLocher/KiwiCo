@@ -48,6 +48,7 @@ public class UIManager : MonoBehaviour
 
     public void LoadScene(string sceneName)
     {
+        AudioManager.instance.PlayOnce("Menu Button");
         GameController.Instance.SetTime(true);
         LevelLoader.Instance.LoadLoading(sceneName);
     }
@@ -102,7 +103,7 @@ public class UIManager : MonoBehaviour
     public void OpenSettings()
     {
         if (BG.GetCurrentAnimatorStateInfo(0).normalizedTime < 1f) { return; }
-
+        AudioManager.instance.PlayOnce("Menu Button");
         if (BG.GetCurrentAnimatorStateInfo(0).IsName("OpenMore"))
         {
             BG.SetTrigger("Close");
