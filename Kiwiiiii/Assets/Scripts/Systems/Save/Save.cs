@@ -3,9 +3,8 @@ using UnityEngine.SceneManagement;
 
 public class Save : MonoBehaviour
 {
-    [HideInInspector]
-    public int sceneIndex;
-    public float master = 1f, music = 1f, sfx = 1f, sensitivity = 5f;
+    [HideInInspector] public int sceneIndex;
+    [HideInInspector] public float master = 1f, music = 1f, sfx = 1f, sensitivity = 5f;
 
     public static Save instance;
 
@@ -49,7 +48,6 @@ public class Save : MonoBehaviour
         master = data.master;
         sfx = data.sfx;
         music = data.music;
-        SceneManager.LoadScene(sceneIndex);
         AudioManager.instance.SetMasterVolume(master);
         AudioManager.instance.SetSfxVolume(sfx);
         AudioManager.instance.SetMusicVolume(music);

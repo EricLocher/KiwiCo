@@ -53,6 +53,11 @@ public class UIManager : MonoBehaviour
         LevelLoader.Instance.LoadLoading(sceneName);
     }
 
+    public void LoadSavedScene()
+    {
+        SceneManager.LoadScene(Save.instance.sceneIndex);
+    }
+
     public void OnPause(GameStates state)
     {
         if (state == GameStates.Paused)
