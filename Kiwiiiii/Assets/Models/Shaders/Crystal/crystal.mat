@@ -7,13 +7,13 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Water_Fall
-  m_Shader: {fileID: -6465566751694194690, guid: 2f6ff7b55cd0f964e8b139fb4275868e, type: 3}
-  m_ShaderKeywords: 
+  m_Name: crystal
+  m_Shader: {fileID: -6465566751694194690, guid: acf03eb10bea5a846ac5daadfc7e638b, type: 3}
+  m_ShaderKeywords: _DISABLE_SSR_TRANSPARENT
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 2000
+  m_CustomRenderQueue: 2225
   stringTagMap:
     MotionVector: User
   disabledShaderPasses:
@@ -25,6 +25,22 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - Cubemap_6f3d533f37454b49a8cadb109cbd10ac:
+        m_Texture: {fileID: 8900000, guid: feb4d63967a24f34998926d876abe55a, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_45aeb04f6afe48cdb8991a626590e156:
+        m_Texture: {fileID: 2800000, guid: c3e57e92148f82f4c9416fb1c8e4bb9c, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_e8d0e2e8294940b0b716dc2b8150ca44:
+        m_Texture: {fileID: 2800000, guid: a88e4c7718680644b83781002cecb83b, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_f56e30993710479f86f30d40ff3999d8:
+        m_Texture: {fileID: 2800000, guid: fa4362618de65114481bda22bffabad9, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -38,12 +54,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Vector1_4ee28b61501b432bbfae282f4b61b79d: 2
-    - Vector1_60def6eb8a3747e19c83ef1f8f3b5fb0: 2.74
-    - Vector1_845644de43d0419f9556dd1209d11e6e: 0.936
-    - Vector1_9656178a339545d7a9b566350631052a: 2.11
-    - Vector1_965aed2d91a0434cbe20c75872bbdf6f: -10
-    - Vector1_cb33d266b5e34078a7896c997dd4b24c: 10
+    - Vector1_f624e864447e4c7caf6095e00dda36ef: 0.2
     - _AddPrecomputedVelocity: 0
     - _AlphaCutoffEnable: 0
     - _AlphaDstBlend: 0
@@ -57,7 +68,7 @@ Material:
     - _DoubleSidedEnable: 0
     - _DoubleSidedNormalMode: 2
     - _DstBlend: 0
-    - _EnableBlendModePreserveSpecularLighting: 0
+    - _EnableBlendModePreserveSpecularLighting: 1
     - _EnableFogOnTransparent: 1
     - _OpaqueCullMode: 2
     - _RayTracing: 0
@@ -68,10 +79,10 @@ Material:
     - _RequireSplitLighting: 0
     - _SrcBlend: 1
     - _StencilRef: 0
-    - _StencilRefDepth: 0
+    - _StencilRefDepth: 8
     - _StencilRefDistortionVec: 4
-    - _StencilRefGBuffer: 2
-    - _StencilRefMV: 32
+    - _StencilRefGBuffer: 10
+    - _StencilRefMV: 40
     - _StencilWriteMask: 6
     - _StencilWriteMaskDepth: 8
     - _StencilWriteMaskDistortionVec: 4
@@ -92,13 +103,13 @@ Material:
     - _ZTestTransparent: 4
     - _ZWrite: 1
     m_Colors:
-    - Color_14b5445ed3264f0392862c9db6c75449: {r: 0, g: 2.2978225, b: 2.79544, a: 0}
-    - Ripple_Speed: {r: 0, g: 0.6, b: 0, a: 0}
-    - Vector2_7a1d7d01f9234c0cb5ff2b206fed17b5: {r: 5, g: 55, b: 0, a: 0}
+    - Color_457d61d24d6547f1b6ec2d14cc3f4435: {r: 14.873333, g: 61.867756, b: 77.28302, a: 0}
+    - Color_ed59f1b297764e538568372412268fb8: {r: 1533.9922, g: 56.21961, b: 0, a: 0}
+    - Vector2_9c012cf71da94705a01177e34eb055fb: {r: 0, g: 0.2, b: 0, a: 0}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
---- !u!114 &4585700871125248816
+--- !u!114 &6670200357714563920
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
