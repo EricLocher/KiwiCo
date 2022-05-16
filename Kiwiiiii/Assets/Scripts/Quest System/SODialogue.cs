@@ -11,7 +11,6 @@ namespace Quest.Dialogue
     {
         [SerializeField] List<DialogueNode> nodes = new List<DialogueNode>();
         [SerializeField] Vector2 newNodeOffset = new Vector2(200, 0);
-
         Dictionary<string, DialogueNode> lookupNode = new Dictionary<string, DialogueNode>();
 
 #if UNITY_EDITOR
@@ -139,6 +138,7 @@ namespace Quest.Dialogue
 
         public void OnAfterDeserialize()
         {
+            //!! This has to exist even if it doesn't do anything
         }
     }
 }

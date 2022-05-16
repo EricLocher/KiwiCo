@@ -2,17 +2,30 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class aiConversant : MonoBehaviour, IInteractable
+namespace Quest.Dialogue
 {
-    [SerializeField] string npcName;
-
-    public string GetName()
+    public class aiConversant : MonoBehaviour, IInteractable
     {
-        return npcName;
-    }
+        [SerializeField] string npcName;
+        PlayerConversant playerConversant;
+        [SerializeField] SODialogue dialogue;
+        aiConversant aiSpeaker;
 
-    public void Interact(PlayerController controller)
-    {
-        //TODO: Make dialogue pop up when player presses E
+        private void Awake()
+        {
+            aiSpeaker = this;
+            playerConversant = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerConversant>();
+        }
+        public string GetName()
+        {
+            return npcName;
+        }
+        public void Interact(PlayerController controller)
+        {
+            print("interact");
+            //TODO: Make dialogue pop up when player presses E
+            playerConversant.StartDialogue(aiSpeaker, dialogue);
+            //StartDialogue(aiConversant newConversant, SODialogue newDialogue)
+        }
     }
 }

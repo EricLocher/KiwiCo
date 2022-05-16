@@ -24,18 +24,14 @@ namespace Quest.Dialogue
         {
             return onExitAction;
         }
-
-
         public Rect GetRect()
         {
             return rect;
         }
-
         public string GetText()
         {
             return text;
         }
-
         public List<string> GetChildren()
         {
             return children;
