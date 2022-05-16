@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class Character : MonoBehaviour
 {
-    public SOCharacterStats CharacterStats;
+    public SOCharacterStats characterStats;
 
     void Awake()
     {
-        CharacterStats = Instantiate(CharacterStats);
+        characterStats = Instantiate(characterStats);
         Init();
     }
 
@@ -16,14 +16,14 @@ public class Character : MonoBehaviour
 
     public virtual void DealDamage(float value)
     {
-        CharacterStats.health -= value;
+        characterStats.health -= value;
 
-        if (CharacterStats.health <= 0) { OnDeath(); }
+        if (characterStats.health <= 0) { OnDeath(); }
     }
 
     public virtual void Heal(float value)
     {
-        CharacterStats.health += value;
+        characterStats.health += value;
     }
 
     protected virtual void OnDeath()

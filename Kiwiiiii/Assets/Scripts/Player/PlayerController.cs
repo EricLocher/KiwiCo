@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerController : Character
 {
-    public SOPlayerStats stats { get { return (SOPlayerStats)CharacterStats; } }
+    public SOPlayerStats stats { get { return (SOPlayerStats)characterStats; } }
 
     //private void Start()
     //{

@@ -7,7 +7,7 @@ using UnityEngine.VFX;
 [Serializable, RequireComponent(typeof(NavMeshAgent), typeof(FOV), typeof(PatrolSpots))]
 public class Enemy : Character
 {
-    public SOEnemyStats stats { get { return (SOEnemyStats)stats; } }
+    public SOEnemyStats stats { get { return (SOEnemyStats)characterStats; } }
 
     [SerializeField] public Transform target;
     [SerializeField] public VisualEffect AppearEffect;
@@ -27,7 +27,7 @@ public class Enemy : Character
 
     protected override void Init()
     {
-        target = GameObject.FindGameObjectWithTag("Player").transform.GetChild(0);
+        target = GameObject.FindGameObjectWithTag("Character").transform;
 
         fov = GetComponent<FOV>();
         navMeshAgent = GetComponent<NavMeshAgent>();
@@ -69,12 +69,12 @@ public class Enemy : Character
 
     public override void DealDamage(float value)
     {
-        CharacterStats.health -= value;
+        characterStats.health -= value;
         var randomPos = UnityEngine.Random.Range(-2f, 2f);
         var collPos = transform.position;
         DamagePopup popup = Instantiate(damagePopup, new Vector3(collPos.x + randomPos, collPos.y + 2, collPos.z + randomPos), Quaternion.identity, TempHolder.transform);
         popup.PopupDamage((int)value);
-        if (CharacterStats.health <= 0) { OnDeath(); }
+        if (characterStats.health <= 0) { OnDeath(); }
 
     }
 

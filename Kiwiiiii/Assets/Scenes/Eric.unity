@@ -929,9 +929,10 @@ GameObject:
   - component: {fileID: 783158095}
   - component: {fileID: 783158094}
   - component: {fileID: 783158093}
-  m_Layer: 0
+  - component: {fileID: 783158096}
+  m_Layer: 7
   m_Name: Boss
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -968,8 +969,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f65f8a3d0f60e1345a5e6bac7ad55e8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CharacterStats: {fileID: 11400000, guid: 2ac5e38804bb12b4db17e1994297c362, type: 2}
-  enemies: []
+  characterStats: {fileID: 11400000, guid: 2ac5e38804bb12b4db17e1994297c362, type: 2}
+  enemies:
+  - {fileID: 4743249756542762924, guid: 0817cb716736eb442b6a9f6ecc9445ba, type: 3}
+  healthBar: {fileID: 880172091}
   target: {fileID: 0}
   spawnAreas: {fileID: 0}
 --- !u!4 &783158095
@@ -980,13 +983,27 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 783158092}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 14.06, y: 3.39, z: 33.13}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 14.06, y: 4.41, z: 33.13}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 1824404879}
   m_Father: {fileID: 0}
   m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &783158096
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 783158092}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &789146463
 GameObject:
   m_ObjectHideFlags: 0
@@ -1436,7 +1453,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bossHealth: {fileID: 874653163}
   bossShield: {fileID: 252518049}
-  boss: {fileID: 783158094}
+  stats: {fileID: 0}
 --- !u!222 &880172092
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2774,10 +2791,9 @@ GameObject:
   - component: {fileID: 1824404879}
   - component: {fileID: 1824404882}
   - component: {fileID: 1824404881}
-  - component: {fileID: 1824404880}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Capsule
-  m_TagString: Untagged
+  m_TagString: Character
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2796,20 +2812,6 @@ Transform:
   m_Father: {fileID: 783158095}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!136 &1824404880
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1824404878}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1824404881
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3153,6 +3155,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   zoneCollider: {fileID: 2091285929}
+  invertedCollider: {fileID: 0}
   events: []
 --- !u!135 &2091285929
 SphereCollider:
@@ -3283,6 +3286,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1426636928, guid: 73e236827e84ef14dbd11f330fac65e8, type: 3}
+      propertyPath: characterStats
+      value: 
+      objectReference: {fileID: 11400000, guid: d94cd7ea8d4267d4a81227f4c1b06c40, type: 2}
     - target: {fileID: 3025217583516844945, guid: 73e236827e84ef14dbd11f330fac65e8, type: 3}
       propertyPath: m_Name
       value: Player

@@ -12,6 +12,7 @@ public class SpawnState : BossState
 
     public override void EnterState()
     {
+        elapsedTime = 0;
         Debug.Log(GetId());
     }
 
