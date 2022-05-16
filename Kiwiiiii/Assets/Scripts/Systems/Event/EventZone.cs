@@ -17,7 +17,7 @@ public class EventZone : MonoBehaviour
 
     public void NextEvent()
     {
-        if(events.Count == 0) { return; }
+        if(events.Count == 0) { return; } //reset sphere inversion and istrigger
         currentEvent = events[0];
         currentEvent.StartEvent(this);
         events.RemoveAt(0);
