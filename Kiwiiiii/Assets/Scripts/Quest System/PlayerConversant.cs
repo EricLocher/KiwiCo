@@ -26,6 +26,7 @@ namespace Quest.Dialogue
 
         public void StartDialogue(aiConversant newConversant, SODialogue newDialogue)
         {
+            { Cursor.visible = true; Cursor.lockState = CursorLockMode.None; }
             currentNPCSpeaker = newConversant;
             currentDialogue = newDialogue;
             currentNode = currentDialogue.GetRootNode();
@@ -40,6 +41,7 @@ namespace Quest.Dialogue
             isChoosing = false;
             currentNPCSpeaker = null;
             onDialogueUpdate();
+            { Cursor.visible = false; Cursor.lockState = CursorLockMode.Locked; }
         }
 
         public bool IsChoosing()
@@ -108,14 +110,12 @@ namespace Quest.Dialogue
             return currentDialogue.GetAllChildren(currentNode).Count() > 0;
         }
 
-
         //Trigger Actions are what you want to happen at a specific dialogue, ex. an enemy attacks, trigger a cutscene etc
         private void TriggerEnterNodeAction()
         {
             if(currentNode != null)
             {
                 TriggerAction(currentNode.GetOnEnterAction());
-                //Debug.Log(currentNode.GetOnEnterAction());
             }
         }
         private void TriggerExitNodeAction()
@@ -123,7 +123,6 @@ namespace Quest.Dialogue
             if (currentNode != null)
             {
                 TriggerAction(currentNode.GetOnExitAction());
-                //Debug.Log(currentNode.GetOnExitAction());
             }
         }
         private void TriggerAction(string action)

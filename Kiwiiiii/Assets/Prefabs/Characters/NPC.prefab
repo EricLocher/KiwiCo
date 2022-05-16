@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 397070988334261254}
   - component: {fileID: 397070988334261255}
   - component: {fileID: 397070988334261256}
-  - component: {fileID: 397070988334261257}
   - component: {fileID: 5848915306403062380}
   - component: {fileID: 8465469087519115983}
   - component: {fileID: 8242589029109801781}
@@ -103,32 +102,6 @@ CapsuleCollider:
   m_Height: 1.76
   m_Direction: 1
   m_Center: {x: 0.027486922, y: 0.454, z: -0.028698647}
---- !u!114 &397070988334261257
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 397070988334261258}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d4c574d967b188145935b4bbbf6d1889, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 1813624882525461582}
-  dialogue:
-    name: Guide
-    sentances:
-    - 'Oh dear! Where did you come from? You look so different..
-
-'
-    - 'Nay, there is no time for an explanation! '
-    - Can you get that <color="green">sword</color> out of the stone over there?
-    - Quickly now! You must go and kill those <color="red">monsters</color> on the
-      other side of the lake!
-  dialogueManager: {fileID: 0}
-  vfx: {fileID: 5848915306403062380}
-  character: {fileID: 0}
 --- !u!2083052967 &5848915306403062380
 VisualEffect:
   m_ObjectHideFlags: 0
@@ -218,6 +191,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   npcName: Plopp
+  dialogue: {fileID: 0}
 --- !u!114 &1881107238526643837
 MonoBehaviour:
   m_ObjectHideFlags: 0

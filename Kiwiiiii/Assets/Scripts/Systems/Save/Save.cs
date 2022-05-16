@@ -5,6 +5,7 @@ public class Save : MonoBehaviour
 {
     [HideInInspector]
     public int sceneIndex;
+    public bool aquiredSword;
     public float master = 1f, music = 1f, sfx = 1f, sensitivity = 5f;
 
     public static Save instance;
@@ -41,15 +42,20 @@ public class Save : MonoBehaviour
         SaveData.Save(this);
     }
 
+    public void LoadSavedScene()
+    {
+        SceneManager.LoadScene(sceneIndex);
+    }
+
     public void LoadAll()
     {
         GameData data = SaveData.Load();
         sceneIndex = data.sceneIndex;
+        aquiredSword = data.aquiredSword;
         sensitivity = data.sensitivity;
         master = data.master;
         sfx = data.sfx;
         music = data.music;
-        SceneManager.LoadScene(sceneIndex);
         AudioManager.instance.SetMasterVolume(master);
         AudioManager.instance.SetSfxVolume(sfx);
         AudioManager.instance.SetMusicVolume(music);

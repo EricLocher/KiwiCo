@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TestInteractable : MonoBehaviour, IInteractable
 {
-    public void Interact(PlayerController controller)
+    public void Interact()
     {
         throw new System.NotImplementedException();
     }

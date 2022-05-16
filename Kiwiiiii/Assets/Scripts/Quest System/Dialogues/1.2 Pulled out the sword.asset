@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-7879677630548828842
+--- !u!114 &-4675965243632648278
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -10,21 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fc46249301e2b8e47baa0f69a70fc813, type: 3}
-  m_Name: 125398f8-9860-41c8-a138-5ef81b25a3aa
+  m_Name: e19195b8-93e3-40a1-9d76-51f6658e4aff
   m_EditorClassIdentifier: 
   playerSpeaking: 1
-  text: Hey
+  text: Well, I'm just the best.
   children:
-  - 9fdad59e-5284-4c7d-b5f2-ce757be12341
+  - 92e3531d-e5aa-4d0f-9b09-de39884c2f73
   rect:
     serializedVersion: 2
-    x: 804
-    y: 354
+    x: 257
+    y: 228
     width: 200
     height: 100
   onExitAction: 
   onEnterAction: 
---- !u!114 &-7634713607011709184
+--- !u!114 &-2992796307223454958
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -34,20 +34,45 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fc46249301e2b8e47baa0f69a70fc813, type: 3}
-  m_Name: 2c2b7ce9-03ef-499e-83c6-02b86654b1df
+  m_Name: 92e3531d-e5aa-4d0f-9b09-de39884c2f73
   m_EditorClassIdentifier: 
-  playerSpeaking: 1
-  text: 
+  playerSpeaking: 0
+  text: Wow okay.
+  children:
+  - 176ab62e-b25e-4df0-8cb0-e238b16ab9cf
+  rect:
+    serializedVersion: 2
+    x: 502
+    y: 235
+    width: 200
+    height: 100
+  onExitAction: 
+  onEnterAction: 
+--- !u!114 &-2795694491574169186
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc46249301e2b8e47baa0f69a70fc813, type: 3}
+  m_Name: 11d69770-e829-48bf-8ad1-34da9fce842f
+  m_EditorClassIdentifier: 
+  playerSpeaking: 0
+  text: Quickly now you mighty beast! You must go and kill those monsters on the
+    other side of the lake!
   children: []
   rect:
     serializedVersion: 2
-    x: 956
-    y: 84
+    x: 512
+    y: 82
     width: 200
     height: 100
   onExitAction: 
   onEnterAction: 
---- !u!114 &-5879309578351244964
+--- !u!114 &-1935117627058817244
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -57,65 +82,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fc46249301e2b8e47baa0f69a70fc813, type: 3}
-  m_Name: 945a2d8c-805d-4b5c-a5cb-6061945d3691
+  m_Name: 176ab62e-b25e-4df0-8cb0-e238b16ab9cf
   m_EditorClassIdentifier: 
   playerSpeaking: 0
-  text: Hello
-  children:
-  - 0a9567bf-856d-444d-a3ad-5f7066cbf1d6
-  - a613e4b3-594c-487f-a98c-662cf5c90374
-  - bc2d06e6-a7a7-4284-8694-9c2465f2c0c7
-  rect:
-    serializedVersion: 2
-    x: 79
-    y: 332
-    width: 200
-    height: 100
-  onExitAction: 
-  onEnterAction: 
---- !u!114 &-2865133093304951866
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc46249301e2b8e47baa0f69a70fc813, type: 3}
-  m_Name: 9fdad59e-5284-4c7d-b5f2-ce757be12341
-  m_EditorClassIdentifier: 
-  playerSpeaking: 0
-  text: Hola
+  text: Quickly now! You must go and kill those monsters on the other side of the
+    lake!
   children: []
   rect:
     serializedVersion: 2
-    x: 1113
-    y: 361
-    width: 200
-    height: 100
-  onExitAction: Attack
-  onEnterAction: 
---- !u!114 &-1547280475762756087
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc46249301e2b8e47baa0f69a70fc813, type: 3}
-  m_Name: 319e9f1f-19ba-4cf5-aaae-0b55b291f60c
-  m_EditorClassIdentifier: 
-  playerSpeaking: 0
-  text: 
-  children:
-  - 2c2b7ce9-03ef-499e-83c6-02b86654b1df
-  rect:
-    serializedVersion: 2
-    x: 590
-    y: 103
+    x: 745
+    y: 243
     width: 200
     height: 100
   onExitAction: 
@@ -130,16 +106,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7bf9e36879b5f8640bdc4915559763df, type: 3}
-  m_Name: Introduction
+  m_Name: 1.2 Pulled out the sword
   m_EditorClassIdentifier: 
   nodes:
-  - {fileID: -5879309578351244964}
-  - {fileID: 5252285691127083514}
-  - {fileID: 3973271417358467067}
-  - {fileID: -7879677630548828842}
-  - {fileID: -2865133093304951866}
+  - {fileID: 5793450143078353703}
+  - {fileID: 449857561190457767}
+  - {fileID: -4675965243632648278}
+  - {fileID: -2795694491574169186}
+  - {fileID: -2992796307223454958}
+  - {fileID: -1935117627058817244}
   newNodeOffset: {x: 200, y: 0}
---- !u!114 &979825820989081734
+--- !u!114 &449857561190457767
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -149,20 +126,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fc46249301e2b8e47baa0f69a70fc813, type: 3}
-  m_Name: bc2d06e6-a7a7-4284-8694-9c2465f2c0c7
+  m_Name: 712ba667-27d6-47be-a2c9-e59cec929e9d
   m_EditorClassIdentifier: 
   playerSpeaking: 1
-  text: 
-  children: []
+  text: Thank you!^^
+  children:
+  - 11d69770-e829-48bf-8ad1-34da9fce842f
   rect:
     serializedVersion: 2
-    x: 341
-    y: 522
+    x: 264
+    y: 89
     width: 200
     height: 100
   onExitAction: 
   onEnterAction: 
---- !u!114 &3973271417358467067
+--- !u!114 &5793450143078353703
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -172,64 +150,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fc46249301e2b8e47baa0f69a70fc813, type: 3}
-  m_Name: 98b4ff0b-9531-44f9-9a66-20ef3d24173f
+  m_Name: 427967c5-9548-4e38-a899-3705bee6f90f
   m_EditorClassIdentifier: 
   playerSpeaking: 0
-  text: Howdy
+  text: Oh my, you're sooo strong! How did you do that?
   children:
-  - 125398f8-9860-41c8-a138-5ef81b25a3aa
+  - 712ba667-27d6-47be-a2c9-e59cec929e9d
+  - e19195b8-93e3-40a1-9d76-51f6658e4aff
   rect:
     serializedVersion: 2
-    x: 584
-    y: 345
-    width: 200
-    height: 100
-  onExitAction: 
-  onEnterAction: 
---- !u!114 &5252285691127083514
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc46249301e2b8e47baa0f69a70fc813, type: 3}
-  m_Name: 0a9567bf-856d-444d-a3ad-5f7066cbf1d6
-  m_EditorClassIdentifier: 
-  playerSpeaking: 1
-  text: Hiya
-  children:
-  - 98b4ff0b-9531-44f9-9a66-20ef3d24173f
-  rect:
-    serializedVersion: 2
-    x: 332
-    y: 335
-    width: 200
-    height: 100
-  onExitAction: Bye
-  onEnterAction: Hello
---- !u!114 &8198259078662290475
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc46249301e2b8e47baa0f69a70fc813, type: 3}
-  m_Name: a613e4b3-594c-487f-a98c-662cf5c90374
-  m_EditorClassIdentifier: 
-  playerSpeaking: 1
-  text: 
-  children:
-  - 319e9f1f-19ba-4cf5-aaae-0b55b291f60c
-  rect:
-    serializedVersion: 2
-    x: 326
-    y: 175
+    x: 31
+    y: 164
     width: 200
     height: 100
   onExitAction: 

@@ -5,6 +5,7 @@ using UnityEngine;
 public class EventZone : MonoBehaviour
 {
     [HideInInspector] public SphereCollider zoneCollider;
+    [HideInInspector] public GameObject invertedCollider;
     [HideInInspector] public List<GameEvent> events = new List<GameEvent>();
     GameEvent currentEvent = null;
 
@@ -12,12 +13,22 @@ public class EventZone : MonoBehaviour
     {
         foreach (GameEvent _event in events) {
             _event.Init();
+            foreach(Transform child in transform)
+            {
+                if(child.gameObject.tag == "InvertedCollider")
+                {
+                    invertedCollider = child.gameObject;
+                }
+            }
+            if(invertedCollider.tag != "InvertedCollider") { invertedCollider = null; return; }
+            var scaleChange = new Vector3(zoneCollider.radius, zoneCollider.radius, zoneCollider.radius);
+            invertedCollider.transform.localScale = scaleChange;
         }
     }
 
     public void NextEvent()
     {
-        if(events.Count == 0) { return; }
+        if(events.Count == 0) { invertedCollider.SetActive(false); return; }
         currentEvent = events[0];
         currentEvent.StartEvent(this);
         events.RemoveAt(0);

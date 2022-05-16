@@ -4,8 +4,8 @@ using UnityEngine.VFX;
 public class NPC : MonoBehaviour, IInteractable
 {
     public Animator animator;
-    public Dialogue dialogue;
-    public DialogueManager dialogueManager;
+    //public Dialogue dialogue;
+    //public DialogueManager dialogueManager;
     [SerializeField] VisualEffect vfx;
     [SerializeField] Rigidbody character;
 
@@ -14,19 +14,19 @@ public class NPC : MonoBehaviour, IInteractable
         vfx.Play();
     }
 
-    public void Interact(PlayerController controller)
+    public void Interact()
     {
         animator.SetBool("IsTalking", true);
 
-        if (!dialogueManager.IsOpen) 
-        {
-            dialogueManager.StartDialogue(dialogue, StopTalking);
-            character.constraints = RigidbodyConstraints.FreezeAll;
-        }
-        else 
-        {
-            dialogueManager.DisplayNextSentance();
-        }
+        //if (!dialogueManager.IsOpen)
+        //{
+        //    dialogueManager.StartDialogue(dialogue, StopTalking);
+        //    character.constraints = RigidbodyConstraints.FreezeAll;
+        //}
+        //else 
+        //{
+        //    dialogueManager.DisplayNextSentance();
+        //}
     }
 
     public void StopTalking()
