@@ -7,7 +7,7 @@ public class ControlWeapon : MonoBehaviour
     [SerializeField] PlayerMovement movement;
     [SerializeField] SwordBehavior sword;
     [SerializeField] float maxAngular;
-    
+
     public Rigidbody rb;
     BoxCollider damageCollider;
 
@@ -23,28 +23,33 @@ public class ControlWeapon : MonoBehaviour
         damageCollider = GetComponent<BoxCollider>();
         Physics.IgnoreLayerCollision(LayerMask.NameToLayer("Weapon"), LayerMask.NameToLayer("Enemy"));
         rb.maxAngularVelocity = maxAngular;
-        if(!Save.instance.aquiredSword)
+        if (!Save.instance.aquiredSword)
             SheathWeapon();
     }
 
     void FixedUpdate()
     {
 
-        if (!down) {
+        if (!down)
+        {
             rb.angularVelocity = new Vector3(0, rb.angularVelocity.y + deltaY, 0);
             rb.angularVelocity += new Vector3(0, deltaY, 0);
         }
-        else {
-            if (timeElapsed < smoothTime) {
+        else
+        {
+            if (timeElapsed < smoothTime)
+            {
                 rb.MoveRotation(Quaternion.Lerp(rb.rotation, Quaternion.Euler(180, 0, 0), timeElapsed / smoothTime));
                 timeElapsed += Time.fixedDeltaTime;
             }
-            else {
+            else
+            {
                 rb.MoveRotation(Quaternion.Euler(180, 0, 0));
                 rb.angularVelocity = Vector3.zero;
             }
 
-            if (sword.GroundCheck()) {
+            if (sword.GroundCheck())
+            {
                 movement.isGrounded = true;
                 movement.stats.amountOfJumps = 1;
                 movement.stats.jumpForce = movement.stats.defaultJumpForce * 3;
@@ -63,14 +68,16 @@ public class ControlWeapon : MonoBehaviour
         sword.gameObject.SetActive(!sheath);
         damageCollider.enabled = !sheath;
 
-        if (sheath) {
-            rb.MoveRotation(Quaternion.Euler(90, 0, 0));         
+        if (sheath)
+        {
+            rb.MoveRotation(Quaternion.Euler(90, 0, 0));
         }
     }
 
     public void MouseInput(float input)
     {
-        if (Mathf.Sign(rb.angularVelocity.y) != Mathf.Sign(input)) {
+        if (Mathf.Sign(rb.angularVelocity.y) != Mathf.Sign(input))
+        {
             input *= 1000;
         }
 
@@ -89,7 +96,8 @@ public class ControlWeapon : MonoBehaviour
     #region Collision
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Floor")) {
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Floor"))
+        {
             check = false;
             down = false;
         }
@@ -97,7 +105,8 @@ public class ControlWeapon : MonoBehaviour
 
     void OnCollisionExit(Collision collision)
     {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Floor")) {
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Floor"))
+        {
             check = true;
         }
     }
