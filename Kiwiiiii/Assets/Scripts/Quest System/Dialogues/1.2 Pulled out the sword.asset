@@ -1,0 +1,167 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-4675965243632648278
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc46249301e2b8e47baa0f69a70fc813, type: 3}
+  m_Name: e19195b8-93e3-40a1-9d76-51f6658e4aff
+  m_EditorClassIdentifier: 
+  playerSpeaking: 1
+  text: Well, I'm just the best.
+  children:
+  - 92e3531d-e5aa-4d0f-9b09-de39884c2f73
+  rect:
+    serializedVersion: 2
+    x: 257
+    y: 228
+    width: 200
+    height: 100
+  onExitAction: 
+  onEnterAction: 
+--- !u!114 &-2992796307223454958
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc46249301e2b8e47baa0f69a70fc813, type: 3}
+  m_Name: 92e3531d-e5aa-4d0f-9b09-de39884c2f73
+  m_EditorClassIdentifier: 
+  playerSpeaking: 0
+  text: Wow okay.
+  children:
+  - 176ab62e-b25e-4df0-8cb0-e238b16ab9cf
+  rect:
+    serializedVersion: 2
+    x: 502
+    y: 235
+    width: 200
+    height: 100
+  onExitAction: 
+  onEnterAction: 
+--- !u!114 &-2795694491574169186
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc46249301e2b8e47baa0f69a70fc813, type: 3}
+  m_Name: 11d69770-e829-48bf-8ad1-34da9fce842f
+  m_EditorClassIdentifier: 
+  playerSpeaking: 0
+  text: Quickly now you mighty beast! You must go and kill those monsters on the
+    other side of the lake!
+  children: []
+  rect:
+    serializedVersion: 2
+    x: 512
+    y: 82
+    width: 200
+    height: 100
+  onExitAction: 
+  onEnterAction: 
+--- !u!114 &-1935117627058817244
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc46249301e2b8e47baa0f69a70fc813, type: 3}
+  m_Name: 176ab62e-b25e-4df0-8cb0-e238b16ab9cf
+  m_EditorClassIdentifier: 
+  playerSpeaking: 0
+  text: Quickly now! You must go and kill those monsters on the other side of the
+    lake!
+  children: []
+  rect:
+    serializedVersion: 2
+    x: 745
+    y: 243
+    width: 200
+    height: 100
+  onExitAction: 
+  onEnterAction: 
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bf9e36879b5f8640bdc4915559763df, type: 3}
+  m_Name: 1.2 Pulled out the sword
+  m_EditorClassIdentifier: 
+  nodes:
+  - {fileID: 5793450143078353703}
+  - {fileID: 449857561190457767}
+  - {fileID: -4675965243632648278}
+  - {fileID: -2795694491574169186}
+  - {fileID: -2992796307223454958}
+  - {fileID: -1935117627058817244}
+  newNodeOffset: {x: 200, y: 0}
+--- !u!114 &449857561190457767
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc46249301e2b8e47baa0f69a70fc813, type: 3}
+  m_Name: 712ba667-27d6-47be-a2c9-e59cec929e9d
+  m_EditorClassIdentifier: 
+  playerSpeaking: 1
+  text: Thank you!^^
+  children:
+  - 11d69770-e829-48bf-8ad1-34da9fce842f
+  rect:
+    serializedVersion: 2
+    x: 264
+    y: 89
+    width: 200
+    height: 100
+  onExitAction: 
+  onEnterAction: 
+--- !u!114 &5793450143078353703
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc46249301e2b8e47baa0f69a70fc813, type: 3}
+  m_Name: 427967c5-9548-4e38-a899-3705bee6f90f
+  m_EditorClassIdentifier: 
+  playerSpeaking: 0
+  text: Oh my, you're sooo strong! How did you do that?
+  children:
+  - 712ba667-27d6-47be-a2c9-e59cec929e9d
+  - e19195b8-93e3-40a1-9d76-51f6658e4aff
+  rect:
+    serializedVersion: 2
+    x: 31
+    y: 164
+    width: 200
+    height: 100
+  onExitAction: 
+  onEnterAction: 

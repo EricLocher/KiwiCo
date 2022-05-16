@@ -23,6 +23,8 @@ public class ControlWeapon : MonoBehaviour
         damageCollider = GetComponent<BoxCollider>();
         Physics.IgnoreLayerCollision(LayerMask.NameToLayer("Weapon"), LayerMask.NameToLayer("Enemy"));
         rb.maxAngularVelocity = maxAngular;
+        if(!Save.instance.aquiredSword)
+            SheathWeapon();
     }
 
     void FixedUpdate()

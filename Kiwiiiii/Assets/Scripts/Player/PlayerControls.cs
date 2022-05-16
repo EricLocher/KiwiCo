@@ -304,17 +304,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""38b6fdb3-4a80-4949-9e17-3621da9783da"",
-                    ""path"": ""<Keyboard>/f"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Interact"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""1ef98142-d0a9-43e3-9cd0-7553f833ba37"",
                     ""path"": ""<Keyboard>/1"",
                     ""interactions"": """",
@@ -411,6 +400,17 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""action"": ""Q/E"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""52544368-3b61-449a-a656-733a80331dda"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },

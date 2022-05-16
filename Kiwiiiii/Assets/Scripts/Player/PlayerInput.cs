@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -36,9 +33,6 @@ public class PlayerInput : MonoBehaviour
 
         //Point Sword Down
         controls.Player.PointDown.started += ctx => sword.PointDown();
-
-        //Sheath sword
-        controls.Player.Sheath.performed += ctx => sword.SheathWeapon();
 
         //Interact with interactable object
         controls.Player.Interact.performed += ctx => interactController.Interact(ctx);
@@ -79,9 +73,9 @@ public class PlayerInput : MonoBehaviour
         this.movement.Move(movement);
     }
 
-    public void SheathWeapon()
+    public void EnableSheathWeapon()
     {
-
+        controls.Player.Sheath.performed += ctx => sword.SheathWeapon();
     }
 
     public void Equip()

@@ -5,5 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "BossStats", menuName = "Utilities/Stats/BossStats")]
 public class SOBossStats : SOCharacterStats
 {
-    public float ShieldHealth = 100;
+    public float shield = 100;
+    public float maxHealth = 1000;
+    public float maxShield = 100;
 }
