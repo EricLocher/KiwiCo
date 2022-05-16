@@ -26,7 +26,7 @@ namespace Quest.Dialogue
 
         public void StartDialogue(aiConversant newConversant, SODialogue newDialogue)
         {
-            print("start dialogue");
+            { Cursor.visible = true; Cursor.lockState = CursorLockMode.None; }
             currentNPCSpeaker = newConversant;
             currentDialogue = newDialogue;
             currentNode = currentDialogue.GetRootNode();
@@ -41,6 +41,7 @@ namespace Quest.Dialogue
             isChoosing = false;
             currentNPCSpeaker = null;
             onDialogueUpdate();
+            { Cursor.visible = false; Cursor.lockState = CursorLockMode.Locked; }
         }
 
         public bool IsChoosing()
