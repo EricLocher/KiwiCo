@@ -26,7 +26,7 @@ namespace Quest.Dialogue
 
         public void StartDialogue(aiConversant newConversant, SODialogue newDialogue)
         {
-            { Cursor.visible = true; Cursor.lockState = CursorLockMode.Locked; }
+            { Cursor.visible = true; Cursor.lockState = CursorLockMode.None; }
             currentNPCSpeaker = newConversant;
             currentDialogue = newDialogue;
             currentNode = currentDialogue.GetRootNode();
@@ -116,7 +116,6 @@ namespace Quest.Dialogue
             if(currentNode != null)
             {
                 TriggerAction(currentNode.GetOnEnterAction());
-                //Debug.Log(currentNode.GetOnEnterAction());
             }
         }
         private void TriggerExitNodeAction()
@@ -124,7 +123,6 @@ namespace Quest.Dialogue
             if (currentNode != null)
             {
                 TriggerAction(currentNode.GetOnExitAction());
-                //Debug.Log(currentNode.GetOnExitAction());
             }
         }
         private void TriggerAction(string action)
