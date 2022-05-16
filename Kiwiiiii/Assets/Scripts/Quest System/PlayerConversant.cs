@@ -26,7 +26,7 @@ namespace Quest.Dialogue
 
         public void StartDialogue(aiConversant newConversant, SODialogue newDialogue)
         {
-            { Cursor.visible = true; Cursor.lockState = CursorLockMode.None; }
+            { Cursor.visible = true; Cursor.lockState = CursorLockMode.Locked; }
             currentNPCSpeaker = newConversant;
             currentDialogue = newDialogue;
             currentNode = currentDialogue.GetRootNode();
@@ -109,7 +109,6 @@ namespace Quest.Dialogue
         {            
             return currentDialogue.GetAllChildren(currentNode).Count() > 0;
         }
-
 
         //Trigger Actions are what you want to happen at a specific dialogue, ex. an enemy attacks, trigger a cutscene etc
         private void TriggerEnterNodeAction()
