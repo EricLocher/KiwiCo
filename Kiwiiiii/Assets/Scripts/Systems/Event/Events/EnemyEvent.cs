@@ -22,6 +22,8 @@ public class EnemyEvent : GameEvent
         foreach (Enemy enemy in enemyList) {
             enemy.gameObject.SetActive(true);
         }
+        //invert collider normal
+        //remove is trigger
     }
 
     public override void UpdateEvent()
