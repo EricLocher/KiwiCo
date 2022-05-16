@@ -381,6 +381,11 @@ Animator:
   m_CorrespondingSourceObject: {fileID: 6731954989116967770, guid: 5791a349976337f47b5951771bba2864, type: 3}
   m_PrefabInstance: {fileID: 8232358360943755668}
   m_PrefabAsset: {fileID: 0}
+--- !u!137 &3165370879756587634 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 6472409632089625574, guid: 5791a349976337f47b5951771bba2864, type: 3}
+  m_PrefabInstance: {fileID: 8232358360943755668}
+  m_PrefabAsset: {fileID: 0}
 --- !u!54 &1150699299844007608
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -549,6 +554,9 @@ MonoBehaviour:
   fov: {fileID: 0}
   damagePopup: {fileID: 3432873184914692212, guid: 91e9d37f0c993324481dcad819e13585, type: 3}
   attack: {fileID: 0}
+  blinkIntensity: 10
+  blinkDuration: 0.2
+  skinnedMeshRenderer: {fileID: 3165370879756587634}
   idle: {fileID: 0}
   chase: {fileID: 4743249756542762929}
   surprise: {fileID: 4743249756542762928}

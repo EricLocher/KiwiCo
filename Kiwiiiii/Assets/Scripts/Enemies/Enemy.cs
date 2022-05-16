@@ -17,6 +17,9 @@ public class Enemy : Character
     [HideInInspector] public FOV fov;
     [SerializeField] DamagePopup damagePopup;
     [HideInInspector] public EnemyAttack attack;
+    [SerializeField] float blinkIntensity, blinkDuration;
+    float blinkTimer;
+    [SerializeField] SkinnedMeshRenderer skinnedMeshRenderer;
 
     public EnemyIdle idle;
     public EnemyChase chase;
@@ -65,6 +68,11 @@ public class Enemy : Character
             animator.SetBool("moving", false);
         }
 
+        blinkTimer -= Time.deltaTime;
+        float lerp = Mathf.Clamp01(blinkTimer / blinkDuration);
+        float intensity = (lerp * blinkIntensity) + 1f;
+        skinnedMeshRenderer.material.color = Color.white * intensity;
+
         stateMachine.Update();
     }
 
@@ -75,17 +83,10 @@ public class Enemy : Character
         var collPos = transform.position;
         DamagePopup popup = Instantiate(damagePopup, new Vector3(collPos.x + randomPos, collPos.y + 2, collPos.z + randomPos), Quaternion.identity, TempHolder.transform);
         popup.PopupDamage((int)value);
-        StartCoroutine("ResetColor");
-        if (characterStats.health <= 0) { OnDeath(); }
-    }
 
-    IEnumerator ResetColor()
-    {
-        var colorRen = transform.GetChild(1).GetComponent<SkinnedMeshRenderer>().material.color;
-        var originalColor = colorRen;
-        colorRen = Color.red;
-        yield return new WaitForSeconds(0.1f);
-        colorRen = originalColor;
+        blinkTimer = blinkDuration;
+
+        if (characterStats.health <= 0) { OnDeath(); }
     }
 
     protected override void OnDeath()
