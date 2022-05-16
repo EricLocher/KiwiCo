@@ -56,7 +56,7 @@ public class SlamEffect : MonoBehaviour
                 if (rb == null) { continue; }
 
                 if (collider.CompareTag("Enemy")) {
-                    Enemy enemy = collider.GetComponent<Enemy>();
+                    Character enemy = collider.GetComponent<Character>();
 
                     #region Calculate Damage
 
@@ -66,6 +66,7 @@ public class SlamEffect : MonoBehaviour
                     #endregion
 
                     enemy.DealDamage(damageToDeal);
+                    print("Enemy got hit by slam");
                 }
 
                 rb.AddExplosionForce(force, movement.transform.position, radius, 0.0f, ForceMode.Impulse);

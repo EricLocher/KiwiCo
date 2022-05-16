@@ -7,13 +7,13 @@ public class Boss : Character
     public BossHealthBar healthBar;
     [HideInInspector] public Transform target;
     [HideInInspector] public PatrolSpots spawnAreas;
-    public SOBossStats stats { get { return stats; } }
+    public SOBossStats stats { get { return (SOBossStats)characterStats; } }
 
     BossStateMachine stateMachine;
 
     protected override void Init()
     {
-        target = GameObject.FindGameObjectWithTag("Player").transform.GetChild(0);
+        target = GameObject.FindGameObjectWithTag("Character").transform;
         spawnAreas = GetComponent<PatrolSpots>();
 
         stateMachine = new BossStateMachine();
@@ -31,4 +31,13 @@ public class Boss : Character
     {
         stateMachine.Update();
     }
+
+    public override void DealDamage(float value)
+    {
+        print("Boss took damage: " + value);
+        characterStats.health -= value;
+
+        if (characterStats.health <= 0) { OnDeath(); }
+    }
+
 }

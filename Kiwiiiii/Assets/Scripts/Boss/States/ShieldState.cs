@@ -10,6 +10,7 @@ public class ShieldState : BossState
 
     public override void EnterState()
     {
+        elapsedTime = 0;
         Debug.Log(GetId());
     }
 
