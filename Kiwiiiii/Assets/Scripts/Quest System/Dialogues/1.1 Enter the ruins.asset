@@ -14,15 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerSpeaking: 1
   text: Of course!
-  children: []
+  children:
+  - 6f93e163-88a9-4db7-81b4-f5c009a2c24b
   rect:
     serializedVersion: 2
     x: 1297
     y: 129
     width: 200
     height: 100
-  onExitAction: 
-  onEnterAction: 
+  onExitAction: npcevent
+  onEnterAction: positive
 --- !u!114 &-6146330073437703445
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -42,8 +43,8 @@ MonoBehaviour:
   - 359604c0-eec2-41f2-976b-5217ac063d37
   rect:
     serializedVersion: 2
-    x: 248
-    y: 189
+    x: 241
+    y: 170
     width: 200
     height: 100
   onExitAction: 
@@ -61,13 +62,36 @@ MonoBehaviour:
   m_Name: b368b705-d36a-4cbe-963a-5ccd2b033698
   m_EditorClassIdentifier: 
   playerSpeaking: 1
-  text: I don't k...
+  text: Where am I..?
   children:
   - 89d4266c-43d5-4e7e-98fe-c6d0bd0ff5cb
   rect:
     serializedVersion: 2
-    x: 478
-    y: 309
+    x: 496
+    y: 256
+    width: 200
+    height: 100
+  onExitAction: 
+  onEnterAction: 
+--- !u!114 &-4113416225558923596
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc46249301e2b8e47baa0f69a70fc813, type: 3}
+  m_Name: 6f93e163-88a9-4db7-81b4-f5c009a2c24b
+  m_EditorClassIdentifier: 
+  playerSpeaking: 0
+  text: Really?!
+  children: []
+  rect:
+    serializedVersion: 2
+    x: 1543
+    y: 129
     width: 200
     height: 100
   onExitAction: 
@@ -90,8 +114,8 @@ MonoBehaviour:
   - 89d4266c-43d5-4e7e-98fe-c6d0bd0ff5cb
   rect:
     serializedVersion: 2
-    x: 517
-    y: 148
+    x: 497
+    y: 89
     width: 200
     height: 100
   onExitAction: 
@@ -117,6 +141,8 @@ MonoBehaviour:
   - {fileID: -2785594435256170097}
   - {fileID: 2631023419140505534}
   - {fileID: -7222671949381575616}
+  - {fileID: 6398734313602212470}
+  - {fileID: -4113416225558923596}
   newNodeOffset: {x: 200, y: 0}
 --- !u!114 &86084563099010460
 MonoBehaviour:
@@ -136,8 +162,8 @@ MonoBehaviour:
   - ba2206bd-7faa-477a-a458-e0631d7abd61
   rect:
     serializedVersion: 2
-    x: 15
-    y: 188
+    x: 7
+    y: 175
     width: 200
     height: 100
   onExitAction: 
@@ -181,10 +207,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerSpeaking: 1
   text: You sure demand a lot...
-  children: []
+  children:
+  - c6885f18-4817-44c8-bf98-1c12452009e5
   rect:
     serializedVersion: 2
     x: 1294
+    y: 285
+    width: 200
+    height: 100
+  onExitAction: npcevent
+  onEnterAction: negative
+--- !u!114 &6398734313602212470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc46249301e2b8e47baa0f69a70fc813, type: 3}
+  m_Name: c6885f18-4817-44c8-bf98-1c12452009e5
+  m_EditorClassIdentifier: 
+  playerSpeaking: 0
+  text: ...
+  children: []
+  rect:
+    serializedVersion: 2
+    x: 1546
     y: 285
     width: 200
     height: 100
@@ -208,8 +258,8 @@ MonoBehaviour:
   - 59cdf27e-4f1a-4382-85b0-bb90f266beee
   rect:
     serializedVersion: 2
-    x: 753
-    y: 229
+    x: 746
+    y: 177
     width: 200
     height: 100
   onExitAction: 
