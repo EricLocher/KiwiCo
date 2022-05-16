@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class aiConversant : MonoBehaviour
+public class aiConversant : MonoBehaviour, IInteractable
 {
     [SerializeField] string npcName;
 
@@ -10,5 +10,9 @@ public class aiConversant : MonoBehaviour
     {
         return npcName;
     }
-    //TODO: Make dialogue pop up when player presses E
+
+    public void Interact(PlayerController controller)
+    {
+        //TODO: Make dialogue pop up when player presses E
+    }
 }
