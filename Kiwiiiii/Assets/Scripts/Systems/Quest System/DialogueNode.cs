@@ -9,10 +9,22 @@ namespace Quest.Dialogue
     public class DialogueNode : ScriptableObject
     {
         //for more characters involved this bool could be an enum
-        [SerializeField] bool playerSpeaking = false;
+        [SerializeField] private bool playerSpeaking = false;
         [SerializeField] private string text;
         [SerializeField] private List<string> children = new List<string>();
         [SerializeField] private Rect rect = new Rect(0, 0, 200, 100);
+        [SerializeField] private string onExitAction;
+        [SerializeField] private string onEnterAction;
+
+        public string GetOnEnterAction()
+        {
+            return onEnterAction;
+        }
+        public string GetOnExitAction()
+        {
+            return onExitAction;
+        }
+
 
         public Rect GetRect()
         {

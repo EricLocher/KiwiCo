@@ -27,6 +27,8 @@ public class Enemy : Character
 
     protected override void Init()
     {
+        target = GameObject.FindGameObjectWithTag("Player").transform.GetChild(0);
+
         fov = GetComponent<FOV>();
         navMeshAgent = GetComponent<NavMeshAgent>();
         stateMachine.moveSpots = GetComponent<PatrolSpots>();
@@ -68,7 +70,6 @@ public class Enemy : Character
     public override void DealDamage(float value)
     {
         CharacterStats.health -= value;
-        Debug.Log("test");
         var randomPos = UnityEngine.Random.Range(-2f, 2f);
         var collPos = transform.position;
         DamagePopup popup = Instantiate(damagePopup, new Vector3(collPos.x + randomPos, collPos.y + 2, collPos.z + randomPos), Quaternion.identity, TempHolder.transform);
