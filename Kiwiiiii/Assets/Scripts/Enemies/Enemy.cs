@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -74,8 +75,17 @@ public class Enemy : Character
         var collPos = transform.position;
         DamagePopup popup = Instantiate(damagePopup, new Vector3(collPos.x + randomPos, collPos.y + 2, collPos.z + randomPos), Quaternion.identity, TempHolder.transform);
         popup.PopupDamage((int)value);
+        StartCoroutine("ResetColor");
         if (characterStats.health <= 0) { OnDeath(); }
+    }
 
+    IEnumerator ResetColor()
+    {
+        var colorRen = transform.GetChild(1).GetComponent<SkinnedMeshRenderer>().material.color;
+        var originalColor = colorRen;
+        colorRen = Color.red;
+        yield return new WaitForSeconds(0.1f);
+        colorRen = originalColor;
     }
 
     protected override void OnDeath()
