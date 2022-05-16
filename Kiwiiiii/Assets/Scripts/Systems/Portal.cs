@@ -8,7 +8,7 @@ public class Portal : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Character"))
         {
             string scene = NameFromIndex(SceneManager.GetActiveScene().buildIndex + 1);
             LevelLoader.Instance.LoadLoading(scene);
