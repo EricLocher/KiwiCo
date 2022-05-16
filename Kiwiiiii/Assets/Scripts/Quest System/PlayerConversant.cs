@@ -26,6 +26,7 @@ namespace Quest.Dialogue
 
         public void StartDialogue(aiConversant newConversant, SODialogue newDialogue)
         {
+            print("start dialogue");
             currentNPCSpeaker = newConversant;
             currentDialogue = newDialogue;
             currentNode = currentDialogue.GetRootNode();
