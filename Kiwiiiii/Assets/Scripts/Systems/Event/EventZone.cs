@@ -13,7 +13,13 @@ public class EventZone : MonoBehaviour
     {
         foreach (GameEvent _event in events) {
             _event.Init();
-            invertedCollider = transform.GetChild(0).gameObject;
+            foreach(Transform child in transform)
+            {
+                if(child.gameObject.tag == "InvertedCollider")
+                {
+                    invertedCollider = child.gameObject;
+                }
+            }
             if(invertedCollider.tag != "InvertedCollider") { invertedCollider = null; return; }
             var scaleChange = new Vector3(zoneCollider.radius, zoneCollider.radius, zoneCollider.radius);
             invertedCollider.transform.localScale = scaleChange;
