@@ -20,7 +20,7 @@ namespace Quest.Dialogue
         {
             return npcName;
         }
-        public void Interact(PlayerController controller)
+        public void Interact()
         {
             print("interact");
             //TODO: Make dialogue pop up when player presses E

@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class BerryBush : MonoBehaviour, IInteractable
 {
-    public void Interact(PlayerController controller)
+    public void Interact()
     {       
-        controller.stats.berriesInInventory++;
-        Destroy(gameObject);
+        //controller.stats.berriesInInventory++;
+        //Destroy(gameObject);
         //TODO: Make a modular system for items on player
     }
 }

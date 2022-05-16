@@ -641,6 +641,7 @@ GameObject:
   - component: {fileID: 388704538}
   - component: {fileID: 1426636928}
   - component: {fileID: 719066656}
+  - component: {fileID: 8159267192691386905}
   m_Layer: 2
   m_Name: Player
   m_TagString: Player
@@ -710,6 +711,20 @@ MonoBehaviour:
   abilities:
   - {fileID: 11400000, guid: 68f340cb4e48dad4d8d9cc74510ffa9e, type: 2}
   - {fileID: 11400000, guid: c85277dc91379374797270de0951b0de, type: 2}
+--- !u!114 &8159267192691386905
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3025217583516844945}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e8f14c943eed37449610f5156db0895, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tempDialogue: {fileID: 11400000, guid: f03c42e2c8051da4190cea176d9a2bf5, type: 2}
+  playerName: Bobo
 --- !u!1 &4260723233905367183
 GameObject:
   m_ObjectHideFlags: 0
@@ -983,6 +998,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb6c256f26d1e264fa2c83a81a862705, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interactables: []
   interactNotice: {fileID: 0}
 --- !u!54 &5261179116413408735
 Rigidbody:
