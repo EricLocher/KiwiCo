@@ -68,6 +68,7 @@ public class UIManager : MonoBehaviour
                 child.gameObject.SetActive(true);
 
             interactNotice.SetActive(false);
+            dialogueBox.SetActive(false);
             pauseScreen.SetActive(false);
         }
     }
