@@ -8,7 +8,7 @@ public abstract class BossPhase
     public BossStateMachine stateMachine;
     public List<BossAttack> currentAttack = new List<BossAttack>();
 
-    List<BossAttack> attacks;
+    protected List<BossAttack> attacks;
 
     public BossPhase(Boss agent, BossStateMachine stateMachine, List<BossAttack> attacks)
     {
