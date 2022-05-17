@@ -2,14 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.VFX;
+using Quest.Dialogue;
 
 public class NPCEvent : GameEvent
 {
-    [SerializeField] public List<NPC> npcList;
+    [SerializeField] public List<DialogueTrigger> npcList;
 
     public override void Init()
     {
-        foreach (NPC npc in npcList)
+        foreach (DialogueTrigger npc in npcList)
         {
             npc.gameObject.SetActive(false);
         }
@@ -18,16 +19,17 @@ public class NPCEvent : GameEvent
     public override void StartEvent(EventZone zone)
     {
         this.zone = zone;
-        foreach (NPC npc in npcList)
+        foreach (DialogueTrigger npc in npcList)
         {
             npc.gameObject.SetActive(true);
+            npc.onTrigger.AddListener(CompletedEvent);
         }
     }
 
     public override void UpdateEvent()
     {
         bool check = true;
-        foreach (NPC npc in npcList)
+        foreach (DialogueTrigger npc in npcList)
         {
             if (npc != null) { check = false; break; }
         }

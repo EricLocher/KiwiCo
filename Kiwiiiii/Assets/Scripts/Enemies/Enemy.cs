@@ -94,6 +94,23 @@ public class Enemy : Character
         AudioManager.instance.PlayOnceLocal("EnemyDie", gameObject);
         stateMachine.ChangeState(EnemyStates.Death);
     }
+
+    IEnumerator Knockback()
+    {
+        animator.SetBool("knockback", true);
+
+        yield return new WaitForSeconds(2);
+
+        animator.SetBool("knockback", false);
+    }
+
+    private void OnCollisionEnter(Collision col)
+    {
+        if (col.gameObject.tag == ("Sword"))
+        {
+            StartCoroutine(Knockback());
+        }
+    }
 }
 
 

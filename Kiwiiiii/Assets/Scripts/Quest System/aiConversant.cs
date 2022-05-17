@@ -22,7 +22,6 @@ namespace Quest.Dialogue
         }
         public void Interact()
         {
-            print("interact");
             //TODO: Make dialogue pop up when player presses E
             playerConversant.StartDialogue(aiSpeaker, dialogue);
             //StartDialogue(aiConversant newConversant, SODialogue newDialogue)
