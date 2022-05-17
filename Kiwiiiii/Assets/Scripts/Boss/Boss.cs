@@ -18,8 +18,10 @@ public class Boss : Character
 
         stateMachine = new BossStateMachine();
 
-        foreach (BossAttack attack in attacks) {
-            attack.Init(spawnAreas, this);
+        for (int i = 0; i < attacks.Count; i++)
+        {
+            attacks[i] = Instantiate(attacks[i]);
+            attacks[i].Init(spawnAreas, this);
         }
 
         stateMachine.RegisterState(BossPhases.Init, new BossInitState(this, stateMachine, attacks));
