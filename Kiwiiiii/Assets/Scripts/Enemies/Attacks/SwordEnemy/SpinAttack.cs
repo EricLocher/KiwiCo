@@ -7,68 +7,71 @@ public class SpinAttack : EnemyAttack
     [SerializeField]
     Enemy enemy;
 
-    public GameObject damageArea;
+    //public GameObject damageArea;
 
     private Animator animator;
-    private SpriteRenderer damageAreaSprite;
-    private Color fadeColor;
-    private Color invisible;
-    private SphereCollider damageCollider;
+    //private SpriteRenderer damageAreaSprite;
+    //private Color fadeColor;
+    //private Color invisible;
+    private SphereCollider spinCollider;
 
     private void Start()
     {
         animator = GetComponentInChildren<Animator>();
-        damageAreaSprite = damageArea.GetComponent<SpriteRenderer>();
-        damageCollider = damageArea.GetComponent<SphereCollider>();
+        //damageAreaSprite = damageArea.GetComponent<SpriteRenderer>();
+        //damageCollider = damageArea.GetComponent<SphereCollider>();
 
-        invisible = new Color(damageAreaSprite.color.r, damageAreaSprite.color.g, damageAreaSprite.color.b, 0);
+        //invisible = new Color(damageAreaSprite.color.r, damageAreaSprite.color.g, damageAreaSprite.color.b, 0);
     }
 
     public override void EnterAttack()
     {
-        damageAreaSprite.color = invisible;
-        StartCoroutine(FadeIn(2));
+        StartCoroutine(Attack());
+        //damageAreaSprite.color = invisible;
+        //StartCoroutine(FadeIn(2));
         return;
     }
 
     IEnumerator Attack()
     {
-        animator.SetBool("attacking", true);
-        damageCollider.enabled = true;
+        //TODO: Make spin start slow and go faster
+        animator.SetTrigger("spin");
+        spinCollider.enabled = true;
 
         yield return new WaitForSeconds(2);
-        damageCollider.enabled = false;
-        animator.SetBool("attacking", false);
-        damageAreaSprite.color = invisible;
+        spinCollider.enabled = false;
+        animator.ResetTrigger("spin");
+
+        //damageAreaSprite.color = invisible;
 
         enemy.stateMachine.ChangeState(EnemyStates.Chase);
     }
 
-    IEnumerator FadeIn(float time)
-    {
-        for (float fadeamount = 0; fadeamount <= 1; fadeamount += time * Time.deltaTime)
-        {
-            fadeColor = new Color(damageAreaSprite.color.r, damageAreaSprite.color.g, damageAreaSprite.color.b, fadeamount);
-            damageAreaSprite.color = fadeColor;
-            yield return new WaitForEndOfFrame();
-        }
+    //IEnumerator FadeIn(float time)
+    //{
+    //    for (float fadeamount = 0; fadeamount <= 1; fadeamount += time * Time.deltaTime)
+    //    {
+    //        fadeColor = new Color(damageAreaSprite.color.r, damageAreaSprite.color.g, damageAreaSprite.color.b, fadeamount);
+    //        damageAreaSprite.color = fadeColor;
+    //        yield return new WaitForEndOfFrame();
+    //    }
 
-        StartCoroutine(FadeOut(2));
-        yield return null;
-    }
+    //    StartCoroutine(FadeOut(2));
+    //    yield return null;
+    //}
 
-    IEnumerator FadeOut(float time)
-    {
-        for (float fadeamount = 1; fadeamount >= 0; fadeamount -= time * Time.deltaTime)
-        {
-            fadeColor = new Color(damageAreaSprite.color.r, damageAreaSprite.color.g, damageAreaSprite.color.b, fadeamount);
-            damageAreaSprite.color = fadeColor;
-            yield return new WaitForEndOfFrame();
-        }
+    //IEnumerator FadeOut(float time)
+    //{
+    //    for (float fadeamount = 1; fadeamount >= 0; fadeamount -= time * Time.deltaTime)
+    //    {
+    //        fadeColor = new Color(damageAreaSprite.color.r, damageAreaSprite.color.g, damageAreaSprite.color.b, fadeamount);
+    //        damageAreaSprite.color = fadeColor;
+    //        yield return new WaitForEndOfFrame();
+    //    }
 
-        StartCoroutine(Attack());
-        yield return null;
-    }
+    //    StartCoroutine(Attack());
+    //    yield return null;
+    //}
 
     public override void ActiveAttack()
     {
