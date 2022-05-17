@@ -4,21 +4,15 @@ using UnityEngine;
 
 public class ZoneTP : MonoBehaviour
 {
-    [SerializeField] Vector3 targetPos;
+    [SerializeField] GameObject targetPos;
 
     void OnTriggerEnter(Collider collision)
     {
-        if (collision.CompareTag("Player"))
+        if (collision.CompareTag("Character"))
         {
-
-            collision.gameObject.transform.parent.transform.position = (transform.position + targetPos);
+            Debug.Log("hej");
+            collision.gameObject.transform.parent.gameObject.transform.position = targetPos.transform.position;
+            collision.gameObject.transform.position = targetPos.transform.position;
         }
     }
-
-    void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawLine(transform.position, transform.position + targetPos);
-    }
-
 }
