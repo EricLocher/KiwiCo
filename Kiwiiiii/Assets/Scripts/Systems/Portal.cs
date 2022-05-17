@@ -10,6 +10,7 @@ public class Portal : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Character"))
         {
+            AudioManager.instance.PlayOnce("PlayerEnterPortal");
             string scene = NameFromIndex(SceneManager.GetActiveScene().buildIndex + 1);
             LevelLoader.Instance.LoadLoading(scene);
         }

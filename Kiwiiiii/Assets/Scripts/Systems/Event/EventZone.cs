@@ -11,16 +11,17 @@ public class EventZone : MonoBehaviour
 
     void Start()
     {
-        foreach (GameEvent _event in events) {
+        foreach (GameEvent _event in events)
+        {
             _event.Init();
-            foreach(Transform child in transform)
+            foreach (Transform child in transform)
             {
-                if(child.gameObject.tag == "InvertedCollider")
+                if (child.gameObject.tag == "InvertedCollider")
                 {
                     invertedCollider = child.gameObject;
                 }
             }
-            if(invertedCollider.tag != "InvertedCollider") { invertedCollider = null; return; }
+            if (invertedCollider.tag != "InvertedCollider") { invertedCollider = null; return; }
             var scaleChange = new Vector3(zoneCollider.radius, zoneCollider.radius, zoneCollider.radius);
             invertedCollider.transform.localScale = scaleChange;
         }
@@ -28,10 +29,20 @@ public class EventZone : MonoBehaviour
 
     public void NextEvent()
     {
-        if(events.Count == 0) { invertedCollider.SetActive(false); return; }
-        currentEvent = events[0];
-        currentEvent.StartEvent(this);
-        events.RemoveAt(0);
+        if (events.Count == 0)
+        {
+            invertedCollider.SetActive(false);
+            Debug.Log("test");
+            AudioManager.instance.PlayOnce("PlayerCompleteEvent");
+            Destroy(gameObject);
+        }
+        else
+        {
+            AudioManager.instance.PlayOnce("PlayerEnterEvent");
+            currentEvent = events[0];
+            currentEvent.StartEvent(this);
+            events.RemoveAt(0);
+        }
     }
 
     void Update()
@@ -68,7 +79,8 @@ public class EventZone : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Character") && currentEvent == null) {
+        if (other.CompareTag("Character") && currentEvent == null)
+        {
             NextEvent();
         }
     }

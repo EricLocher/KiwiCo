@@ -94,57 +94,162 @@ MonoBehaviour:
     audio: {fileID: 0}
     loop: 0
   - name: jump1
-    clip: {fileID: 8300000, guid: 5f2f30b4a7e1acb40ac38f39c85f48bd, type: 3}
+    clip: {fileID: 8300000, guid: 6cbdbf3a569e9f64cb780c8773bbbe36, type: 3}
     mixer: {fileID: -8124911405333129162, guid: 5adc6ebd34bdc914cab810124bff624a, type: 2}
     maxDistance: 0
     volume: 1
     audio: {fileID: 0}
     loop: 0
   - name: jump2
-    clip: {fileID: 8300000, guid: c1e5fab771e412548b812cbabc109c9f, type: 3}
+    clip: {fileID: 8300000, guid: 573bfa28a01f8f94f8399e14573ccce4, type: 3}
     mixer: {fileID: -8124911405333129162, guid: 5adc6ebd34bdc914cab810124bff624a, type: 2}
     maxDistance: 0
     volume: 1
     audio: {fileID: 0}
     loop: 0
   - name: jump3
-    clip: {fileID: 8300000, guid: d08558dfa4e27cb4b803b0761bce75a1, type: 3}
+    clip: {fileID: 8300000, guid: 65f28309c717dbd4695a6d8be356873d, type: 3}
     mixer: {fileID: -8124911405333129162, guid: 5adc6ebd34bdc914cab810124bff624a, type: 2}
     maxDistance: 0
     volume: 1
     audio: {fileID: 0}
     loop: 0
   - name: jump4
-    clip: {fileID: 8300000, guid: 5c82cac5ef2ae914187383900cbe6928, type: 3}
+    clip: {fileID: 8300000, guid: 227d0a86d3528744ca189714e56af349, type: 3}
     mixer: {fileID: -8124911405333129162, guid: 5adc6ebd34bdc914cab810124bff624a, type: 2}
     maxDistance: 0
     volume: 1
     audio: {fileID: 0}
     loop: 0
   - name: jump5
-    clip: {fileID: 8300000, guid: c068123c7748d804d9fd5624cd2ae9b0, type: 3}
+    clip: {fileID: 8300000, guid: 303510519cae2fe40a30679eb2b57136, type: 3}
     mixer: {fileID: -8124911405333129162, guid: 5adc6ebd34bdc914cab810124bff624a, type: 2}
     maxDistance: 0
     volume: 1
     audio: {fileID: 0}
     loop: 0
   - name: jump6
-    clip: {fileID: 8300000, guid: aaa7c4333084c1347ad88391c8e79b91, type: 3}
+    clip: {fileID: 8300000, guid: b18ea37983a231e488f5c92bdaeb56c6, type: 3}
     mixer: {fileID: -8124911405333129162, guid: 5adc6ebd34bdc914cab810124bff624a, type: 2}
     maxDistance: 0
     volume: 1
     audio: {fileID: 0}
     loop: 0
   - name: jump7
-    clip: {fileID: 8300000, guid: 7804c0bda20ce5940b4eede434005af8, type: 3}
+    clip: {fileID: 8300000, guid: 2e6dc2fcc65091e498e8cf7be4f2b4eb, type: 3}
     mixer: {fileID: -8124911405333129162, guid: 5adc6ebd34bdc914cab810124bff624a, type: 2}
     maxDistance: 0
     volume: 1
     audio: {fileID: 0}
     loop: 0
   - name: jump8
+    clip: {fileID: 8300000, guid: a9c945f68af347f4ca58edb58af9f691, type: 3}
+    mixer: {fileID: -8124911405333129162, guid: 5adc6ebd34bdc914cab810124bff624a, type: 2}
+    maxDistance: 0
+    volume: 1
+    audio: {fileID: 0}
+    loop: 0
+  - name: EnemyTakeDamage
+    clip: {fileID: 8300000, guid: bcd31ba2fc77cff4b88ec85821421869, type: 3}
+    mixer: {fileID: -8124911405333129162, guid: 5adc6ebd34bdc914cab810124bff624a, type: 2}
+    maxDistance: 0
+    volume: 1
+    audio: {fileID: 0}
+    loop: 0
+  - name: PlayerTakeDamage
+    clip: {fileID: 8300000, guid: fab5f2639833d3041a33fca27e996636, type: 3}
+    mixer: {fileID: -8124911405333129162, guid: 5adc6ebd34bdc914cab810124bff624a, type: 2}
+    maxDistance: 0
+    volume: 1
+    audio: {fileID: 0}
+    loop: 0
+  - name: PlayerSwingSword
+    clip: {fileID: 8300000, guid: f2596ae674fabac4681278607c9e83aa, type: 3}
+    mixer: {fileID: -8124911405333129162, guid: 5adc6ebd34bdc914cab810124bff624a, type: 2}
+    maxDistance: 0
+    volume: 1
+    audio: {fileID: 0}
+    loop: 0
+  - name: PlayerSlamCollide
+    clip: {fileID: 8300000, guid: 2401ddeb81a442440a514ddd4c0d5a76, type: 3}
+    mixer: {fileID: -8124911405333129162, guid: 5adc6ebd34bdc914cab810124bff624a, type: 2}
+    maxDistance: 0
+    volume: 1
+    audio: {fileID: 0}
+    loop: 0
+  - name: PlayerDash
+    clip: {fileID: 8300000, guid: f60b5f5933289604c8ada965acb2788e, type: 3}
+    mixer: {fileID: -8124911405333129162, guid: 5adc6ebd34bdc914cab810124bff624a, type: 2}
+    maxDistance: 0
+    volume: 1
+    audio: {fileID: 0}
+    loop: 0
+  - name: PlayerInteract
+    clip: {fileID: 8300000, guid: eddb2bc4ee35e824abcff22f798f312e, type: 3}
+    mixer: {fileID: -8124911405333129162, guid: 5adc6ebd34bdc914cab810124bff624a, type: 2}
+    maxDistance: 0
+    volume: 1
+    audio: {fileID: 0}
+    loop: 0
+  - name: PlayerEnterEvent
+    clip: {fileID: 8300000, guid: 242c8451a4225254daf6aa00a1f1eee6, type: 3}
+    mixer: {fileID: -8124911405333129162, guid: 5adc6ebd34bdc914cab810124bff624a, type: 2}
+    maxDistance: 0
+    volume: 1
+    audio: {fileID: 0}
+    loop: 0
+  - name: PlayerCompleteEvent
+    clip: {fileID: 8300000, guid: 4b944b127ef2bd04b88362492fd0cbd8, type: 3}
+    mixer: {fileID: -8124911405333129162, guid: 5adc6ebd34bdc914cab810124bff624a, type: 2}
+    maxDistance: 0
+    volume: 1
+    audio: {fileID: 0}
+    loop: 0
+  - name: EnemyDie
+    clip: {fileID: 8300000, guid: 7d74425a4c4a23044930be31ae4b2f10, type: 3}
+    mixer: {fileID: -8124911405333129162, guid: 5adc6ebd34bdc914cab810124bff624a, type: 2}
+    maxDistance: 0
+    volume: 1
+    audio: {fileID: 0}
+    loop: 0
+  - name: EnemySwingSword
+    clip: {fileID: 8300000, guid: f2596ae674fabac4681278607c9e83aa, type: 3}
+    mixer: {fileID: -8124911405333129162, guid: 5adc6ebd34bdc914cab810124bff624a, type: 2}
+    maxDistance: 0
+    volume: 1
+    audio: {fileID: 0}
+    loop: 0
+  - name: PlayerEnterPortal
     clip: {fileID: 8300000, guid: f5866be1bbfca6a4d8c7c1604ae29de0, type: 3}
     mixer: {fileID: -8124911405333129162, guid: 5adc6ebd34bdc914cab810124bff624a, type: 2}
+    maxDistance: 0
+    volume: 1
+    audio: {fileID: 0}
+    loop: 0
+  - name: CinematicMusic
+    clip: {fileID: 8300000, guid: 8c2b4675af5489846aaa54263ee483ae, type: 3}
+    mixer: {fileID: -5187013955568488995, guid: 5adc6ebd34bdc914cab810124bff624a, type: 2}
+    maxDistance: 0
+    volume: 1
+    audio: {fileID: 0}
+    loop: 0
+  - name: EventMusic
+    clip: {fileID: 8300000, guid: 8c2b4675af5489846aaa54263ee483ae, type: 3}
+    mixer: {fileID: -5187013955568488995, guid: 5adc6ebd34bdc914cab810124bff624a, type: 2}
+    maxDistance: 0
+    volume: 1
+    audio: {fileID: 0}
+    loop: 0
+  - name: GameOver
+    clip: {fileID: 8300000, guid: 034aef9e5161bc549a77f84d8e43bec2, type: 3}
+    mixer: {fileID: -5187013955568488995, guid: 5adc6ebd34bdc914cab810124bff624a, type: 2}
+    maxDistance: 0
+    volume: 1
+    audio: {fileID: 0}
+    loop: 0
+  - name: SwordSheath
+    clip: {fileID: 8300000, guid: 5da0bc4eb2a141a48a569ed418f0f15c, type: 3}
+    mixer: {fileID: -5187013955568488995, guid: 5adc6ebd34bdc914cab810124bff624a, type: 2}
     maxDistance: 0
     volume: 1
     audio: {fileID: 0}

@@ -9,6 +9,8 @@ public class Dash : Ability
 
     public override void DoAbility()
     {
+        AudioManager.instance.PlayOnce("PlayerDash");
+
         Vector3 dir = Camera.main.transform.forward;
 
         movement.rb.AddForce(dir.normalized * speed, ForceMode.Impulse);

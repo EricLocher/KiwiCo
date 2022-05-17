@@ -24,7 +24,7 @@ public class ShootAttack : EnemyAttack
     public int numberOfShotsInWave = 5;
 
     public GameObject sphere;
-    public Transform gun;
+    public Transform weapon;
 
     Coroutine currentCoroutine;
 
@@ -68,7 +68,7 @@ public class ShootAttack : EnemyAttack
         {
             yield return new WaitForSeconds(secondsBetweenEachShot);
 
-            SphereDamage newSphere = Instantiate(sphere, gun.transform.position, gun.transform.rotation).GetComponent<SphereDamage>();
+            SphereDamage newSphere = Instantiate(sphere, weapon.transform.position, weapon.transform.rotation).GetComponent<SphereDamage>();
 
             //AudioManager.instance.PlayLocal("EnemyFireBurn", newSphere.gameObject);
             //AudioManager.instance.PlayOnceLocal("EnemyFire", gameObject);

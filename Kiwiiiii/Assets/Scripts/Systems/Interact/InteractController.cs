@@ -14,6 +14,7 @@ public class InteractController : MonoBehaviour
         
         if(interactable != null) {
             interactables.Add(other.gameObject);
+            AudioManager.instance.PlayOnce("PlayerInteract");
             interactNotice.SetActive(true);
         }
     }
