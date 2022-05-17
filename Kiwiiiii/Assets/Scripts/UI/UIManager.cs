@@ -77,7 +77,6 @@ public class UIManager : MonoBehaviour
         {
             child.gameObject.SetActive(false);
         }
-        dialogueBox.SetActive(true);
         blackbars.SetActive(true);
     }
 

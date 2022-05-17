@@ -5,29 +5,22 @@ using System.Threading.Tasks;
 [Serializable]
 public class CutsceneEvent : GameEvent
 {
+    [SerializeField] Canvas canvas;
     [SerializeField] GameObject cameraCenter;
     [SerializeField] AnimationClip anim;
     [SerializeField] Animator animator;
     [SerializeField] Animator animBars;
     [SerializeField] GameObject player;
-    CutsceneController cutsceneController;
-    [SerializeField, TextArea(3, 20)]
-    string sentence;
 
     Vector3 camStartPos, camStartRot;
 
-    public override void Init()
-    {
-        cutsceneController = cameraCenter.GetComponent<CutsceneController>();
-    }
+    public override void Init() {}
 
     public override void StartEvent(EventZone zone)
     {
         player.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
-        FindObjectOfType<Canvas>().GetComponent<UIManager>().HideAllUIExceptCutscene();
+        canvas.GetComponent<UIManager>().HideAllUIExceptCutscene();
         cameraCenter.transform.GetChild(0).GetComponent<CameraController>().IsCinematic = true;
-
-        cutsceneController.InitStart(sentence);
 
         camStartPos = cameraCenter.transform.position;
         camStartRot = cameraCenter.transform.eulerAngles;
@@ -54,7 +47,5 @@ public class CutsceneEvent : GameEvent
 
         cameraCenter.transform.position = camStartPos;
         cameraCenter.transform.eulerAngles = camStartRot;
-
-        cutsceneController.SetAnim(false);
     }
 }
