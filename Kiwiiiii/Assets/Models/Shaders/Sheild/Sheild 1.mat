@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Sheild_BOss
+  m_Name: Sheild 1
   m_Shader: {fileID: -6465566751694194690, guid: 5661bd626b8d69a4ebffbc1bad74411a, type: 3}
   m_ShaderKeywords: _DISABLE_SSR_TRANSPARENT _DOUBLESIDED_ON _ENABLE_FOG_ON_TRANSPARENT
     _SURFACE_TYPE_TRANSPARENT
@@ -36,7 +36,6 @@ Material:
   - TransparentBackface
   - TransparentDepthPostpass
   - RayTracingPrepass
-  - TransparentDepthPrepass
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
@@ -106,21 +105,21 @@ Material:
     - _TransparentBackfaceEnable: 0
     - _TransparentCullMode: 2
     - _TransparentDepthPostpassEnable: 0
-    - _TransparentDepthPrepassEnable: 0
+    - _TransparentDepthPrepassEnable: 1
     - _TransparentSortPriority: 0
     - _TransparentWritingMotionVec: 0
-    - _TransparentZWrite: 0
+    - _TransparentZWrite: 1
     - _UseShadowThreshold: 0
     - _ZTestDepthEqualForOpaque: 8
     - _ZTestGBuffer: 4
     - _ZTestTransparent: 8
-    - _ZWrite: 0
+    - _ZWrite: 1
     m_Colors:
-    - Color_15026bba2e424a3abbd6d6b511a394fe: {r: 1036346.56, g: 158615.62, b: 0, a: 1}
-    - Color_443c856e514843748573f427eb33aa56: {r: 13.928808, g: 0, b: 0.7333182, a: 0.79607844}
+    - Color_15026bba2e424a3abbd6d6b511a394fe: {r: 1036346.56, g: 0, b: 396090.56, a: 1}
+    - Color_443c856e514843748573f427eb33aa56: {r: 10.432951, g: 0.10924556, b: 5.5169005, a: 0.79607844}
     - Color_6bb506cdbcd04099aa813dc02b76cdf1: {r: 4.9245777, g: 0.21243277, b: 0.21243277, a: 0.29803923}
     - Color_b2020a2e712d4a35a3d254b3aff76061: {r: 1, g: 1, b: 1, a: 0}
-    - Color_ec59019185164c9eb33fbf0c78eb8210: {r: 22.078777, g: 0.0833145, b: 0.766404, a: 1}
+    - Color_ec59019185164c9eb33fbf0c78eb8210: {r: 20.865906, g: 14.748154, b: 1.0924559, a: 1}
     - Vector2_b9f9ba3121f649c7ad0096673596b8e2: {r: 0, g: 0.2, b: 0, a: 0}
     - Vector3_689b79e1ec5040c9b158d4012cdd758e: {r: 0.03, g: 0.03, b: 0.03, a: 0}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
