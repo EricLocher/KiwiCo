@@ -27,10 +27,11 @@ public abstract class BossAttack : ScriptableObject
 
     public virtual void Update()
     {
-        //timeElapsed += Time.deltaTime;
-        //if(timeElapsed > stateTime) {
-        //    ExitState();
-        //}
+        timeElapsed += Time.deltaTime;
+        if (timeElapsed > stateTime)
+        {
+            ExitState();
+        }
     }
 
     public virtual void ExitState()

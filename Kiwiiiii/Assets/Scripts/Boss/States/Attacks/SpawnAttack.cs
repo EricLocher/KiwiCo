@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.AI;
 
 [CreateAssetMenu(fileName = "BossSpawnAttack", menuName = "Utilities/BossAttacks/BossSpawnAttack")]
-public class ProjectileAttack : BossAttack
+public class SpawnAttack : BossAttack
 {
 
     [SerializeField] List<Enemy> enemyList;
