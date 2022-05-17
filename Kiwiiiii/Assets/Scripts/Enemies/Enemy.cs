@@ -76,7 +76,7 @@ public class Enemy : Character
         stateMachine.Update();
     }
 
-    public override void DealDamage(float value)
+    public override void TakeDamage(float value)
     {
         characterStats.health -= value;
         var randomPos = UnityEngine.Random.Range(-2f, 2f);

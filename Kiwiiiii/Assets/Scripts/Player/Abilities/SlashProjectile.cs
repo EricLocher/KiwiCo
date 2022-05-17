@@ -28,7 +28,7 @@ public class SlashProjectile : MonoBehaviour
     {
         if (other.CompareTag("Enemy")) {
             Enemy enemy = other.GetComponent<Enemy>();
-            enemy.DealDamage(damage);
+            enemy.TakeDamage(damage);
         }
     }
 }

@@ -29,7 +29,7 @@ public class SphereDamage : MonoBehaviour
         if (col.isTrigger) { return; }
         if (col.gameObject.CompareTag("Player")) {
 
-            target.DealDamage(3);
+            target.TakeDamage(3);
 
             Kill();
         }

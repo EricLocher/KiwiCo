@@ -65,7 +65,7 @@ public class SlamEffect : MonoBehaviour
 
                     #endregion
 
-                    enemy.DealDamage(damageToDeal);
+                    enemy.TakeDamage(damageToDeal);
                     print("Enemy got hit by slam");
                 }
 
