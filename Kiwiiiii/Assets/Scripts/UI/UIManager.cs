@@ -138,5 +138,4 @@ public class UIManager : MonoBehaviour
 
     void OnEnable() => GameController.onStateChange += OnPause;
     void OnDisable() => GameController.onStateChange -= OnPause;
-
 }
