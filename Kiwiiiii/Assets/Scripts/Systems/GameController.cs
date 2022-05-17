@@ -9,11 +9,12 @@ public class GameController : MonoBehaviour
     public static GameStates gameState = GameStates.Playing;
 
     [SerializeField] InputAction pauseGame;
+    [SerializeField] Texture2D cursorTexture;
 
     public delegate void ChangeHandler(GameStates state);
     public static event ChangeHandler onStateChange;
 
-    public bool pause;
+    [HideInInspector] public bool pause;
 
     void Awake()
     {
@@ -26,6 +27,8 @@ public class GameController : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+
+        Cursor.SetCursor(cursorTexture, new Vector2(0, 0), CursorMode.ForceSoftware);
 
         pauseGame.Enable();
 
