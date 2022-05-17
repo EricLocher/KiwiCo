@@ -16,7 +16,7 @@ public class BoostObject : MonoBehaviour
     {
         if(other.collider.isTrigger) { return; }
 
-        if (other.gameObject.CompareTag("Player")) {
+        if (other.gameObject.CompareTag("Character")) {
             other.gameObject.GetComponent<Rigidbody>().AddForce(direction * force, forceMode);
             if(animator != null) {
                 animator.Play("Boost");
