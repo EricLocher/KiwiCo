@@ -24,7 +24,6 @@ public class FOV : MonoBehaviour
     /// Check if given target lies is within view of the enemy.
     /// </summary>
     /// <param name="target">The target transform</param>
-    /// <returns><b>True:</b> The target is within view | <b>False:</b> The Target is not within view</returns>
     public bool TargetInView(Transform target)
     {
         float dist = Vector3.Distance(transform.position, target.position);

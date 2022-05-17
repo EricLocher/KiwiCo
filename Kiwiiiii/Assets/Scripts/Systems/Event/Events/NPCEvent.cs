@@ -28,7 +28,6 @@ public class NPCEvent : GameEvent
 
     public override void UpdateEvent()
     {
-        //Checks if all enemies are dead, in that case complete the event.
         bool check = true;
         foreach (DialogueTrigger npc in npcList)
         {

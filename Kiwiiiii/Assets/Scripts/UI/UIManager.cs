@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -23,13 +21,13 @@ public class UIManager : MonoBehaviour
         sensText.text = "" + Mathf.Round(sensSlider.value * 100.0f) * 0.01f;
 
         //Temporary for playtest
-        if(SceneManager.GetActiveScene().name == "Menu")
+        if (SceneManager.GetActiveScene().name == "Menu")
         {
             AudioManager.instance.PauseAllSound();
             AudioManager.instance.Play("Menu Music");
         }
 
-        if(SceneManager.GetActiveScene().name == "amelie 2" || SceneManager.GetActiveScene().name == "Eric 2")
+        if (SceneManager.GetActiveScene().name == "amelie 2" || SceneManager.GetActiveScene().name == "Eric 2")
         {
             AudioManager.instance.PauseAllSound();
             AudioManager.instance.Play("Game Music");
@@ -97,8 +95,6 @@ public class UIManager : MonoBehaviour
     {
         Save.instance.sensitivity = sensSlider.value;
         sensText.text = "" + Mathf.Round(sensSlider.value * 100.0f) * 0.01f;
-        Save.instance.sensitivity = sensSlider.value;
-        Save.instance.SaveAll();
     }
 
     public void OpenSettings()
@@ -119,23 +115,21 @@ public class UIManager : MonoBehaviour
     {
         AudioManager.instance.SetMasterVolume(masterSlider.value);
         Save.instance.master = masterSlider.value;
-        Save.instance.SaveAll();
     }
 
     public void SetSfV()
     {
         AudioManager.instance.SetSfxVolume(sfxSlider.value);
         Save.instance.sfx = sfxSlider.value;
-        Save.instance.SaveAll();
     }
 
     public void SetMuV()
     {
         AudioManager.instance.SetMusicVolume(musicSlider.value);
         Save.instance.music = musicSlider.value;
-        Save.instance.SaveAll();
     }
 
     void OnEnable() => GameController.onStateChange += OnPause;
     void OnDisable() => GameController.onStateChange -= OnPause;
+
 }

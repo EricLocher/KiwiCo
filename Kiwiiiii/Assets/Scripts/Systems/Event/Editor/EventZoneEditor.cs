@@ -15,7 +15,7 @@ public class EventZoneEditor : Editor
         _target.CheckDependency();
 
         EditorGUILayout.LabelField("Zone radius", EditorStyles.boldLabel);
-        float sliderVal = EditorGUILayout.Slider(_target.zoneCollider.radius, 10, 100);
+        float sliderVal = EditorGUILayout.Slider(_target.zoneCollider.radius, 1, 100);
         if (_target.zoneCollider.radius != sliderVal)
         {
             Undo.RecordObject(_target, "Updated Radius");

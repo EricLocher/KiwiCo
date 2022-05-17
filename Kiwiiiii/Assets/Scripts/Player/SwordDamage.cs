@@ -11,7 +11,7 @@ public class SwordDamage : MonoBehaviour
     [SerializeField] VisualEffect impact;
     Rigidbody swordRb;
 
-    public List<Enemy> enemies = new List<Enemy>();
+    public List<Character> enemies = new List<Character>();
 
     private void Awake()
     {
@@ -31,7 +31,7 @@ public class SwordDamage : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            Enemy enemy = collision.GetComponent<Enemy>();
+            Character enemy = collision.GetComponent<Character>();
             if (enemies.Contains(enemy)) { return; }
 
             impact.Play();
@@ -47,7 +47,7 @@ public class SwordDamage : MonoBehaviour
     void OnTriggerExit(Collider collision)
     {
         if (collision.gameObject.CompareTag("Enemy")) {
-            Enemy enemy = collision.GetComponent<Enemy>();
+            Character enemy = collision.GetComponent<Character>();
 
             if (!enemies.Contains(enemy)) { return; }
 

@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -7,7 +8,7 @@ using UnityEngine.VFX;
 [Serializable, RequireComponent(typeof(NavMeshAgent), typeof(FOV), typeof(PatrolSpots))]
 public class Enemy : Character
 {
-    public SOEnemyStats stats { get { return (SOEnemyStats)stats; } }
+    public SOEnemyStats stats { get { return (SOEnemyStats)characterStats; } }
 
     [SerializeField] public Transform target;
     [SerializeField] public VisualEffect AppearEffect;
@@ -16,6 +17,9 @@ public class Enemy : Character
     [HideInInspector] public FOV fov;
     [SerializeField] DamagePopup damagePopup;
     [HideInInspector] public EnemyAttack attack;
+    [SerializeField] float blinkIntensity, blinkDuration;
+    float blinkTimer;
+    [SerializeField] SkinnedMeshRenderer skinnedMeshRenderer;
 
     public EnemyIdle idle;
     public EnemyChase chase;
@@ -27,7 +31,7 @@ public class Enemy : Character
 
     protected override void Init()
     {
-        target = GameObject.FindGameObjectWithTag("Player").transform.GetChild(0);
+        target = GameObject.FindGameObjectWithTag("Character").transform;
 
         fov = GetComponent<FOV>();
         navMeshAgent = GetComponent<NavMeshAgent>();
@@ -64,18 +68,25 @@ public class Enemy : Character
             animator.SetBool("moving", false);
         }
 
+        blinkTimer -= Time.deltaTime;
+        float lerp = Mathf.Clamp01(blinkTimer / blinkDuration);
+        float intensity = (lerp * blinkIntensity) + 1f;
+        skinnedMeshRenderer.material.color = Color.white * intensity;
+
         stateMachine.Update();
     }
 
     public override void DealDamage(float value)
     {
-        CharacterStats.health -= value;
+        characterStats.health -= value;
         var randomPos = UnityEngine.Random.Range(-2f, 2f);
         var collPos = transform.position;
         DamagePopup popup = Instantiate(damagePopup, new Vector3(collPos.x + randomPos, collPos.y + 2, collPos.z + randomPos), Quaternion.identity, TempHolder.transform);
         popup.PopupDamage((int)value);
-        if (CharacterStats.health <= 0) { OnDeath(); }
 
+        blinkTimer = blinkDuration;
+
+        if (characterStats.health <= 0) { OnDeath(); }
     }
 
     protected override void OnDeath()

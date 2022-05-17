@@ -1,28 +1,49 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-namespace Boss_States.SpawnState
+public class SpawnState : BossState
 {
-    public class SpawnState : BossState
+    public SpawnState(Boss agent, BossStateMachine stateMachine) : base(agent, stateMachine) { }
+    public override BossStates GetId() => BossStates.Spawning;
+
+    int amountOfEnemiesToSpawn = 2;
+    float elapsedTime = 0;
+    float totalTime = 0;
+
+    public override void EnterState()
     {
-        public SpawnState(Boss agent, BossStateMachine stateMachine) : base(agent, stateMachine) { }
-        public override BossStates GetId() => BossStates.Spawning;
+        elapsedTime = 0;
+        Debug.Log(GetId());
+    }
 
-        public override void EnterState()
-        {
-            Debug.Log(GetId());
+    public override void Update(float dt = 0)
+    {
+        elapsedTime += dt;
+        totalTime += dt;
+        if(elapsedTime > 5) {
+            elapsedTime = 0;
+            SpawnEnemies();
         }
 
-        public override void Update(float dt = 0)
-        {
-            throw new System.NotImplementedException();
+        if(totalTime > 20) {
+            stateMachine.ChangeState(BossStates.Shield);
         }
+    }
 
-        public override void ExitState()
-        {
-            throw new System.NotImplementedException();
+    void SpawnEnemies()
+    {
+        for (int i = 0; i < amountOfEnemiesToSpawn; i++) {
+            Vector3 pos = agent.spawnAreas.GetNewSpot();
+
+            int index = Random.Range(0, agent.enemies.Count);
+            Object.Instantiate(agent.enemies[index], pos, Quaternion.identity);
         }
+    }
+
+    public override void ExitState()
+    {
 
     }
+
 }
+

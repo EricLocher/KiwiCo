@@ -3,10 +3,9 @@ using UnityEngine.SceneManagement;
 
 public class Save : MonoBehaviour
 {
-    [HideInInspector]
-    public int sceneIndex;
-    public bool aquiredSword;
-    public float master = 1f, music = 1f, sfx = 1f, sensitivity = 5f;
+    [HideInInspector] public int sceneIndex;
+    [HideInInspector] public bool aquiredSword;
+    [HideInInspector] public float master = 1f, music = 1f, sfx = 1f, sensitivity = 5f;
 
     public static Save instance;
 
@@ -39,6 +38,7 @@ public class Save : MonoBehaviour
 
     public void SaveAll()
     {
+        Debug.Log("Saving data");
         SaveData.Save(this);
     }
 
@@ -49,6 +49,7 @@ public class Save : MonoBehaviour
 
     public void LoadAll()
     {
+        Debug.Log("Loading data");
         GameData data = SaveData.Load();
         sceneIndex = data.sceneIndex;
         aquiredSword = data.aquiredSword;

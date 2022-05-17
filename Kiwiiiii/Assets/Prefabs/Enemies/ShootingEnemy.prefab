@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3903681164434107119}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BulletOrigin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -52,7 +52,7 @@ GameObject:
   - component: {fileID: 8033360133348434868}
   - component: {fileID: 2325907674223485259}
   - component: {fileID: 3015967649150710815}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ShootingEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -199,6 +199,9 @@ MonoBehaviour:
   enemy: {fileID: 52852384442896208}
   force: 5
   damagePoints: 3
+  secondsBetweenEachShot: 0.5
+  secondsBetweenWaves: 3
+  numberOfShotsInWave: 5
   sphere: {fileID: 10293307151944281, guid: 43f5ee33993f82b4f84056d7e1521c30, type: 3}
   gun: {fileID: 3903681164434107119}
 --- !u!114 &52852384442896208
@@ -213,9 +216,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8c0a732d1cc8f44fbe2bb32d7bb00de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CharacterStats: {fileID: 11400000, guid: eaf7699a85db33a4a86e73c560f751de, type: 2}
+  characterStats: {fileID: 11400000, guid: eaf7699a85db33a4a86e73c560f751de, type: 2}
   target: {fileID: 0}
   AppearEffect: {fileID: 2325907674223485259}
+  animator: {fileID: 0}
   navMeshAgent: {fileID: 0}
   fov: {fileID: 0}
   damagePopup: {fileID: 3432873184914692212, guid: 91e9d37f0c993324481dcad819e13585, type: 3}
@@ -371,7 +375,7 @@ GameObject:
   - component: {fileID: 8033360133949725804}
   - component: {fileID: 8033360133949725802}
   - component: {fileID: 8033360133949725803}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: EnemyAnimations
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -463,6 +467,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: staff
       objectReference: {fileID: 0}
+    - target: {fileID: 2593826489800782139, guid: 01959f5febaaa7443afc0d896092afc5, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 2933197817216412545, guid: 01959f5febaaa7443afc0d896092afc5, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -518,6 +526,10 @@ PrefabInstance:
     - target: {fileID: 2933197817216412545, guid: 01959f5febaaa7443afc0d896092afc5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 22.52
+      objectReference: {fileID: 0}
+    - target: {fileID: 6805735716554901986, guid: 01959f5febaaa7443afc0d896092afc5, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 01959f5febaaa7443afc0d896092afc5, type: 3}
