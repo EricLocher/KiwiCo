@@ -15,7 +15,7 @@ MonoBehaviour:
   playerSpeaking: 1
   text: Of course!
   children:
-  - 6f93e163-88a9-4db7-81b4-f5c009a2c24b
+  - 51d6f883-2f22-4c55-a44c-7c4017f54d09
   rect:
     serializedVersion: 2
     x: 1297
@@ -73,29 +73,6 @@ MonoBehaviour:
     height: 100
   onExitAction: 
   onEnterAction: 
---- !u!114 &-4113416225558923596
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc46249301e2b8e47baa0f69a70fc813, type: 3}
-  m_Name: 6f93e163-88a9-4db7-81b4-f5c009a2c24b
-  m_EditorClassIdentifier: 
-  playerSpeaking: 0
-  text: Really?!
-  children: []
-  rect:
-    serializedVersion: 2
-    x: 1543
-    y: 129
-    width: 200
-    height: 100
-  onExitAction: 
-  onEnterAction: 
 --- !u!114 &-2785594435256170097
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -142,7 +119,7 @@ MonoBehaviour:
   - {fileID: 2631023419140505534}
   - {fileID: -7222671949381575616}
   - {fileID: 6398734313602212470}
-  - {fileID: -4113416225558923596}
+  - {fileID: 3179108997641401817}
   newNodeOffset: {x: 200, y: 0}
 --- !u!114 &86084563099010460
 MonoBehaviour:
@@ -217,6 +194,29 @@ MonoBehaviour:
     height: 100
   onExitAction: npcevent
   onEnterAction: negative
+--- !u!114 &3179108997641401817
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc46249301e2b8e47baa0f69a70fc813, type: 3}
+  m_Name: 51d6f883-2f22-4c55-a44c-7c4017f54d09
+  m_EditorClassIdentifier: 
+  playerSpeaking: 0
+  text: Really?!
+  children: []
+  rect:
+    serializedVersion: 2
+    x: 1552
+    y: 131
+    width: 200
+    height: 100
+  onExitAction: npc
+  onEnterAction: 
 --- !u!114 &6398734313602212470
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -238,7 +238,7 @@ MonoBehaviour:
     y: 285
     width: 200
     height: 100
-  onExitAction: 
+  onExitAction: npc
   onEnterAction: 
 --- !u!114 &7812576612706047034
 MonoBehaviour:
