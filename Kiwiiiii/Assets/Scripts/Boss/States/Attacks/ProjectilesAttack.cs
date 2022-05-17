@@ -33,6 +33,7 @@ public class ProjectilesAttack : BossAttack
                 float dY = 1 * Mathf.Sin(offsetAngle + i * 2 * Mathf.PI / amount);
                 _temp.transform.position = boss.transform.position + new Vector3(dX, 0, dY);
                 _temp.transform.LookAt(boss.transform.position);
+                _temp.transform.parent = TempHolder.transform;
             }
             spawnPointIndex++;
             elapsedTime = 0;

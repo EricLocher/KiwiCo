@@ -5,14 +5,8 @@ using UnityEngine;
 
 public class KillAfterTime : MonoBehaviour
 {
-    public float timeUntilKill;
-    void Start()
-    {
-        if (timeUntilKill == 0)
-        {
-            timeUntilKill = 5;
-        }
-    }
+    [SerializeField, Range(1,10)] private float timeUntilKill;
+
     void Update()
     {
         timeUntilKill -= Time.deltaTime;
