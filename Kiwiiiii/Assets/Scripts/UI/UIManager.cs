@@ -88,6 +88,7 @@ public class UIManager : MonoBehaviour
         }
         interactNotice.SetActive(false);
         pauseScreen.SetActive(false);
+        dialogueBox.SetActive(false);
     }
 
     public void SensitivityChange()

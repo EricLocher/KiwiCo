@@ -8,6 +8,7 @@ public class EventZone : MonoBehaviour
     [HideInInspector] public GameObject invertedCollider;
     [HideInInspector] public List<GameEvent> events = new List<GameEvent>();
     GameEvent currentEvent = null;
+    bool barrier = false;
 
     void Start()
     {
@@ -19,9 +20,10 @@ public class EventZone : MonoBehaviour
                 if (child.gameObject.tag == "InvertedCollider")
                 {
                     invertedCollider = child.gameObject;
+                    barrier = true;
                 }
             }
-            if (invertedCollider.tag != "InvertedCollider") { invertedCollider = null; return; }
+            if (invertedCollider == null) { barrier = false; return; }
             var scaleChange = new Vector3(zoneCollider.radius, zoneCollider.radius, zoneCollider.radius);
             invertedCollider.transform.localScale = scaleChange;
         }
@@ -31,8 +33,8 @@ public class EventZone : MonoBehaviour
     {
         if (events.Count == 0)
         {
-            invertedCollider.SetActive(false);
-            Debug.Log("test");
+            if (barrier)
+                invertedCollider.SetActive(false);
             AudioManager.instance.PlayOnce("PlayerCompleteEvent");
             Destroy(gameObject);
         }
