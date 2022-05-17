@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 2a822dc4-ae43-44c0-b7be-287ca37e01d1
   m_EditorClassIdentifier: 
   playerSpeaking: 1
-  text: Of course!
+  text: "\uB2F9\uC5F0\uD569\uB2C8\uB2E4!"
   children:
   - 51d6f883-2f22-4c55-a44c-7c4017f54d09
   rect:
@@ -37,7 +37,7 @@ MonoBehaviour:
   m_Name: ba2206bd-7faa-477a-a458-e0631d7abd61
   m_EditorClassIdentifier: 
   playerSpeaking: 0
-  text: There's a special aura around you...
+  text: "\uB2F9\uC2E0\uC740 \uBB54\uAC00 \uD2B9\uBCC4\uD558\uB2E4... "
   children:
   - b368b705-d36a-4cbe-963a-5ccd2b033698
   - 359604c0-eec2-41f2-976b-5217ac063d37
@@ -62,7 +62,7 @@ MonoBehaviour:
   m_Name: b368b705-d36a-4cbe-963a-5ccd2b033698
   m_EditorClassIdentifier: 
   playerSpeaking: 1
-  text: Where am I..?
+  text: "\uC81C\uAC00 \uC5B4\uB514 \uC788\uC8E0..?"
   children:
   - 89d4266c-43d5-4e7e-98fe-c6d0bd0ff5cb
   rect:
@@ -86,12 +86,12 @@ MonoBehaviour:
   m_Name: 359604c0-eec2-41f2-976b-5217ac063d37
   m_EditorClassIdentifier: 
   playerSpeaking: 1
-  text: Actually I...
+  text: "\uC0AC\uC2E4 \uC81C\uAC00..."
   children:
   - 89d4266c-43d5-4e7e-98fe-c6d0bd0ff5cb
   rect:
     serializedVersion: 2
-    x: 497
+    x: 482
     y: 89
     width: 200
     height: 100
@@ -107,7 +107,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7bf9e36879b5f8640bdc4915559763df, type: 3}
-  m_Name: 1.1 Enter the ruins
+  m_Name: KR_1.1 Enter the ruins
   m_EditorClassIdentifier: 
   nodes:
   - {fileID: 86084563099010460}
@@ -134,13 +134,13 @@ MonoBehaviour:
   m_Name: d09ad23d-9f1c-425d-bf20-2111b8fd6220
   m_EditorClassIdentifier: 
   playerSpeaking: 0
-  text: Oh dear! Where did you come from?
+  text: "\uC5B4\uBA38! \uC5B4\uB514\uC11C \uC624\uC2E0 \uAC74\uAC00\uC694?"
   children:
   - ba2206bd-7faa-477a-a458-e0631d7abd61
   rect:
     serializedVersion: 2
-    x: 7
-    y: 175
+    x: 12
+    y: 185
     width: 200
     height: 100
   onExitAction: 
@@ -158,7 +158,7 @@ MonoBehaviour:
   m_Name: 59cdf27e-4f1a-4382-85b0-bb90f266beee
   m_EditorClassIdentifier: 
   playerSpeaking: 0
-  text: Can you get that sword out of the stone over there?
+  text: "\uC800\uAE30 \uC788\uB294 \uAC80\uC744 \uBE84 \uC218 \uC788\uACA0\uC5B4\uC694?"
   children:
   - 553ced36-fadb-4a27-9b7e-40236675821e
   - 2a822dc4-ae43-44c0-b7be-287ca37e01d1
@@ -183,7 +183,7 @@ MonoBehaviour:
   m_Name: 553ced36-fadb-4a27-9b7e-40236675821e
   m_EditorClassIdentifier: 
   playerSpeaking: 1
-  text: You sure demand a lot...
+  text: "\uCC38 \uB9CE\uC740 \uBD80\uD0C1\uB4E4 \uC788\uB294\uAD6C\uB9CC..."
   children:
   - c6885f18-4817-44c8-bf98-1c12452009e5
   rect:
@@ -207,7 +207,7 @@ MonoBehaviour:
   m_Name: 51d6f883-2f22-4c55-a44c-7c4017f54d09
   m_EditorClassIdentifier: 
   playerSpeaking: 0
-  text: You're the best!
+  text: "\uB2F9\uC2E0\uC740 \uCD5C\uACE0\uB2E4!"
   children: []
   rect:
     serializedVersion: 2
@@ -235,7 +235,7 @@ MonoBehaviour:
   rect:
     serializedVersion: 2
     x: 1546
-    y: 285
+    y: 286
     width: 200
     height: 100
   onExitAction: npc
@@ -253,12 +253,12 @@ MonoBehaviour:
   m_Name: 89d4266c-43d5-4e7e-98fe-c6d0bd0ff5cb
   m_EditorClassIdentifier: 
   playerSpeaking: 0
-  text: Nay! There is no time for an explanation!
+  text: "\uC544\uB2C8\uB2E4! \uC124\uBA85\uD560 \uC2DC\uAC04\uC774 \uC5C6\uC2B5\uB2C8\uB2E4!"
   children:
   - 59cdf27e-4f1a-4382-85b0-bb90f266beee
   rect:
     serializedVersion: 2
-    x: 746
+    x: 723
     y: 177
     width: 200
     height: 100

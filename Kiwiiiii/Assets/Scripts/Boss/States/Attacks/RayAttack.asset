@@ -9,10 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91004eee639ca764e9a53e45b88d1466, type: 3}
-  m_Name: ProjectileAttack
+  m_Script: {fileID: 11500000, guid: 96b2ea5340beb1d41ae18801a74b655f, type: 3}
+  m_Name: RayAttack
   m_EditorClassIdentifier: 
   stateTime: 100
-  projectile: {fileID: 8506522738139003992, guid: f298a4db73a7b154f954d680508eac7e, type: 3}
-  amount: 10
-  coolDownTime: 3
+  speed: 30
+  ray: {fileID: 8222326982733465447, guid: ce9f9e18322429645888407339396d4a, type: 3}
+  amountOfRays: 5
