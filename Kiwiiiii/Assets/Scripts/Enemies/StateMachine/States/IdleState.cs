@@ -16,6 +16,7 @@ public class IdleState : EnemyState
         agent.idle?.EnterIdle();
 
         agent.SetDestination(agent.transform.position);
+
         waitTime = 2;
         hasWaited = false;
     }
@@ -25,9 +26,18 @@ public class IdleState : EnemyState
         agent.idle?.ActiveIdle();
 
         waitTime -= dt;
+        if(agent.navMeshAgent.pathStatus == UnityEngine.AI.NavMeshPathStatus.PathComplete)
+        {
+            agent.animator.SetBool("moving", false);
+        }
+        else if(agent.navMeshAgent.pathStatus == UnityEngine.AI.NavMeshPathStatus.PathPartial)
+        {
+            agent.animator.SetBool("moving", true);
+        }
 
         if (waitTime <= 0 && hasWaited == false)
         {
+
             SelectNewDestination();
         }
 
@@ -61,6 +71,8 @@ public class IdleState : EnemyState
     {
         if (!agent.navMeshAgent.hasPath)
         {
+            agent.animator.SetBool("moving", false);
+
             if (waitTime <= -1)
             {
                 ResetState();

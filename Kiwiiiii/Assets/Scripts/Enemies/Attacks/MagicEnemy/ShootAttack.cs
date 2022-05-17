@@ -56,12 +56,11 @@ public class ShootAttack : EnemyAttack
 
     public override void ExitAttack()
     {
-        //animator.SetTrigger("idle");
+        currentCoroutine = null;
     }
 
     IEnumerator InstantiateBall()
     {
-        enemy.stateMachine.ChangeState(EnemyStates.Chase);
         animator.SetTrigger("attack");
 
         for (int i = 0; i < numberOfShotsInWave; i++)
@@ -79,6 +78,6 @@ public class ShootAttack : EnemyAttack
         yield return new WaitForSeconds(secondsBetweenWaves);
         animator.ResetTrigger("attack");
 
-        currentCoroutine = null;
+        enemy.stateMachine.ChangeState(EnemyStates.Chase);
     }
 }

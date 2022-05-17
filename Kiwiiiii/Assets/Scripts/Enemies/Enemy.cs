@@ -28,7 +28,6 @@ public class Enemy : Character
 
     public List<EnemyAttack> enemyAttacks;
 
-
     protected override void Init()
     {
         target = GameObject.FindGameObjectWithTag("Character").transform;
@@ -59,15 +58,6 @@ public class Enemy : Character
 
     private void Update()
     {
-        if (navMeshAgent.hasPath)
-        {
-            animator.SetBool("moving", true);
-        }
-        else
-        {
-            animator.SetBool("moving", false);
-        }
-
         blinkTimer -= Time.deltaTime;
         float lerp = Mathf.Clamp01(blinkTimer / blinkDuration);
         float intensity = (lerp * blinkIntensity) + 1f;
@@ -97,11 +87,11 @@ public class Enemy : Character
 
     IEnumerator Knockback()
     {
-        animator.SetBool("knockback", true);
+        animator.SetTrigger("knockback");
 
         yield return new WaitForSeconds(2);
 
-        animator.SetBool("knockback", false);
+        animator.ResetTrigger("knockback");
     }
 
     private void OnCollisionEnter(Collision col)
