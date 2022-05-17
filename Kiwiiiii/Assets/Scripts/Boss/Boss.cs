@@ -35,7 +35,7 @@ public class Boss : Character
         stateMachine.Update();
     }
 
-    public override void DealDamage(float value)
+    public override void TakeDamage(float value)
     {
         print("Boss took damage: " + value);
         characterStats.health -= value;

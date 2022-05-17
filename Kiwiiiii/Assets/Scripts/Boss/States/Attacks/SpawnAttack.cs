@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 [CreateAssetMenu(fileName = "BossSpawnAttack", menuName = "Utilities/BossAttacks/BossSpawnAttack")]
-public class SpawnAttack : BossAttack
+public class ProjectileAttack : BossAttack
 {
 
     [SerializeField] List<Enemy> enemyList;
@@ -16,8 +17,8 @@ public class SpawnAttack : BossAttack
         Debug.Log(currentPhase);
 
         for (int i = 0; i < amountOfEnemies; i++) {
-            Vector3 spawnPos = spawnSpots.GetNewSpot() + Vector3.up * 3;
-            Instantiate(enemyList[(int)Random.Range(0, enemyList.Count)], spawnPos, Quaternion.identity);
+            Vector3 spawnPos = spawnSpots.GetNewSpot();
+            Instantiate(enemyList[(int)Random.Range(0, enemyList.Count)], Vector3.zero, Quaternion.identity).GetComponent<NavMeshAgent>().Warp(spawnPos);
         }
 
         ExitState();

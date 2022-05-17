@@ -51,7 +51,7 @@ public class StabAttack : EnemyAttack
     {
         if (col.gameObject.tag == ("Player"))
         {
-            player.DealDamage(0.1f);
+            player.TakeDamage(0.1f);
         }
     }
 }
