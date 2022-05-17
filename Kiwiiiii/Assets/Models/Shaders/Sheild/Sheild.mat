@@ -21,24 +21,35 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Sheild
-  m_Shader: {fileID: -6465566751694194690, guid: 015a2759f113b2b4b8865530402b2b2f, type: 3}
-  m_ShaderKeywords: _ENABLE_FOG_ON_TRANSPARENT _SURFACE_TYPE_TRANSPARENT
+  m_Shader: {fileID: -6465566751694194690, guid: 5661bd626b8d69a4ebffbc1bad74411a, type: 3}
+  m_ShaderKeywords: _DISABLE_SSR_TRANSPARENT _DOUBLESIDED_ON _SURFACE_TYPE_TRANSPARENT
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
+  m_DoubleSidedGI: 1
   m_CustomRenderQueue: 3000
   stringTagMap:
     MotionVector: User
     RenderType: Transparent
   disabledShaderPasses:
   - MOTIONVECTORS
-  - TransparentDepthPrepass
-  - TransparentDepthPostpass
-  - TransparentBackface
   - RayTracingPrepass
+  - TransparentBackface
+  - TransparentDepthPostpass
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - Texture2D_0f67b92ce00b4d07a8407da080a937dc:
+        m_Texture: {fileID: 2800000, guid: fd7ae34b93a4a4f448b87a674bdce58d, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_564c21007cdc41f782d4de01b39a49f7:
+        m_Texture: {fileID: 2800000, guid: f56d050f9ad15af49b86af66315a50e9, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_7c4e79b03a304a5db581ac12f84c9bf6:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -52,7 +63,9 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
+    - Vector1_51620e60888d45aba9f3b80f4b91ba52: 5
     - Vector1_6f9f57f27a8c4d10a1d6c40a67da0610: 0
+    - Vector1_90140518c691447b81a420cbc372ac13: 1
     - _AddPrecomputedVelocity: 0
     - _AlphaCutoffEnable: 0
     - _AlphaDstBlend: 10
@@ -60,14 +73,14 @@ Material:
     - _AlphaToMask: 0
     - _AlphaToMaskInspectorValue: 0
     - _BlendMode: 0
-    - _CullMode: 2
-    - _CullModeForward: 2
+    - _CullMode: 0
+    - _CullModeForward: 0
     - _DepthOffsetEnable: 0
-    - _DoubleSidedEnable: 0
-    - _DoubleSidedNormalMode: 2
+    - _DoubleSidedEnable: 1
+    - _DoubleSidedNormalMode: 1
     - _DstBlend: 10
-    - _EnableBlendModePreserveSpecularLighting: 1
-    - _EnableFogOnTransparent: 1
+    - _EnableBlendModePreserveSpecularLighting: 0
+    - _EnableFogOnTransparent: 0
     - _OpaqueCullMode: 2
     - _RayTracing: 0
     - _ReceivesSSR: 1
@@ -91,17 +104,23 @@ Material:
     - _TransparentBackfaceEnable: 0
     - _TransparentCullMode: 2
     - _TransparentDepthPostpassEnable: 0
-    - _TransparentDepthPrepassEnable: 0
+    - _TransparentDepthPrepassEnable: 1
     - _TransparentSortPriority: 0
     - _TransparentWritingMotionVec: 0
     - _TransparentZWrite: 1
     - _UseShadowThreshold: 0
-    - _ZTestDepthEqualForOpaque: 4
+    - _ZTestDepthEqualForOpaque: 3
     - _ZTestGBuffer: 4
-    - _ZTestTransparent: 4
+    - _ZTestTransparent: 3
     - _ZWrite: 1
     m_Colors:
+    - Color_15026bba2e424a3abbd6d6b511a394fe: {r: 766.9961, g: 0, b: 293.1451, a: 1}
+    - Color_443c856e514843748573f427eb33aa56: {r: 15.813397, g: 0.16558532, b: 8.444851, a: 0.79607844}
     - Color_6bb506cdbcd04099aa813dc02b76cdf1: {r: 4.9245777, g: 0.21243277, b: 0.21243277, a: 0.29803923}
+    - Color_b2020a2e712d4a35a3d254b3aff76061: {r: 1, g: 1, b: 1, a: 0}
+    - Color_ec59019185164c9eb33fbf0c78eb8210: {r: 4.237095, g: 2.9948053, b: 0.2662049, a: 1}
+    - Vector2_b9f9ba3121f649c7ad0096673596b8e2: {r: 0, g: 0.2, b: 0, a: 0}
+    - Vector3_689b79e1ec5040c9b158d4012cdd758e: {r: 0.03, g: 0.03, b: 0.03, a: 0}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
