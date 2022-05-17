@@ -1,2 +1,2 @@
 # KiwiCo
-7 Week game development project for school.
+7 Week long game development project for school.
