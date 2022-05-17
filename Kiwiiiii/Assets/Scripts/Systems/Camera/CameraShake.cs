@@ -6,9 +6,9 @@ public class CameraShake : MonoBehaviour
     public static CameraShake instance;
 
     Vector3 _originalPos;
-    float _timeAtCurrentFrame;
-    float _timeAtLastFrame;
-    float _fakeDelta;
+    float timeAtCurrentFrame;
+    float timeAtLastFrame;
+    float fakeDelta;
 
     void Awake()
     {
@@ -17,9 +17,9 @@ public class CameraShake : MonoBehaviour
 
     void Update()
     {
-        _timeAtCurrentFrame = Time.realtimeSinceStartup;
-        _fakeDelta = _timeAtCurrentFrame - _timeAtLastFrame;
-        _timeAtLastFrame = _timeAtCurrentFrame;
+        timeAtCurrentFrame = Time.realtimeSinceStartup;
+        fakeDelta = timeAtCurrentFrame - timeAtLastFrame;
+        timeAtLastFrame = timeAtCurrentFrame;
     }
 
     public static void Shake(float duration, float amount)
@@ -31,13 +31,11 @@ public class CameraShake : MonoBehaviour
 
     public IEnumerator cShake(float duration, float amount)
     {
-        float endTime = Time.time + duration;
-
         while (duration > 0)
         {
             transform.localPosition = _originalPos + Random.insideUnitSphere * amount;
 
-            duration -= _fakeDelta;
+            duration -= fakeDelta;
 
             yield return null;
         }
