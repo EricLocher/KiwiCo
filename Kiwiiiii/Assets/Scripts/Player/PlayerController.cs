@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : Character
 {
@@ -23,7 +24,8 @@ public class PlayerController : Character
 
     protected override void OnDeath()
     {
+        SceneManager.LoadScene("GameOver");
+        Cursor.lockState = CursorLockMode.None; Cursor.visible = true;
         //Player Death thing.
     }
-
 }

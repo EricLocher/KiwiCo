@@ -12,11 +12,13 @@ public class ProjectileBehavior : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         rb.AddForce(-transform.forward * speed, ForceMode.Impulse);
     }
-    private void OnCollisionEnter(Collision collision)
+
+    private void OnTriggerEnter(Collider other)
     {
-        if(collision.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Character"))
         {
-            collision.gameObject.GetComponent<PlayerController>().TakeDamage(damage);
+            print("debug");
+            other.gameObject.transform.parent.GetComponent<PlayerController>().TakeDamage(damage);
             damage = 0;
         }
     }
