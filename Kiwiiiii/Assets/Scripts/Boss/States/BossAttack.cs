@@ -11,7 +11,7 @@ public abstract class BossAttack : ScriptableObject
     protected BossPhase currentPhase;
     protected float timeElapsed = 0;
 
-    private Boss boss;
+    protected Boss boss;
 
     public void Init(PatrolSpots spawnSpots, Boss boss)
     {

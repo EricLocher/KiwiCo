@@ -1,0 +1,144 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8065118287409678767
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc46249301e2b8e47baa0f69a70fc813, type: 3}
+  m_Name: 557d0405-e3df-42b7-b818-f71430ca3eb4
+  m_EditorClassIdentifier: 
+  playerSpeaking: 0
+  text: "\uB4E4\uC5B4\uBD10\uC694, I need you to delve deeper into the woods and
+    kill more of those horrible beasts! \uC6B0\uB9AC\uB97C \uAD6C\uD574\uC8FC\uC138\uC694!
+    \uC81C\uBC1C..."
+  children: []
+  rect:
+    serializedVersion: 2
+    x: 761
+    y: 164
+    width: 200
+    height: 100
+  onExitAction: 
+  onEnterAction: 
+--- !u!114 &-5983101644028981623
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc46249301e2b8e47baa0f69a70fc813, type: 3}
+  m_Name: 5dea1f7b-a78c-4eb6-966c-d8cb2ba0b596
+  m_EditorClassIdentifier: 
+  playerSpeaking: 0
+  text: "\uD734! \uC815\uB9D0 \uC798\uD558\uC168\uC2B5\uB2C8\uB2E4."
+  children:
+  - 5d956b48-4846-4666-b7e3-90b05aa88ba5
+  rect:
+    serializedVersion: 2
+    x: 10
+    y: 150
+    width: 200
+    height: 100
+  onExitAction: 
+  onEnterAction: 
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bf9e36879b5f8640bdc4915559763df, type: 3}
+  m_Name: KR_1.3 Killed the enemies
+  m_EditorClassIdentifier: 
+  nodes:
+  - {fileID: -5983101644028981623}
+  - {fileID: 7134490326738140161}
+  - {fileID: 3049223521159139769}
+  - {fileID: 5459062299885406253}
+  - {fileID: -8065118287409678767}
+  newNodeOffset: {x: 200, y: 0}
+--- !u!114 &3049223521159139769
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc46249301e2b8e47baa0f69a70fc813, type: 3}
+  m_Name: 2923e06b-5670-4860-9fdc-74fb6dd1a38f
+  m_EditorClassIdentifier: 
+  playerSpeaking: 1
+  text: "\uC774\uAC70 \uB108\uBB34 \uBED4\uD55C \uAC74 \uC544\uB2C8\uC608\uC694..."
+  children:
+  - 557d0405-e3df-42b7-b818-f71430ca3eb4
+  rect:
+    serializedVersion: 2
+    x: 498
+    y: 265
+    width: 200
+    height: 100
+  onExitAction: negative
+  onEnterAction: 
+--- !u!114 &5459062299885406253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc46249301e2b8e47baa0f69a70fc813, type: 3}
+  m_Name: 59f19abb-46f9-4d8f-bfcf-207d7f0693e7
+  m_EditorClassIdentifier: 
+  playerSpeaking: 1
+  text: "\uB2F9\uC2E0\uC774 \uB9D0\uD558\uB294\uB370\uB85C \uADF8\uB300\uB85C \uD55C\uAC83\uBD84\uC778\uB370\uC694.."
+  children:
+  - 557d0405-e3df-42b7-b818-f71430ca3eb4
+  rect:
+    serializedVersion: 2
+    x: 498
+    y: 91
+    width: 200
+    height: 100
+  onExitAction: positive
+  onEnterAction: 
+--- !u!114 &7134490326738140161
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc46249301e2b8e47baa0f69a70fc813, type: 3}
+  m_Name: 5d956b48-4846-4666-b7e3-90b05aa88ba5
+  m_EditorClassIdentifier: 
+  playerSpeaking: 0
+  text: "\uB2F9\uC2E0\uC740 \uC774\uC57C\uAE30\uC5D0\uC11C \uB098\uC624\uB294 \uC120\uD0DD\uBC1B\uC740
+    \uC790 \uC778\uAC00\uBD10\uC694..."
+  children:
+  - 2923e06b-5670-4860-9fdc-74fb6dd1a38f
+  - 59f19abb-46f9-4d8f-bfcf-207d7f0693e7
+  rect:
+    serializedVersion: 2
+    x: 236
+    y: 150
+    width: 200
+    height: 100
+  onExitAction: 
+  onEnterAction: 
