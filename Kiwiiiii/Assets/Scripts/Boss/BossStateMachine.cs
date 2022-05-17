@@ -4,29 +4,26 @@ using UnityEngine;
 
 public class BossStateMachine
 {
-    BossState currentState = null;
+    BossPhase currentState = null;
 
-    [HideInInspector]
-    public Boss boss;
+    [HideInInspector] public Boss boss;
+    [HideInInspector] public PatrolSpots moveSpots;
 
-    [HideInInspector]
-    public PatrolSpots moveSpots;
-
-    Dictionary<BossStates, BossState> states = new Dictionary<BossStates, BossState>();
+    Dictionary<BossPhases, BossPhase> states = new Dictionary<BossPhases, BossPhase>();
 
     public void Update()
     {
         currentState?.Update(Time.deltaTime);
     }
 
-    public void ChangeState(BossStates id)
+    public void ChangeState(BossPhases id)
     {
-        currentState?.ExitState();
+        currentState?.ExitPhase();
         currentState = states[id];
-        currentState?.EnterState();
+        currentState?.EnterPhase();
     }
 
-    public void RegisterState(BossStates stateID, BossState state)
+    public void RegisterState(BossPhases stateID, BossPhase state)
     {
         states.Add(stateID, state);
     }

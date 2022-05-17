@@ -1,11 +1,12 @@
+using System.Collections.Generic;
 using UnityEngine;
 
-public class BossInitState : BossState
+public class BossInitState : BossPhase
 {
-    public BossInitState(Boss agent, BossStateMachine stateMachine) : base(agent, stateMachine) { }
-    public override BossStates GetId() => BossStates.Init;
+    public BossInitState(Boss agent, BossStateMachine stateMachine, List<BossAttack> attacks) : base(agent, stateMachine, attacks) { }
+    public override BossPhases GetId() => BossPhases.Init;
 
-    public override void EnterState()
+    public override void EnterPhase()
     {
         Debug.Log(GetId());
     }
@@ -14,11 +15,12 @@ public class BossInitState : BossState
     {
         //Waiting for player to get close enough
         float dist = Vector3.Distance(agent.transform.position, agent.target.position);
-        if(dist < 10) { stateMachine.ChangeState(BossStates.Shield); }
-
+        if(dist < 10) {
+            stateMachine.ChangeState(BossPhases.Phase1);
+        }
     }
 
-    public override void ExitState()
+    public override void ExitPhase()
     {
 
     }

@@ -7,6 +7,7 @@ using Quest.Dialogue;
 public class NPCEvent : GameEvent
 {
     [SerializeField] public List<DialogueTrigger> npcList;
+    [SerializeField] string npcTrigger = "npc";
 
     public override void Init()
     {
@@ -22,7 +23,8 @@ public class NPCEvent : GameEvent
         foreach (DialogueTrigger npc in npcList)
         {
             npc.gameObject.SetActive(true);
-            npc.onTrigger.AddListener(CompletedEvent);
+            if(npc.action == npcTrigger)
+                npc.onTrigger.AddListener(CompletedEvent);
         }
     }
 
