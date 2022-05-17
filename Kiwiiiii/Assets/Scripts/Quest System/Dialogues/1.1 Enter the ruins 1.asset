@@ -1,0 +1,266 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-7222671949381575616
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc46249301e2b8e47baa0f69a70fc813, type: 3}
+  m_Name: 2a822dc4-ae43-44c0-b7be-287ca37e01d1
+  m_EditorClassIdentifier: 
+  playerSpeaking: 1
+  text: Of course!
+  children:
+  - 51d6f883-2f22-4c55-a44c-7c4017f54d09
+  rect:
+    serializedVersion: 2
+    x: 1297
+    y: 129
+    width: 200
+    height: 100
+  onExitAction: npcevent
+  onEnterAction: positive
+--- !u!114 &-6146330073437703445
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc46249301e2b8e47baa0f69a70fc813, type: 3}
+  m_Name: ba2206bd-7faa-477a-a458-e0631d7abd61
+  m_EditorClassIdentifier: 
+  playerSpeaking: 0
+  text: There's a special aura around you...
+  children:
+  - b368b705-d36a-4cbe-963a-5ccd2b033698
+  - 359604c0-eec2-41f2-976b-5217ac063d37
+  rect:
+    serializedVersion: 2
+    x: 240
+    y: 175
+    width: 200
+    height: 100
+  onExitAction: 
+  onEnterAction: 
+--- !u!114 &-6113108304855645919
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc46249301e2b8e47baa0f69a70fc813, type: 3}
+  m_Name: b368b705-d36a-4cbe-963a-5ccd2b033698
+  m_EditorClassIdentifier: 
+  playerSpeaking: 1
+  text: Where am I..?
+  children:
+  - 89d4266c-43d5-4e7e-98fe-c6d0bd0ff5cb
+  rect:
+    serializedVersion: 2
+    x: 496
+    y: 256
+    width: 200
+    height: 100
+  onExitAction: 
+  onEnterAction: 
+--- !u!114 &-2785594435256170097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc46249301e2b8e47baa0f69a70fc813, type: 3}
+  m_Name: 359604c0-eec2-41f2-976b-5217ac063d37
+  m_EditorClassIdentifier: 
+  playerSpeaking: 1
+  text: Actually I...
+  children:
+  - 89d4266c-43d5-4e7e-98fe-c6d0bd0ff5cb
+  rect:
+    serializedVersion: 2
+    x: 497
+    y: 89
+    width: 200
+    height: 100
+  onExitAction: 
+  onEnterAction: 
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bf9e36879b5f8640bdc4915559763df, type: 3}
+  m_Name: 1.1 Enter the ruins 1
+  m_EditorClassIdentifier: 
+  nodes:
+  - {fileID: 86084563099010460}
+  - {fileID: -6146330073437703445}
+  - {fileID: 7812576612706047034}
+  - {fileID: 337223550692000356}
+  - {fileID: -6113108304855645919}
+  - {fileID: -2785594435256170097}
+  - {fileID: 2631023419140505534}
+  - {fileID: -7222671949381575616}
+  - {fileID: 6398734313602212470}
+  - {fileID: 3179108997641401817}
+  newNodeOffset: {x: 200, y: 0}
+--- !u!114 &86084563099010460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc46249301e2b8e47baa0f69a70fc813, type: 3}
+  m_Name: d09ad23d-9f1c-425d-bf20-2111b8fd6220
+  m_EditorClassIdentifier: 
+  playerSpeaking: 0
+  text: Oh dear! Where did you come from?
+  children:
+  - ba2206bd-7faa-477a-a458-e0631d7abd61
+  rect:
+    serializedVersion: 2
+    x: 7
+    y: 175
+    width: 200
+    height: 100
+  onExitAction: 
+  onEnterAction: 
+--- !u!114 &337223550692000356
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc46249301e2b8e47baa0f69a70fc813, type: 3}
+  m_Name: 59cdf27e-4f1a-4382-85b0-bb90f266beee
+  m_EditorClassIdentifier: 
+  playerSpeaking: 0
+  text: Can you get that sword out of the stone over there?
+  children:
+  - 553ced36-fadb-4a27-9b7e-40236675821e
+  - 2a822dc4-ae43-44c0-b7be-287ca37e01d1
+  rect:
+    serializedVersion: 2
+    x: 1022
+    y: 214
+    width: 200
+    height: 100
+  onExitAction: 
+  onEnterAction: 
+--- !u!114 &2631023419140505534
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc46249301e2b8e47baa0f69a70fc813, type: 3}
+  m_Name: 553ced36-fadb-4a27-9b7e-40236675821e
+  m_EditorClassIdentifier: 
+  playerSpeaking: 1
+  text: You sure demand a lot...
+  children:
+  - c6885f18-4817-44c8-bf98-1c12452009e5
+  rect:
+    serializedVersion: 2
+    x: 1294
+    y: 285
+    width: 200
+    height: 100
+  onExitAction: npcevent
+  onEnterAction: negative
+--- !u!114 &3179108997641401817
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc46249301e2b8e47baa0f69a70fc813, type: 3}
+  m_Name: 51d6f883-2f22-4c55-a44c-7c4017f54d09
+  m_EditorClassIdentifier: 
+  playerSpeaking: 0
+  text: You're the best!
+  children: []
+  rect:
+    serializedVersion: 2
+    x: 1552
+    y: 131
+    width: 200
+    height: 100
+  onExitAction: npc
+  onEnterAction: 
+--- !u!114 &6398734313602212470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc46249301e2b8e47baa0f69a70fc813, type: 3}
+  m_Name: c6885f18-4817-44c8-bf98-1c12452009e5
+  m_EditorClassIdentifier: 
+  playerSpeaking: 0
+  text: ...
+  children: []
+  rect:
+    serializedVersion: 2
+    x: 1546
+    y: 285
+    width: 200
+    height: 100
+  onExitAction: npc
+  onEnterAction: 
+--- !u!114 &7812576612706047034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc46249301e2b8e47baa0f69a70fc813, type: 3}
+  m_Name: 89d4266c-43d5-4e7e-98fe-c6d0bd0ff5cb
+  m_EditorClassIdentifier: 
+  playerSpeaking: 0
+  text: Nay! There is no time for an explanation!
+  children:
+  - 59cdf27e-4f1a-4382-85b0-bb90f266beee
+  rect:
+    serializedVersion: 2
+    x: 746
+    y: 177
+    width: 200
+    height: 100
+  onExitAction: 
+  onEnterAction: 
