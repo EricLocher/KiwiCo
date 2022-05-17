@@ -20,8 +20,6 @@ public class PlayerMovement : MonoBehaviour
     Vector3[] groundCheckDirections = new Vector3[5] { Vector3.down, new Vector3(.5f, -.5f, 0), new Vector3(-.5f, -.5f, 0), new Vector3(0, -.5f, .5f), new Vector3(0, -.5f, -.5f) };
     bool jump = false;
 
-
-
     private void Awake()
     {
         animator = GetComponentInChildren<Animator>();
@@ -33,7 +31,6 @@ public class PlayerMovement : MonoBehaviour
         stats = playerController.stats;
         stats.amountOfDashes = stats.maxDashes;
     }
-
 
     #region Movement
     public void Move(Vector3 movement)
@@ -56,9 +53,9 @@ public class PlayerMovement : MonoBehaviour
         if (jump) {
             if (isGrounded || stats.amountOfJumps > 0) {
                 if (!isGrounded) { jumpVFX.Play(); }
-                string[] jumpSounds = new string[] { "jump1", "jump2", "jump3", "jump4", "jump5", "jump6", "jump7", "jump8" };
-                //var chosen = AudioManager.instance.GetRandomAudio(jumpSounds);
-                //AudioManager.instance.PlayOnce(chosen);
+                string[] jumpSounds = new string[] { "jump1", "jump2", "jump3", "jump4", "jump6", "jump7", "jump8" };
+                var chosen = AudioManager.instance.GetRandomAudio(jumpSounds);
+                AudioManager.instance.PlayOnce(chosen);
                 rb.AddForce(Vector3.up * stats.jumpForce, ForceMode.Impulse);
                 stats.amountOfJumps--;
             }

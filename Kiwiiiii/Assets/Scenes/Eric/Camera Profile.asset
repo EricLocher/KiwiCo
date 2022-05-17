@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59b6606ef2548734bb6d11b9d160bc7e, type: 3}
   m_Name: HDRISky
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   m_AdvancedMode: 1
   rotation:
     m_OverrideState: 1
@@ -31,11 +31,11 @@ MonoBehaviour:
     min: 0
   upperHemisphereLuxValue:
     m_OverrideState: 0
-    m_Value: 0.9988836
+    m_Value: 0.91415846
     min: 0
   upperHemisphereLuxColor:
     m_OverrideState: 0
-    m_Value: {x: 0.050656848, y: 0.25288147, z: 0.5}
+    m_Value: {x: 0.5, y: 0.06737233, z: 0.0673118}
   desiredLuxValue:
     m_OverrideState: 1
     m_Value: 0
@@ -51,7 +51,7 @@ MonoBehaviour:
     m_Value: 0
   hdriSky:
     m_OverrideState: 1
-    m_Value: {fileID: 8900000, guid: f87b0437f3c4716428fb27e71f3b1468, type: 3}
+    m_Value: {fileID: 8900000, guid: 5baa0b809d1219e409868a3d365c6354, type: 3}
   enableDistortion:
     m_OverrideState: 0
     m_Value: 0
@@ -204,7 +204,7 @@ MonoBehaviour:
     m_Value: {x: 0.92, y: 1, z: 0.96, w: 0}
   highlights:
     m_OverrideState: 1
-    m_Value: {x: 1, y: 0.95883334, z: 0.87, w: 0.39671412}
+    m_Value: {x: 1, y: 0.95883334, z: 0.87, w: 0.6721378}
   shadowsStart:
     m_OverrideState: 0
     m_Value: 0
@@ -261,7 +261,7 @@ MonoBehaviour:
     min: 0
   intensity:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 0.257
     min: 0
     max: 1
   scatter:

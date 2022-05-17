@@ -54,7 +54,7 @@ public class SlamEffect : MonoBehaviour
                 Rigidbody rb = collider.GetComponent<Rigidbody>();
 
                 if (rb == null) { continue; }
-
+                AudioManager.instance.PlayOnce("PlayerSlamCollide");
                 if (collider.CompareTag("Enemy")) {
                     Character enemy = collider.GetComponent<Character>();
 
@@ -65,7 +65,7 @@ public class SlamEffect : MonoBehaviour
 
                     #endregion
 
-                    enemy.DealDamage(damageToDeal);
+                    enemy.TakeDamage(damageToDeal);
                     print("Enemy got hit by slam");
                 }
 

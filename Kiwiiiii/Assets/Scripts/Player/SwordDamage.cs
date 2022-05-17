@@ -39,7 +39,7 @@ public class SwordDamage : MonoBehaviour
             var damage = (Mathf.Abs(swordRb.angularVelocity.y) + damageMinimumValue) * damageMultiplyFactor;
 
             damage = Mathf.Clamp(damage, damageMinimumValue, damageMaxValue);
-            enemy.DealDamage(damage);
+            enemy.TakeDamage(damage);
             enemies.Add(enemy);
         }
     }
