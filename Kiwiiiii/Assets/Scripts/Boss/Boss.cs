@@ -3,10 +3,10 @@ using UnityEngine;
 
 public class Boss : Character
 {
-    public List<Enemy> enemies;
     public BossHealthBar healthBar;
     [HideInInspector] public Transform target;
     [HideInInspector] public PatrolSpots spawnAreas;
+    [SerializeField] List<BossAttack> attacks;
     public SOBossStats stats { get { return (SOBossStats)characterStats; } }
 
     BossStateMachine stateMachine;
@@ -18,11 +18,14 @@ public class Boss : Character
 
         stateMachine = new BossStateMachine();
 
-        stateMachine.RegisterState(BossStates.Init, new BossInitState(this, stateMachine));
-        stateMachine.RegisterState(BossStates.Shield, new ShieldState(this, stateMachine));
-        stateMachine.RegisterState(BossStates.Spawning, new SpawnState(this, stateMachine));
+        foreach (BossAttack attack in attacks) {
+            attack.Init(spawnAreas, this);
+        }
+
+        stateMachine.RegisterState(BossPhases.Init, new BossInitState(this, stateMachine, attacks));
+        stateMachine.RegisterState(BossPhases.Phase1, new Phase1(this, stateMachine, attacks));
         stateMachine.boss = this;
-        stateMachine.ChangeState(BossStates.Init);
+        stateMachine.ChangeState(BossPhases.Init);
 
         healthBar.stats = stats;
     }
