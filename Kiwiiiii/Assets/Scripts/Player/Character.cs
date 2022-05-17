@@ -17,7 +17,7 @@ public class Character : MonoBehaviour
     public virtual void DealDamage(float value)
     {
         characterStats.health -= value;
-
+        AudioManager.instance.PlayOnce("PlayerTakeDamage");
         if (characterStats.health <= 0) { OnDeath(); }
     }
 
@@ -28,6 +28,8 @@ public class Character : MonoBehaviour
 
     protected virtual void OnDeath()
     {
-        Destroy(gameObject);
+        AudioManager.instance.PlayOnce("GameOver");
+        GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+        Destroy(gameObject, 0.4f);
     }
 }

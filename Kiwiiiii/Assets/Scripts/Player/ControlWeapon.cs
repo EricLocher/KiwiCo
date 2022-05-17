@@ -63,6 +63,7 @@ public class ControlWeapon : MonoBehaviour
 
     public void SheathWeapon()
     {
+        AudioManager.instance.PlayOnce("SwordSheath");
         sheath = !sheath;
         down = false;
 

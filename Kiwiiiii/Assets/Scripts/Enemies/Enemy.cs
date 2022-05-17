@@ -85,12 +85,13 @@ public class Enemy : Character
         popup.PopupDamage((int)value);
 
         blinkTimer = blinkDuration;
-
+        AudioManager.instance.PlayOnceLocal("EnemyTakeDamage", gameObject);
         if (characterStats.health <= 0) { OnDeath(); }
     }
 
     protected override void OnDeath()
     {
+        AudioManager.instance.PlayOnceLocal("EnemyDie", gameObject);
         stateMachine.ChangeState(EnemyStates.Death);
     }
 }
