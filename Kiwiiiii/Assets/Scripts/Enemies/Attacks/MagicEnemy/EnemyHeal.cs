@@ -50,14 +50,14 @@ public class EnemyHeal : EnemyAttack
             }
         }
 
-        Vector3 upHealPosition = new Vector3(thisEnemy.transform.position)
+        Vector3 upHealPosition = new Vector3(thisEnemy.transform.position.x, thisEnemy.transform.position.y + 3, thisEnemy.transform.position.z);
 
-        ParticleSystem healingUpwards = Instantiate(healingUp, thisEnemy.transform.position, healingUp.transform.rotation);
+        ParticleSystem healingUpwards = Instantiate(healingUp, upHealPosition, healingUp.transform.rotation);
         chosenEnemy.Heal(healAmt);
 
         yield return new WaitForSeconds(2);
 
-        Vector3 downHealPosition = new Vector3(chosenEnemy.transform.position.x, chosenEnemy.transform.position.y + 10, chosenEnemy.transform.position.z);
+        Vector3 downHealPosition = new Vector3(chosenEnemy.transform.position.x, chosenEnemy.transform.position.y + 15, chosenEnemy.transform.position.z);
 
         ParticleSystem healingDownwards = Instantiate(healingDown, downHealPosition, healingDown.transform.rotation);
         animator.ResetTrigger("heal");
