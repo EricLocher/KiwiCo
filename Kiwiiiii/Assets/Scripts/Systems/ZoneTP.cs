@@ -11,6 +11,7 @@ public class ZoneTP : MonoBehaviour
         if (collision.CompareTag("Character"))
         {
             Debug.Log("hej");
+            collision.gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
             collision.gameObject.transform.parent.gameObject.transform.position = targetPos.transform.position;
             collision.gameObject.transform.position = targetPos.transform.position;
         }
