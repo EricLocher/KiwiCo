@@ -28,7 +28,6 @@ public class Boss : Character
         stateMachine.RegisterState(BossPhases.Phase1, new Phase1(this, stateMachine, attacks));
         stateMachine.boss = this;
         stateMachine.ChangeState(BossPhases.Init);
-
         healthBar.stats = stats;
     }
 
@@ -44,5 +43,4 @@ public class Boss : Character
 
         if (characterStats.health <= 0) { OnDeath(); }
     }
-
 }
