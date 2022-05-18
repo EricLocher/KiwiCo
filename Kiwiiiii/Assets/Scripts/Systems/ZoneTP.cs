@@ -1,19 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ZoneTP : MonoBehaviour
 {
-    [SerializeField] GameObject targetPos;
+    [SerializeField] Transform targetPos;
 
     void OnTriggerEnter(Collider collision)
     {
         if (collision.CompareTag("Character"))
         {
-            Debug.Log("hej");
-            collision.gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
-            collision.gameObject.transform.parent.gameObject.transform.position = targetPos.transform.position;
-            collision.gameObject.transform.position = targetPos.transform.position;
+            foreach (Transform child in collision.gameObject.transform.parent.transform)
+            {
+                child.gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
+                child.gameObject.transform.position = targetPos.position;
+            }
         }
     }
 }
