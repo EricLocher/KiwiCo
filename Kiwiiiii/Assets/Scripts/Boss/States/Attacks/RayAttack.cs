@@ -45,6 +45,8 @@ public class RayAttack : BossAttack
         foreach (GameObject ray in rays)
         {
             ray.SetActive(false);
+            Destroy(ray);
         }
+        rays.Clear();
     }
 }

@@ -3,13 +3,19 @@ using UnityEngine;
 
 public class Boss : Character
 {
-    public BossHealthBar healthBar;
+    //public BossHealthBar healthBar;
+    BossUI ui;
     [HideInInspector] public Transform target;
     [HideInInspector] public PatrolSpots spawnAreas;
     public List<SOPhaseStats> phaseStats = new List<SOPhaseStats>();
     public SOBossStats stats { get { return (SOBossStats)characterStats; } }
 
     BossStateMachine stateMachine;
+
+    private void Start()
+    {
+        ui = GetComponent<BossUI>();
+    }
 
     protected override void Init()
     {
@@ -24,24 +30,26 @@ public class Boss : Character
         }
 
         stateMachine.RegisterState(BossPhases.Init, new BossInitState(this, stateMachine, phaseStats[0]));
-        stateMachine.RegisterState(BossPhases.Phase1, new Phase1(this, stateMachine, phaseStats[0]));
+        stateMachine.RegisterState(BossPhases.Phase1, new Phase3(this, stateMachine, phaseStats[0]));
         stateMachine.RegisterState(BossPhases.Phase2, new Phase2(this, stateMachine, phaseStats[1]));
         stateMachine.RegisterState(BossPhases.Phase3, new Phase3(this, stateMachine, phaseStats[2]));
         stateMachine.boss = this;
         stateMachine.ChangeState(BossPhases.Init);
-        healthBar.stats = stats;
+        //healthBar.stats = stats;
     }
 
     void Update()
     {
         stateMachine.Update();
-
     }
 
     public override void TakeDamage(float value)
     {
         print("Boss took damage: " + value);
         stats.health -= value;
+
+        ui.UpdateHealthBar(stats.health);
+        //healthBar.stats.health = value;
 
         if (stats.health <= 0) { OnDeath(); }
 

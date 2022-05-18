@@ -13,7 +13,6 @@ public class SpawnAttack : BossAttack
     public override void EnterState(BossPhase phase)
     {
         currentPhase = phase;
-
         Debug.Log(currentPhase);
 
         for (int i = 0; i < amountOfEnemies; i++) {

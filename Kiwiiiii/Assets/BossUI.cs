@@ -6,20 +6,18 @@ using UnityEngine.UI;
 public class BossUI : MonoBehaviour
 {
     [SerializeField] Slider hp;
-    Boss agent;
+    SOBossStats agent;
 
     private void Start()
     {
-        agent = GetComponent<Boss>();
-        hp.maxValue = agent.stats.maxHealth;
-        hp.value = agent.stats.maxHealth;
+        agent = GetComponent<Boss>().stats;
+        hp.maxValue = agent.maxHealth;
+        hp.value = agent.maxHealth;
     }
-    private void Update()
+
+    public void UpdateHealthBar(float hpAmt)
     {
-        //Test: UpdateHealthBar(1);
-    }
-    public void UpdateHealthBar(float damage)
-    {
-        hp.value -= damage;
+        hp.value = hpAmt;
+        //hp.value -= damage;
     }
 }
