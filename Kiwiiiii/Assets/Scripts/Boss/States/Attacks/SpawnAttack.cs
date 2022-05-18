@@ -13,18 +13,18 @@ public class SpawnAttack : BossAttack
     public override void EnterState(BossPhase phase)
     {
         currentPhase = phase;
-        Debug.Log(currentPhase);
+        //Debug.Log(currentPhase);
 
         for (int i = 0; i < amountOfEnemies; i++) {
             Vector3 spawnPos = spawnSpots.GetNewSpot();
             Instantiate(enemyList[(int)Random.Range(0, enemyList.Count)], Vector3.zero, Quaternion.identity).GetComponent<NavMeshAgent>().Warp(spawnPos);
         }
-
         ExitState();
     }
 
     public override void ExitState()
     {
+        Debug.Log(currentPhase);
         currentPhase.RemoveSubState(this);
     }
 }

@@ -34,6 +34,8 @@ public class Phase3 : BossPhase
         //    stats.attackList[0], stats.attackList[1]
         //}));
     }
+    public override void RemoveSubState(BossAttack state) {}
+
     public override void Update(float dt = 0)
     {
         if(comboAttacks[attackIndex].isDone)
@@ -60,6 +62,7 @@ class ComboAttacks
     public bool isDone;
     private float attackTimer;
     private float cooldown = 3;
+    private bool onCooldown = false;
     public ComboAttacks(List<BossAttack> attacks, BossPhase phase)
     {
         attackList = attacks;
@@ -68,6 +71,7 @@ class ComboAttacks
 
     public void EnterAttack()
     {
+        onCooldown = false;
         isDone = false;
         cooldown = 10;
         for (int i = 0; i < attackList.Count; i++)
@@ -83,19 +87,24 @@ class ComboAttacks
     public void Update(float dt)
     {
         attackTimer -= dt;
-        if (attackTimer <= 0)
+        if(attackTimer <= 0 && !onCooldown)
+        {
+            onCooldown = true;
+            foreach (var attack in attackList)
+            {
+                attack.ExitState();
+            }
+        }
+        else if(onCooldown)
         {
             cooldown -= dt;
-            if(cooldown <= 0)
+            if (cooldown <= 0)
             {
                 isDone = true;
             }
-            foreach (var attacks in attackList)
-            {
-                attacks.ExitState();
-            }
             return;
         }
+        
         for (int i = 0; i < attackList.Count; i++)
         {
             Debug.Log(i);
