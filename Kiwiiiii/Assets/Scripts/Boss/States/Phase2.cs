@@ -14,6 +14,10 @@ public class Phase2 : BossPhase
         NextSubState(attackIndex);
         attackCooldown = attacks[attackIndex].stateTime;
         Debug.Log(currentAttack);
+
+        //Granska detta Eric:
+        agent.UpdateAttackStats();
+
     }
     public override void Update(float dt = 0)
     {

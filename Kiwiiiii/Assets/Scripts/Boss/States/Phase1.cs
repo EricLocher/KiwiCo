@@ -33,6 +33,5 @@ public class Phase1 : BossPhase
 
     public override void ExitPhase()
     {
-        
     }
 }

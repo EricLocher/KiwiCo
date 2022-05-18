@@ -43,4 +43,7 @@ public class Boss : Character
 
         if (characterStats.health <= 0) { OnDeath(); }
     }
+    public void UpdateAttackStats()
+    {
+    }
 }
