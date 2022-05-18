@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Phase1 : BossPhase
+public class Phase2 : BossPhase
 {
-    public Phase1(Boss agent, BossStateMachine stateMachine, List<BossAttack> attacks) : base(agent, stateMachine, attacks) {}
+    public Phase2(Boss agent, BossStateMachine stateMachine, List<BossAttack> attacks) : base(agent, stateMachine, attacks) { }
     private float attackCooldown;
     private int attackIndex = 0;
 
@@ -18,10 +18,10 @@ public class Phase1 : BossPhase
     public override void Update(float dt = 0)
     {
         base.Update(dt);
-        if(attackCooldown <= 0)
+        if (attackCooldown <= 0)
         {
             attackIndex++;
-            if(attackIndex >= attacks.Count)
+            if (attackIndex >= attacks.Count)
             {
                 attackIndex = 0;
             }
@@ -33,6 +33,6 @@ public class Phase1 : BossPhase
 
     public override void ExitPhase()
     {
-        
+
     }
 }
