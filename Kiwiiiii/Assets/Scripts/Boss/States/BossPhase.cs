@@ -7,17 +7,28 @@ public abstract class BossPhase
     public Boss agent;
     public BossStateMachine stateMachine;
     public List<BossAttack> currentAttack = new List<BossAttack>();
+    public SOPhaseStats stats;
 
-    protected List<BossAttack> attacks;
-
-    public BossPhase(Boss agent, BossStateMachine stateMachine, List<BossAttack> attacks)
+    public BossPhase(Boss agent, BossStateMachine stateMachine, SOPhaseStats stats)
     {
         this.agent = agent;
         this.stateMachine = stateMachine;
-        this.attacks = attacks;
+        this.stats = stats;
     }
 
     public abstract BossPhases GetId();
+
+    public virtual void Init()
+    {
+        stats = GameObject.Instantiate(stats);
+
+        for(int i = 0; i < stats.attackList.Count; i++)
+        {
+            stats.attackList[i] = GameObject.Instantiate(stats.attackList[i]);
+            stats.attackList[i].Init(agent.spawnAreas, agent);
+        }
+    }
+
     public abstract void EnterPhase();
     public virtual void Update(float dt = 0)
     {
@@ -30,8 +41,8 @@ public abstract class BossPhase
 
     public virtual void NextSubState(int index)
     {
-        currentAttack.Add(attacks[index]);
-        attacks[index].EnterState(this);
+        currentAttack.Add(stats.attackList[index]);
+        stats.attackList[index].EnterState(this);
     }
 
     public virtual void RemoveSubState(BossAttack state)

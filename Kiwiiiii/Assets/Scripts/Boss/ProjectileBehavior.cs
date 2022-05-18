@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class ProjectileBehavior : MonoBehaviour
 {
-    [SerializeField] float speed;
-    [SerializeField] float damage;
+    [SerializeField] public float speed;
+    [SerializeField] public float damage;
     Rigidbody rb;
     private void Start()
     {
