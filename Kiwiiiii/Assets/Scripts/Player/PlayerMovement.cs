@@ -49,19 +49,18 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        _timer += Time.fixedDeltaTime;
-        if(_timer > 1f)
-            GroundCheck();
+        GroundCheck();
 
-        if (jump) {
-            if (stats.amountOfJumps > 0) {
+        if (jump)
+        {
+            if (stats.amountOfJumps > 0)
+            {
                 if (stats.amountOfJumps != stats.maxJumps) { jumpVFX.Play(); }
                 string[] jumpSounds = new string[] { "jump1", "jump2", "jump3", "jump4", "jump6", "jump7", "jump8" };
                 var chosen = AudioManager.instance.GetRandomAudio(jumpSounds);
                 AudioManager.instance.PlayOnce(chosen);
                 rb.AddForce(Vector3.up * stats.jumpForce, ForceMode.Impulse);
                 stats.amountOfJumps--;
-                _timer = 0;
             }
             jump = false;
         }
@@ -78,8 +77,10 @@ public class PlayerMovement : MonoBehaviour
         InputSystem.Update();
 
         RaycastHit hit;
-        for (int i = 0; i < groundCheckDirections.Length; i++) {
-            if (Physics.Raycast(transform.position, groundCheckDirections[i], out hit, 2f, layerMask)) {
+        for (int i = 0; i < groundCheckDirections.Length; i++)
+        {
+            if (Physics.Raycast(transform.position, groundCheckDirections[i], out hit, 2f, layerMask))
+            {
                 if (Vector3.Angle(hit.normal, Vector3.up) > maxAngle) { continue; }
                 float dist = Vector3.Distance(transform.position, hit.point);
 
