@@ -46,12 +46,4 @@ public class StabAttack : EnemyAttack
         stabCollider.enabled = false;
         enemy.stateMachine.ChangeState(EnemyStates.Chase);
     }
-
-    private void OnTriggerStay(Collider col)
-    {
-        if (col.gameObject.tag == ("Player"))
-        {
-            player.TakeDamage(0.1f);
-        }
-    }
 }
