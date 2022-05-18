@@ -19,8 +19,16 @@ public class AttackCone : ScriptableObject
 
         Vector3 dir = (target.position - origin.position).normalized;
 
-        
-        if (Vector3.Angle(origin.forward, dir) < angle / 2) {
+        Vector3 coneForward = Quaternion.Euler(0, rotation, 0) * origin.forward;
+
+        var firstAngle = Vector3.Angle(coneForward, dir);
+
+        var newAngle = (angle / 2);
+
+        Debug.Log("start: " + firstAngle);
+        Debug.Log("second: " + newAngle);
+
+        if (firstAngle < newAngle) {
             return true;
         }
         return false;
