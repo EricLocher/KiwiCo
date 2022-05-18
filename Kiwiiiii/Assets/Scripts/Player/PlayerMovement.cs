@@ -17,6 +17,8 @@ public class PlayerMovement : MonoBehaviour
     private Animator animator;
     public VisualEffect chargeVFX;
 
+    float _timer;
+
     Vector3[] groundCheckDirections = new Vector3[5] { Vector3.down, new Vector3(.5f, -.5f, 0), new Vector3(-.5f, -.5f, 0), new Vector3(0, -.5f, .5f), new Vector3(0, -.5f, -.5f) };
     bool jump = false;
 
@@ -47,17 +49,19 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-
-        GroundCheck();
+        _timer += Time.fixedDeltaTime;
+        if(_timer > 1f)
+            GroundCheck();
 
         if (jump) {
-            if (isGrounded || stats.amountOfJumps > 0) {
-                if (!isGrounded) { jumpVFX.Play(); }
+            if (stats.amountOfJumps > 0) {
+                if (stats.amountOfJumps != stats.maxJumps) { jumpVFX.Play(); }
                 string[] jumpSounds = new string[] { "jump1", "jump2", "jump3", "jump4", "jump6", "jump7", "jump8" };
                 var chosen = AudioManager.instance.GetRandomAudio(jumpSounds);
                 AudioManager.instance.PlayOnce(chosen);
                 rb.AddForce(Vector3.up * stats.jumpForce, ForceMode.Impulse);
                 stats.amountOfJumps--;
+                _timer = 0;
             }
             jump = false;
         }
