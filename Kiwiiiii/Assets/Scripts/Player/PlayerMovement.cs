@@ -17,6 +17,8 @@ public class PlayerMovement : MonoBehaviour
     private Animator animator;
     public VisualEffect chargeVFX;
 
+    float _timer;
+
     Vector3[] groundCheckDirections = new Vector3[5] { Vector3.down, new Vector3(.5f, -.5f, 0), new Vector3(-.5f, -.5f, 0), new Vector3(0, -.5f, .5f), new Vector3(0, -.5f, -.5f) };
     bool jump = false;
 
@@ -47,12 +49,13 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-
         GroundCheck();
 
-        if (jump) {
-            if (isGrounded || stats.amountOfJumps > 0) {
-                if (!isGrounded) { jumpVFX.Play(); }
+        if (jump)
+        {
+            if (stats.amountOfJumps > 0)
+            {
+                if (stats.amountOfJumps != stats.maxJumps) { jumpVFX.Play(); }
                 string[] jumpSounds = new string[] { "jump1", "jump2", "jump3", "jump4", "jump6", "jump7", "jump8" };
                 var chosen = AudioManager.instance.GetRandomAudio(jumpSounds);
                 AudioManager.instance.PlayOnce(chosen);
@@ -74,8 +77,10 @@ public class PlayerMovement : MonoBehaviour
         InputSystem.Update();
 
         RaycastHit hit;
-        for (int i = 0; i < groundCheckDirections.Length; i++) {
-            if (Physics.Raycast(transform.position, groundCheckDirections[i], out hit, 2f, layerMask)) {
+        for (int i = 0; i < groundCheckDirections.Length; i++)
+        {
+            if (Physics.Raycast(transform.position, groundCheckDirections[i], out hit, 2f, layerMask))
+            {
                 if (Vector3.Angle(hit.normal, Vector3.up) > maxAngle) { continue; }
                 float dist = Vector3.Distance(transform.position, hit.point);
 

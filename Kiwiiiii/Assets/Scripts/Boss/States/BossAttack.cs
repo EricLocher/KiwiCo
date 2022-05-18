@@ -39,6 +39,3 @@ public abstract class BossAttack : ScriptableObject
         currentPhase.RemoveSubState(this);
     }
 }
-
-
-

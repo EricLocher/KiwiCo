@@ -15,7 +15,6 @@ public class Phase1 : BossPhase
         attackCooldown = attacks[attackIndex].stateTime;
         Debug.Log(currentAttack);
     }
-
     public override void Update(float dt = 0)
     {
         base.Update(dt);
@@ -34,6 +33,5 @@ public class Phase1 : BossPhase
 
     public override void ExitPhase()
     {
-        
     }
 }
