@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class AttackCone : ScriptableObject
@@ -10,7 +8,9 @@ public class AttackCone : ScriptableObject
     [Range(0, 50)] public float radius = 1;
     [Range(0, 360)] public float angle = 1;
     [Range(0, 360)] public float rotation = 1;
-
+    public float damage;
+    public enum TriggerName { swing, stab, knockback, alert };
+    public TriggerName triggerName;
 
     public bool TargetInCone(Transform target)
     {
@@ -24,9 +24,6 @@ public class AttackCone : ScriptableObject
         var firstAngle = Vector3.Angle(coneForward, dir);
 
         var newAngle = (angle / 2);
-
-        Debug.Log("start: " + firstAngle);
-        Debug.Log("second: " + newAngle);
 
         if (firstAngle < newAngle) {
             return true;

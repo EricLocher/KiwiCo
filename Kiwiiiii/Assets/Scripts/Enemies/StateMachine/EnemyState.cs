@@ -10,9 +10,9 @@ public abstract class EnemyState
     }
 
     public abstract EnemyStates GetId();
-    public abstract void EnterState();
-    public abstract void Update(float dt = 0);
-    public abstract void ExitState();
+    public virtual void EnterState() { }
+    public virtual void Update(float dt = 0) { }
+    public virtual void ExitState() { }
 
 }
 

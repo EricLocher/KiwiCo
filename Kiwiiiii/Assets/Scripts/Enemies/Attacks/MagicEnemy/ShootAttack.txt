@@ -34,14 +34,14 @@ public class ShootAttack : EnemyAttack
     {
         currentCoroutine = null;
         playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
-        animator = GetComponent<Animator>();
+        //animator = GetComponent<Animator>();
     }
 
-    public override void EnterAttack()
+    public override void EnterAttack(AttackCone attacks)
     {
         if (currentCoroutine == null)
         {
-            currentCoroutine = StartCoroutine(InstantiateBall());
+            //currentCoroutine = StartCoroutine(InstantiateBall());
         }
         else
         {
@@ -67,12 +67,12 @@ public class ShootAttack : EnemyAttack
         {
             yield return new WaitForSeconds(secondsBetweenEachShot);
 
-            SphereDamage newSphere = Instantiate(sphere, weapon.transform.position, weapon.transform.rotation).GetComponent<SphereDamage>();
+            //SphereDamage newSphere = Instantiate(sphere, weapon.transform.position, weapon.transform.rotation).GetComponent<SphereDamage>();
 
             //AudioManager.instance.PlayLocal("EnemyFireBurn", newSphere.gameObject);
             //AudioManager.instance.PlayOnceLocal("EnemyFire", gameObject);
 
-            newSphere.target = playerController;
+            //newSphere.target = playerController;
         }
 
         yield return new WaitForSeconds(secondsBetweenWaves);

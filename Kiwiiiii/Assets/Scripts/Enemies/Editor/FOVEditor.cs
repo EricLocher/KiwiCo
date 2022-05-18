@@ -13,10 +13,6 @@ public class FOVEditor : Editor
 
     void Draw()
     {
-        //Inner radius
-        Handles.color = Color.red;
-        Handles.DrawWireArc(fov.transform.position, Vector3.up, Vector3.forward, 360, fov.innerRadius);
-
         //Outer radius
         Handles.color = new Color(1, 0.65f, 0);
         Handles.DrawWireArc(fov.transform.position, Vector3.up, Vector3.forward, 360, fov.outerRadius);

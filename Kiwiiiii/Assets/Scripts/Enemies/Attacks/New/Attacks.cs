@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,21 +5,29 @@ public class Attacks : MonoBehaviour
 {
     public Transform target;
     [HideInInspector] public List<AttackCone> attacks = new List<AttackCone>();
+    [SerializeField] Enemy agent;
+    int randomIndex;
 
     void Attack()
     {
-        int randomIndex = Random.Range(0, attacks.Count);
+        randomIndex = Random.Range(0, attacks.Count);
 
-        //Call on AttackCone TargetInCone.
+        agent.stateMachine.ChangeState(EnemyStates.Attack);
+        agent.animator.SetTrigger(attacks[randomIndex].triggerName.ToString());
     }
 
     private void Update()
     {
         foreach (AttackCone attack in attacks) {
             if (attack.TargetInCone(target)) {
-                Debug.Log("In Zone");
+                Attack();
             }
         }
+    }
+    public void ExitAttack()
+    {
+        agent.stateMachine.ChangeState(EnemyStates.Chase);
+        agent.animator.ResetTrigger(attacks[randomIndex].triggerName.ToString());
     }
 
 

@@ -16,17 +16,11 @@ public class Enemy : Character
     [HideInInspector] public NavMeshAgent navMeshAgent;
     [HideInInspector] public FOV fov;
     [SerializeField] DamagePopup damagePopup;
-    [HideInInspector] public EnemyAttack attack;
     [SerializeField] float blinkIntensity, blinkDuration;
     float blinkTimer;
     [SerializeField] SkinnedMeshRenderer skinnedMeshRenderer;
 
-    public EnemyIdle idle;
-    public EnemyChase chase;
-    public EnemySurprise surprise;
     public EnemyStateMachine stateMachine;
-
-    public List<EnemyAttack> enemyAttacks;
 
     protected override void Init()
     {
@@ -48,6 +42,7 @@ public class Enemy : Character
 
     public void SetDestination(Vector3 pos)
     {
+        if (!navMeshAgent.isOnNavMesh) { Debug.LogError("Not on navmesh", this); return; }
         navMeshAgent.SetDestination(pos);
     }
 
@@ -83,23 +78,6 @@ public class Enemy : Character
     {
         AudioManager.instance.PlayOnceLocal("EnemyDie", gameObject);
         stateMachine.ChangeState(EnemyStates.Death);
-    }
-
-    IEnumerator Knockback()
-    {
-        animator.SetTrigger("knockback");
-
-        yield return new WaitForSeconds(2);
-
-        animator.ResetTrigger("knockback");
-    }
-
-    private void OnCollisionEnter(Collision col)
-    {
-        if (col.gameObject.tag == ("Sword"))
-        {
-            StartCoroutine(Knockback());
-        }
     }
 }
 

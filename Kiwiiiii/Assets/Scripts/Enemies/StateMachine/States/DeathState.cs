@@ -9,16 +9,6 @@ public class DeathState : EnemyState
 
     public override void EnterState()
     {
-        Object.Destroy(agent.gameObject);
-    }
-
-    public override void Update(float dt)
-    {
-        return;
-    }
-
-    public override void ExitState()
-    {
-        return;
+        Object.Destroy(agent.gameObject, 0.2f);
     }
 }

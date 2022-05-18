@@ -7,22 +7,14 @@ public class ChaseState : EnemyState
 
     public override void EnterState()
     {
-        agent.chase?.EnterChase();
+        agent.animator.SetBool("moving", true);
     }
 
     public override void Update(float dt)
     {
-        agent.chase?.ActiveChase();
-
         agent.transform.LookAt(new Vector3(agent.target.position.x, agent.transform.position.y, agent.target.position.z));
 
         if (!agent.fov.TargetInView(agent.target)) { stateMachine.ChangeState(EnemyStates.Idle); }
-
-        if (Vector3.Distance(agent.transform.position, agent.target.position) < agent.fov.innerRadius)
-        {
-            stateMachine.ChangeState(EnemyStates.Attack);
-            return;
-        }
 
         //Otherwise chase target.
         agent.SetDestination(agent.target.position);
@@ -30,7 +22,7 @@ public class ChaseState : EnemyState
 
     public override void ExitState()
     {
-        agent.chase?.ExitChase();
+        agent.animator.SetBool("moving", false);
     }
 
 

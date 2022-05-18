@@ -13,9 +13,8 @@ public class IdleState : EnemyState
 
     public override void EnterState()
     {
-        agent.idle?.EnterIdle();
-
         agent.SetDestination(agent.transform.position);
+        agent.animator.SetTrigger("idle");
 
         waitTime = 2;
         hasWaited = false;
@@ -23,8 +22,6 @@ public class IdleState : EnemyState
 
     public override void Update(float dt)
     {
-        agent.idle?.ActiveIdle();
-
         waitTime -= dt;
 
         if (waitTime <= 0 && hasWaited == false)
@@ -43,7 +40,7 @@ public class IdleState : EnemyState
 
     public override void ExitState()
     {
-        agent.idle?.ExitIdle();
+        agent.animator.ResetTrigger("idle");
     }
 
     public void ResetState()

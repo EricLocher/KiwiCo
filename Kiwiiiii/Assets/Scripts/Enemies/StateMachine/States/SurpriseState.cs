@@ -9,23 +9,17 @@ public class SurpriseState : EnemyState
 
     public override void EnterState()
     {
-        agent.surprise?.EnterSurprise();
-
         agent.animator.SetTrigger("alert");
     }
 
     public override void Update(float dt)
     {
-        agent.surprise?.ActiveSurprise();
-
         WaitForAnimation();
         stateMachine.ChangeState(EnemyStates.Chase);
     }
 
     public override void ExitState()
     {
-        agent.surprise?.ExitSurprise();
-
         agent.animator.ResetTrigger("alert");
     }
 

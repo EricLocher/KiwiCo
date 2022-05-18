@@ -1,12 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class FOV : MonoBehaviour
 {
     [Header("FOV Settings")]
-    [Range(0, 50)]
-    public float innerRadius;
     [Range(0, 50)]
     public float outerRadius;
     [Space]
