@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class BossInitState : BossPhase
 {
-    public BossInitState(Boss agent, BossStateMachine stateMachine, List<BossAttack> attacks) : base(agent, stateMachine, attacks) { }
+    public BossInitState(Boss agent, BossStateMachine stateMachine, SOPhaseStats stats) : base(agent, stateMachine, stats) { }
     public override BossPhases GetId() => BossPhases.Init;
 
     public override void EnterPhase()

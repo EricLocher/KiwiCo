@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Phase1 : BossPhase
 {
-    public Phase1(Boss agent, BossStateMachine stateMachine, List<BossAttack> attacks) : base(agent, stateMachine, attacks) {}
+    public Phase1(Boss agent, BossStateMachine stateMachine, SOPhaseStats stats) : base(agent, stateMachine, stats) {}
     private float attackCooldown;
     private int attackIndex = 0;
 
@@ -12,7 +12,7 @@ public class Phase1 : BossPhase
     public override void EnterPhase()
     {
         NextSubState(attackIndex);
-        attackCooldown = attacks[attackIndex].stateTime;
+        attackCooldown = stats.attackList[attackIndex].stateTime;
         Debug.Log(currentAttack);
     }
     public override void Update(float dt = 0)
@@ -21,17 +21,18 @@ public class Phase1 : BossPhase
         if(attackCooldown <= 0)
         {
             attackIndex++;
-            if(attackIndex >= attacks.Count)
+            if(attackIndex >= stats.attackList.Count)
             {
                 attackIndex = 0;
             }
             NextSubState(attackIndex);
-            attackCooldown = attacks[attackIndex].stateTime;
+            attackCooldown = stats.attackList[attackIndex].stateTime;
         }
         attackCooldown -= dt;
     }
 
     public override void ExitPhase()
     {
+
     }
 }

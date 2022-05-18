@@ -26,5 +26,6 @@ public class BossStateMachine
     public void RegisterState(BossPhases stateID, BossPhase state)
     {
         states.Add(stateID, state);
+        state.Init();
     }
 }

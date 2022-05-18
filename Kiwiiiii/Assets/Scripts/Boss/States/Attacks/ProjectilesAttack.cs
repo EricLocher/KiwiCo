@@ -9,6 +9,8 @@ public class ProjectilesAttack : BossAttack
     [SerializeField] GameObject projectile;
     [SerializeField] int amount = 5;
     [SerializeField] float coolDownTime = 3;
+    [SerializeField] float damage;
+    [SerializeField] float speed;
     private int spawnPointIndex = 0;
     private float elapsedTime;
 
@@ -28,12 +30,15 @@ public class ProjectilesAttack : BossAttack
             for (int i = 0; i < amount; i++)
             {
                 float offsetAngle = ((spawnPointIndex % 2) == 0)? 180:0;
-                GameObject _temp = Instantiate(projectile);
+                ProjectileBehavior _temp = Instantiate(projectile).GetComponent<ProjectileBehavior>();
                 float dX = 1 * Mathf.Cos(offsetAngle + i * 2 * Mathf.PI / amount);
                 float dY = 1 * Mathf.Sin(offsetAngle + i * 2 * Mathf.PI / amount);
                 _temp.transform.position = boss.transform.position + new Vector3(dX, 0, dY);
                 _temp.transform.LookAt(boss.transform.position);
                 _temp.transform.parent = TempHolder.transform;
+                _temp.damage = damage;
+                _temp.speed = speed;
+
             }
             spawnPointIndex++;
             elapsedTime = 0;
