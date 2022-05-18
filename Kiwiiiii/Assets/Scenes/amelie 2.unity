@@ -3912,6 +3912,11 @@ Rigidbody:
   m_CorrespondingSourceObject: {fileID: 5261179116413408735, guid: 73e236827e84ef14dbd11f330fac65e8, type: 3}
   m_PrefabInstance: {fileID: 676052562}
   m_PrefabAsset: {fileID: 0}
+--- !u!135 &603897870 stripped
+SphereCollider:
+  m_CorrespondingSourceObject: {fileID: 7630924585738198862, guid: 73e236827e84ef14dbd11f330fac65e8, type: 3}
+  m_PrefabInstance: {fileID: 676052562}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &603897873 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3552751785856790081, guid: 73e236827e84ef14dbd11f330fac65e8, type: 3}
@@ -9387,6 +9392,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5455223205099218082, guid: 73e236827e84ef14dbd11f330fac65e8, type: 3}
+      propertyPath: maxAngle
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 5455223205099218082, guid: 73e236827e84ef14dbd11f330fac65e8, type: 3}
+      propertyPath: characterHitBox
+      value: 
+      objectReference: {fileID: 603897870}
     - target: {fileID: 7895457381819548122, guid: 73e236827e84ef14dbd11f330fac65e8, type: 3}
       propertyPath: ignoreColl.m_Bits
       value: 5280
