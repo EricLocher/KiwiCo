@@ -18,6 +18,7 @@ public class CutsceneEvent : GameEvent
 
     public override void StartEvent(EventZone zone)
     {
+        this.zone = zone;
         player.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
         canvas.GetComponent<UIManager>().HideAllUIExceptCutscene();
         cameraCenter.transform.GetChild(0).GetComponent<CameraController>().IsCinematic = true;
@@ -47,5 +48,7 @@ public class CutsceneEvent : GameEvent
 
         cameraCenter.transform.position = camStartPos;
         cameraCenter.transform.eulerAngles = camStartRot;
+
+        zone.NextEvent();
     }
 }
