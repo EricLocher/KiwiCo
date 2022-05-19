@@ -32,6 +32,9 @@ public class Phase2 : BossPhase
 
     public override void ExitPhase()
     {
-
+        foreach (var attack in currentAttack)
+        {
+            attack.ExitState();
+        }
     }
 }
