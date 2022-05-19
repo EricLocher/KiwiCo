@@ -7,6 +7,7 @@ public class ChaseState : EnemyState
 
     public override void EnterState()
     {
+        if (agent == null) { return; }
         agent.animator.SetBool("moving", true);
     }
 
@@ -22,6 +23,7 @@ public class ChaseState : EnemyState
 
     public override void ExitState()
     {
+        if(agent == null) { return; }
         agent.animator.SetBool("moving", false);
     }
 
