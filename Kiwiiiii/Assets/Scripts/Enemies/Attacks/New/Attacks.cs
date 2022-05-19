@@ -12,9 +12,10 @@ public class Attacks : MonoBehaviour
     void Start()
     {
         agent = GetComponent<Enemy>();
-        foreach (AttackCone attack in attacks)
+        for (int i = 0; i < attacks.Count; i++)
         {
-            attack.origin = transform;
+            attacks[i] = Instantiate(attacks[i]);
+            attacks[i].origin = transform;
         }
         target = GameObject.FindGameObjectWithTag("Character").transform;
     }
