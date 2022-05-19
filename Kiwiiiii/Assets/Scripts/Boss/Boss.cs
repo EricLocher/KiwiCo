@@ -30,7 +30,7 @@ public class Boss : Character
         }
 
         stateMachine.RegisterState(BossPhases.Init, new BossInitState(this, stateMachine, phaseStats[0]));
-        stateMachine.RegisterState(BossPhases.Phase1, new Phase3(this, stateMachine, phaseStats[0]));
+        stateMachine.RegisterState(BossPhases.Phase1, new Phase1(this, stateMachine, phaseStats[0]));
         stateMachine.RegisterState(BossPhases.Phase2, new Phase2(this, stateMachine, phaseStats[1]));
         stateMachine.RegisterState(BossPhases.Phase3, new Phase3(this, stateMachine, phaseStats[2]));
         stateMachine.boss = this;
