@@ -8,7 +8,7 @@ public class BossInitState : BossPhase
 
     public override void EnterPhase()
     {
-        Debug.Log(GetId());
+        //
     }
 
     public override void Update(float dt = 0)
@@ -20,10 +20,6 @@ public class BossInitState : BossPhase
         }
     }
 
-    public override void ExitPhase()
-    {
-
-    }
 
 }
 

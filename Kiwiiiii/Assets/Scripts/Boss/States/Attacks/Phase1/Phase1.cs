@@ -30,8 +30,4 @@ public class Phase1 : BossPhase
         attackCooldown -= dt;
     }
 
-    public override void ExitPhase()
-    {
-
-    }
 }

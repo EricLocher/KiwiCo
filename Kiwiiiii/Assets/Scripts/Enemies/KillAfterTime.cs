@@ -7,18 +7,9 @@ public class KillAfterTime : MonoBehaviour
 {
     [SerializeField, Range(1,10)] private float timeUntilKill;
 
-    void Update()
+    private void Start()
     {
-        timeUntilKill -= Time.deltaTime;
-
-        if (timeUntilKill <= 0)
-        {
-            KillMe();
-        }
+        Destroy(gameObject, timeUntilKill);
     }
 
-    private void KillMe()
-    {
-        Destroy(this.gameObject);
-    }
 }

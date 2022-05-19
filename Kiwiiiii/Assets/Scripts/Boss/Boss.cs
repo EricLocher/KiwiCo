@@ -45,7 +45,6 @@ public class Boss : Character
 
     public override void TakeDamage(float value)
     {
-        print("Boss took damage: " + value);
         stats.health -= value;
 
         ui.UpdateHealthBar(stats.health);
