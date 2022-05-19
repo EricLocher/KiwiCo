@@ -58,9 +58,7 @@ public class PlayerMovement : MonoBehaviour
             if (stats.amountOfJumps > 0)
             {
                 if (stats.amountOfJumps != stats.maxJumps) { jumpVFX.Play(); }
-                string[] jumpSounds = new string[] { "jump1", "jump2", "jump3", "jump4", "jump6", "jump7", "jump8" };
-                var chosen = AudioManager.instance.GetRandomAudio(jumpSounds);
-                AudioManager.instance.PlayOnce(chosen);
+                AudioManager.instance.PlayOnce("jump1");
                 rb.AddForce(Vector3.up * stats.jumpForce, ForceMode.Impulse);
                 stats.amountOfJumps--;
             }
