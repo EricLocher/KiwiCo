@@ -80,7 +80,6 @@ public class Enemy : Character
     {
         yield return new WaitForSeconds(time);
         animator.ResetTrigger("knockback");
-        animator.SetTrigger("shoot");
     }
 
     protected override void OnDeath()

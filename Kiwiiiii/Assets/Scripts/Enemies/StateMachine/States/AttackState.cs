@@ -7,6 +7,8 @@ public class AttackState : EnemyState
     {
         //not working sometimes...
         agent.navMeshAgent.SetDestination(agent.transform.position);
+        agent.animator.SetBool("moving", false);
+        UnityEngine.Debug.Log("hej");
     }
 
 }
