@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[CreateAssetMenu(fileName = "Attack", menuName = "Utilities/Attack")]
 public class AttackCone : ScriptableObject
 {
     [HideInInspector] public Transform origin;
