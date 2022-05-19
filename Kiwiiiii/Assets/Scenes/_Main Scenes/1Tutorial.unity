@@ -8335,9 +8335,7 @@ MonoBehaviour:
   invertedColliderPrefab: {fileID: 7134274620490541171, guid: 94e799e82fc2d364b8b3af3cdba0be40, type: 3}
   barrier: 1
   zoneCollider: {fileID: 320174833}
-  events:
-  - {fileID: 1112221477}
-  - {fileID: 414641120}
+  events: []
   invertedCollider: {fileID: 1266590296}
 --- !u!135 &320174833
 SphereCollider:
@@ -10848,21 +10846,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7673213971208538725, guid: 87878f3db3b560d4e8ab5d417dea8894, type: 3}
   m_PrefabInstance: {fileID: 1727255788}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &414641120
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ec59f2a1beaa09448c9986f23bf2b13, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  eventName: SmallWave2
-  Minimized: 0
-  enemyList: []
 --- !u!4 &414673601 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7673213971208538725, guid: 87878f3db3b560d4e8ab5d417dea8894, type: 3}
@@ -23856,6 +23839,10 @@ PrefabInstance:
       value: 45
       objectReference: {fileID: 0}
     - target: {fileID: 5455223205099218082, guid: 73e236827e84ef14dbd11f330fac65e8, type: 3}
+      propertyPath: groundDecal
+      value: 
+      objectReference: {fileID: 1898346972}
+    - target: {fileID: 5455223205099218082, guid: 73e236827e84ef14dbd11f330fac65e8, type: 3}
       propertyPath: characterHitBox
       value: 
       objectReference: {fileID: 603897870}
@@ -25654,21 +25641,6 @@ Transform:
   m_Father: {fileID: 1443992434}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &750865199
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ec59f2a1beaa09448c9986f23bf2b13, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  eventName: Wave2
-  Minimized: 0
-  enemyList: []
 --- !u!4 &752220845 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7333864604554640690, guid: 24a1690574785b241a144ff7855402a6, type: 3}
@@ -38601,21 +38573,6 @@ Transform:
   m_Father: {fileID: 2050261864}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1112221477
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ec59f2a1beaa09448c9986f23bf2b13, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  eventName: SmallWave1
-  Minimized: 0
-  enemyList: []
 --- !u!4 &1114329384 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7333864604554640690, guid: 24a1690574785b241a144ff7855402a6, type: 3}
@@ -43314,6 +43271,63 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7333864604554640690, guid: 24a1690574785b241a144ff7855402a6, type: 3}
   m_PrefabInstance: {fileID: 1630936887}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1308400297
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1702258038}
+    m_Modifications:
+    - target: {fileID: 2312297097484074834, guid: 05dd961f71568c04a9c443d3f715ef02, type: 3}
+      propertyPath: m_Name
+      value: GroundDecal
+      objectReference: {fileID: 0}
+    - target: {fileID: 2312297097484074839, guid: 05dd961f71568c04a9c443d3f715ef02, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2312297097484074839, guid: 05dd961f71568c04a9c443d3f715ef02, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2312297097484074839, guid: 05dd961f71568c04a9c443d3f715ef02, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2312297097484074839, guid: 05dd961f71568c04a9c443d3f715ef02, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2312297097484074839, guid: 05dd961f71568c04a9c443d3f715ef02, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 2312297097484074839, guid: 05dd961f71568c04a9c443d3f715ef02, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 2312297097484074839, guid: 05dd961f71568c04a9c443d3f715ef02, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2312297097484074839, guid: 05dd961f71568c04a9c443d3f715ef02, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2312297097484074839, guid: 05dd961f71568c04a9c443d3f715ef02, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 2312297097484074839, guid: 05dd961f71568c04a9c443d3f715ef02, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2312297097484074839, guid: 05dd961f71568c04a9c443d3f715ef02, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 05dd961f71568c04a9c443d3f715ef02, type: 3}
 --- !u!1001 &1309248173
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -53581,6 +53595,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3235856096283578717, guid: f13b0ca6e085ac849a10a158fc6d9f15, type: 3}
   m_PrefabInstance: {fileID: 3126246380397641211}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &1702258038 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3025217583516844951, guid: 73e236827e84ef14dbd11f330fac65e8, type: 3}
+  m_PrefabInstance: {fileID: 676052562}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1704711018 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7333864604554640690, guid: 24a1690574785b241a144ff7855402a6, type: 3}
@@ -53621,21 +53640,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7333864604554640690, guid: 24a1690574785b241a144ff7855402a6, type: 3}
   m_PrefabInstance: {fileID: 43791804}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1708740445
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ec59f2a1beaa09448c9986f23bf2b13, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  eventName: Wave1
-  Minimized: 0
-  enemyList: []
 --- !u!4 &1710320504 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3277026603171942403, guid: c738000a5a852ba41bcdb4f3eacfba28, type: 3}
@@ -62414,6 +62418,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c67a68440a375294a98b5e6b14aa52d8, type: 3}
+--- !u!114 &1898346972 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2312297097484074837, guid: 05dd961f71568c04a9c443d3f715ef02, type: 3}
+  m_PrefabInstance: {fileID: 1308400297}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f19d9143a39eb3b46bc4563e9889cfbd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1898454126
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -68993,9 +69008,7 @@ MonoBehaviour:
   invertedColliderPrefab: {fileID: 7134274620490541171, guid: 94e799e82fc2d364b8b3af3cdba0be40, type: 3}
   barrier: 1
   zoneCollider: {fileID: 2962575281847514483}
-  events:
-  - {fileID: 1708740445}
-  - {fileID: 750865199}
+  events: []
   invertedCollider: {fileID: 1516936029}
 --- !u!1 &2962575281847514481
 GameObject:
