@@ -30,4 +30,11 @@ public class Phase2 : BossPhase
         attackCooldown -= dt;
     }
 
+    public override void ExitPhase()
+    {
+        foreach (var attack in currentAttack)
+        {
+            attack.ExitState();
+        }
+    }
 }

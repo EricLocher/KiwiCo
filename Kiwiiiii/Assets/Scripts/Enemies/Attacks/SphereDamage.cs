@@ -8,23 +8,24 @@ public class SphereDamage : MonoBehaviour
 
     void Start()
     {
-        target = GameObject.FindGameObjectWithTag("Character");
+        target = GameObject.FindGameObjectWithTag("Player");
         rb = GetComponent<Rigidbody>();
     }
 
     void Update()
     {
-        transform.LookAt(target.transform);
+        transform.LookAt(target.transform.GetChild(0).gameObject.transform);
 
         rb.AddForce(transform.forward * force, ForceMode.Force);
     }
 
     void OnTriggerEnter(Collider collision)
     {
+        if (collision.isTrigger) { return; }
         if (collision.gameObject.CompareTag("Character"))
         {
-            //target.GetComponent<PlayerController>().TakeDamage(3);
-            //Destroy(gameObject);
+            target.GetComponent<PlayerController>().TakeDamage(3f);
+            Destroy(gameObject);
         }
     }
 }
