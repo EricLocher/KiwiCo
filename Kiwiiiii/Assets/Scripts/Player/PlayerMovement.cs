@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering.HighDefinition;
 using UnityEngine.VFX;
 
 [RequireComponent(typeof(Rigidbody))]
@@ -10,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] SphereCollider characterHitBox;
     [SerializeField] VisualEffect jumpVFX;
     [SerializeField, Range(0, 90)] float maxAngle = 45f;
+    [SerializeField] DecalProjector groundDecal;
 
     [HideInInspector] public Rigidbody rb;
     [HideInInspector] public SOPlayerStats stats;
@@ -65,6 +67,20 @@ public class PlayerMovement : MonoBehaviour
             jump = false;
         }
 
+        if (!isGrounded) {
+            RaycastHit hit;
+            if (Physics.Raycast(transform.position, Vector3.down, out hit, Mathf.Infinity, layerMask)){
+                float dist = Vector3.Distance(transform.position, hit.point);
+                    if(dist < 5f) { groundDecal.gameObject.SetActive(false); return; }
+
+                groundDecal.gameObject.SetActive(true);
+                groundDecal.transform.position = hit.point + Vector3.up;
+                groundDecal.size = new Vector3((dist - 5) / 2, (dist - 5) / 2, 1);
+            }
+            else {
+                groundDecal.gameObject.SetActive(false);
+            }
+        }
     }
 
     public void Spin()
