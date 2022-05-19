@@ -10,7 +10,7 @@ public class Phase3 : BossPhase
     private int attackIndex = 0;
     private List<ComboAttacks> comboAttacks = new List<ComboAttacks>();
 
-    public override BossPhases GetId() => BossPhases.Phase1;
+    public override BossPhases GetId() => BossPhases.Phase3;
     public override void EnterPhase()
     {
         comboAttacks.Add(new ComboAttacks(new List<BossAttack>()
@@ -48,10 +48,6 @@ public class Phase3 : BossPhase
             comboAttacks[attackIndex].EnterAttack();
         }
         comboAttacks[attackIndex].Update(dt);
-    }
-    public override void ExitPhase()
-    {
-
     }
 }
 

@@ -37,7 +37,12 @@ public abstract class BossPhase
         }
     }
 
-    public abstract void ExitPhase();
+    public virtual void ExitPhase()
+    {
+        foreach (BossAttack attack in currentAttack) {
+            attack?.ExitState();
+        }
+    }
 
     public virtual void NextSubState(int index)
     {
