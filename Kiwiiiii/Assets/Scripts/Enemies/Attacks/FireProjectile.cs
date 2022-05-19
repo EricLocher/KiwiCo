@@ -9,15 +9,29 @@ public class FireProjectile : MonoBehaviour
     [SerializeField] Transform weapon;
     List<Enemy> enemyList = new List<Enemy>();
     bool canShoot = true;
-    public bool heal = false;
+    float timer = 0;
+
+    void Update()
+    {
+        timer += Time.deltaTime;
+        if (timer > 10)
+        {
+            GetComponent<Attacks>().isHealing = true;
+            GetComponent<Animator>().ResetTrigger("shoot");
+            GetComponent<Animator>().SetTrigger("heal");
+            timer = 0;
+        }
+
+        if (GetComponent<Attacks>().isHealing)
+        {
+            StartCoroutine(Heal(GetComponent<Animator>().GetCurrentAnimatorClipInfo(0).Length));
+        }
+    }
 
     public void CallCoroutine(float time)
     {
         if (canShoot)
             StartCoroutine(InstantiateBall(time));
-
-        if (heal)
-            StartCoroutine(Heal(time));
     }
 
     IEnumerator InstantiateBall(float time)
@@ -32,43 +46,51 @@ public class FireProjectile : MonoBehaviour
 
     IEnumerator Heal(float time)
     {
-        canShoot = false;
-        heal = false;
-        yield return new WaitForSeconds(time);
         Enemy healTarget = CheckRadius();
-        if(healTarget != null)
-        {
-            healTarget.stats.health = 100;
 
-            Debug.Log("healed");
+        if (healTarget == null) { Debug.LogError("No targets to heal", this); ResetHeal(); yield return null; }
 
-            StartCoroutine(Reload(time));
-        }
-        else
-        {
-            canShoot = true;
-        }
+        Debug.Log(healTarget.gameObject.name);
+
+        yield return new WaitForSeconds(time);
+
+        healTarget.stats.health = 100;
+
+        Debug.Log("healed");
+
+        ResetHeal();
+    }
+
+    void ResetHeal()
+    {
+        GetComponent<Attacks>().isHealing = false;
+        GetComponent<Animator>().ResetTrigger("heal");
+        GetComponent<Animator>().SetTrigger("shoot");
     }
 
     Enemy CheckRadius()
     {
-        foreach (Collider col in Physics.OverlapSphere(transform.position, 20f, 2))
+        Debug.Log("test");
+        foreach (Collider col in Physics.OverlapSphere(transform.position, 20f))
         {
-            if(col.gameObject.GetComponent<SOEnemyStats>().health == 100) { return null; }
-
+            Debug.Log("test1");
+            if(col.gameObject.tag != "Enemy") { return null; }
+            Debug.Log("test2");
+            if (col.gameObject.GetComponent<SOEnemyStats>().health == col.gameObject.GetComponent<SOEnemyStats>().maxHealth) { return null; }
+            Debug.Log("test3");
             enemyList.Add(col.gameObject.GetComponent<Enemy>());
             Enemy lowestHealth = enemyList[0];
             for (int i = 1; i < enemyList.Count; i++)
             {
-                if(enemyList[i].stats.health < lowestHealth.stats.health)
+                Debug.Log("test4");
+                if (enemyList[i].stats.health < lowestHealth.stats.health)
                 {
+                    Debug.Log("test5");
                     lowestHealth = enemyList[i];
                 }
             }
             return lowestHealth;
         }
-        
-
         return null;
     }
 

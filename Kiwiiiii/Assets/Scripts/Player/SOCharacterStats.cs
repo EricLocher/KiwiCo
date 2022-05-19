@@ -5,4 +5,5 @@ using UnityEngine;
 public class SOCharacterStats : ScriptableObject
 {
     public float health;
+    public float maxHealth;
 }

@@ -25,6 +25,7 @@ public class ControlWeapon : MonoBehaviour
         Physics.IgnoreLayerCollision(LayerMask.NameToLayer("Weapon"), LayerMask.NameToLayer("Barrier"));
         Physics.IgnoreLayerCollision(LayerMask.NameToLayer("Weapon"), LayerMask.NameToLayer("IgnoreWeapon"));
         rb.maxAngularVelocity = maxAngular;
+        if(Save.instance == null) { return; }
         if (!Save.instance.aquiredSword)
             SheathWeapon();
     }

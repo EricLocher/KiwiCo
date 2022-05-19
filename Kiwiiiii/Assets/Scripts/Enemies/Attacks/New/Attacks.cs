@@ -9,7 +9,7 @@ public class Attacks : MonoBehaviour
     public List<AttackCone> attacks = new List<AttackCone>();
     [SerializeField] Enemy agent;
     int randomIndex;
-    public bool DealDamage = false;
+    public bool DealDamage, isHealing = false;
     void Start()
     {
         target = GameObject.FindGameObjectWithTag("Character").transform;
@@ -17,6 +17,7 @@ public class Attacks : MonoBehaviour
 
     void Attack()
     {
+        if (agent == null) { return; }
         if (agent.stateMachine.activeState == EnemyStates.Attack) { return; }
 
         randomIndex = Random.Range(0, attacks.Count);
@@ -28,21 +29,8 @@ public class Attacks : MonoBehaviour
 
     void Fire()
     {
-        var animPlaying = attacks[randomIndex].triggerName.ToString();
-        if (animPlaying == "shoot")
+        if (attacks[randomIndex].triggerName.ToString() == "shoot")
         {
-            agent.animator.ResetTrigger("heal");
-            if (agent.animator.GetCurrentAnimatorClipInfo(0)[0].clip.name == attacks[randomIndex].triggerName.ToString())
-                GetComponent<FireProjectile>().CallCoroutine(agent.animator.GetCurrentAnimatorClipInfo(0).Length);
-        }
-    }
-
-    void Heal()
-    {
-        var animPlaying = attacks[randomIndex].triggerName.ToString();
-        if (animPlaying == "heal")
-        {
-            agent.animator.ResetTrigger("shoot");
             if (agent.animator.GetCurrentAnimatorClipInfo(0)[0].clip.name == attacks[randomIndex].triggerName.ToString())
                 GetComponent<FireProjectile>().CallCoroutine(agent.animator.GetCurrentAnimatorClipInfo(0).Length);
         }
@@ -56,8 +44,10 @@ public class Attacks : MonoBehaviour
             {
                 transform.LookAt(new Vector3(target.position.x, transform.position.y, target.position.z));
                 Attack();
-                Fire();
-                Heal();
+
+                if (!isHealing)
+                    Fire();
+
                 if (DealDamage)
                     EndOfAttack();
             }
@@ -84,6 +74,7 @@ public class Attacks : MonoBehaviour
 
     public void ExitAttack()
     {
+        if (agent == null) { return; }
         agent.stateMachine.ChangeState(EnemyStates.Chase);
         agent.animator.ResetTrigger(attacks[randomIndex].triggerName.ToString());
     }
