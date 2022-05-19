@@ -38,27 +38,24 @@ public class FireProjectile : MonoBehaviour
     {
         canShoot = false;
         yield return new WaitForSeconds(time);
-        Instantiate(sphere, weapon.transform.position, weapon.transform.rotation).GetComponent<SphereDamage>();
+        GameObject sphereHolder = Instantiate(sphere, weapon.transform.position, weapon.transform.rotation);
         StartCoroutine(Reload(time));
-        //AudioManager.instance.PlayLocal("EnemyFireBurn", sphere);
-        //AudioManager.instance.PlayOnceLocal("EnemyFire", gameObject);
+        AudioManager.instance.PlayLocal("EnemyFireBurn", sphereHolder);
+        AudioManager.instance.PlayOnceLocal("EnemyFire", gameObject);
     }
 
     IEnumerator Heal(float time)
     {
         Enemy healTarget = CheckRadius();
 
-        if (healTarget == null) { ResetHeal(); yield return null; }
+        if (healTarget != null)
+        {
+            yield return new WaitForSeconds(time);
 
-        Debug.Log(healTarget.stats.health);
+            healTarget.stats.health = 100;
 
-        yield return new WaitForSeconds(time);
-
-        healTarget.stats.health = 100;
-
-        Debug.Log(healTarget.stats.health);
-
-        ResetHeal();
+            ResetHeal();
+        } else { ResetHeal(); }
     }
 
     void ResetHeal()

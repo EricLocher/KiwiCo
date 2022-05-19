@@ -71,8 +71,16 @@ public class Enemy : Character
 
         blinkTimer = blinkDuration;
         animator.SetTrigger("knockback");
+        StartCoroutine(ResetKnockback(GetComponent<Animator>().GetCurrentAnimatorClipInfo(0).Length));
         AudioManager.instance.PlayOnceLocal("EnemyTakeDamage", gameObject);
         if (characterStats.health <= 0) { OnDeath(); }
+    }
+
+    IEnumerator ResetKnockback(float time)
+    {
+        yield return new WaitForSeconds(time);
+        animator.ResetTrigger("knockback");
+        animator.SetTrigger("shoot");
     }
 
     protected override void OnDeath()
