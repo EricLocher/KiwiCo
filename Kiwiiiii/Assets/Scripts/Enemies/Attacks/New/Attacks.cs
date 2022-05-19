@@ -6,7 +6,7 @@ using UnityEngine;
 public class Attacks : MonoBehaviour
 {
     Transform target;
-    [HideInInspector] public List<AttackCone> attacks = new List<AttackCone>();
+    public List<AttackCone> attacks = new List<AttackCone>();
     [SerializeField] Enemy agent;
     int randomIndex;
     public bool DealDamage = false;

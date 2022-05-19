@@ -8,49 +8,18 @@ public class AttackEditor : Editor
 {
     Attacks attacks;
 
-    List<Editor> editors = new List<Editor>();
-
     public override void OnInspectorGUI()
     {
         DrawDefaultInspector();
-        DrawButtons();
-        DrawInspectors();
-        PrefabUtility.RecordPrefabInstancePropertyModifications(attacks);
+        foreach (AttackCone attack in attacks.attacks) {
+            if (attack.origin == null)
+                attack.origin = attacks.transform;
+        }
     }
 
     void OnSceneGUI()
     {
         DrawHandles();
-    }
-
-    void DrawButtons()
-    {
-        if(GUILayout.Button("Add New Attack")) {
-            AttackCone _attack = (AttackCone)CreateInstance(typeof(AttackCone));
-            _attack.origin = attacks.transform;
-            attacks.AddAttack(_attack);
-            
-            CreateEditors();
-        }
-    }
-
-    void DrawInspectors()
-    {
-        if (editors.Count == 0) { return; }
-        GUILayout.Space(20);
-
-        EditorGUILayout.BeginVertical("Box");
-
-        for (int i = 0; i < editors.Count; i++) {
-            GUILayout.Space(20);
-            editors[i].OnInspectorGUI();
-            if (GUILayout.Button("Remove Attack")) {
-                attacks.RemoveAttack(attacks.attacks[i]);
-                CreateEditors();
-            }
-        }
-
-        EditorGUILayout.EndVertical();
     }
 
     void DrawHandles()
@@ -66,18 +35,9 @@ public class AttackEditor : Editor
         }
     }
 
-    void CreateEditors()
-    {
-        editors.Clear();
-        foreach (AttackCone attack in attacks.attacks) {
-            editors.Add(CreateEditor(attack));
-        }
-    }
-
     private void OnEnable()
     {
         attacks = (Attacks)target;
-        CreateEditors();
     }
 
 }
