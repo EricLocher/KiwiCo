@@ -1,0 +1,191 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-5768781740905046823
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc46249301e2b8e47baa0f69a70fc813, type: 3}
+  m_Name: bf4a67f2-5a2b-44d9-b9c1-e97ed1df11b6
+  m_EditorClassIdentifier: 
+  playerSpeaking: 0
+  text: If you hadn't you woul've died for sure.
+  children:
+  - b2ee63ea-cebe-42a3-821c-3f791b4f08ac
+  rect:
+    serializedVersion: 2
+    x: 763
+    y: 236
+    width: 200
+    height: 100
+  onExitAction: 
+  onEnterAction: 
+--- !u!114 &-4637284372249288405
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc46249301e2b8e47baa0f69a70fc813, type: 3}
+  m_Name: b2ee63ea-cebe-42a3-821c-3f791b4f08ac
+  m_EditorClassIdentifier: 
+  playerSpeaking: 0
+  text: Now go get your princess!
+  children: []
+  rect:
+    serializedVersion: 2
+    x: 1031
+    y: 106
+    width: 200
+    height: 100
+  onExitAction: 
+  onEnterAction: 
+--- !u!114 &-4205217347287092423
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc46249301e2b8e47baa0f69a70fc813, type: 3}
+  m_Name: 0815e12e-96c4-45d0-8cf9-4e5d32399f4d
+  m_EditorClassIdentifier: 
+  playerSpeaking: 0
+  text: So you really are the chosen one.
+  children:
+  - b2ee63ea-cebe-42a3-821c-3f791b4f08ac
+  rect:
+    serializedVersion: 2
+    x: 544
+    y: 73
+    width: 200
+    height: 100
+  onExitAction: 
+  onEnterAction: 
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bf9e36879b5f8640bdc4915559763df, type: 3}
+  m_Name: Thank you
+  m_EditorClassIdentifier: 
+  nodes:
+  - {fileID: 2185780839435114839}
+  - {fileID: 5398160796339922613}
+  - {fileID: 119509713001412985}
+  - {fileID: 3689564424601312353}
+  - {fileID: -4205217347287092423}
+  - {fileID: -5768781740905046823}
+  - {fileID: -4637284372249288405}
+  newNodeOffset: {x: 200, y: 0}
+--- !u!114 &119509713001412985
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc46249301e2b8e47baa0f69a70fc813, type: 3}
+  m_Name: 4a416278-37fa-4344-abc0-141794fbadc2
+  m_EditorClassIdentifier: 
+  playerSpeaking: 1
+  text: Excuse me?! Did you put my life in danger on purpose?
+  children:
+  - 5daa357f-3c9b-4fd1-90f2-8bb593d2133d
+  rect:
+    serializedVersion: 2
+    x: 262
+    y: 230
+    width: 200
+    height: 100
+  onExitAction: 
+  onEnterAction: 
+--- !u!114 &2185780839435114839
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc46249301e2b8e47baa0f69a70fc813, type: 3}
+  m_Name: 08317448-853f-49dd-a9b3-334e83760a28
+  m_EditorClassIdentifier: 
+  playerSpeaking: 0
+  text: Wow! You totally almost died out there.
+  children:
+  - 041ea67b-630d-41a6-aebd-c738da285fa7
+  - 4a416278-37fa-4344-abc0-141794fbadc2
+  rect:
+    serializedVersion: 2
+    x: 21
+    y: 171
+    width: 200
+    height: 100
+  onExitAction: 
+  onEnterAction: 
+--- !u!114 &3689564424601312353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc46249301e2b8e47baa0f69a70fc813, type: 3}
+  m_Name: 5daa357f-3c9b-4fd1-90f2-8bb593d2133d
+  m_EditorClassIdentifier: 
+  playerSpeaking: 0
+  text: Um... Well you just needed to believe in yourself!
+  children:
+  - bf4a67f2-5a2b-44d9-b9c1-e97ed1df11b6
+  rect:
+    serializedVersion: 2
+    x: 533
+    y: 228
+    width: 200
+    height: 100
+  onExitAction: 
+  onEnterAction: 
+--- !u!114 &5398160796339922613
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc46249301e2b8e47baa0f69a70fc813, type: 3}
+  m_Name: 041ea67b-630d-41a6-aebd-c738da285fa7
+  m_EditorClassIdentifier: 
+  playerSpeaking: 1
+  text: I would never die!
+  children:
+  - 0815e12e-96c4-45d0-8cf9-4e5d32399f4d
+  rect:
+    serializedVersion: 2
+    x: 268
+    y: 85
+    width: 200
+    height: 100
+  onExitAction: 
+  onEnterAction: 

@@ -1,0 +1,165 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-7813173007570747562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc46249301e2b8e47baa0f69a70fc813, type: 3}
+  m_Name: 59f42a5c-b4a8-49bf-885e-62724b3ef24c
+  m_EditorClassIdentifier: 
+  playerSpeaking: 1
+  text: I guess I have to.
+  children:
+  - 8e35a24d-d38b-4609-9b64-f5a2fd224f95
+  rect:
+    serializedVersion: 2
+    x: 483
+    y: 177
+    width: 200
+    height: 100
+  onExitAction: 
+  onEnterAction: 
+--- !u!114 &-2824160787580985361
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc46249301e2b8e47baa0f69a70fc813, type: 3}
+  m_Name: 1d92abd6-e098-4d1e-b1d7-b8838163401a
+  m_EditorClassIdentifier: 
+  playerSpeaking: 0
+  text: It's time to rescue the princess!
+  children:
+  - 7689026a-5586-48ec-ac1e-057a277b6053
+  - 59f42a5c-b4a8-49bf-885e-62724b3ef24c
+  rect:
+    serializedVersion: 2
+    x: 234
+    y: 128
+    width: 200
+    height: 100
+  onExitAction: 
+  onEnterAction: 
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bf9e36879b5f8640bdc4915559763df, type: 3}
+  m_Name: 2.5 Last before boss
+  m_EditorClassIdentifier: 
+  nodes:
+  - {fileID: 8063800323380533477}
+  - {fileID: -2824160787580985361}
+  - {fileID: 1035617625165748595}
+  - {fileID: -7813173007570747562}
+  - {fileID: 1225439749623247611}
+  - {fileID: 4601134423934222772}
+  newNodeOffset: {x: 200, y: 0}
+--- !u!114 &1035617625165748595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc46249301e2b8e47baa0f69a70fc813, type: 3}
+  m_Name: 7689026a-5586-48ec-ac1e-057a277b6053
+  m_EditorClassIdentifier: 
+  playerSpeaking: 1
+  text: Let's gooooo!
+  children:
+  - 45e48f84-3264-4720-b23e-ceb6e419348b
+  rect:
+    serializedVersion: 2
+    x: 485
+    y: 49
+    width: 200
+    height: 100
+  onExitAction: 
+  onEnterAction: 
+--- !u!114 &1225439749623247611
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc46249301e2b8e47baa0f69a70fc813, type: 3}
+  m_Name: 8e35a24d-d38b-4609-9b64-f5a2fd224f95
+  m_EditorClassIdentifier: 
+  playerSpeaking: 0
+  text: Hurry up now!
+  children: []
+  rect:
+    serializedVersion: 2
+    x: 805
+    y: 175
+    width: 200
+    height: 100
+  onExitAction: 
+  onEnterAction: 
+--- !u!114 &4601134423934222772
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc46249301e2b8e47baa0f69a70fc813, type: 3}
+  m_Name: 45e48f84-3264-4720-b23e-ceb6e419348b
+  m_EditorClassIdentifier: 
+  playerSpeaking: 0
+  text: That's the spirit!
+  children: []
+  rect:
+    serializedVersion: 2
+    x: 803
+    y: 49
+    width: 200
+    height: 100
+  onExitAction: 
+  onEnterAction: 
+--- !u!114 &8063800323380533477
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc46249301e2b8e47baa0f69a70fc813, type: 3}
+  m_Name: ceff0753-26ab-4e36-8365-a07806b23082
+  m_EditorClassIdentifier: 
+  playerSpeaking: 0
+  text: Now you're ready for the biggest task of them all.
+  children:
+  - 1d92abd6-e098-4d1e-b1d7-b8838163401a
+  rect:
+    serializedVersion: 2
+    x: -3
+    y: 128
+    width: 200
+    height: 100
+  onExitAction: 
+  onEnterAction: 
