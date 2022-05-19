@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
@@ -7,11 +6,12 @@ public class Attacks : MonoBehaviour
 {
     Transform target;
     public List<AttackCone> attacks = new List<AttackCone>();
-    [SerializeField] Enemy agent;
+    Enemy agent;
     int randomIndex;
     [HideInInspector] public bool DealDamage, isHealing = false;
     void Start()
     {
+        agent = GetComponent<Enemy>();
         foreach (AttackCone attack in attacks)
         {
             attack.origin = transform;
@@ -23,7 +23,6 @@ public class Attacks : MonoBehaviour
     {
         if (agent == null) { return; }
         if (agent.stateMachine.activeState == EnemyStates.Attack) { return; }
-
         randomIndex = Random.Range(0, attacks.Count);
 
         agent.stateMachine.ChangeState(EnemyStates.Attack);
@@ -40,7 +39,7 @@ public class Attacks : MonoBehaviour
         }
     }
 
-    private void Update()
+    void Update()
     {
         foreach (AttackCone attack in attacks)
         {

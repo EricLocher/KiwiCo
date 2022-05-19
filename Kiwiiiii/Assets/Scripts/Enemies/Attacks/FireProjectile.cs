@@ -64,7 +64,7 @@ public class FireProjectile : MonoBehaviour
     {
         GetComponent<Attacks>().isHealing = false;
         GetComponent<Animator>().ResetTrigger("heal");
-        GetComponent<Animator>().SetTrigger("shoot");
+        GetComponent<Animator>().ResetTrigger("shoot");
     }
 
     Enemy CheckRadius()
