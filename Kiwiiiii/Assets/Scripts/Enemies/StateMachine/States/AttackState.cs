@@ -5,7 +5,9 @@ public class AttackState : EnemyState
 
     public override void EnterState()
     {
+        //not working sometimes...
         agent.navMeshAgent.SetDestination(agent.transform.position);
+        agent.animator.SetBool("moving", false);
     }
 
 }
