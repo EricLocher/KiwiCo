@@ -1,29 +1,38 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.VFX;
 
 public class FireProjectile : MonoBehaviour
 {
     [SerializeField] GameObject sphere;
     [SerializeField] Transform weapon;
+    [SerializeField] VisualEffectAsset healVFX;
     List<Enemy> enemyList = new List<Enemy>();
     bool canShoot = true;
     float timer = 0;
 
+    GameObject healObject;
+
+    void Start()
+    {
+        healObject = new GameObject("Heal Affect");
+        VisualEffect vfx = healObject.AddComponent<VisualEffect>();
+        vfx.visualEffectAsset = healVFX;
+        vfx.Stop();
+    }
+
     void Update()
     {
         timer += Time.deltaTime;
-        if (timer > 10)
-        {
+        if (timer > 10) {
             GetComponent<Attacks>().isHealing = true;
             GetComponent<Animator>().ResetTrigger("shoot");
             GetComponent<Animator>().SetTrigger("heal");
             timer = 0;
         }
 
-        if (GetComponent<Attacks>().isHealing)
-        {
+        if (GetComponent<Attacks>().isHealing) {
             StartCoroutine(Heal(GetComponent<Animator>().GetCurrentAnimatorClipInfo(0).Length));
         }
     }
@@ -46,46 +55,46 @@ public class FireProjectile : MonoBehaviour
 
     IEnumerator Heal(float time)
     {
+        Debug.Log("Heal");
         Enemy healTarget = CheckRadius();
 
-        if (healTarget != null)
-        {
-            yield return new WaitForSeconds(time);
+        //if (healTarget == null) { healTarget = GetComponent<Enemy>(); }
 
-            //play heal VFX
+        yield return new WaitForSeconds(time);
 
-            healTarget.stats.health = 100;
+        //play heal VFX
+        healObject.transform.position = healTarget.transform.position;
+        healObject.GetComponent<VisualEffect>().Play();
 
-            ResetHeal();
-        } else { ResetHeal(); }
-    }
-
-    void ResetHeal()
-    {
+        healTarget.stats.health = 100;
         GetComponent<Attacks>().isHealing = false;
         GetComponent<Animator>().ResetTrigger("heal");
+        if (healTarget.stateMachine.activeState == EnemyStates.Attack) {
+            GetComponent<Animator>().SetTrigger("shoot");
+            yield return null;
+        }
+
         GetComponent<Animator>().ResetTrigger("shoot");
     }
 
     Enemy CheckRadius()
     {
-        foreach (Collider col in Physics.OverlapSphere(transform.position, 20f))
-        {
-            if(col.gameObject.tag != "Enemy") { return null; }
+        foreach (Collider col in Physics.OverlapSphere(transform.position, 20f)) {
+            if (col.gameObject.tag != "Enemy") { continue; }
             var enemyComp = col.gameObject.GetComponent<Enemy>();
-            if (enemyComp.stats.health == enemyComp.stats.maxHealth) { return null; }
+            if (enemyComp.stats.health == enemyComp.stats.maxHealth) { continue; }
             enemyList.Add(enemyComp);
             Enemy lowestHealth = enemyList[0];
-            for (int i = 1; i < enemyList.Count; i++)
-            {
-                if (enemyList[i].stats.health < lowestHealth.stats.health)
-                {
+            for (int i = 1; i < enemyList.Count; i++) {
+                if (enemyList[i].stats.health < lowestHealth.stats.health) {
                     lowestHealth = enemyList[i];
                 }
             }
             return lowestHealth;
         }
-        return null;
+
+        Debug.Log("NO FOUND");
+        return GetComponent<Enemy>();
     }
 
     IEnumerator Reload(float time)

@@ -9,6 +9,9 @@ public class AttackCone : ScriptableObject
     [Range(0, 50)] public float radius = 1;
     [Range(0, 360)] public float angle = 1;
     [Range(0, 360)] public float rotation = 1;
+
+    [HideInInspector] public float bigradius, normalradius;
+
     public float damage;
     public enum TriggerName { swing, stab, spin, shoot };
     public TriggerName triggerName;

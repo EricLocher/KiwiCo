@@ -32,7 +32,6 @@ public class Enemy : Character
         stateMachine.enemy = this;
 
         stateMachine.RegisterState(EnemyStates.Idle, new IdleState(this, stateMachine));
-        stateMachine.RegisterState(EnemyStates.Surprise, new SurpriseState(this, stateMachine));
         stateMachine.RegisterState(EnemyStates.Chase, new ChaseState(this, stateMachine));
         stateMachine.RegisterState(EnemyStates.Attack, new AttackState(this, stateMachine));
         stateMachine.RegisterState(EnemyStates.Death, new DeathState(this, stateMachine));
@@ -79,9 +78,11 @@ public class Enemy : Character
     protected override void OnDeath()
     {
         //play death vfx on obj
-        GameObject obj = new GameObject();
-        obj.name = "DEATH VFX+AUDIO";
+        GameObject obj = new GameObject("DEATH VFX + AUDIO");
         obj.transform.position = transform.position;
+        VisualEffect deathVFX = obj.AddComponent<VisualEffect>();
+        deathVFX.visualEffectAsset = AppearEffect.visualEffectAsset;
+        deathVFX.Play();
         AudioManager.instance.PlayOnceLocal("EnemyDie", obj);
         Destroy(obj, 1f);
 
