@@ -48,15 +48,15 @@ public class FireProjectile : MonoBehaviour
     {
         Enemy healTarget = CheckRadius();
 
-        if (healTarget == null) { Debug.LogError("No targets to heal", this); ResetHeal(); yield return null; }
+        if (healTarget == null) { ResetHeal(); yield return null; }
 
-        Debug.Log(healTarget.gameObject.name);
+        Debug.Log(healTarget.stats.health);
 
         yield return new WaitForSeconds(time);
 
         healTarget.stats.health = 100;
 
-        Debug.Log("healed");
+        Debug.Log(healTarget.stats.health);
 
         ResetHeal();
     }
@@ -70,23 +70,17 @@ public class FireProjectile : MonoBehaviour
 
     Enemy CheckRadius()
     {
-        Debug.Log("test");
         foreach (Collider col in Physics.OverlapSphere(transform.position, 20f))
         {
-            Debug.Log("test1");
             if(col.gameObject.tag != "Enemy") { return null; }
-            Debug.Log("test2");
             var enemyComp = col.gameObject.GetComponent<Enemy>();
             if (enemyComp.stats.health == enemyComp.stats.maxHealth) { return null; }
-            Debug.Log("test3");
             enemyList.Add(enemyComp);
             Enemy lowestHealth = enemyList[0];
             for (int i = 1; i < enemyList.Count; i++)
             {
-                Debug.Log("test4");
                 if (enemyList[i].stats.health < lowestHealth.stats.health)
                 {
-                    Debug.Log("test5");
                     lowestHealth = enemyList[i];
                 }
             }

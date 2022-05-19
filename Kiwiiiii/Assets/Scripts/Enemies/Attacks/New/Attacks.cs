@@ -9,9 +9,13 @@ public class Attacks : MonoBehaviour
     public List<AttackCone> attacks = new List<AttackCone>();
     [SerializeField] Enemy agent;
     int randomIndex;
-    public bool DealDamage, isHealing = false;
+    [HideInInspector] public bool DealDamage, isHealing = false;
     void Start()
     {
+        foreach (AttackCone attack in attacks)
+        {
+            attack.origin = transform;
+        }
         target = GameObject.FindGameObjectWithTag("Character").transform;
     }
 
