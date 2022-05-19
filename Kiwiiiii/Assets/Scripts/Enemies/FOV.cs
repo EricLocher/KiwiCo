@@ -15,7 +15,6 @@ public class FOV : MonoBehaviour
 
     public LayerMask obstacleMask;
 
-
     /// <summary>
     /// Check if given target lies is within view of the enemy.
     /// </summary>
