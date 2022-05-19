@@ -12,6 +12,9 @@ public class EventZoneEditor : Editor
 
     public override void OnInspectorGUI()
     {
+
+        DrawDefaultInspector();
+
         _target.CheckDependency();
 
         EditorGUILayout.LabelField("Zone radius", EditorStyles.boldLabel);
