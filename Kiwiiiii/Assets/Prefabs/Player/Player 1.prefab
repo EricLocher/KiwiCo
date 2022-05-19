@@ -1,5 +1,61 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1413307779
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1413307782}
+  - component: {fileID: 1413307780}
+  m_Layer: 0
+  m_Name: GroundDecal
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1413307782
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1413307779}
+  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3200895075877984627}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!114 &1413307780
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1413307779}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f19d9143a39eb3b46bc4563e9889cfbd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Version: 2
+  m_Material: {fileID: 2100000, guid: d33abb20220a22f439a020afa8c77add, type: 2}
+  m_DrawDistance: 1000
+  m_FadeScale: 0.9
+  m_StartAngleFade: 180
+  m_EndAngleFade: 180
+  m_UVScale: {x: 1, y: 1}
+  m_UVBias: {x: 0, y: 0}
+  m_AffectsTransparency: 0
+  m_DecalLayerMask: 1
+  m_Offset: {x: 0, y: 0, z: 1.0234749}
+  m_Size: {x: 1, y: 1, z: 2.0469499}
+  m_FadeFactor: 1
 --- !u!1 &400932798576387858
 GameObject:
   m_ObjectHideFlags: 0
@@ -539,6 +595,7 @@ Transform:
   m_Children:
   - {fileID: 3809357733168706725}
   - {fileID: 3733583136681921959}
+  - {fileID: 1413307782}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -600,7 +657,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e8f14c943eed37449610f5156db0895, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tempDialogue: {fileID: 11400000, guid: f03c42e2c8051da4190cea176d9a2bf5, type: 2}
+  tempDialogue: {fileID: 11400000, guid: 1434ce2e86aee8d4694be6588489867c, type: 2}
   playerName: Bobo
 --- !u!1 &3249293363475461442
 GameObject:
@@ -983,6 +1040,7 @@ MonoBehaviour:
   characterHitBox: {fileID: 3353770501176190357}
   jumpVFX: {fileID: 400932800305188306}
   maxAngle: 0
+  groundDecal: {fileID: 1413307780}
   rb: {fileID: 5517772427914825531}
   stats: {fileID: 0}
   isGrounded: 0
@@ -1128,11 +1186,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 80a1decef24996a4e90ee01e2d570353, type: 3}
---- !u!4 &8086322720452115038 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8436928769644426617, guid: 80a1decef24996a4e90ee01e2d570353, type: 3}
-  m_PrefabInstance: {fileID: 373127689799339815}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &400932799790689186 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 53475752905647237, guid: 80a1decef24996a4e90ee01e2d570353, type: 3}
@@ -1144,6 +1197,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04486e733268e1841b48d2314b2a0a3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &8086322720452115038 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8436928769644426617, guid: 80a1decef24996a4e90ee01e2d570353, type: 3}
+  m_PrefabInstance: {fileID: 373127689799339815}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3452210658669019914
 PrefabInstance:
   m_ObjectHideFlags: 0

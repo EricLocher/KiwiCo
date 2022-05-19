@@ -17,7 +17,6 @@ public class ProjectileBehavior : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Character"))
         {
-            print("debug");
             other.gameObject.transform.parent.GetComponent<PlayerController>().TakeDamage(damage);
             damage = 0;
         }

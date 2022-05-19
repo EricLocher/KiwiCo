@@ -8,12 +8,11 @@ public class Phase2 : BossPhase
     private float attackCooldown;
     private int attackIndex = 0;
 
-    public override BossPhases GetId() => BossPhases.Phase1;
+    public override BossPhases GetId() => BossPhases.Phase2;
     public override void EnterPhase()
     {
         NextSubState(attackIndex);
         attackCooldown = stats.attackList[attackIndex].stateTime;
-        Debug.Log(currentAttack);
     }
     public override void Update(float dt = 0)
     {

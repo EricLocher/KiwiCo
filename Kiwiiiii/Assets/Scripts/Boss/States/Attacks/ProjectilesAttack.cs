@@ -19,7 +19,7 @@ public class ProjectilesAttack : BossAttack
         spawnPointIndex = 0;
         elapsedTime = 0;
         base.EnterState(phase);
-        Debug.Log(currentPhase);
+
     }
     public override void Update()
     {

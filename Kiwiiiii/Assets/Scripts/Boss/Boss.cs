@@ -30,7 +30,7 @@ public class Boss : Character
         }
 
         stateMachine.RegisterState(BossPhases.Init, new BossInitState(this, stateMachine, phaseStats[0]));
-        stateMachine.RegisterState(BossPhases.Phase1, new Phase3(this, stateMachine, phaseStats[0]));
+        stateMachine.RegisterState(BossPhases.Phase1, new Phase1(this, stateMachine, phaseStats[0]));
         stateMachine.RegisterState(BossPhases.Phase2, new Phase2(this, stateMachine, phaseStats[1]));
         stateMachine.RegisterState(BossPhases.Phase3, new Phase3(this, stateMachine, phaseStats[2]));
         stateMachine.boss = this;
@@ -52,12 +52,12 @@ public class Boss : Character
         //healthBar.stats.health = value;
 
         if (stats.health <= 0) { OnDeath(); }
-
-        if (stats.health <= stats.maxHealth * stats.phase2Health && stats.health >= stats.maxHealth * stats.phase1Health)
+        //stateMachine.ChangeState(BossPhases.Phase2);
+        if (stats.health <= stats.maxHealth * stats.phase2Health && stateMachine.currentPhase == BossPhases.Phase1)
         {
             stateMachine.ChangeState(BossPhases.Phase2);
         }
-        else if (stats.health <= stats.maxHealth * stats.phase3Health)
+        else if (stats.health <= stats.maxHealth * stats.phase3Health && stateMachine.currentPhase == BossPhases.Phase2)
         {
             stateMachine.ChangeState(BossPhases.Phase3);
         }

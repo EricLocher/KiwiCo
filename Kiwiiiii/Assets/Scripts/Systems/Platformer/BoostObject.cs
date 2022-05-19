@@ -22,6 +22,16 @@ public class BoostObject : MonoBehaviour
                 animator.Play("Boost");
             }
         }
+        else if (other.gameObject.CompareTag("Sword")) {
+            ControlWeapon sword = other.gameObject.GetComponent<ControlWeapon>();
+
+            if(!sword.down) { return; }
+
+            sword.movement.GetComponent<Rigidbody>().AddForce(direction * force, forceMode);
+            if (animator != null) {
+                animator.Play("Boost");
+            }
+        }
     }
 
     void OnDrawGizmosSelected()

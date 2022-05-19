@@ -13,7 +13,6 @@ public class Phase1 : BossPhase
     {
         NextSubState(attackIndex);
         attackCooldown = stats.attackList[attackIndex].stateTime;
-        Debug.Log(currentAttack);
     }
     public override void Update(float dt = 0)
     {
