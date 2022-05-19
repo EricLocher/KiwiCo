@@ -4,7 +4,7 @@ public class ControlWeapon : MonoBehaviour
 {
     [SerializeField, Range(0, 10)] float sensitivity;
     [SerializeField] float smoothTime, swingSmoothTime;
-    [SerializeField] PlayerMovement movement;
+    public PlayerMovement movement;
     [SerializeField] SwordBehavior sword;
     [SerializeField] float maxAngular;
 
@@ -30,7 +30,6 @@ public class ControlWeapon : MonoBehaviour
 
     void FixedUpdate()
     {
-
         if (!down)
         {
             rb.angularVelocity = new Vector3(0, rb.angularVelocity.y + deltaY, 0);
@@ -100,6 +99,7 @@ public class ControlWeapon : MonoBehaviour
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Floor"))
         {
+            Debug.Log(collision.gameObject.layer + ", " + collision.gameObject.name);
             check = false;
             down = false;
         }
