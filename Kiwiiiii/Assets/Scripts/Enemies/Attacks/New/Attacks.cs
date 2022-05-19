@@ -4,10 +4,15 @@ using UnityEngine;
 
 public class Attacks : MonoBehaviour
 {
-    public Transform target;
+    Transform target;
     [HideInInspector] public List<AttackCone> attacks = new List<AttackCone>();
     [SerializeField] Enemy agent;
     int randomIndex;
+
+    void Start()
+    {
+        target = GameObject.FindGameObjectWithTag("Character").transform;
+    }
 
     void Attack()
     {
