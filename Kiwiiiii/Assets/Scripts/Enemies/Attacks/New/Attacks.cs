@@ -18,6 +18,7 @@ public class Attacks : MonoBehaviour
     void Attack()
     {
         if (agent.stateMachine.activeState == EnemyStates.Attack) { return; }
+
         randomIndex = Random.Range(0, attacks.Count);
 
         agent.stateMachine.ChangeState(EnemyStates.Attack);
@@ -27,8 +28,21 @@ public class Attacks : MonoBehaviour
 
     void Fire()
     {
-        if (attacks[randomIndex].triggerName.ToString() == "shoot")
+        var animPlaying = attacks[randomIndex].triggerName.ToString();
+        if (animPlaying == "shoot")
         {
+            agent.animator.ResetTrigger("heal");
+            if (agent.animator.GetCurrentAnimatorClipInfo(0)[0].clip.name == attacks[randomIndex].triggerName.ToString())
+                GetComponent<FireProjectile>().CallCoroutine(agent.animator.GetCurrentAnimatorClipInfo(0).Length);
+        }
+    }
+
+    void Heal()
+    {
+        var animPlaying = attacks[randomIndex].triggerName.ToString();
+        if (animPlaying == "heal")
+        {
+            agent.animator.ResetTrigger("shoot");
             if (agent.animator.GetCurrentAnimatorClipInfo(0)[0].clip.name == attacks[randomIndex].triggerName.ToString())
                 GetComponent<FireProjectile>().CallCoroutine(agent.animator.GetCurrentAnimatorClipInfo(0).Length);
         }
@@ -43,6 +57,7 @@ public class Attacks : MonoBehaviour
                 transform.LookAt(new Vector3(target.position.x, transform.position.y, target.position.z));
                 Attack();
                 Fire();
+                Heal();
                 if (DealDamage)
                     EndOfAttack();
             }
