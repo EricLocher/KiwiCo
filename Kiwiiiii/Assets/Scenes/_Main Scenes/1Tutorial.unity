@@ -6923,6 +6923,111 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7333864604554640690, guid: 24a1690574785b241a144ff7855402a6, type: 3}
   m_PrefabInstance: {fileID: 80959733}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &277152368
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1939439084}
+    m_Modifications:
+    - target: {fileID: 397070988334261253, guid: e19350680c6722945817e215c44be7c2, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 397070988334261253, guid: e19350680c6722945817e215c44be7c2, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.5000002
+      objectReference: {fileID: 0}
+    - target: {fileID: 397070988334261253, guid: e19350680c6722945817e215c44be7c2, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.5000002
+      objectReference: {fileID: 0}
+    - target: {fileID: 397070988334261253, guid: e19350680c6722945817e215c44be7c2, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -50.557495
+      objectReference: {fileID: 0}
+    - target: {fileID: 397070988334261253, guid: e19350680c6722945817e215c44be7c2, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 5.8484
+      objectReference: {fileID: 0}
+    - target: {fileID: 397070988334261253, guid: e19350680c6722945817e215c44be7c2, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -5.7521286
+      objectReference: {fileID: 0}
+    - target: {fileID: 397070988334261253, guid: e19350680c6722945817e215c44be7c2, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.64615893
+      objectReference: {fileID: 0}
+    - target: {fileID: 397070988334261253, guid: e19350680c6722945817e215c44be7c2, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 397070988334261253, guid: e19350680c6722945817e215c44be7c2, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7632029
+      objectReference: {fileID: 0}
+    - target: {fileID: 397070988334261253, guid: e19350680c6722945817e215c44be7c2, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 397070988334261253, guid: e19350680c6722945817e215c44be7c2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 397070988334261253, guid: e19350680c6722945817e215c44be7c2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 99.495
+      objectReference: {fileID: 0}
+    - target: {fileID: 397070988334261253, guid: e19350680c6722945817e215c44be7c2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 397070988334261257, guid: e19350680c6722945817e215c44be7c2, type: 3}
+      propertyPath: vfx
+      value: 
+      objectReference: {fileID: 1515438028}
+    - target: {fileID: 397070988334261257, guid: e19350680c6722945817e215c44be7c2, type: 3}
+      propertyPath: character
+      value: 
+      objectReference: {fileID: 603897868}
+    - target: {fileID: 397070988334261257, guid: e19350680c6722945817e215c44be7c2, type: 3}
+      propertyPath: dialogue.name
+      value: Guide
+      objectReference: {fileID: 0}
+    - target: {fileID: 397070988334261257, guid: e19350680c6722945817e215c44be7c2, type: 3}
+      propertyPath: dialogueManager
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 397070988334261257, guid: e19350680c6722945817e215c44be7c2, type: 3}
+      propertyPath: dialogue.sentances.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 397070988334261257, guid: e19350680c6722945817e215c44be7c2, type: 3}
+      propertyPath: dialogue.sentances.Array.data[0]
+      value: Phew! You really did a good job out there!
+      objectReference: {fileID: 0}
+    - target: {fileID: 397070988334261257, guid: e19350680c6722945817e215c44be7c2, type: 3}
+      propertyPath: dialogue.sentances.Array.data[1]
+      value: "You must be the chosen one we\u2019ve been waiting\r for."
+      objectReference: {fileID: 0}
+    - target: {fileID: 397070988334261258, guid: e19350680c6722945817e215c44be7c2, type: 3}
+      propertyPath: m_Name
+      value: NPC Last one (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3257333280180815429, guid: e19350680c6722945817e215c44be7c2, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8242589029109801781, guid: e19350680c6722945817e215c44be7c2, type: 3}
+      propertyPath: dialogue
+      value: 
+      objectReference: {fileID: 11400000, guid: 1434ce2e86aee8d4694be6588489867c, type: 2}
+    - target: {fileID: 8465469087519115983, guid: e19350680c6722945817e215c44be7c2, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e19350680c6722945817e215c44be7c2, type: 3}
 --- !u!1001 &278884832
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -46709,6 +46814,16 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7673213971208538725, guid: 87878f3db3b560d4e8ab5d417dea8894, type: 3}
   m_PrefabInstance: {fileID: 226036367}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &1515438024 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 397070988334261253, guid: e19350680c6722945817e215c44be7c2, type: 3}
+  m_PrefabInstance: {fileID: 277152368}
+  m_PrefabAsset: {fileID: 0}
+--- !u!2083052967 &1515438028 stripped
+VisualEffect:
+  m_CorrespondingSourceObject: {fileID: 5848915306403062380, guid: e19350680c6722945817e215c44be7c2, type: 3}
+  m_PrefabInstance: {fileID: 277152368}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1517663748
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -61302,6 +61417,7 @@ Transform:
   - {fileID: 1293559207}
   - {fileID: 465400380}
   - {fileID: 320465190}
+  - {fileID: 1515438024}
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
