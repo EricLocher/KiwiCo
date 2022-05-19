@@ -70,6 +70,7 @@ public class Enemy : Character
         popup.PopupDamage((int)value);
 
         blinkTimer = blinkDuration;
+        animator.SetTrigger("knockback");
         AudioManager.instance.PlayOnceLocal("EnemyTakeDamage", gameObject);
         if (characterStats.health <= 0) { OnDeath(); }
     }
