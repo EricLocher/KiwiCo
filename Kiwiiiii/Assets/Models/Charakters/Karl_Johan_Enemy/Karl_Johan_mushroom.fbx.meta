@@ -5,23 +5,28 @@ ModelImporter:
   internalIDToNameTable:
   - first:
       74: 1827226128182048838
-    second: Idle
+    second: idle
   - first:
       74: -1803976989739477343
-    second: Walk_Cycle
+    second: moving
   - first:
       74: -998496362607748373
-    second: Knock_Back
+    second: knockback
   - first:
       74: -8978840444350128254
     second: Sword_Swing
   - first:
       74: -3745917278484660868
-    second: Alert
+    second: alert
   - first:
       74: 7561109798430257230
     second: Sword_Swing_Test
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert2
+    second: {fileID: 2100000, guid: 51947af6b8d58f1429a26ee05277f2e5, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -50,7 +55,7 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Idle
+      name: idle
       takeName: Take 001
       internalID: 0
       firstFrame: 1
@@ -79,7 +84,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 1
     - serializedVersion: 16
-      name: Walk_Cycle
+      name: moving
       takeName: Take 001
       internalID: 0
       firstFrame: 21
@@ -108,7 +113,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 1
     - serializedVersion: 16
-      name: Knock_Back
+      name: knockback
       takeName: Take 001
       internalID: 0
       firstFrame: 61
@@ -137,7 +142,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 1
     - serializedVersion: 16
-      name: Alert
+      name: alert
       takeName: Take 001
       internalID: 0
       firstFrame: 77

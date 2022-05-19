@@ -7,6 +7,8 @@ public class EnemyStateMachine
 {
     EnemyState currentState = null;
 
+    public EnemyStates activeState { get { return currentState.GetId(); } }
+
     [HideInInspector]
     public Enemy enemy;
 
