@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
@@ -8,7 +9,7 @@ public class Attacks : MonoBehaviour
     [HideInInspector] public List<AttackCone> attacks = new List<AttackCone>();
     [SerializeField] Enemy agent;
     int randomIndex;
-
+    public bool DealDamage = false;
     void Start()
     {
         target = GameObject.FindGameObjectWithTag("Character").transform;
@@ -42,11 +43,21 @@ public class Attacks : MonoBehaviour
                 transform.LookAt(new Vector3(target.position.x, transform.position.y, target.position.z));
                 Attack();
                 Fire();
+                if (DealDamage)
+                    EndOfAttack();
             }
             else if (!attack.TargetInCone(target) && agent.stateMachine.activeState == EnemyStates.Attack)
             {
                 WaitForAttack();
             }
+        }
+    }
+
+    public void EndOfAttack()
+    {
+        foreach (AttackCone attack in attacks)
+        {
+            target.gameObject.transform.parent.gameObject.GetComponent<PlayerController>().TakeDamage(attack.damage);
         }
     }
 
