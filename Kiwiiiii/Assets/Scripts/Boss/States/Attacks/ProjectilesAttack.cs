@@ -38,7 +38,7 @@ public class ProjectilesAttack : BossAttack
                 _temp.transform.parent = TempHolder.transform;
                 _temp.damage = damage;
                 _temp.speed = speed;
-
+                _temp.transform.parent = TempHolder.transform;
             }
             spawnPointIndex++;
             elapsedTime = 0;

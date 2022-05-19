@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6934377955798185547}
   - component: {fileID: 6934377955798185548}
+  - component: {fileID: 6698753851298831798}
+  - component: {fileID: 2092388944202063132}
   m_Layer: 0
   m_Name: Strawberry_Bush_LOD
   m_TagString: Untagged
@@ -57,12 +59,39 @@ LODGroup:
     renderers:
     - renderer: {fileID: 1645262595897549695}
     - renderer: {fileID: 2145795113547266151}
-  - screenRelativeHeight: 0.0680631
+  - screenRelativeHeight: 0.0047821077
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 1645262595897549695}
     - renderer: {fileID: 2145795113547266151}
   m_Enabled: 1
+--- !u!135 &6698753851298831798
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6934377955798185549}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 2
+  m_Center: {x: -0.72, y: -1.05, z: 0.75}
+--- !u!114 &2092388944202063132
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6934377955798185549}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a68751170d426e044a1a15f6e4ecb762, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healAmount: 50
+  holder: {fileID: 0}
 --- !u!1001 &6934377955493289426
 PrefabInstance:
   m_ObjectHideFlags: 0

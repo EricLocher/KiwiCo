@@ -6,7 +6,6 @@ using UnityEngine;
 public class SOBossStats : SOCharacterStats
 {
     public bool shielded = false;
-    public float maxHealth = 1000;
     public float phase1Health = 1f;
     public float phase2Health = 0.7f;
     public float phase3Health = 0.3f;
