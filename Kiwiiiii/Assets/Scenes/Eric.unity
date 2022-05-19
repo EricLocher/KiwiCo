@@ -712,11 +712,10 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 23
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &713152612
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+--- !u!4 &742442772 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3200895075877984627, guid: 48ffdf340944d5448a0a2339c906d8f4, type: 3}
+  m_PrefabInstance: {fileID: 1755411794}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
@@ -2012,16 +2011,67 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8745599244331552442, guid: 48ffdf340944d5448a0a2339c906d8f4, type: 3}
   m_PrefabInstance: {fileID: 1755411794}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &1331562172 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3809357733168706725, guid: 48ffdf340944d5448a0a2339c906d8f4, type: 3}
-  m_PrefabInstance: {fileID: 1755411794}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1383936963 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3334218864611319964, guid: 6373da33cecc47b42aab8b1140929b05, type: 3}
   m_PrefabInstance: {fileID: 954294105}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1413307779
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1413307782}
+  - component: {fileID: 1413307780}
+  m_Layer: 0
+  m_Name: GroundDecal
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1413307780
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1413307779}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f19d9143a39eb3b46bc4563e9889cfbd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Version: 2
+  m_Material: {fileID: 2100000, guid: d33abb20220a22f439a020afa8c77add, type: 2}
+  m_DrawDistance: 1000
+  m_FadeScale: 0.9
+  m_StartAngleFade: 180
+  m_EndAngleFade: 180
+  m_UVScale: {x: 1, y: 1}
+  m_UVBias: {x: 0, y: 0}
+  m_AffectsTransparency: 0
+  m_DecalLayerMask: 1
+  m_Offset: {x: 0, y: 0, z: 1.0234749}
+  m_Size: {x: 1, y: 1, z: 2.0469499}
+  m_FadeFactor: 1
+--- !u!4 &1413307782
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1413307779}
+  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 742442772}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!1001 &1527291128
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2621,6 +2671,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5630835286199025222, guid: 48ffdf340944d5448a0a2339c906d8f4, type: 3}
+      propertyPath: groundDecal
+      value: 
+      objectReference: {fileID: 1413307780}
     - target: {fileID: 8407072656424628477, guid: 48ffdf340944d5448a0a2339c906d8f4, type: 3}
       propertyPath: tempDialogue
       value: 
