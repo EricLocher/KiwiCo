@@ -76,9 +76,10 @@ public class FireProjectile : MonoBehaviour
             Debug.Log("test1");
             if(col.gameObject.tag != "Enemy") { return null; }
             Debug.Log("test2");
-            if (col.gameObject.GetComponent<SOEnemyStats>().health == col.gameObject.GetComponent<SOEnemyStats>().maxHealth) { return null; }
+            var enemyComp = col.gameObject.GetComponent<Enemy>();
+            if (enemyComp.stats.health == enemyComp.stats.maxHealth) { return null; }
             Debug.Log("test3");
-            enemyList.Add(col.gameObject.GetComponent<Enemy>());
+            enemyList.Add(enemyComp);
             Enemy lowestHealth = enemyList[0];
             for (int i = 1; i < enemyList.Count; i++)
             {
