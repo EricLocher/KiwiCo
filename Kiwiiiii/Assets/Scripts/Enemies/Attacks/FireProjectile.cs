@@ -52,6 +52,8 @@ public class FireProjectile : MonoBehaviour
         {
             yield return new WaitForSeconds(time);
 
+            //play heal VFX
+
             healTarget.stats.health = 100;
 
             ResetHeal();

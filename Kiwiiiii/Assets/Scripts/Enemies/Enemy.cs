@@ -85,7 +85,13 @@ public class Enemy : Character
 
     protected override void OnDeath()
     {
-        AudioManager.instance.PlayOnceLocal("EnemyDie", gameObject);
+        //play death vfx on obj
+        GameObject obj = new GameObject();
+        obj.name = "DEATH VFX+AUDIO";
+        obj.transform.position = transform.position;
+        AudioManager.instance.PlayOnceLocal("EnemyDie", obj);
+        Destroy(obj, 1f);
+
         stateMachine.ChangeState(EnemyStates.Death);
     }
 }
