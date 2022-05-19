@@ -4,46 +4,42 @@ using UnityEngine;
 [RequireComponent(typeof(SphereCollider))]
 public class EventZone : MonoBehaviour
 {
+    public GameObject invertedColliderPrefab;
+    public bool barrier = false;
     [HideInInspector] public SphereCollider zoneCollider;
-    [HideInInspector] public GameObject invertedCollider;
     [HideInInspector] public List<GameEvent> events = new List<GameEvent>();
+    [HideInInspector] public GameObject invertedCollider;
     GameEvent currentEvent = null;
-    bool barrier = false;
+
+    bool hasStarted = false;
 
     void Start()
     {
-        foreach (GameEvent _event in events)
-        {
+        foreach (GameEvent _event in events) {
             _event.Init();
-            foreach (Transform child in transform)
-            {
-                if (child.gameObject.tag == "InvertedCollider")
-                {
-                    invertedCollider = child.gameObject;
-                    barrier = true;
-                }
-            }
-            if (invertedCollider == null) { barrier = false; return; }
-            var scaleChange = new Vector3(zoneCollider.radius, zoneCollider.radius, zoneCollider.radius);
-            invertedCollider.transform.localScale = scaleChange;
         }
     }
 
     public void NextEvent()
     {
-        if (events.Count == 0)
-        {
-            if (barrier)
-                invertedCollider.SetActive(false);
+        if (events.Count == 0) {
             AudioManager.instance.PlayOnce("PlayerCompleteEvent");
             Destroy(gameObject);
         }
-        else
-        {
+        else {
             AudioManager.instance.PlayOnce("PlayerEnterEvent");
             currentEvent = events[0];
             currentEvent.StartEvent(this);
             events.RemoveAt(0);
+
+            if (!hasStarted) {
+                if (barrier) {
+                    invertedCollider.SetActive(true);
+                    var scaleChange = new Vector3(zoneCollider.radius, zoneCollider.radius, zoneCollider.radius);
+                    invertedCollider.transform.localScale = scaleChange * 2.5f;
+                }
+                hasStarted = true;
+            }
         }
     }
 
@@ -66,8 +62,12 @@ public class EventZone : MonoBehaviour
 
     public void CheckDependency()
     {
-        if (zoneCollider != null) { return; }
-        zoneCollider = GetComponent<SphereCollider>();
+        if (zoneCollider == null)
+            zoneCollider = GetComponent<SphereCollider>();
+        if (barrier && invertedCollider == null) {
+            invertedCollider = Instantiate(invertedColliderPrefab, transform);
+            invertedCollider.SetActive(false);
+        }
     }
 
     public void SwapElements(int index1, int index2)
@@ -81,8 +81,7 @@ public class EventZone : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Character") && currentEvent == null)
-        {
+        if (other.CompareTag("Character") && currentEvent == null) {
             NextEvent();
         }
     }
