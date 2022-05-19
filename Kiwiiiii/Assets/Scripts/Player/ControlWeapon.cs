@@ -99,7 +99,6 @@ public class ControlWeapon : MonoBehaviour
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Floor"))
         {
-            Debug.Log(collision.gameObject.layer + ", " + collision.gameObject.name);
             check = false;
             down = false;
         }

@@ -52,12 +52,12 @@ public class Boss : Character
         //healthBar.stats.health = value;
 
         if (stats.health <= 0) { OnDeath(); }
-
-        if (stats.health <= stats.maxHealth * stats.phase2Health && stats.health >= stats.maxHealth * stats.phase1Health)
+        //stateMachine.ChangeState(BossPhases.Phase2);
+        if (stats.health <= stats.maxHealth * stats.phase2Health && stateMachine.currentPhase == BossPhases.Phase1)
         {
             stateMachine.ChangeState(BossPhases.Phase2);
         }
-        else if (stats.health <= stats.maxHealth * stats.phase3Health)
+        else if (stats.health <= stats.maxHealth * stats.phase3Health && stateMachine.currentPhase == BossPhases.Phase2)
         {
             stateMachine.ChangeState(BossPhases.Phase3);
         }
