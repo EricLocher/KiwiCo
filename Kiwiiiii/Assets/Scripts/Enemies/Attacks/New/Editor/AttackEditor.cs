@@ -37,11 +37,17 @@ public class AttackEditor : Editor
     void DrawInspectors()
     {
         if (editors.Count == 0) { return; }
+        GUILayout.Space(20);
 
-        EditorGUILayout.BeginVertical();
+        EditorGUILayout.BeginVertical("Box");
 
         for (int i = 0; i < editors.Count; i++) {
+            GUILayout.Space(20);
             editors[i].OnInspectorGUI();
+            if (GUILayout.Button("Remove Attack")) {
+                attacks.RemoveAttack(attacks.attacks[i]);
+                CreateEditors();
+            }
         }
 
         EditorGUILayout.EndVertical();
@@ -57,7 +63,6 @@ public class AttackEditor : Editor
             Handles.DrawWireArc(attack.origin.position, Vector3.up, viewAngleA, attack.angle, attack.radius);
             Handles.DrawLine(attack.origin.position, attack.origin.position + viewAngleA * attack.radius);
             Handles.DrawLine(attack.origin.position, attack.origin.position + viewAngleB * attack.radius);
-
         }
     }
 
