@@ -22,7 +22,7 @@ public class Character : MonoBehaviour
 
     public virtual void Heal(float value)
     {
-        if(characterStats.health + value > characterStats.maxHealth) { return; }
+        if(characterStats.health + value > characterStats.maxHealth) { characterStats.health = characterStats.maxHealth; return; }
         characterStats.health += value;
     }
 
