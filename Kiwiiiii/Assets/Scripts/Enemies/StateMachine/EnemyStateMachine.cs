@@ -20,6 +20,7 @@ public class EnemyStateMachine
 
     public void Update()
     {
+        Debug.Log(currentState.GetId());
         //"?" check if the variable is a null reference, if not we call the specified function.
         currentState?.Update(Time.deltaTime);
     }

@@ -12,7 +12,6 @@ public class AttackEditor : Editor
     {
         DrawDefaultInspector();
         foreach (AttackCone attack in attacks.attacks) {
-            if (attack.origin == null)
                 attack.origin = attacks.transform;
         }
     }

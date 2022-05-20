@@ -32,7 +32,6 @@ public class Enemy : Character
         stateMachine.enemy = this;
 
         stateMachine.RegisterState(EnemyStates.Idle, new IdleState(this, stateMachine));
-        stateMachine.RegisterState(EnemyStates.Surprise, new SurpriseState(this, stateMachine));
         stateMachine.RegisterState(EnemyStates.Chase, new ChaseState(this, stateMachine));
         stateMachine.RegisterState(EnemyStates.Attack, new AttackState(this, stateMachine));
         stateMachine.RegisterState(EnemyStates.Death, new DeathState(this, stateMachine));
@@ -71,13 +70,22 @@ public class Enemy : Character
 
         blinkTimer = blinkDuration;
         animator.SetTrigger("knockback");
+        stateMachine.ChangeState(EnemyStates.Idle);
         AudioManager.instance.PlayOnceLocal("EnemyTakeDamage", gameObject);
         if (characterStats.health <= 0) { OnDeath(); }
     }
 
     protected override void OnDeath()
     {
-        AudioManager.instance.PlayOnceLocal("EnemyDie", gameObject);
+        //play death vfx on obj
+        GameObject obj = new GameObject("DEATH VFX + AUDIO");
+        obj.transform.position = transform.position;
+        VisualEffect deathVFX = obj.AddComponent<VisualEffect>();
+        deathVFX.visualEffectAsset = AppearEffect.visualEffectAsset;
+        deathVFX.Play();
+        AudioManager.instance.PlayOnceLocal("EnemyDie", obj);
+        Destroy(obj, 1f);
+
         stateMachine.ChangeState(EnemyStates.Death);
     }
 }

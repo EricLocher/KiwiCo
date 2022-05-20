@@ -12,6 +12,9 @@ public class EventZoneEditor : Editor
 
     public override void OnInspectorGUI()
     {
+
+        DrawDefaultInspector();
+
         _target.CheckDependency();
 
         EditorGUILayout.LabelField("Zone radius", EditorStyles.boldLabel);
@@ -58,6 +61,11 @@ public class EventZoneEditor : Editor
             if (GUILayout.Button("Add Cinematic Event"))
             {
                 _target.AddEvent((GameEvent)CreateInstance(typeof(CutsceneEvent)));
+                CreateEditors();
+            }
+
+            if (GUILayout.Button("Add Appear Event")) {
+                _target.AddEvent((GameEvent)CreateInstance(typeof(AppearEvent)));
                 CreateEditors();
             }
 

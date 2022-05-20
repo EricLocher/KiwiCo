@@ -19,19 +19,6 @@ public class UIManager : MonoBehaviour
         sfxSlider.value = Save.instance.sfx;
         musicSlider.value = Save.instance.music;
         sensText.text = "" + Mathf.Round(sensSlider.value * 100.0f) * 0.01f;
-
-        //Temporary for playtest
-        if (SceneManager.GetActiveScene().name == "Menu")
-        {
-            AudioManager.instance.PauseAllSound();
-            AudioManager.instance.Play("Menu Music");
-        }
-
-        if (SceneManager.GetActiveScene().name == "amelie 2" || SceneManager.GetActiveScene().name == "Eric 2")
-        {
-            AudioManager.instance.PauseAllSound();
-            AudioManager.instance.Play("Game Music");
-        }
     }
 
     public void CallPause()

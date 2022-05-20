@@ -20,6 +20,7 @@ public class RayAttack : BossAttack
         for (int i = 0; i < amountOfRays; i++)
         {
             GameObject _temp = Instantiate(ray);
+            _temp.transform.parent = TempHolder.transform;
             rays.Add(_temp);
             //_temp.transform.position += new Vector3(_temp.GetComponentInChildren<BoxCollider>().bounds.size.x, 0, 0);
 

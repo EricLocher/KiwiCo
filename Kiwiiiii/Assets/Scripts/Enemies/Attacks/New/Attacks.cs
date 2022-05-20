@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
@@ -7,62 +6,57 @@ public class Attacks : MonoBehaviour
 {
     Transform target;
     public List<AttackCone> attacks = new List<AttackCone>();
-    [SerializeField] Enemy agent;
+    Enemy agent;
     int randomIndex;
-    public bool DealDamage = false;
+    public bool DealDamage, isHealing = false;
     void Start()
     {
+        agent = GetComponent<Enemy>();
+        for (int i = 0; i < attacks.Count; i++) {
+            attacks[i] = Instantiate(attacks[i]);
+            attacks[i].origin = transform;
+            attacks[i].bigradius = attacks[i].radius * 1.2f;
+            attacks[i].normalradius = attacks[i].radius;
+        }
         target = GameObject.FindGameObjectWithTag("Character").transform;
     }
 
     void Attack()
     {
+        if (agent == null) { return; }
         if (agent.stateMachine.activeState == EnemyStates.Attack) { return; }
-
         randomIndex = Random.Range(0, attacks.Count);
 
         agent.stateMachine.ChangeState(EnemyStates.Attack);
 
         agent.animator.SetTrigger(attacks[randomIndex].triggerName.ToString());
+        for (int i = 0; i < attacks.Count; i++) {
+            attacks[i].radius = attacks[i].bigradius;
+        }
     }
 
     void Fire()
     {
-        var animPlaying = attacks[randomIndex].triggerName.ToString();
-        if (animPlaying == "shoot")
-        {
-            agent.animator.ResetTrigger("heal");
+        if (attacks[randomIndex].triggerName.ToString() == "shoot") {
             if (agent.animator.GetCurrentAnimatorClipInfo(0)[0].clip.name == attacks[randomIndex].triggerName.ToString())
                 GetComponent<FireProjectile>().CallCoroutine(agent.animator.GetCurrentAnimatorClipInfo(0).Length);
         }
     }
 
-    void Heal()
+    void Update()
     {
-        var animPlaying = attacks[randomIndex].triggerName.ToString();
-        if (animPlaying == "heal")
-        {
-            agent.animator.ResetTrigger("shoot");
-            if (agent.animator.GetCurrentAnimatorClipInfo(0)[0].clip.name == attacks[randomIndex].triggerName.ToString())
-                GetComponent<FireProjectile>().CallCoroutine(agent.animator.GetCurrentAnimatorClipInfo(0).Length);
-        }
-    }
-
-    private void Update()
-    {
-        foreach (AttackCone attack in attacks)
-        {
-            if (attack.TargetInCone(target))
-            {
+        foreach (AttackCone attack in attacks) {
+            if (attack.TargetInCone(target)) {
                 transform.LookAt(new Vector3(target.position.x, transform.position.y, target.position.z));
                 Attack();
-                Fire();
-                Heal();
+
+                if (!isHealing)
+                    Fire();
+
                 if (DealDamage)
                     EndOfAttack();
             }
-            else if (!attack.TargetInCone(target) && agent.stateMachine.activeState == EnemyStates.Attack)
-            {
+            else if (!attack.TargetInCone(target) && agent.stateMachine.activeState == EnemyStates.Attack) {
                 WaitForAttack();
             }
         }
@@ -70,22 +64,27 @@ public class Attacks : MonoBehaviour
 
     public void EndOfAttack()
     {
-        foreach (AttackCone attack in attacks)
-        {
+        foreach (AttackCone attack in attacks) {
             target.gameObject.transform.parent.gameObject.GetComponent<PlayerController>().TakeDamage(attack.damage);
         }
     }
 
     private async void WaitForAttack()
     {
+        Debug.Log(agent.animator.GetCurrentAnimatorClipInfo(0)[0].clip.length);
         await Task.Delay((int)(agent.animator.GetCurrentAnimatorClipInfo(0)[0].clip.length * 1000f));
         ExitAttack();
     }
 
     public void ExitAttack()
     {
-        agent.stateMachine.ChangeState(EnemyStates.Chase);
+        Debug.Log("ExitAttack");
+        if (agent == null) { return; }
+        agent.stateMachine.ChangeState(EnemyStates.Idle);
         agent.animator.ResetTrigger(attacks[randomIndex].triggerName.ToString());
+        for (int i = 0; i < attacks.Count; i++) {
+            attacks[i].radius = attacks[i].normalradius;
+        }
     }
 
 
