@@ -75,10 +75,6 @@ public class PlayerInput : MonoBehaviour
         this.movement.Move(movement);
     }
 
-    public void EnableSheathWeapon()
-    {
-        controls.Player.Sheath.performed += ctx => sword.SheathWeapon();
-    }
 
     public void Equip()
     {
