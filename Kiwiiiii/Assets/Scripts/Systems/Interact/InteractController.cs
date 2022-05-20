@@ -8,7 +8,19 @@ public class InteractController : MonoBehaviour
     public List<GameObject> interactables = new List<GameObject>();
     public GameObject interactNotice;
 
-    private void OnTriggerEnter(Collider other)
+    void Update()
+    {
+        for(int i = 0; i < interactables.Count; i++)
+        {
+            if(interactables[i] == null)
+            {
+                interactables.Remove(interactables[i]);
+                i--;
+            }
+        }
+    }
+
+    void OnTriggerEnter(Collider other)
     {
         other.TryGetComponent(out IInteractable interactable);
         
@@ -23,14 +35,10 @@ public class InteractController : MonoBehaviour
     {
         other.TryGetComponent(out IInteractable interactable);
 
-        //if (interactable != null) {
-        //    interactables.Remove(other.gameObject);
-        //    interactNotice.SetActive(false);
-        //    //if (interactable is NPC)
-        //    //{
-        //    //    other.GetComponent<NPC>().dialogueManager.EndDialogue();
-        //    //}
-        //}
+        if (interactable != null) {
+            interactables.Remove(other.gameObject);
+            interactNotice.SetActive(false);
+        }
     }
 
     public void Interact(InputAction.CallbackContext value)
