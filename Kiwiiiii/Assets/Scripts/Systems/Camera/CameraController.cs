@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 public class CameraController : MonoBehaviour
 {
     [Header("Target to follow")]
-    [SerializeField] GameObject target;
+    GameObject target;
     [SerializeField] GameObject cameraCenter;
     [SerializeField] Camera cam;
 
@@ -36,7 +36,7 @@ public class CameraController : MonoBehaviour
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
         }
-
+        target = GameObject.FindGameObjectWithTag("Character");
         //sensitivity = Save.instance.sensitivity;
 
         camDist = cam.transform.localPosition;
