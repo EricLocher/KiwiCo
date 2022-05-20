@@ -2,13 +2,12 @@ using UnityEngine;
 
 public class AquireSword : MonoBehaviour
 {
+    /*
     [SerializeField] ControlWeapon sword;
     [SerializeField] PlayerInput controls;
 
     void Start()
     {
-        if (Save.instance.aquiredSword)
-        {
             controls.EnableSheathWeapon();
             Destroy(gameObject);
         }
@@ -23,6 +22,5 @@ public class AquireSword : MonoBehaviour
             controls.EnableSheathWeapon();
             Destroy(gameObject);
         }
-    }
-
+    }*/
 }
