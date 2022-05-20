@@ -16,10 +16,11 @@ public class MusicManager : MonoBehaviour
     {
         if (buildIndex == 0 || buildIndex == 4)
         {
-            AudioManager.instance.PauseAllSound();
+            AudioManager.instance.PauseSound("Game Music");
             AudioManager.instance.Play("Menu Music");
+            return;
         }
-        AudioManager.instance.PauseAllSound();
+        AudioManager.instance.PauseSound("Menu Music");
         AudioManager.instance.Play("Game Music");
     }
 }
