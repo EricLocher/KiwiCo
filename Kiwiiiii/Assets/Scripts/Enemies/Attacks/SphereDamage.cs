@@ -24,7 +24,7 @@ public class SphereDamage : MonoBehaviour
         if (collision.isTrigger) { return; }
         if (collision.gameObject.CompareTag("Character"))
         {
-            target.GetComponent<PlayerController>().TakeDamage(3f);
+            target.GetComponent<PlayerController>().TakeDamage(5f);
             Destroy(gameObject);
         }
     }

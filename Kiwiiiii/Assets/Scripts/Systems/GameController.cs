@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
@@ -33,6 +34,20 @@ public class GameController : MonoBehaviour
         pauseGame.Enable();
 
         pauseGame.performed += ctx => PauseGame();
+    }
+
+    void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (GameObject.FindGameObjectWithTag("Player"))
+        {
+            var pc = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+            pc.stats.health = pc.stats.maxHealth;
+        }
     }
 
     void Update()
@@ -82,9 +97,6 @@ public class GameController : MonoBehaviour
             Time.timeScale = 1f;
     }
 }
-
-
-
 
 public enum GameStates
 {
