@@ -40,6 +40,8 @@ public class PlayerInput : MonoBehaviour
         //Hotbar
         controls.Player.Hotbar2.performed += ctx => hotbar.UseItem(1);
 
+
+        controls.Player.Sheath.performed += ctx => sword.SheathWeapon();
         #endregion
     }
 
