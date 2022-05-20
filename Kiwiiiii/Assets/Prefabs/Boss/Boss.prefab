@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 2371851411739137770}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 14.06, y: 4.41, z: 33.13}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 3.5, y: 3.5, z: 3.5}
   m_Children:
   - {fileID: 2837332876657922939}
   m_Father: {fileID: 0}
@@ -51,8 +51,8 @@ MonoBehaviour:
   target: {fileID: 0}
   spawnAreas: {fileID: 0}
   phaseStats:
-  - {fileID: 11400000, guid: 4345829482e09a64583b2b4c5cfbb58b, type: 2}
-  - {fileID: 11400000, guid: 4345829482e09a64583b2b4c5cfbb58b, type: 2}
+  - {fileID: 11400000, guid: 666319a25fd2c8e42b100a2d44749770, type: 2}
+  - {fileID: 11400000, guid: 1a3ced6f6401cd2498e217ebef6bab3b, type: 2}
   - {fileID: 11400000, guid: 4345829482e09a64583b2b4c5cfbb58b, type: 2}
 --- !u!114 &2371851411739137771
 MonoBehaviour:
@@ -67,13 +67,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spots:
-  - {x: 9.931059, y: 2.2821007, z: 40.57079}
-  - {x: 19.957314, y: 2.2821007, z: 41.132553}
-  - {x: 18.342009, y: 2.2821007, z: 28.433167}
-  - {x: 9.248716, y: 2.2821007, z: 28.515015}
-  circle: 0
-  circleRadius: 5
-  circlePos: {x: 14, y: 13.43, z: 36.5}
+  - {x: 648.3657, y: 56.787018, z: 438.37234}
+  circle: 1
+  circleRadius: 21.7
+  circlePos: {x: 661.05, y: 51.22, z: 429.63}
 --- !u!136 &2371851411739137782
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -84,10 +81,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
+  m_Radius: 1.5073591
+  m_Height: 4.9947653
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 1.4973816, z: -0.067129955}
 --- !u!114 &2371851411739137783
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -101,6 +98,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: {fileID: 0}
+  blink: {fileID: 0}
 --- !u!1001 &2371851410519553168
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -9,7 +9,6 @@ public class Boss : Character
     [HideInInspector] public PatrolSpots spawnAreas;
     public List<SOPhaseStats> phaseStats = new List<SOPhaseStats>();
     public SOBossStats stats { get { return (SOBossStats)characterStats; } }
-
     BossStateMachine stateMachine;
 
     private void Start()
@@ -60,6 +59,8 @@ public class Boss : Character
         {
             stateMachine.ChangeState(BossPhases.Phase3);
         }
+
+        ui.OnHit();
     }
     public void UpdateAttackStats()
     {
