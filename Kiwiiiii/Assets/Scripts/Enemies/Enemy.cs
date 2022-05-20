@@ -10,7 +10,7 @@ public class Enemy : Character
 {
     public SOEnemyStats stats { get { return (SOEnemyStats)characterStats; } }
 
-    [SerializeField] public Transform target;
+    [HideInInspector] public Transform target;
     [SerializeField] public VisualEffect AppearEffect;
     [SerializeField] public Animator animator;
     [HideInInspector] public NavMeshAgent navMeshAgent;
