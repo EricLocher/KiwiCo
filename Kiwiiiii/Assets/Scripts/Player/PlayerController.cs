@@ -19,7 +19,7 @@ public class PlayerController : Character
 
     //}
 
-    private void Awake()
+    protected override void Init()
     {
         heal.Stop();
     }
