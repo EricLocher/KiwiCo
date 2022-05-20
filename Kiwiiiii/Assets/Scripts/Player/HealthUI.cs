@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class HealthUI : MonoBehaviour
 {
     [SerializeField] Image fillImage;
-    [SerializeField] PlayerController player;
+    PlayerController player;
     [SerializeField] Image blink;
 
     bool flashing = false;
@@ -13,6 +13,7 @@ public class HealthUI : MonoBehaviour
 
     private void Awake()
     {
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         lastFrame = player.stats.health;
     }
 

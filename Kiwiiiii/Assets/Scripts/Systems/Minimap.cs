@@ -5,8 +5,13 @@ using UnityEngine;
 [ExecuteInEditMode]
 public class Minimap : MonoBehaviour
 {
-    [SerializeField] GameObject target;
+    GameObject target;
     [SerializeField] float yOffset = 20f;
+
+    void Start()
+    {
+        target = GameObject.FindGameObjectWithTag("Character");
+    }
 
     void Update()
     {
