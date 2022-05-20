@@ -46,6 +46,6 @@ public class PlayerController : Character
     {
         base.Heal(value);
         heal.Play();
-
+        AudioManager.instance.PlayOnce("PlayerHeal");
     }
 }

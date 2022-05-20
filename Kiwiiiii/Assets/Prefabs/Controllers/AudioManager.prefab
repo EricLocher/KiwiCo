@@ -205,5 +205,33 @@ MonoBehaviour:
     volume: 0.5
     audio: {fileID: 0}
     loop: 1
+  - name: BossDamage
+    clip: {fileID: 8300000, guid: 570e4802b1740ba499dc28750d7ab9ea, type: 3}
+    mixer: {fileID: -8124911405333129162, guid: 5adc6ebd34bdc914cab810124bff624a, type: 2}
+    maxDistance: 0
+    volume: 0.5
+    audio: {fileID: 0}
+    loop: 0
+  - name: PlayerDamage
+    clip: {fileID: 8300000, guid: 122cf6b0d967d284a856b7d6afb04c5f, type: 3}
+    mixer: {fileID: -8124911405333129162, guid: 5adc6ebd34bdc914cab810124bff624a, type: 2}
+    maxDistance: 0
+    volume: 0.5
+    audio: {fileID: 0}
+    loop: 0
+  - name: PlayerHeal
+    clip: {fileID: 8300000, guid: d70d2c866dec2b540861f21dbf331e93, type: 3}
+    mixer: {fileID: -8124911405333129162, guid: 5adc6ebd34bdc914cab810124bff624a, type: 2}
+    maxDistance: 0
+    volume: 0.5
+    audio: {fileID: 0}
+    loop: 0
+  - name: BossDeath
+    clip: {fileID: 8300000, guid: f17c553b7a19c1d4187fb8021d84dc0d, type: 3}
+    mixer: {fileID: -8124911405333129162, guid: 5adc6ebd34bdc914cab810124bff624a, type: 2}
+    maxDistance: 0
+    volume: 0.5
+    audio: {fileID: 0}
+    loop: 0
   menuVolume: 0
   multiplier: 60
