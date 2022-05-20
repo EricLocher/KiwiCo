@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 1481.7754, g: 1835.8867, b: 2430.4492, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1182,14 +1182,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2135772926252901969, guid: f7c485e8cb857484fb704c8c6e2cf6eb, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2135772926252901972, guid: f7c485e8cb857484fb704c8c6e2cf6eb, type: 3}
-      propertyPath: m_IsTrigger
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2135772927065863929, guid: f7c485e8cb857484fb704c8c6e2cf6eb, type: 3}
       propertyPath: target
       value: 
@@ -1242,12 +1234,65 @@ PrefabInstance:
       propertyPath: m_Name
       value: MagicEnemy
       objectReference: {fileID: 0}
-    - target: {fileID: 6705414607281228597, guid: f7c485e8cb857484fb704c8c6e2cf6eb, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f7c485e8cb857484fb704c8c6e2cf6eb, type: 3}
+--- !u!1001 &4472937670238480776
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3175202191865017325, guid: 4ccdbbccea1536a40b2b710f479eac51, type: 3}
+      propertyPath: m_RootOrder
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175202191865017325, guid: 4ccdbbccea1536a40b2b710f479eac51, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 411.5453
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175202191865017325, guid: 4ccdbbccea1536a40b2b710f479eac51, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 20.342821
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175202191865017325, guid: 4ccdbbccea1536a40b2b710f479eac51, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 415.06754
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175202191865017325, guid: 4ccdbbccea1536a40b2b710f479eac51, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175202191865017325, guid: 4ccdbbccea1536a40b2b710f479eac51, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175202191865017325, guid: 4ccdbbccea1536a40b2b710f479eac51, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175202191865017325, guid: 4ccdbbccea1536a40b2b710f479eac51, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175202191865017325, guid: 4ccdbbccea1536a40b2b710f479eac51, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175202191865017325, guid: 4ccdbbccea1536a40b2b710f479eac51, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175202191865017325, guid: 4ccdbbccea1536a40b2b710f479eac51, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8489831527282699290, guid: 4ccdbbccea1536a40b2b710f479eac51, type: 3}
+      propertyPath: m_Name
+      value: MusicManager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4ccdbbccea1536a40b2b710f479eac51, type: 3}
 --- !u!1001 &4518883290347062595
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1302,14 +1347,6 @@ PrefabInstance:
     - target: {fileID: 2099986472259587912, guid: aa5941826397d144283199eba011b8fe, type: 3}
       propertyPath: m_Name
       value: SpearEnemy
-      objectReference: {fileID: 0}
-    - target: {fileID: 2099986472259587912, guid: aa5941826397d144283199eba011b8fe, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3838438608056465988, guid: aa5941826397d144283199eba011b8fe, type: 3}
-      propertyPath: m_Enabled
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3838438608056466010, guid: aa5941826397d144283199eba011b8fe, type: 3}
       propertyPath: target
