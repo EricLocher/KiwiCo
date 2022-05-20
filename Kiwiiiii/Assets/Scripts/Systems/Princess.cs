@@ -8,6 +8,9 @@ public class Princess : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Character")) {
+
+            Cursor.lockState = CursorLockMode.None;
+
             AudioManager.instance.PlayOnce("PlayerEnterPortal");
             string scene = NameFromIndex(5);
             LevelLoader.Instance.LoadLoading(scene);
