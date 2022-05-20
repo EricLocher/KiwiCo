@@ -36,7 +36,7 @@ public class EventZone : MonoBehaviour
                 if (barrier) {
                     invertedCollider.SetActive(true);
                     var scaleChange = new Vector3(zoneCollider.radius, zoneCollider.radius, zoneCollider.radius);
-                    invertedCollider.transform.localScale = scaleChange * 2.5f;
+                    invertedCollider.transform.localScale = scaleChange * 2f;
                 }
                 hasStarted = true;
             }
