@@ -10,10 +10,16 @@ namespace Quest.Dialogue
     {
         [SerializeField] SODialogue tempDialogue;
         [SerializeField] string playerName;
+        Rigidbody playerRb;
         SODialogue currentDialogue;
         aiConversant currentNPCSpeaker = null;
         DialogueNode currentNode = null;
         bool isChoosing = false;
+
+        private void Awake()
+        {
+            playerRb = GameObject.FindGameObjectWithTag("Character").GetComponent<Rigidbody>();
+        }
 
         //updates the dialogue ui whenever a change has been triggered
         public event Action onDialogueUpdate;
@@ -26,6 +32,7 @@ namespace Quest.Dialogue
 
         public void StartDialogue(aiConversant newConversant, SODialogue newDialogue)
         {
+            playerRb.constraints = RigidbodyConstraints.FreezeAll;
             { Cursor.visible = true; Cursor.lockState = CursorLockMode.None; }
             currentNPCSpeaker = newConversant;
             currentDialogue = newDialogue;
@@ -41,6 +48,7 @@ namespace Quest.Dialogue
             isChoosing = false;
             currentNPCSpeaker = null;
             onDialogueUpdate();
+            playerRb.constraints = RigidbodyConstraints.None;
             { Cursor.visible = false; Cursor.lockState = CursorLockMode.Locked; }
         }
 
