@@ -29,6 +29,12 @@ public class PlayerController : Character
         //Debug.Log(playerStats.berriesInInventory);
     }
 
+    public override void TakeDamage(float value)
+    {
+        base.TakeDamage(value);
+        AudioManager.instance.PlayOnce("PlayerDamage");
+    }
+
     protected override void OnDeath()
     {
         SceneManager.LoadScene("GameOver");
@@ -40,6 +46,6 @@ public class PlayerController : Character
     {
         base.Heal(value);
         heal.Play();
-
+        AudioManager.instance.PlayOnce("PlayerHeal");
     }
 }

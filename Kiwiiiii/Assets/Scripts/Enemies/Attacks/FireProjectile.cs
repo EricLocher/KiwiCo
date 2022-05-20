@@ -82,6 +82,7 @@ public class FireProjectile : MonoBehaviour
         foreach (Collider col in Physics.OverlapSphere(transform.position, 20f)) {
             if (col.gameObject.tag != "Enemy") { continue; }
             var enemyComp = col.gameObject.GetComponent<Enemy>();
+            if(enemyComp == null) { continue; }
             if (enemyComp.stats.health == enemyComp.stats.maxHealth) { continue; }
             enemyList.Add(enemyComp);
             Enemy lowestHealth = enemyList[0];
@@ -93,7 +94,6 @@ public class FireProjectile : MonoBehaviour
             return lowestHealth;
         }
 
-        Debug.Log("NO FOUND");
         return GetComponent<Enemy>();
     }
 

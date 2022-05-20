@@ -60,8 +60,18 @@ public class Boss : Character
             stateMachine.ChangeState(BossPhases.Phase3);
         }
 
+        AudioManager.instance.PlayOnce("BossDamage");
+
         ui.OnHit();
     }
+
+    protected override void OnDeath()
+    {
+        AudioManager.instance.PlayOnce("BossDeath");
+        
+        Destroy(gameObject, 0.4f);
+    }
+
     public void UpdateAttackStats()
     {
 

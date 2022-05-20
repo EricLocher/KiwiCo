@@ -20,7 +20,15 @@ public class MusicManager : MonoBehaviour
             AudioManager.instance.Play("Menu Music");
             return;
         }
+
         AudioManager.instance.PauseSound("Menu Music");
+
+        if (buildIndex == 3) {;
+            AudioManager.instance.PauseSound("Game Music");
+            AudioManager.instance.Play("Boss Music");
+            return;
+        }
+
         AudioManager.instance.Play("Game Music");
     }
 }
