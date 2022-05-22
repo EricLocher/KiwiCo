@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 1481.7754, g: 1835.8867, b: 2430.4492, a: 1}
+  m_IndirectSpecularColor: {r: 1481.7451, g: 1835.5391, b: 2429.8105, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -697,63 +697,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1066121935}
   m_CullTransparentMesh: 1
---- !u!1001 &1133508977
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 451617954060140537, guid: b774fd9e98950c141ba18033f5ff47fb, type: 3}
-      propertyPath: m_RootOrder
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 451617954060140537, guid: b774fd9e98950c141ba18033f5ff47fb, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 347.70422
-      objectReference: {fileID: 0}
-    - target: {fileID: 451617954060140537, guid: b774fd9e98950c141ba18033f5ff47fb, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 29.444584
-      objectReference: {fileID: 0}
-    - target: {fileID: 451617954060140537, guid: b774fd9e98950c141ba18033f5ff47fb, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 159.25252
-      objectReference: {fileID: 0}
-    - target: {fileID: 451617954060140537, guid: b774fd9e98950c141ba18033f5ff47fb, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 451617954060140537, guid: b774fd9e98950c141ba18033f5ff47fb, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 451617954060140537, guid: b774fd9e98950c141ba18033f5ff47fb, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 451617954060140537, guid: b774fd9e98950c141ba18033f5ff47fb, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 451617954060140537, guid: b774fd9e98950c141ba18033f5ff47fb, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 451617954060140537, guid: b774fd9e98950c141ba18033f5ff47fb, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 451617954060140537, guid: b774fd9e98950c141ba18033f5ff47fb, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4551142855558882608, guid: b774fd9e98950c141ba18033f5ff47fb, type: 3}
-      propertyPath: m_Name
-      value: GameControllers
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: b774fd9e98950c141ba18033f5ff47fb, type: 3}
 --- !u!1 &1172266252
 GameObject:
   m_ObjectHideFlags: 0
@@ -889,7 +832,6 @@ GameObject:
   - component: {fileID: 1535569611}
   - component: {fileID: 1535569610}
   - component: {fileID: 1535569609}
-  - component: {fileID: 1535569608}
   - component: {fileID: 1535569607}
   m_Layer: 5
   m_Name: Canvas
@@ -921,19 +863,6 @@ MonoBehaviour:
   interactNotice: {fileID: 0}
   blackbars: {fileID: 0}
   BG: {fileID: 0}
---- !u!114 &1535569608
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1535569606}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 82a525c3023f4d14a896be144b373b9d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  settings: {fileID: 0}
 --- !u!114 &1535569609
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -14,6 +14,7 @@ public class ControlWeapon : MonoBehaviour
     public bool down = false;
     bool sheath = false;
     bool check = true;
+    bool firstSheath = true;
 
     float deltaY = 0;
     float timeElapsed = 0;
@@ -25,6 +26,8 @@ public class ControlWeapon : MonoBehaviour
         Physics.IgnoreLayerCollision(LayerMask.NameToLayer("Weapon"), LayerMask.NameToLayer("Barrier"));
         Physics.IgnoreLayerCollision(LayerMask.NameToLayer("Weapon"), LayerMask.NameToLayer("IgnoreWeapon"));
         rb.maxAngularVelocity = maxAngular;
+        if (firstSheath && Save.instance.aquiredSword == false)
+            SheathWeapon();
     }
 
     void FixedUpdate()
@@ -61,16 +64,20 @@ public class ControlWeapon : MonoBehaviour
 
     public void SheathWeapon()
     {
-        AudioManager.instance.PlayOnce("SwordSheath");
-        sheath = !sheath;
-        down = false;
-
-        sword.gameObject.SetActive(!sheath);
-        damageCollider.enabled = !sheath;
-
-        if (sheath)
+        if (Save.instance.aquiredSword || firstSheath)
         {
-            rb.MoveRotation(Quaternion.Euler(90, 0, 0));
+            AudioManager.instance.PlayOnce("SwordSheath");
+            sheath = !sheath;
+            down = false;
+
+            sword.gameObject.SetActive(!sheath);
+            damageCollider.enabled = !sheath;
+
+            if (sheath)
+            {
+                rb.MoveRotation(Quaternion.Euler(90, 0, 0));
+            }
+            firstSheath = false;
         }
     }
 

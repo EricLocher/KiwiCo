@@ -1,10 +1,11 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Save : MonoBehaviour
 {
     [HideInInspector] public int sceneIndex;
-    [HideInInspector] public bool aquiredSword;
+     public bool aquiredSword;
     [HideInInspector] public float master = 1f, music = 1f, sfx = 1f, sensitivity = 5f;
 
     public static Save instance;
@@ -29,7 +30,8 @@ public class Save : MonoBehaviour
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        if (SceneManager.GetActiveScene().buildIndex != 0)
+        int buildIndex = SceneManager.GetActiveScene().buildIndex;
+        if (buildIndex > 0 && buildIndex < 4)
         {
             sceneIndex = SceneManager.GetActiveScene().buildIndex;
             SaveAll();
@@ -40,11 +42,22 @@ public class Save : MonoBehaviour
     {
         Debug.Log("Saving data");
         SaveData.Save(this);
+        Debug.Log("saving: " + sceneIndex);
     }
 
     public void LoadSavedScene()
     {
-        SceneManager.LoadScene(sceneIndex);
+        string sceneString = NameFromIndex(sceneIndex);
+        LevelLoader.Instance.LoadLoading(sceneString);
+    }
+
+    static string NameFromIndex(int BuildIndex)
+    {
+        string path = SceneUtility.GetScenePathByBuildIndex(BuildIndex);
+        int slash = path.LastIndexOf('/');
+        string name = path.Substring(slash + 1);
+        int dot = name.LastIndexOf('.');
+        return name.Substring(0, dot);
     }
 
     public void LoadAll()
@@ -60,10 +73,12 @@ public class Save : MonoBehaviour
         AudioManager.instance.SetMasterVolume(master);
         AudioManager.instance.SetSfxVolume(sfx);
         AudioManager.instance.SetMusicVolume(music);
+        Debug.Log("loading: "+sceneIndex);
     }
 
     public void LoadAllSettings()
     {
+        Debug.Log("Loading settings");
         GameData data = SaveData.Load();
         sensitivity = data.sensitivity;
         master = data.master;
