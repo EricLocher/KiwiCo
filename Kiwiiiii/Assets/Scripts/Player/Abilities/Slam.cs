@@ -20,12 +20,12 @@ public class Slam : Ability
     bool started = false;
     float timePassed = 0;
 
-
     protected override void InitAbility()
     {
         _effect = Instantiate(effect, movement.transform);
         _effect.OnCreate(movement);
         movement.chargeVFX.Stop();
+        movement.removeExtraGravity = started;
     }
 
     public override void Activate(InputAction.CallbackContext ctx)
@@ -37,12 +37,14 @@ public class Slam : Ability
  
         movement.chargeVFX.Stop();
         base.Activate(ctx);
+        movement.removeExtraGravity = started;
     }
 
     public override void StartedAbility(InputAction.CallbackContext ctx)
     {
         started = true;
         timePassed = 0;
+        movement.removeExtraGravity = started;
     }
 
     public override void DoAbility()
@@ -64,6 +66,7 @@ public class Slam : Ability
 
         started = false;
         timePassed = 0;
+        movement.removeExtraGravity = started;
     }
     
     public override void UpdateAbility(float dt)
@@ -73,6 +76,7 @@ public class Slam : Ability
         if(started && (currentAmount < 1 || Physics.Raycast(movement.transform.position, Vector3.down, minDistFromGround, layerMask))) {
             movement.chargeVFX.Stop();
             started = false;
+            movement.removeExtraGravity = started;
             return;
         }
 

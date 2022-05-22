@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.VFX;
 
@@ -28,7 +26,7 @@ public class SlamEffect : MonoBehaviour
         this.movement = movement;
     }
 
-    private void Update()
+    void Update()
     {
         if (!IsSlamming) { return; }
 
@@ -42,20 +40,22 @@ public class SlamEffect : MonoBehaviour
         speed += speed * Time.deltaTime;
         damage += damage * Time.deltaTime;
         radius += radius * (0.5f * Time.deltaTime);
-        
 
-        if (movement.isGrounded) {
+        if (movement.isGrounded)
+        {
             Collider[] collisions = Physics.OverlapSphere(movement.transform.position, radius);
 
-            foreach (Collider collider in collisions) {
+            foreach (Collider collider in collisions)
+            {
 
-                if (collider.isTrigger || collider.CompareTag("Player") || collider.CompareTag("Sword")) { continue; }
+                if (collider.isTrigger || collider.CompareTag("Character") || collider.CompareTag("Sword")) { continue; }
 
                 Rigidbody rb = collider.GetComponent<Rigidbody>();
 
                 if (rb == null) { continue; }
                 AudioManager.instance.PlayOnce("PlayerSlamCollide");
-                if (collider.CompareTag("Enemy")) {
+                if (collider.CompareTag("Enemy"))
+                {
                     Character enemy = collider.GetComponent<Character>();
 
                     #region Calculate Damage

@@ -18,6 +18,7 @@ public class PlayerMovement : MonoBehaviour
     [HideInInspector] public bool isGrounded;
     private Animator animator;
     public VisualEffect chargeVFX;
+    [HideInInspector] public bool removeExtraGravity = false;
 
     float _timer;
 
@@ -65,24 +66,26 @@ public class PlayerMovement : MonoBehaviour
             jump = false;
         }
 
-        if (!isGrounded) {
+        if (!isGrounded)
+        {
             RaycastHit hit;
-            if (Physics.Raycast(transform.position, Vector3.down, out hit, Mathf.Infinity, layerMask)){
+            if (Physics.Raycast(transform.position, Vector3.down, out hit, Mathf.Infinity, layerMask))
+            {
                 float dist = Vector3.Distance(transform.position, hit.point);
-                    if(dist < 5f) { groundDecal.gameObject.SetActive(false); return; }
+                if (dist < 5f) { groundDecal.gameObject.SetActive(false); return; }
 
                 groundDecal.gameObject.SetActive(true);
                 groundDecal.transform.position = hit.point + Vector3.up;
                 groundDecal.size = new Vector3((dist - 5) / 2, (dist - 5) / 2, 1);
             }
-            else {
+            else
+            {
                 groundDecal.gameObject.SetActive(false);
             }
         }
-
-        if (!isGrounded)
+        if (!isGrounded && !removeExtraGravity)
         {
-            rb.AddForce(Vector3.down * (2 * stats.jumpForce), ForceMode.Acceleration);
+            rb.AddForce(Vector3.down * stats.jumpForce, ForceMode.Acceleration);
         }
     }
 
