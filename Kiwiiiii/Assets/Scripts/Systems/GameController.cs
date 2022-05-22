@@ -7,7 +7,7 @@ public class GameController : MonoBehaviour
     static GameController _instance;
     public static GameController Instance { get { return _instance; } }
 
-    public static GameStates gameState = GameStates.Playing;
+    public static GameStates gameState = GameStates.Menu;
 
     [SerializeField] InputAction pauseGame;
     [SerializeField] Texture2D cursorTexture;
@@ -16,6 +16,8 @@ public class GameController : MonoBehaviour
     public static event ChangeHandler onStateChange;
 
     [HideInInspector] public bool pause;
+
+    float saveTimer = 0f;
 
     void Awake()
     {
@@ -43,16 +45,34 @@ public class GameController : MonoBehaviour
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        var buildIndex = SceneManager.GetActiveScene().buildIndex;
+
         if (GameObject.FindGameObjectWithTag("Player"))
         {
             var pc = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
             pc.stats.health = pc.stats.maxHealth;
         }
+
+        if (buildIndex == 0 || buildIndex >= 4) { gameState = GameStates.Menu; }
+        if (buildIndex > 0 && buildIndex < 4) { gameState = GameStates.Playing; }
+        if (buildIndex == 6) { gameState = GameStates.Loading; }
+
+        if(gameState == GameStates.Playing) { }
     }
 
     void Update()
     {
         if (gameState == GameStates.Playing) { pause = true; } else { pause = false; }
+
+        if (gameState == GameStates.Playing)
+        {
+            saveTimer += Time.deltaTime;
+            if (saveTimer >= 30)
+            {
+                Save.instance.SaveAll();
+                saveTimer = 0;
+            }
+        }
     }
 
     public void PauseGame()
@@ -101,5 +121,7 @@ public class GameController : MonoBehaviour
 public enum GameStates
 {
     Paused,
-    Playing
+    Playing,
+    Loading,
+    Menu
 }

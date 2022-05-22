@@ -1,11 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class MusicManager : MonoBehaviour
 {
     int buildIndex = 0;
+    GameStates state;
+
     void OnEnable()
     {
         buildIndex = SceneManager.GetActiveScene().buildIndex;
@@ -14,7 +14,8 @@ public class MusicManager : MonoBehaviour
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        if (buildIndex == 0 || buildIndex == 4)
+        state = GameController.gameState;
+        if (state == GameStates.Menu)
         {
             AudioManager.instance.PauseSound("Game Music");
             AudioManager.instance.Play("Menu Music");

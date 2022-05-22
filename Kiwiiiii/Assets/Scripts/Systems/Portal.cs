@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -10,15 +8,13 @@ public class Portal : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Character"))
         {
-            Save.instance.aquiredSword = true;
             AudioManager.instance.PlayOnce("PlayerEnterPortal");
             string scene = NameFromIndex(SceneManager.GetActiveScene().buildIndex + 1);
             LevelLoader.Instance.LoadLoading(scene);
-            //ta brt
         }
     }
 
-    private static string NameFromIndex(int BuildIndex)
+    static string NameFromIndex(int BuildIndex)
     {
         string path = SceneUtility.GetScenePathByBuildIndex(BuildIndex);
         int slash = path.LastIndexOf('/');
