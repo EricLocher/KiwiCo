@@ -79,6 +79,11 @@ public class PlayerMovement : MonoBehaviour
                 groundDecal.gameObject.SetActive(false);
             }
         }
+
+        if (!isGrounded)
+        {
+            rb.AddForce(Vector3.down * (2 * stats.jumpForce), ForceMode.Acceleration);
+        }
     }
 
     public void Spin()
