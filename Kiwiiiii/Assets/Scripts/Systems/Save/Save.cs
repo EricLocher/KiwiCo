@@ -40,9 +40,7 @@ public class Save : MonoBehaviour
 
     public void SaveAll()
     {
-        Debug.Log("Saving data");
         SaveData.Save(this);
-        Debug.Log("saving: " + sceneIndex);
     }
 
     public void LoadSavedScene()
@@ -62,7 +60,6 @@ public class Save : MonoBehaviour
 
     public void LoadAll()
     {
-        Debug.Log("Loading data");
         GameData data = SaveData.Load();
         sceneIndex = data.sceneIndex;
         aquiredSword = data.aquiredSword;
@@ -73,12 +70,10 @@ public class Save : MonoBehaviour
         AudioManager.instance.SetMasterVolume(master);
         AudioManager.instance.SetSfxVolume(sfx);
         AudioManager.instance.SetMusicVolume(music);
-        Debug.Log("loading: "+sceneIndex);
     }
 
     public void LoadAllSettings()
     {
-        Debug.Log("Loading settings");
         GameData data = SaveData.Load();
         sensitivity = data.sensitivity;
         master = data.master;
