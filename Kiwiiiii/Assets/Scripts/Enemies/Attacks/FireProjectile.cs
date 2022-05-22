@@ -55,10 +55,9 @@ public class FireProjectile : MonoBehaviour
 
     IEnumerator Heal(float time)
     {
-        Debug.Log("Heal");
         Enemy healTarget = CheckRadius();
 
-        //if (healTarget == null) { healTarget = GetComponent<Enemy>(); }
+        if (healTarget == null) { yield return null; }
 
         yield return new WaitForSeconds(time);
 

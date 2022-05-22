@@ -71,14 +71,12 @@ public class Attacks : MonoBehaviour
 
     private async void WaitForAttack()
     {
-        Debug.Log(agent.animator.GetCurrentAnimatorClipInfo(0)[0].clip.length);
         await Task.Delay((int)(agent.animator.GetCurrentAnimatorClipInfo(0)[0].clip.length * 1000f));
         ExitAttack();
     }
 
     public void ExitAttack()
     {
-        Debug.Log("ExitAttack");
         if (agent == null) { return; }
         agent.stateMachine.ChangeState(EnemyStates.Idle);
         agent.animator.ResetTrigger(attacks[randomIndex].triggerName.ToString());

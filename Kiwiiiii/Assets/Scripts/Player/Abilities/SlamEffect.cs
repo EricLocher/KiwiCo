@@ -66,7 +66,6 @@ public class SlamEffect : MonoBehaviour
                     #endregion
 
                     enemy.TakeDamage(damageToDeal);
-                    print("Enemy got hit by slam");
                 }
 
                 rb.AddExplosionForce(force, movement.transform.position, radius, 0.0f, ForceMode.Impulse);

@@ -43,7 +43,6 @@ public class InteractController : MonoBehaviour
 
     public void Interact(InputAction.CallbackContext value)
     {
-        print("Eri");
         if(interactables.Count == 0) { return; }
         if (!value.performed) { return; }
 
@@ -57,7 +56,6 @@ public class InteractController : MonoBehaviour
                 closestInteractable = interactables[i];
             }
         }
-        Debug.Log(closestInteractable);
         closestInteractable.GetComponent<IInteractable>().Interact();
     }
 }

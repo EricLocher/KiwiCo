@@ -23,8 +23,6 @@ public class BossStateMachine
         currentState?.ExitPhase();
         currentState = states[id];
         currentState?.EnterPhase();
-
-        Debug.Log("Changed state to:" + currentState.GetId());
     }
 
     public void RegisterState(BossPhases stateID, BossPhase state)

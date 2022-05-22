@@ -16,7 +16,6 @@ public class RayAttack : BossAttack
     {
         rays.Clear();
         base.EnterState(phase);
-        Debug.Log(currentPhase);
         for (int i = 0; i < amountOfRays; i++)
         {
             GameObject _temp = Instantiate(ray);

@@ -15,7 +15,6 @@ public class SpawnAttack : BossAttack
     public override void EnterState(BossPhase phase)
     {
         currentPhase = phase;
-        //Debug.Log(currentPhase);
 
         AudioManager.instance.PlayOnce("BossSpawn");
 
@@ -28,7 +27,6 @@ public class SpawnAttack : BossAttack
     }
     public override void ExitState()
     {
-        Debug.Log(currentPhase);
         currentPhase.RemoveSubState(this);
     }
 }
