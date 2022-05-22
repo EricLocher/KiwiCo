@@ -10,8 +10,11 @@ public class ZoneTP : MonoBehaviour
         {
             foreach (Transform child in collision.gameObject.transform.parent.transform)
             {
-                child.gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
-                child.gameObject.transform.position = targetPos.position;
+                if (child.gameObject.GetComponent<Rigidbody>())
+                {
+                    child.gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
+                    child.gameObject.transform.position = targetPos.position;
+                }
             }
         }
     }

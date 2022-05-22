@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6934377955798185547}
   - component: {fileID: 6934377955798185548}
-  - component: {fileID: 6698753851298831798}
+  - component: {fileID: 3321567498983810982}
   - component: {fileID: 2092388944202063132}
   m_Layer: 13
   m_Name: Strawberry_Bush_LOD
@@ -65,19 +65,20 @@ LODGroup:
     - renderer: {fileID: 1645262595897549695}
     - renderer: {fileID: 2145795113547266151}
   m_Enabled: 1
---- !u!135 &6698753851298831798
-SphereCollider:
+--- !u!136 &3321567498983810982
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6934377955798185549}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 2
-  m_Center: {x: -0.72, y: -1.05, z: 0.75}
+  m_Radius: 0.8759669
+  m_Height: 2.6265292
+  m_Direction: 1
+  m_Center: {x: -0.8436786, y: -1.2393701, z: 0.7233057}
 --- !u!114 &2092388944202063132
 MonoBehaviour:
   m_ObjectHideFlags: 0

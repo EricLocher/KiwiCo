@@ -103,7 +103,6 @@ class ComboAttacks
         
         for (int i = 0; i < attackList.Count; i++)
         {
-            Debug.Log(i);
             attackList[i].Update();
         }
     }

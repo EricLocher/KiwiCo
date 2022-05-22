@@ -8,9 +8,10 @@ public class HealItem : MonoBehaviour
     [HideInInspector] public RespawningHeal holder = null;
 
 
-    private void OnTriggerEnter(Collider other)
+    void OnTriggerEnter(Collider other)
     {
         if(!other.CompareTag("Character")) { return; }
+        if (other.isTrigger) { return; }
 
         other.GetComponentInParent<PlayerController>().Heal(healAmount);
         if(holder != null) {
