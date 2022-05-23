@@ -48,6 +48,7 @@ public class FireProjectile : MonoBehaviour
         canShoot = false;
         yield return new WaitForSeconds(time);
         GameObject sphereHolder = Instantiate(sphere, weapon.transform.position, weapon.transform.rotation);
+        sphereHolder.GetComponent<SphereDamage>().damage = GetComponent<Attacks>().damage;
         StartCoroutine(Reload(time));
         AudioManager.instance.PlayLocal("EnemyFireBurn", sphereHolder);
         AudioManager.instance.PlayOnceLocal("EnemyFire", gameObject);

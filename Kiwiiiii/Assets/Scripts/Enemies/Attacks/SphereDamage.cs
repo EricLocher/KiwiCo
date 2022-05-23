@@ -5,6 +5,7 @@ public class SphereDamage : MonoBehaviour
     [SerializeField, Range(0, 50)] float force = 5;
     GameObject target;
     Rigidbody rb;
+    [HideInInspector] public float damage;
 
     void Start()
     {
@@ -24,7 +25,7 @@ public class SphereDamage : MonoBehaviour
         if (collision.isTrigger) { return; }
         if (collision.gameObject.CompareTag("Character"))
         {
-            target.GetComponent<PlayerController>().TakeDamage(5f);
+            target.GetComponent<PlayerController>().TakeDamage(damage);
             Destroy(gameObject);
         }
     }
