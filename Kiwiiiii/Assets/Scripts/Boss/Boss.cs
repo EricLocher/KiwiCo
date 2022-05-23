@@ -7,7 +7,6 @@ public class Boss : Character
     BossUI ui;
     [HideInInspector] public Transform target;
     [HideInInspector] public PatrolSpots spawnAreas;
-    [SerializeField] GameObject hit;
     public List<SOPhaseStats> phaseStats = new List<SOPhaseStats>();
     public SOBossStats stats { get { return (SOBossStats)characterStats; } }
     BossStateMachine stateMachine;
@@ -64,9 +63,6 @@ public class Boss : Character
         }
 
         AudioManager.instance.PlayOnce("BossDamage");
-        var dmgParticle = Instantiate(hit);
-        dmgParticle.transform.position = GameObject.FindGameObjectWithTag("Sword").transform.position;
-        Destroy(dmgParticle, 1f);
 
         ui.OnHit();
     }

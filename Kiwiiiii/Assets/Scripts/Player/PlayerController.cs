@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.VFX;
@@ -7,6 +5,7 @@ using UnityEngine.VFX;
 public class PlayerController : Character
 {
     [SerializeField] VisualEffect heal;
+    public GameObject hit;
     public SOPlayerStats stats { get { return (SOPlayerStats)characterStats; } }
 
     //private void Start()
