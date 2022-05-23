@@ -52,7 +52,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 10293307151944281}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -141,6 +141,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   force: 5
+  damage: 0
 --- !u!1 &215316801575158829
 GameObject:
   m_ObjectHideFlags: 0
@@ -168,7 +169,7 @@ Transform:
   m_GameObject: {fileID: 215316801575158829}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 10293307151944279}
   m_RootOrder: 0
@@ -181,7 +182,7 @@ VisualEffect:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 215316801575158829}
   m_Enabled: 1
-  m_Asset: {fileID: 8926484042661614526, guid: 4a1471e0059ed4e4e95a852a278b8024, type: 3}
+  m_Asset: {fileID: 8926484042661614526, guid: 48c6f6be034dd9445902cb3de18037b3, type: 3}
   m_InitialEventName: OnPlay
   m_InitialEventNameOverriden: 0
   m_StartSeed: 0
@@ -195,7 +196,13 @@ VisualEffect:
     m_Vector3f:
       m_Array: []
     m_Vector4f:
-      m_Array: []
+      m_Array:
+      - m_Value: {x: 80.698235, y: 2.6899412, z: 0, w: 0}
+        m_Name: New Color
+        m_Overridden: 1
+      - m_Value: {x: 0.3584906, y: 0.048700586, z: 0.065711506, w: 1}
+        m_Name: New Color 1
+        m_Overridden: 1
     m_Uint:
       m_Array: []
     m_Int:
