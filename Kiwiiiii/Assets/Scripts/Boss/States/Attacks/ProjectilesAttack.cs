@@ -27,6 +27,7 @@ public class ProjectilesAttack : BossAttack
         elapsedTime += Time.deltaTime;
         if (elapsedTime > coolDownTime)
         {
+            AudioManager.instance.PlayOnce("BossProjectile");
             for (int i = 0; i < amount; i++)
             {
                 float offsetAngle = ((spawnPointIndex % 2) == 0)? 180:0;
