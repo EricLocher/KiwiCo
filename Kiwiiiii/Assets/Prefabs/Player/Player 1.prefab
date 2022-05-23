@@ -1145,7 +1145,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   layerMask:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 8256
   playerController: {fileID: 400932799244163684}
   characterHitBox: {fileID: 7815464143975138730}
   jumpVFX: {fileID: 400932800305188306}
@@ -1155,6 +1155,7 @@ MonoBehaviour:
   stats: {fileID: 0}
   isGrounded: 0
   chargeVFX: {fileID: 400932798576387859}
+  removeExtraGravity: 0
 --- !u!114 &400932799601004967
 MonoBehaviour:
   m_ObjectHideFlags: 0

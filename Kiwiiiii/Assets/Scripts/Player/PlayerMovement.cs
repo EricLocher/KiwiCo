@@ -20,8 +20,6 @@ public class PlayerMovement : MonoBehaviour
     public VisualEffect chargeVFX;
     [HideInInspector] public bool removeExtraGravity = false;
 
-    float _timer;
-
     Vector3[] groundCheckDirections = new Vector3[5] { Vector3.down, new Vector3(.5f, -.5f, 0), new Vector3(-.5f, -.5f, 0), new Vector3(0, -.5f, .5f), new Vector3(0, -.5f, -.5f) };
     bool jump = false;
 
