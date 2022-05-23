@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
     public PlayerController playerController;
     [SerializeField] SphereCollider characterHitBox;
     [SerializeField] VisualEffect jumpVFX;
+    public VisualEffect dashVFX;
     [SerializeField, Range(0, 90)] float maxAngle = 45f;
     [SerializeField] DecalProjector groundDecal;
     [SerializeField] float CustomGravity = 1;
