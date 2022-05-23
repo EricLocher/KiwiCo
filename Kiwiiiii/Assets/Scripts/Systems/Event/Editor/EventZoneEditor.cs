@@ -69,6 +69,12 @@ public class EventZoneEditor : Editor
                 CreateEditors();
             }
 
+            if (GUILayout.Button("Add Victory Event"))
+            {
+                _target.AddEvent((GameEvent)CreateInstance(typeof(VictoryEvent)));
+                CreateEditors();
+            }
+
             EditorGUILayout.Space(10);
         }
     }
