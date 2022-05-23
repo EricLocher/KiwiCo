@@ -737,6 +737,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterStats: {fileID: 11400000, guid: d94cd7ea8d4267d4a81227f4c1b06c40, type: 2}
   heal: {fileID: 1048947682}
+  hit: {fileID: 3062026453449162208, guid: e7216bf6c6f1fbe4482f8c8cc890863c, type: 3}
 --- !u!114 &400932799585225924
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -816,15 +817,27 @@ VisualEffect:
   m_ResourceVersion: 1
   m_PropertySheet:
     m_Float:
-      m_Array: []
+      m_Array:
+      - m_Value: 1
+        m_Name: Size
+        m_Overridden: 1
     m_Vector2f:
       m_Array: []
     m_Vector3f:
       m_Array: []
     m_Vector4f:
       m_Array:
-      - m_Value: {x: 3.9533494, y: 0.55885035, z: 2.5946414, w: 1}
+      - m_Value: {x: 5.278032, y: 5.278032, z: 5.278032, w: 1}
         m_Name: Flash Color
+        m_Overridden: 1
+      - m_Value: {x: 7.4748855, y: 7.4748855, z: 7.4748855, w: 0}
+        m_Name: Color01
+        m_Overridden: 1
+      - m_Value: {x: 0.38635916, y: 0.38635916, z: 0.38635916, w: 0}
+        m_Name: Color02
+        m_Overridden: 1
+      - m_Value: {x: 5.278032, y: 5.278032, z: 5.278032, w: 1}
+        m_Name: Cross Color
         m_Overridden: 1
     m_Uint:
       m_Array: []
@@ -833,7 +846,7 @@ VisualEffect:
       - m_Value: 2
         m_Name: Amount 1
         m_Overridden: 1
-      - m_Value: 40
+      - m_Value: 30
         m_Name: Amount
         m_Overridden: 1
     m_Matrix4x4f:
@@ -851,6 +864,9 @@ VisualEffect:
         m_Overridden: 1
       - m_Value: 0
         m_Name: Play Cross
+        m_Overridden: 1
+      - m_Value: 1
+        m_Name: Play Particles
         m_Overridden: 1
 --- !u!73398921 &3520616081890755673
 VFXRenderer:
@@ -1151,6 +1167,7 @@ MonoBehaviour:
   jumpVFX: {fileID: 400932800305188306}
   maxAngle: 45
   groundDecal: {fileID: 1413307780}
+  CustomGravity: 4
   rb: {fileID: 5517772427914825531}
   stats: {fileID: 0}
   isGrounded: 0

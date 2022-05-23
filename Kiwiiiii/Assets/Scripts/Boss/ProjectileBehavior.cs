@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ProjectileBehavior : MonoBehaviour
@@ -17,8 +15,11 @@ public class ProjectileBehavior : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Character"))
         {
-            other.gameObject.transform.parent.GetComponent<PlayerController>().TakeDamage(damage);
+            var playerController = other.gameObject.transform.parent.GetComponent<PlayerController>();
+            playerController.TakeDamage(damage);
             damage = 0;
+            var dmg = Instantiate(playerController.hit, other.gameObject.transform);
+            Destroy(dmg, 0.3f);
         }
     }
 }

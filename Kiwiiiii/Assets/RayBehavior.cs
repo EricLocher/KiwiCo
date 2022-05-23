@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class RayBehavior : MonoBehaviour
@@ -10,7 +8,10 @@ public class RayBehavior : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Character"))
         {
-            other.gameObject.transform.parent.GetComponent<PlayerController>().TakeDamage(damage);
+            var playerController = other.gameObject.transform.parent.GetComponent<PlayerController>();
+            playerController.TakeDamage(damage);
+            var dmg = Instantiate(playerController.hit, other.gameObject.transform);
+            Destroy(dmg, 0.3f);
         }
     }
 }
