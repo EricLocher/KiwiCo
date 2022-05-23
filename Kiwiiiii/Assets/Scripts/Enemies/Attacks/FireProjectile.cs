@@ -16,8 +16,9 @@ public class FireProjectile : MonoBehaviour
 
     void Start()
     {
-        healObject = new GameObject("Heal Affect");
+        healObject = new GameObject("Heal Effect");
         VisualEffect vfx = healObject.AddComponent<VisualEffect>();
+        vfx.transform.parent = TempHolder.transform;
         vfx.visualEffectAsset = healVFX;
         vfx.Stop();
     }
@@ -57,23 +58,23 @@ public class FireProjectile : MonoBehaviour
     {
         Enemy healTarget = CheckRadius();
 
-        if (healTarget == null) { yield return null; }
-
         yield return new WaitForSeconds(time);
 
-        //play heal VFX
-        healObject.transform.position = healTarget.transform.position;
-        healObject.GetComponent<VisualEffect>().Play();
+        if (healTarget == null) { yield return null; }
+        else {
+            healObject.transform.position = healTarget.transform.position;
+            healObject.GetComponent<VisualEffect>().Play();
 
-        healTarget.stats.health = 100;
-        GetComponent<Attacks>().isHealing = false;
-        GetComponent<Animator>().ResetTrigger("heal");
-        if (healTarget.stateMachine.activeState == EnemyStates.Attack) {
-            GetComponent<Animator>().SetTrigger("shoot");
-            yield return null;
+            healTarget.stats.health = 100;
+            GetComponent<Attacks>().isHealing = false;
+            GetComponent<Animator>().ResetTrigger("heal");
+            if (healTarget.stateMachine.activeState == EnemyStates.Attack) {
+                GetComponent<Animator>().SetTrigger("shoot");
+                yield return null;
+            }
+
+            GetComponent<Animator>().ResetTrigger("shoot");
         }
-
-        GetComponent<Animator>().ResetTrigger("shoot");
     }
 
     Enemy CheckRadius()

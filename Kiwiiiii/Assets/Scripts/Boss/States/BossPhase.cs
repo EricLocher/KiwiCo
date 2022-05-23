@@ -9,6 +9,8 @@ public abstract class BossPhase
     public List<BossAttack> currentAttack = new List<BossAttack>();
     public SOPhaseStats stats;
 
+    List<BossAttack> removeBuffer = new List<BossAttack>();
+
     public BossPhase(Boss agent, BossStateMachine stateMachine, SOPhaseStats stats)
     {
         this.agent = agent;
@@ -32,6 +34,12 @@ public abstract class BossPhase
     public abstract void EnterPhase();
     public virtual void Update(float dt = 0)
     {
+        foreach (BossAttack attack in removeBuffer) {
+            currentAttack.Remove(attack);
+        }
+
+        removeBuffer.Clear();
+        
         foreach (BossAttack attack in currentAttack) {
             attack?.Update();
         }
@@ -53,7 +61,7 @@ public abstract class BossPhase
     public virtual void RemoveSubState(BossAttack state)
     {
         if(currentAttack.Contains(state))
-            currentAttack.Remove(state);
+            removeBuffer.Add(state);
     }
 }
 

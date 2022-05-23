@@ -11,6 +11,8 @@ public class Boss : Character
     public SOBossStats stats { get { return (SOBossStats)characterStats; } }
     BossStateMachine stateMachine;
 
+    public List<Enemy> spawnedEnemies = new List<Enemy>();
+
     private void Start()
     {
         ui = GetComponent<BossUI>();
@@ -68,7 +70,13 @@ public class Boss : Character
     protected override void OnDeath()
     {
         AudioManager.instance.PlayOnce("BossDeath");
-        
+
+        for (int i = 0; i < spawnedEnemies.Count; i++) {
+            if(spawnedEnemies[i] == null) { continue; }
+            spawnedEnemies[i].TakeDamage(1000);
+        }
+        stateMachine.ChangeState(BossPhases.Init);
+
         Destroy(gameObject, 0.4f);
     }
 

@@ -21,7 +21,10 @@ public class SpawnAttack : BossAttack
 
         for (int i = 0; i < amountOfEnemies; i++) {
             Vector3 spawnPos = spawnSpots.GetNewSpot();
-            Instantiate(enemyList[UnityEngine.Random.Range(0, enemyList.Count)].enemy, Vector3.zero, Quaternion.identity).GetComponent<NavMeshAgent>().Warp(spawnPos);
+            Enemy enemy = Instantiate(enemyList[UnityEngine.Random.Range(0, enemyList.Count)].enemy, Vector3.zero, Quaternion.identity).GetComponent<Enemy>();
+            enemy.GetComponent<NavMeshAgent>().Warp(spawnPos);
+
+            boss.spawnedEnemies.Add(enemy);
         }
         ExitState();
     }

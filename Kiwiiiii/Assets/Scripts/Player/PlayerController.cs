@@ -33,6 +33,7 @@ public class PlayerController : Character
     {
         base.TakeDamage(value);
         AudioManager.instance.PlayOnce("PlayerDamage");
+        CameraShake.Shake(0.05f, 0.1f);
     }
 
     protected override void OnDeath()

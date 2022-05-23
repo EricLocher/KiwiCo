@@ -23,11 +23,11 @@ public class Phase3 : BossPhase
         }, this));
         comboAttacks.Add(new ComboAttacks(new List<BossAttack>()
         {
-            stats.attackList[0], stats.attackList[2]
+            stats.attackList[0], stats.attackList[3]
         }, this));
         comboAttacks.Add(new ComboAttacks(new List<BossAttack>()
         {
-            stats.attackList[3]
+            stats.attackList[1], stats.attackList[3]
         }, this));
         //comboAttacks.Add(new ComboAttacks(new List<BossAttack>()
         //{

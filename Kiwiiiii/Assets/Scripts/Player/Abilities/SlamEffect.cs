@@ -74,6 +74,8 @@ public class SlamEffect : MonoBehaviour
             RaycastHit hit;
             Physics.Raycast(movement.transform.position, Vector3.down, out hit, layerMask);
 
+            CameraShake.Shake(0.2f, 1);
+
             slamVFX.SetVector3("pos", hit.point);
             slamVFX.SetFloat("size", radius);
             slamVFX.Play();

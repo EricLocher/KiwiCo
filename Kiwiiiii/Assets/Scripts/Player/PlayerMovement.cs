@@ -12,7 +12,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] VisualEffect jumpVFX;
     [SerializeField, Range(0, 90)] float maxAngle = 45f;
     [SerializeField] DecalProjector groundDecal;
-
+    [SerializeField] float CustomGravity = 1;
     [HideInInspector] public Rigidbody rb;
     [HideInInspector] public SOPlayerStats stats;
     [HideInInspector] public bool isGrounded;
@@ -83,7 +83,7 @@ public class PlayerMovement : MonoBehaviour
         }
         if (!isGrounded && !removeExtraGravity)
         {
-            rb.AddForce(Vector3.down * stats.jumpForce, ForceMode.Acceleration);
+            rb.AddForce(Vector3.down * CustomGravity, ForceMode.Acceleration);
         }
     }
 
