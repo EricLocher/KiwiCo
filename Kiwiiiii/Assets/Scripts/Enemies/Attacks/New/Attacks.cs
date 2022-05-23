@@ -9,6 +9,7 @@ public class Attacks : MonoBehaviour
     Enemy agent;
     int randomIndex;
     public bool DealDamage, isHealing = false;
+    public float damage;
     void Start()
     {
         agent = GetComponent<Enemy>();
@@ -17,6 +18,7 @@ public class Attacks : MonoBehaviour
             attacks[i].origin = transform;
             attacks[i].bigradius = attacks[i].radius * 1.2f;
             attacks[i].normalradius = attacks[i].radius;
+            damage = attacks[i].damage;
         }
         target = GameObject.FindGameObjectWithTag("Character").transform;
     }
