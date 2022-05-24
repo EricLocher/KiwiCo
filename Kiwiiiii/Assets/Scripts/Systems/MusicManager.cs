@@ -35,10 +35,18 @@ public class MusicManager : MonoBehaviour
             return;
         }
 
-        if(state != GameStates.Menu && buildIndex != 3)
+        if(state != GameStates.Menu && buildIndex != 3 && buildIndex != 2)
         {
             AudioManager.instance.PauseSound("Boss Music");
+            AudioManager.instance.PauseSound("Game Music2");
             AudioManager.instance.Play("Game Music");
+        }
+
+        if (state != GameStates.Menu && buildIndex != 3 && buildIndex != 1)
+        {
+            AudioManager.instance.PauseSound("Boss Music");
+            AudioManager.instance.PauseSound("Game Music");
+            AudioManager.instance.Play("Game Music2");
         }
     }
 }
