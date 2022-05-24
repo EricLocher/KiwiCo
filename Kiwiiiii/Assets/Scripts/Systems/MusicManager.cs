@@ -18,11 +18,13 @@ public class MusicManager : MonoBehaviour
         //state shit not working properly
         if (state == GameStates.Menu)
         {
+            AudioManager.instance.PauseSound("Boss Music");
             AudioManager.instance.PauseSound("Game Music");
             AudioManager.instance.Play("Menu Music");
             return;
         }
 
+        AudioManager.instance.PauseSound("Boss Music");
         AudioManager.instance.PauseSound("Menu Music");
 
         if (buildIndex == 3) 
@@ -34,6 +36,9 @@ public class MusicManager : MonoBehaviour
         }
 
         if(state != GameStates.Menu && buildIndex != 3)
+        {
+            AudioManager.instance.PauseSound("Boss Music");
             AudioManager.instance.Play("Game Music");
+        }
     }
 }
