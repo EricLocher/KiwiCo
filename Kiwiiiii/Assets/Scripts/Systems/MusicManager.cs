@@ -31,7 +31,6 @@ public class MusicManager : MonoBehaviour
 
         if (buildIndex == 3) 
         {
-            Debug.Log("test");
             AudioManager.instance.PauseSound("Game Music");
             AudioManager.instance.PauseSound("Game Music2");
             AudioManager.instance.Play("Boss Music");
