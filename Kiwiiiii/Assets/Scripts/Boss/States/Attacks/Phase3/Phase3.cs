@@ -49,7 +49,17 @@ public class Phase3 : BossPhase
         }
         comboAttacks[attackIndex].Update(dt);
     }
+
+    public override void ExitPhase()
+    {
+        foreach (ComboAttacks attack in comboAttacks) {
+            attack.ExitAttack();
+        }
+    }
+
 }
+
+
 
 class ComboAttacks
 {
@@ -77,6 +87,13 @@ class ComboAttacks
             {
                 attackTimer = attackList[i].stateTime;
             }
+        }
+    }
+
+    public void ExitAttack()
+    {
+        foreach (BossAttack _attack in attackList) {
+            _attack.ExitState();
         }
     }
 
