@@ -33,6 +33,7 @@ public class LevelLoader : MonoBehaviour
 
         scene.allowSceneActivation = true;
         LoadScene(sceneName);
+        
     }
 
     public async void LoadScene(string sceneName)
