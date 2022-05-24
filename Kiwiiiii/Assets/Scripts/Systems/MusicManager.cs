@@ -8,13 +8,14 @@ public class MusicManager : MonoBehaviour
 
     void OnEnable()
     {
-        buildIndex = SceneManager.GetActiveScene().buildIndex;
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        buildIndex = SceneManager.GetActiveScene().buildIndex;
         state = GameController.gameState;
+        //state shit not working properly
         if (state == GameStates.Menu)
         {
             AudioManager.instance.PauseSound("Game Music");
@@ -24,12 +25,15 @@ public class MusicManager : MonoBehaviour
 
         AudioManager.instance.PauseSound("Menu Music");
 
-        if (buildIndex == 3) {;
+        if (buildIndex == 3) 
+        {
+            Debug.Log("test");
             AudioManager.instance.PauseSound("Game Music");
             AudioManager.instance.Play("Boss Music");
             return;
         }
 
-        AudioManager.instance.Play("Game Music");
+        if(state != GameStates.Menu && buildIndex != 3)
+            AudioManager.instance.Play("Game Music");
     }
 }
