@@ -75,6 +75,12 @@ public class EventZoneEditor : Editor
                 CreateEditors();
             }
 
+            if (GUILayout.Button("Add Sword Event"))
+            {
+                _target.AddEvent((GameEvent)CreateInstance(typeof(SwordEvent)));
+                CreateEditors();
+            }
+
             EditorGUILayout.Space(10);
         }
     }

@@ -3,11 +3,11 @@ using UnityEngine.SceneManagement;
 
 public class Portal : MonoBehaviour
 {
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Character"))
         {
+            GetComponent<Collider>().enabled = false;
             AudioManager.instance.PlayOnce("PlayerEnterPortal");
             string scene = NameFromIndex(SceneManager.GetActiveScene().buildIndex + 1);
             LevelLoader.Instance.LoadLoading(scene);
