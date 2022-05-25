@@ -22,6 +22,7 @@ public class VictoryEvent : GameEvent
 
     public override void CompletedEvent()
     {
+        Save.instance.ResetData();
         zone.NextEvent();
     }
 
