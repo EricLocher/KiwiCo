@@ -90,6 +90,11 @@ public class UIManager : MonoBehaviour
         sensText.text = "" + Mathf.Round(sensSlider.value * 100.0f) / 100;
     }
 
+    public void HoverButton()
+    {
+        AudioManager.instance.PlayOnce("Button Hover");
+    }
+
     public void OpenSettings()
     {
         if (BG.GetCurrentAnimatorStateInfo(0).normalizedTime < 1f) { return; }
