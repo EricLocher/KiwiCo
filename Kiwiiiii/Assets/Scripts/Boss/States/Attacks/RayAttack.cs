@@ -16,7 +16,7 @@ public class RayAttack : BossAttack
     {
         rays.Clear();
         base.EnterState(phase);
-        AudioManager.instance.PlayOnceLocal("BossLaser", ray);
+        AudioManager.instance.PlayOnce("BossLaser");
         for (int i = 0; i < amountOfRays; i++)
         {
             GameObject _temp = Instantiate(ray);

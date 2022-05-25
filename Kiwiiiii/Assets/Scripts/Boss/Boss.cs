@@ -34,6 +34,7 @@ public class Boss : Character
         stateMachine.RegisterState(BossPhases.Phase1, new Phase1(this, stateMachine, phaseStats[0]));
         stateMachine.RegisterState(BossPhases.Phase2, new Phase2(this, stateMachine, phaseStats[1]));
         stateMachine.RegisterState(BossPhases.Phase3, new Phase3(this, stateMachine, phaseStats[2]));
+        stateMachine.RegisterState(BossPhases.Death, new BossDeathState(this, stateMachine, phaseStats[0]));
         stateMachine.boss = this;
         stateMachine.ChangeState(BossPhases.Init);
         //healthBar.stats = stats;
@@ -75,7 +76,7 @@ public class Boss : Character
             if(spawnedEnemies[i] == null) { continue; }
             spawnedEnemies[i].TakeDamage(1000);
         }
-        stateMachine.ChangeState(BossPhases.Init);
+        stateMachine.ChangeState(BossPhases.Death);
 
         Destroy(gameObject, 0.4f);
     }

@@ -21,7 +21,11 @@ public class BoostObject : MonoBehaviour
             if(animator != null) {
                 animator.Play("Boost");
                 AudioManager.instance.PlayOnce("Boost");
-                other.gameObject.GetComponent<PlayerMovement>().jumpVFX.Play();
+
+                PlayerMovement movement = other.gameObject.GetComponent<PlayerMovement>();
+                movement.jumpVFX.Play();
+                movement.stats.amountOfJumps = movement.stats.maxJumps;
+                movement.stats.jumpForce = movement.stats.defaultJumpForce;
             }
         }
         else if (other.gameObject.CompareTag("Sword")) {
@@ -33,7 +37,11 @@ public class BoostObject : MonoBehaviour
             if (animator != null) {
                 animator.Play("Boost");
                 AudioManager.instance.PlayOnce("Boost");
-                other.gameObject.GetComponent<PlayerMovement>().jumpVFX.Play();
+
+                PlayerMovement movement = other.gameObject.GetComponent<PlayerMovement>();
+                movement.jumpVFX.Play();
+                movement.stats.amountOfJumps = movement.stats.maxJumps;
+                movement.stats.jumpForce = movement.stats.defaultJumpForce;
             }
         }
     }

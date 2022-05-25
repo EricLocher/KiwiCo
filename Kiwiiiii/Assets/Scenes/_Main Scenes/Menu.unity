@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 1481.7754, g: 1835.8867, b: 2430.4492, a: 1}
+  m_IndirectSpecularColor: {r: 1481.7451, g: 1835.5391, b: 2429.8105, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4478,43 +4478,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8442977217905806071, guid: 9abe44e845a5eaa46a3b08e5d3c6613f, type: 3}
       propertyPath: sounds.Array.size
-      value: 30
+      value: 31
       objectReference: {fileID: 0}
     - target: {fileID: 8442977217905806071, guid: 9abe44e845a5eaa46a3b08e5d3c6613f, type: 3}
-      propertyPath: sounds.Array.data[28].clip
+      propertyPath: sounds.Array.data[30].clip
       value: 
-      objectReference: {fileID: 8300000, guid: 19874840fe6721746a7723235339e681, type: 3}
+      objectReference: {fileID: 8300000, guid: ed411e369bcdf344887910755d8ad6b8, type: 3}
     - target: {fileID: 8442977217905806071, guid: 9abe44e845a5eaa46a3b08e5d3c6613f, type: 3}
-      propertyPath: sounds.Array.data[28].name
-      value: BossProjectile
+      propertyPath: sounds.Array.data[30].loop
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8442977217905806071, guid: 9abe44e845a5eaa46a3b08e5d3c6613f, type: 3}
-      propertyPath: sounds.Array.data[29].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: 113b12a17c4ccd649bc501ad4b8f2c97, type: 3}
-    - target: {fileID: 8442977217905806071, guid: 9abe44e845a5eaa46a3b08e5d3c6613f, type: 3}
-      propertyPath: sounds.Array.data[29].loop
-      value: 1
+      propertyPath: sounds.Array.data[30].name
+      value: Boost
       objectReference: {fileID: 0}
     - target: {fileID: 8442977217905806071, guid: 9abe44e845a5eaa46a3b08e5d3c6613f, type: 3}
-      propertyPath: sounds.Array.data[29].name
-      value: Game Music2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8442977217905806071, guid: 9abe44e845a5eaa46a3b08e5d3c6613f, type: 3}
-      propertyPath: sounds.Array.data[28].mixer
+      propertyPath: sounds.Array.data[30].mixer
       value: 
       objectReference: {fileID: -8124911405333129162, guid: 5adc6ebd34bdc914cab810124bff624a, type: 2}
     - target: {fileID: 8442977217905806071, guid: 9abe44e845a5eaa46a3b08e5d3c6613f, type: 3}
-      propertyPath: sounds.Array.data[29].mixer
-      value: 
-      objectReference: {fileID: -5187013955568488995, guid: 5adc6ebd34bdc914cab810124bff624a, type: 2}
-    - target: {fileID: 8442977217905806071, guid: 9abe44e845a5eaa46a3b08e5d3c6613f, type: 3}
-      propertyPath: sounds.Array.data[28].volume
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8442977217905806071, guid: 9abe44e845a5eaa46a3b08e5d3c6613f, type: 3}
-      propertyPath: sounds.Array.data[29].volume
-      value: 1
+      propertyPath: sounds.Array.data[30].volume
+      value: 0.3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9abe44e845a5eaa46a3b08e5d3c6613f, type: 3}
