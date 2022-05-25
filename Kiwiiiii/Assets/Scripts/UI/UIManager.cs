@@ -92,7 +92,7 @@ public class UIManager : MonoBehaviour
 
     public void HoverButton()
     {
-        AudioManager.instance.PlayOnce("Menu Button");
+        AudioManager.instance.PlayOnce("Button Hover");
     }
 
     public void OpenSettings()
