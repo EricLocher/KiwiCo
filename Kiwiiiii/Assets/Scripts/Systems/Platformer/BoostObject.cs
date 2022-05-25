@@ -20,6 +20,8 @@ public class BoostObject : MonoBehaviour
             other.gameObject.GetComponent<Rigidbody>().AddForce(direction * force, forceMode);
             if(animator != null) {
                 animator.Play("Boost");
+                AudioManager.instance.PlayOnce("Boost");
+                other.gameObject.GetComponent<PlayerMovement>().jumpVFX.Play();
             }
         }
         else if (other.gameObject.CompareTag("Sword")) {
@@ -30,6 +32,8 @@ public class BoostObject : MonoBehaviour
             sword.movement.GetComponent<Rigidbody>().AddForce(direction * force, forceMode);
             if (animator != null) {
                 animator.Play("Boost");
+                AudioManager.instance.PlayOnce("Boost");
+                other.gameObject.GetComponent<PlayerMovement>().jumpVFX.Play();
             }
         }
     }
