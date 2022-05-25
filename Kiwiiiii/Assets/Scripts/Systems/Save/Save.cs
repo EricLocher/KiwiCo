@@ -43,6 +43,12 @@ public class Save : MonoBehaviour
         SaveData.Save(this);
     }
 
+    public int CheckPreviousSave()
+    {
+        GameData data = SaveData.Load();
+        return data.sceneIndex;
+    }
+
     public void LoadSavedScene()
     {
         string sceneString = NameFromIndex(sceneIndex);

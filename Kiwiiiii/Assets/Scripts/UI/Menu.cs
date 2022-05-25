@@ -9,8 +9,8 @@ public class Menu : MonoBehaviour
 
     void Awake()
     {
-        Save.instance.LoadAll();
-        if(Save.instance.sceneIndex == 0) { continueBtn.SetActive(false); return; }
+        var savedScene = Save.instance.CheckPreviousSave();
+        if(savedScene == 0) { continueBtn.SetActive(false); return; }
         continueBtn.SetActive(true);
     }
 
