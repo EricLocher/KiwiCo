@@ -58,8 +58,7 @@ public class AudioManager : MonoBehaviour
 
     public void PlayLocal(string name, GameObject target)
     {
-        GameObject obj = new GameObject();
-        obj.name = "LocalSound";
+        GameObject obj = new GameObject("LocalSound");
         obj.transform.SetParent(target.transform);
         obj.transform.position = target.transform.position;
 
