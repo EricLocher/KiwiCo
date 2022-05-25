@@ -21,6 +21,12 @@ public class UIManager : MonoBehaviour
         sensText.text = "" + Mathf.Round(sensSlider.value * 100.0f) * 0.01f;
     }
 
+    public void Continue()
+    {
+        Save.instance.LoadAll();
+        Save.instance.LoadSavedScene();
+    }
+
     public void CallPause()
     {
         GameController.Instance.PauseGame();
@@ -81,7 +87,12 @@ public class UIManager : MonoBehaviour
     public void SensitivityChange()
     {
         Save.instance.sensitivity = sensSlider.value;
-        sensText.text = "" + Mathf.Round(sensSlider.value * 100.0f) * 0.01f;
+        sensText.text = "" + Mathf.Round(sensSlider.value * 100.0f) / 100;
+    }
+
+    public void HoverButton()
+    {
+        AudioManager.instance.PlayOnce("Button Hover");
     }
 
     public void OpenSettings()

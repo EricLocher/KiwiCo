@@ -8,7 +8,7 @@ public abstract class BossAttack : ScriptableObject
     public float stateTime = 0;
 
     protected PatrolSpots spawnSpots;
-    protected BossPhase currentPhase;
+    public BossPhase currentPhase;
     protected float timeElapsed = 0;
 
     protected Boss boss;

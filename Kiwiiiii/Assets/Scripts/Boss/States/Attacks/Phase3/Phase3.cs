@@ -73,6 +73,10 @@ class ComboAttacks
     {
         attackList = attacks;
         this.phase = phase;
+
+        foreach (BossAttack attack in attackList) {
+            attack.currentPhase = phase;
+        }
     }
 
     public void EnterAttack()

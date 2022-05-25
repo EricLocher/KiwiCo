@@ -9,22 +9,24 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask layerMask;
     public PlayerController playerController;
     [SerializeField] SphereCollider characterHitBox;
-    [SerializeField] VisualEffect jumpVFX;
+    public VisualEffect jumpVFX;
     public VisualEffect dashVFX;
+    [SerializeField] VisualEffect dustVFX;
     [SerializeField, Range(0, 90)] float maxAngle = 45f;
     [SerializeField] DecalProjector groundDecal;
     [SerializeField] float CustomGravity = 1;
     [HideInInspector] public Rigidbody rb;
     [HideInInspector] public SOPlayerStats stats;
-    [HideInInspector] public bool isGrounded;
+    public bool isGrounded;
     private Animator animator;
     public VisualEffect chargeVFX;
     [HideInInspector] public bool removeExtraGravity = false;
+    bool dustvfxisplaying = false;
 
     Vector3[] groundCheckDirections = new Vector3[5] { Vector3.down, new Vector3(.5f, -.5f, 0), new Vector3(-.5f, -.5f, 0), new Vector3(0, -.5f, .5f), new Vector3(0, -.5f, -.5f) };
     bool jump = false;
 
-    private void Awake()
+    void Awake()
     {
         animator = GetComponentInChildren<Animator>();
         rb = GetComponent<Rigidbody>();
@@ -34,6 +36,7 @@ public class PlayerMovement : MonoBehaviour
     {
         stats = playerController.stats;
         stats.amountOfDashes = stats.maxDashes;
+        dustVFX.Play();
     }
 
     #region Movement
@@ -53,12 +56,26 @@ public class PlayerMovement : MonoBehaviour
     {
         GroundCheck();
 
+        if(rb.velocity.sqrMagnitude > 5f && isGrounded && !dustvfxisplaying)
+        {
+            dustvfxisplaying = true;
+            dustVFX.Play();
+        }
+
+        if(rb.velocity.sqrMagnitude < 5f)
+        {
+            dustvfxisplaying = false;
+            dustVFX.Stop();
+        }
+
         if (jump)
         {
             if (stats.amountOfJumps > 0)
             {
                 if (stats.amountOfJumps != stats.maxJumps) { jumpVFX.Play(); }
                 AudioManager.instance.PlayOnce("jump1");
+                if (rb.velocity.y < 0)
+                    rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
                 rb.AddForce(Vector3.up * stats.jumpForce, ForceMode.Impulse);
                 stats.amountOfJumps--;
             }
@@ -67,6 +84,12 @@ public class PlayerMovement : MonoBehaviour
 
         if (!isGrounded)
         {
+
+            if (!removeExtraGravity)
+            {
+                rb.AddForce(Vector3.down * CustomGravity, ForceMode.Acceleration);
+            }
+
             RaycastHit hit;
             if (Physics.Raycast(transform.position, Vector3.down, out hit, Mathf.Infinity, layerMask))
             {
@@ -81,10 +104,6 @@ public class PlayerMovement : MonoBehaviour
             {
                 groundDecal.gameObject.SetActive(false);
             }
-        }
-        if (!isGrounded && !removeExtraGravity)
-        {
-            rb.AddForce(Vector3.down * CustomGravity, ForceMode.Acceleration);
         }
     }
 

@@ -43,6 +43,12 @@ public class Save : MonoBehaviour
         SaveData.Save(this);
     }
 
+    public int CheckPreviousSave()
+    {
+        GameData data = SaveData.Load();
+        return data.sceneIndex;
+    }
+
     public void LoadSavedScene()
     {
         string sceneString = NameFromIndex(sceneIndex);
@@ -56,6 +62,14 @@ public class Save : MonoBehaviour
         string name = path.Substring(slash + 1);
         int dot = name.LastIndexOf('.');
         return name.Substring(0, dot);
+    }
+
+    public void ResetData()
+    {
+        sensitivity = 5;
+        sceneIndex = 0;
+        aquiredSword = false;
+        SaveAll();
     }
 
     public void LoadAll()

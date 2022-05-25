@@ -83,7 +83,9 @@ public class Enemy : Character
         VisualEffect deathVFX = obj.AddComponent<VisualEffect>();
         deathVFX.visualEffectAsset = AppearEffect.visualEffectAsset;
         deathVFX.Play();
-        AudioManager.instance.PlayOnceLocal("EnemyDie", obj);
+        string[] deathSounds = { "EnemyDie", "EnemyDie2" };
+        var randomDeathSound = AudioManager.instance.GetRandomAudio(deathSounds);
+        AudioManager.instance.PlayOnceLocal(randomDeathSound, obj);
         Destroy(obj, 1f);
 
         stateMachine.ChangeState(EnemyStates.Death);

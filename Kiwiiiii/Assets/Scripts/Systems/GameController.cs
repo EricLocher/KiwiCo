@@ -47,17 +47,11 @@ public class GameController : MonoBehaviour
     {
         var buildIndex = SceneManager.GetActiveScene().buildIndex;
 
-        if (GameObject.FindGameObjectWithTag("Player"))
-        {
-            var pc = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
-            pc.stats.health = pc.stats.maxHealth;
-        }
-
         if (buildIndex == 0 || buildIndex >= 4) { gameState = GameStates.Menu; }
         if (buildIndex > 0 && buildIndex < 4) { gameState = GameStates.Playing; }
         if (buildIndex == 6) { gameState = GameStates.Loading; }
 
-        if(gameState == GameStates.Playing) { }
+        if (gameState == GameStates.Playing) { }
     }
 
     void Update()
@@ -77,6 +71,8 @@ public class GameController : MonoBehaviour
 
     public void PauseGame()
     {
+        if (gameState == GameStates.Menu || gameState == GameStates.Loading) { return; }
+        if (Camera.main.GetComponent<CameraController>().IsCinematic) { return; }
         if (Instance.pause)
         {
             AudioManager.instance.PlayOnce("Pause");
