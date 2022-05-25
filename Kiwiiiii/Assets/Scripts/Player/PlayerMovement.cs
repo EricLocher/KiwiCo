@@ -16,7 +16,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float CustomGravity = 1;
     [HideInInspector] public Rigidbody rb;
     [HideInInspector] public SOPlayerStats stats;
-    [HideInInspector] public bool isGrounded;
+    public bool isGrounded;
     private Animator animator;
     public VisualEffect chargeVFX;
     [HideInInspector] public bool removeExtraGravity = false;
@@ -53,23 +53,26 @@ public class PlayerMovement : MonoBehaviour
     {
         GroundCheck();
 
-        if (jump)
-        {
-            if (stats.amountOfJumps > 0)
-            {
+        if (jump) {
+            if (stats.amountOfJumps > 0) {
                 if (stats.amountOfJumps != stats.maxJumps) { jumpVFX.Play(); }
                 AudioManager.instance.PlayOnce("jump1");
+                if(rb.velocity.y < 0)
+                    rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
                 rb.AddForce(Vector3.up * stats.jumpForce, ForceMode.Impulse);
                 stats.amountOfJumps--;
             }
             jump = false;
         }
 
-        if (!isGrounded)
-        {
+        if (!isGrounded) {
+
+            if (!removeExtraGravity) {
+                rb.AddForce(Vector3.down * CustomGravity, ForceMode.Acceleration);
+            }
+
             RaycastHit hit;
-            if (Physics.Raycast(transform.position, Vector3.down, out hit, Mathf.Infinity, layerMask))
-            {
+            if (Physics.Raycast(transform.position, Vector3.down, out hit, Mathf.Infinity, layerMask)) {
                 float dist = Vector3.Distance(transform.position, hit.point);
                 if (dist < 5f) { groundDecal.gameObject.SetActive(false); return; }
 
@@ -77,14 +80,9 @@ public class PlayerMovement : MonoBehaviour
                 groundDecal.transform.position = hit.point + Vector3.up;
                 groundDecal.size = new Vector3((dist - 5) / 2, (dist - 5) / 2, 1);
             }
-            else
-            {
+            else {
                 groundDecal.gameObject.SetActive(false);
             }
-        }
-        if (!isGrounded && !removeExtraGravity)
-        {
-            rb.AddForce(Vector3.down * CustomGravity, ForceMode.Acceleration);
         }
     }
 
@@ -98,10 +96,8 @@ public class PlayerMovement : MonoBehaviour
         InputSystem.Update();
 
         RaycastHit hit;
-        for (int i = 0; i < groundCheckDirections.Length; i++)
-        {
-            if (Physics.Raycast(transform.position, groundCheckDirections[i], out hit, 2f, layerMask))
-            {
+        for (int i = 0; i < groundCheckDirections.Length; i++) {
+            if (Physics.Raycast(transform.position, groundCheckDirections[i], out hit, 2f, layerMask)) {
                 if (Vector3.Angle(hit.normal, Vector3.up) > maxAngle) { continue; }
                 float dist = Vector3.Distance(transform.position, hit.point);
 
