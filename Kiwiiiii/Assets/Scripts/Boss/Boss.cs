@@ -42,6 +42,14 @@ public class Boss : Character
 
     void Update()
     {
+        for (int i = 0; i < spawnedEnemies.Count; i++) {
+            if(spawnedEnemies[i] == null) {
+                spawnedEnemies.RemoveAt(i);
+                i--;
+            }
+        }
+
+
         stateMachine.Update();
     }
 

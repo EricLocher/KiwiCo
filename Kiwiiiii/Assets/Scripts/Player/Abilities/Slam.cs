@@ -31,10 +31,9 @@ public class Slam : Ability
     public override void Activate(InputAction.CallbackContext ctx)
     {
         timePassed = 0;
-
         if (!started) { return; }
         started = false;
- 
+
         movement.chargeVFX.Stop();
         base.Activate(ctx);
         movement.removeExtraGravity = started;
@@ -68,12 +67,12 @@ public class Slam : Ability
         timePassed = 0;
         movement.removeExtraGravity = started;
     }
-    
+
     public override void UpdateAbility(float dt)
     {
         base.UpdateAbility(dt);
 
-        if(started && (currentAmount < 1 || Physics.Raycast(movement.transform.position, Vector3.down, minDistFromGround, layerMask))) {
+        if (started && (currentAmount < 1 || Physics.Raycast(movement.transform.position, Vector3.down, minDistFromGround, layerMask))) {
             movement.chargeVFX.Stop();
             started = false;
             movement.removeExtraGravity = started;
@@ -82,7 +81,7 @@ public class Slam : Ability
 
         if (started) {
             timePassed += dt;
-            if(timePassed > 0.25f && timePassed < 0.3f) { movement.chargeVFX.Play(); }
+            if (timePassed > 0.25f && timePassed < 0.3f) { movement.chargeVFX.Play(); }
             movement.chargeVFX.SetVector3("pos", movement.transform.position);
             movement.chargeVFX.SetFloat("timePassed", timePassed / chargeTime);
 

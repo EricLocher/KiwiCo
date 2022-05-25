@@ -16,6 +16,10 @@ public abstract class Ability : ScriptableObject
 
     protected PlayerMovement movement;
     protected ControlWeapon sword;
+
+    public delegate void OnUseDelegate(bool couldUse);
+    public event OnUseDelegate onUseEvent;
+
     public float timer
     {
         get {
@@ -46,13 +50,18 @@ public abstract class Ability : ScriptableObject
 
     public virtual void Activate(InputAction.CallbackContext ctx)
     {
-        if (currentAmount <= 0) { return; }
+        if (currentAmount <= 0) { onUseEvent.Invoke(false); return; }
 
         DoAbility();
 
         currentAmount--;
 
         timers.Add(coolDownTime);
+    }
+
+    protected void DoBlink()
+    {
+        onUseEvent.Invoke(false);
     }
 
     public virtual void StartedAbility(InputAction.CallbackContext ctx) { }
