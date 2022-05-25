@@ -77,6 +77,7 @@ public class GameController : MonoBehaviour
 
     public void PauseGame()
     {
+        if(gameState == GameStates.Menu || gameState == GameStates.Loading) { return; }
         if (Instance.pause)
         {
             AudioManager.instance.PlayOnce("Pause");

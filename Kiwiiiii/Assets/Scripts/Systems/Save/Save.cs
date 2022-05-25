@@ -58,6 +58,14 @@ public class Save : MonoBehaviour
         return name.Substring(0, dot);
     }
 
+    public void ResetData()
+    {
+        sensitivity = 5;
+        sceneIndex = 0;
+        aquiredSword = false;
+        SaveAll();
+    }
+
     public void LoadAll()
     {
         GameData data = SaveData.Load();
