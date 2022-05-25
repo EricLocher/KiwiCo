@@ -13,6 +13,7 @@ public class UIManager : MonoBehaviour
 
     void Start()
     {
+        if(SceneManager.GetActiveScene().buildIndex != 0) { return; }
         Save.instance.LoadAllSettings();
         sensSlider.value = Save.instance.sensitivity;
         masterSlider.value = Save.instance.master;

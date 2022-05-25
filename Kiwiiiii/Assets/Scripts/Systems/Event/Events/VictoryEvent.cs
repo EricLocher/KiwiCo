@@ -15,15 +15,11 @@ public class VictoryEvent : GameEvent
         princess.EndGame();
     }
 
-    public override void UpdateEvent()
-    {
-        CompletedEvent();
-    }
+    public override void UpdateEvent() {}
 
     public override void CompletedEvent()
     {
-        Save.instance.ResetData();
-        zone.NextEvent();
+        AudioManager.instance.PlayOnce("PlayerCompleteEvent");
     }
 
     public override string ToString()

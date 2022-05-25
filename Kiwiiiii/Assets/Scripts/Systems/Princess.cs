@@ -7,6 +7,7 @@ public class Princess : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         AudioManager.instance.PlayOnce("PlayerEnterPortal");
+        Save.instance.ResetData();
         LevelLoader.Instance.LoadLoading("Victory");
     }
 }
