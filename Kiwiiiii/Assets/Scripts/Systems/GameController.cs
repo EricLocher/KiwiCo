@@ -50,7 +50,7 @@ public class GameController : MonoBehaviour
         if (GameObject.FindGameObjectWithTag("Player"))
         {
             var pc = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
-            pc.stats.health = pc.stats.maxHealth;
+            pc.Heal(100);
         }
 
         if (buildIndex == 0 || buildIndex >= 4) { gameState = GameStates.Menu; }
@@ -78,6 +78,7 @@ public class GameController : MonoBehaviour
     public void PauseGame()
     {
         if(gameState == GameStates.Menu || gameState == GameStates.Loading) { return; }
+        if (Camera.main.GetComponent<CameraController>().IsCinematic) { return; }
         if (Instance.pause)
         {
             AudioManager.instance.PlayOnce("Pause");
