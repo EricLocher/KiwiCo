@@ -17,5 +17,10 @@ public class ZoneTP : MonoBehaviour
                 }
             }
         }
+
+        if (collision.CompareTag("Enemy"))
+        {
+            collision.GetComponent<Enemy>().TakeDamage(1000f);
+        }
     }
 }
