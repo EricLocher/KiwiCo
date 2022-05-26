@@ -13,6 +13,8 @@ public class Boss : Character
 
     public List<Enemy> spawnedEnemies = new List<Enemy>();
 
+    [SerializeField] GameObject victoryEvent;
+
     private void Start()
     {
         ui = GetComponent<BossUI>();
@@ -85,7 +87,7 @@ public class Boss : Character
             spawnedEnemies[i].TakeDamage(1000);
         }
         stateMachine.ChangeState(BossPhases.Death);
-
+        victoryEvent.SetActive(true);
         Destroy(gameObject, 0.4f);
     }
 
