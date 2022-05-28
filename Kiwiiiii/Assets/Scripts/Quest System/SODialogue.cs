@@ -13,12 +13,10 @@ namespace Quest.Dialogue
         [SerializeField] Vector2 newNodeOffset = new Vector2(200, 0);
         Dictionary<string, DialogueNode> lookupNode = new Dictionary<string, DialogueNode>();
 
-#if UNITY_EDITOR
         private void Awake()
         {           
             OnValidate();
         }
-#endif
 
         private void OnValidate()
         {            
