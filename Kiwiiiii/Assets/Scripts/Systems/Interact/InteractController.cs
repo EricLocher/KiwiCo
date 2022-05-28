@@ -10,6 +10,13 @@ public class InteractController : MonoBehaviour
 
     void Update()
     {
+        if( interactables.Count > 0) {
+            interactNotice.SetActive(true);
+        } else {
+            interactNotice.SetActive(false);
+        }
+
+
         for(int i = 0; i < interactables.Count; i++)
         {
             if(interactables[i] == null)
@@ -27,7 +34,6 @@ public class InteractController : MonoBehaviour
         if(interactable != null) {
             interactables.Add(other.gameObject);
             AudioManager.instance.PlayOnce("PlayerInteract");
-            interactNotice.SetActive(true);
         }
     }
 
@@ -37,7 +43,6 @@ public class InteractController : MonoBehaviour
 
         if (interactable != null) {
             interactables.Remove(other.gameObject);
-            interactNotice.SetActive(false);
         }
     }
 
