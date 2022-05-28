@@ -18,10 +18,6 @@ public class PlayerInput : MonoBehaviour
 
         #region Input bindings
 
-        //Hold to stop camera rotation
-        controls.Player.Mouse1.started += ctx => cameraController?.OnMouseDown(true);
-        controls.Player.Mouse1.canceled += ctx => cameraController?.OnMouseDown(false);
-
         controls.Player.Scroll.started += ctx => cameraController?.OnMouseScroll(ctx);
 
         //Camera Rotation mouse delta input
