@@ -1,5 +1,29 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-7830634698245578458
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc46249301e2b8e47baa0f69a70fc813, type: 3}
+  m_Name: 9b70cd7f-33ee-41a4-9d0d-15024c144f06
+  m_EditorClassIdentifier: 
+  playerSpeaking: 0
+  text: Now that's the spirit!
+  children:
+  - eb361ac5-5206-4982-a7c8-497febc514821
+  rect:
+    serializedVersion: 2
+    x: 822
+    y: 44
+    width: 200
+    height: 100
+  onExitAction: 
+  onEnterAction: 
 --- !u!114 &-3907659078987746972
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18,8 +42,8 @@ MonoBehaviour:
   - eb361ac5-5206-4982-a7c8-497febc514821
   rect:
     serializedVersion: 2
-    x: 675
-    y: 241
+    x: 836
+    y: 229
     width: 200
     height: 100
   onExitAction: 
@@ -43,6 +67,7 @@ MonoBehaviour:
   - {fileID: 4830192118581701048}
   - {fileID: 3282216053873052037}
   - {fileID: -3907659078987746972}
+  - {fileID: -7830634698245578458}
   newNodeOffset: {x: 200, y: 0}
 --- !u!114 &2248723242431140974
 MonoBehaviour:
@@ -64,8 +89,8 @@ MonoBehaviour:
   - 0737852a-3380-4ffb-a9b2-8b8aa47834531
   rect:
     serializedVersion: 2
-    x: 181
-    y: 186
+    x: 274
+    y: 192
     width: 200
     height: 100
   onExitAction: 
@@ -88,8 +113,8 @@ MonoBehaviour:
   - da9721d3-81c5-467c-87f9-e16d6650327a1
   rect:
     serializedVersion: 2
-    x: 459
-    y: 240
+    x: 582
+    y: 260
     width: 200
     height: 100
   onExitAction: 
@@ -109,11 +134,11 @@ MonoBehaviour:
   playerSpeaking: 1
   text: I will try my best!
   children:
-  - eb361ac5-5206-4982-a7c8-497febc514821
+  - 9b70cd7f-33ee-41a4-9d0d-15024c144f06
   rect:
     serializedVersion: 2
-    x: 456
-    y: 113
+    x: 555
+    y: 71
     width: 200
     height: 100
   onExitAction: 
@@ -137,8 +162,8 @@ MonoBehaviour:
   - 1782589d-5c6c-4581-8efc-fdb9e9d4396e1
   rect:
     serializedVersion: 2
-    x: -63
-    y: 181
+    x: 51
+    y: 195
     width: 200
     height: 100
   onExitAction: 
@@ -161,8 +186,8 @@ MonoBehaviour:
   children: []
   rect:
     serializedVersion: 2
-    x: 936
-    y: 110
+    x: 1168
+    y: 140
     width: 200
     height: 100
   onExitAction: npc
