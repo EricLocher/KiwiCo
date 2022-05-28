@@ -26,7 +26,7 @@ public class CameraController : MonoBehaviour
     float y = 0f, x = 0f;
     Quaternion rotation;
 
-    bool mouseDown = true;
+    bool freezeCamera = false;
 
     void Start()
     {
@@ -49,7 +49,7 @@ public class CameraController : MonoBehaviour
     {
         y = ClampAngle(y, minClampY, maxClampY);
 
-        if (mouseDown)
+        if (!freezeCamera)
         {
             rotation = Quaternion.Euler(y, x, 0);
             cameraCenter.transform.rotation = rotation;
@@ -64,7 +64,7 @@ public class CameraController : MonoBehaviour
 
     public void MouseInput(InputAction.CallbackContext ctx)
     {
-        if (!mouseDown) { return; }
+        if (freezeCamera) { return; }
         Vector2 input = ctx.ReadValue<Vector2>();
 
         input.x *= sensitivity * Time.deltaTime;
@@ -74,9 +74,9 @@ public class CameraController : MonoBehaviour
         y += (input.y * -1);
     }
 
-    public void OnMouseDown(bool check)
+    public void FreezeCamera(bool check)
     {
-        mouseDown = !check;
+        freezeCamera = check;
     }
 
     public void OnMouseScroll(InputAction.CallbackContext ctx)

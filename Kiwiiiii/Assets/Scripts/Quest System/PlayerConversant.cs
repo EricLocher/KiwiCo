@@ -34,6 +34,7 @@ namespace Quest.Dialogue
         {
             playerRb.constraints = RigidbodyConstraints.FreezeAll;
             { Cursor.visible = true; Cursor.lockState = CursorLockMode.None; }
+            Camera.main.GetComponent<CameraController>().FreezeCamera(true);
             currentNPCSpeaker = newConversant;
             currentDialogue = newDialogue;
             currentNode = currentDialogue.GetRootNode();
@@ -50,6 +51,7 @@ namespace Quest.Dialogue
             onDialogueUpdate();
             playerRb.constraints = RigidbodyConstraints.None;
             { Cursor.visible = false; Cursor.lockState = CursorLockMode.Locked; }
+            Camera.main.GetComponent<CameraController>().FreezeCamera(false);
         }
 
         public bool IsChoosing()
