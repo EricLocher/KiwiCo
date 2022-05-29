@@ -8,18 +8,13 @@ public class BossInitState : BossPhase
 
     public override void EnterPhase()
     {
-        //
     }
 
     public override void Update(float dt = 0)
     {
-        //Waiting for player to get close enough
         float dist = Vector3.Distance(agent.transform.position, agent.target.position);
         if(dist < 10) {
             stateMachine.ChangeState(BossPhases.Phase1);
         }
     }
-
-
 }
-

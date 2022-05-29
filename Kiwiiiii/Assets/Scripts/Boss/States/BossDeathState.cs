@@ -8,14 +8,10 @@ public class BossDeathState : BossPhase
 
     public override void EnterPhase()
     {
-        //
     }
 
     public override void Update(float dt = 0)
     {
         
     }
-
-
 }
-

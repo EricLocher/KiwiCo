@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class Boss : Character
 {
-    //public BossHealthBar healthBar;
     BossUI ui;
     [HideInInspector] public Transform target;
     [HideInInspector] public PatrolSpots spawnAreas;
@@ -39,7 +38,6 @@ public class Boss : Character
         stateMachine.RegisterState(BossPhases.Death, new BossDeathState(this, stateMachine, phaseStats[0]));
         stateMachine.boss = this;
         stateMachine.ChangeState(BossPhases.Init);
-        //healthBar.stats = stats;
     }
 
     void Update()
@@ -60,10 +58,9 @@ public class Boss : Character
         stats.health -= value;
 
         ui.UpdateHealthBar(stats.health);
-        //healthBar.stats.health = value;
 
         if (stats.health <= 0) { OnDeath(); }
-        //stateMachine.ChangeState(BossPhases.Phase2);
+
         if (stats.health <= stats.maxHealth * stats.phase2Health && stateMachine.currentPhase == BossPhases.Phase1)
         {
             stateMachine.ChangeState(BossPhases.Phase2);
@@ -77,7 +74,6 @@ public class Boss : Character
 
         ui.OnHit();
     }
-
     protected override void OnDeath()
     {
         AudioManager.instance.PlayOnce("BossDeath");
