@@ -14,7 +14,6 @@ public class UIManager : MonoBehaviour
     void Start()
     {
         if(SceneManager.GetActiveScene().buildIndex != 0) { return; }
-        Save.instance.LoadAllSettings();
         sensSlider.value = Save.instance.sensitivity;
         masterSlider.value = Save.instance.master;
         sfxSlider.value = Save.instance.sfx;
@@ -36,6 +35,14 @@ public class UIManager : MonoBehaviour
     public void CallQuit()
     {
         GameController.Instance.Quit();
+    }
+
+    public void NewGame()
+    {
+        AudioManager.instance.PlayOnce("Menu Button");
+        GameController.Instance.SetTime(true);
+        Save.instance.aquiredSword = false;
+        LevelLoader.Instance.LoadLoading("1Tutorial");
     }
 
     public void LoadScene(string sceneName)
@@ -114,18 +121,21 @@ public class UIManager : MonoBehaviour
     {
         AudioManager.instance.SetMasterVolume(masterSlider.value);
         Save.instance.master = masterSlider.value;
+        Save.instance.SaveAll();
     }
 
     public void SetSfV()
     {
         AudioManager.instance.SetSfxVolume(sfxSlider.value);
         Save.instance.sfx = sfxSlider.value;
+        Save.instance.SaveAll();
     }
 
     public void SetMuV()
     {
         AudioManager.instance.SetMusicVolume(musicSlider.value);
         Save.instance.music = musicSlider.value;
+        Save.instance.SaveAll();
     }
 
     void OnEnable() => GameController.onStateChange += OnPause;

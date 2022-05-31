@@ -10,6 +10,8 @@ public class Menu : MonoBehaviour
 
     void Awake()
     {
+        Save.instance.LoadAllSettings();
+
         var savedScene = Save.instance.CheckPreviousSave();
         if(savedScene == 0) { continueBtn.SetActive(false); return; }
         continueBtn.SetActive(true);

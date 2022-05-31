@@ -77,13 +77,6 @@ public class Save : MonoBehaviour
         GameData data = SaveData.Load();
         sceneIndex = data.sceneIndex;
         aquiredSword = data.aquiredSword;
-        sensitivity = data.sensitivity;
-        master = data.master;
-        sfx = data.sfx;
-        music = data.music;
-        AudioManager.instance.SetMasterVolume(master);
-        AudioManager.instance.SetSfxVolume(sfx);
-        AudioManager.instance.SetMusicVolume(music);
     }
 
     public void LoadAllSettings()
