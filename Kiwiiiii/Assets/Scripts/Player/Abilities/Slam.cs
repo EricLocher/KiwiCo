@@ -41,6 +41,8 @@ public class Slam : Ability
 
     public override void StartedAbility(InputAction.CallbackContext ctx)
     {
+        if(movement.stats.amountOfJumps > 0) { return; }
+
         started = true;
         timePassed = 0;
         movement.removeExtraGravity = started;
